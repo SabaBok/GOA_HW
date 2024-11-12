@@ -88,3 +88,29 @@ textarea {
     margin: 5px 0;
     font-weight: bold;
 }
+.logo{
+    width: 200px; 
+    height: 100px;
+    margin-left: 30px;
+}
+.navi2{
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+    display: flex;
+    color: black;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition: ease-in-out 0.3s;
+    margin: 30px;
+}
+.navi2:hover{
+    width: 250px;
+    background-color: rgb(167, 166, 166);
+}
+nav{
+    display: flex;
+    margin-top: -300px;
+    margin-right: -800px;
+}
