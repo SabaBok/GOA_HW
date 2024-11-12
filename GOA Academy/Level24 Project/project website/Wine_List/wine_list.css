@@ -1,0 +1,57 @@
+.navi{
+    border-radius: 10px;
+    width: 150px;
+    height: 30px;
+    display: flex;
+    color: black;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 15px;
+    transition: ease-in-out 0.3s;
+}
+.navi:hover{
+    width: 200px;
+    background-color: rgb(167, 166, 166);
+}
+nav{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 400px;
+    margin-top: -60px;
+}
+.logo{
+    width: 200px; 
+    height: 100px;
+    margin-left: 30px;
+}
+.container {
+    width: 320px;
+    height: 450px;
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 30px;
+    display: flex;
+    flex-direction: column; /* vertikalurad centralizacia yvelapris */
+    align-items: center; /* horizontalurad centralizacia */
+    justify-content: center;
+    text-align: center; /* teqstis yutshi centralizacia */
+}
+.wine_photo {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+.container-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 10px;
+}
+.ultra_container{
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;    
+}
