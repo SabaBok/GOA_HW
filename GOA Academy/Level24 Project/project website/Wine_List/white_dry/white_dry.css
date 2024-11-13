@@ -14,6 +14,7 @@ img{
     width: 100%;
     display: flex;
     flex-direction:row;
+    margin-top: 30px;
 }
 .text_container{
     width: 300px;
@@ -40,6 +41,22 @@ nav{
     display: flex;
     margin-left: 750px;
     margin-top: -40px;
+}
+.navi{
+    border-radius: 10px;
+    width: 150px;
+    height: 30px;
+    display: flex;
+    color: black;
+    /* border: 1px solid black; */
+    justify-content: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition: ease-in-out 0.3s;
+}
+.navi:hover{
+    width: 200px;
+    background-color: rgb(167, 166, 166);
 }
 .logo{
     width: 11%; 
