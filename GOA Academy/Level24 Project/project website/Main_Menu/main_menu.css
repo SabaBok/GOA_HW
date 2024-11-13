@@ -97,22 +97,20 @@ nav{
     font-size: 20px;
 }
 #award_text {
-    width: 120%;
+    width: 100%;
+    font-size: 25px;
 }
-/* Mirrored version for the third container */
 .random_container3 {
     display: flex;
     justify-content: space-between;
     padding: 20px;
 }
-
 .random_container3 .right_section {
-    order: 1;  /* Places the right section first */
+    order: 1;  
     width: 500px;
 }
-
 .random_container3 .left_section {
-    order: 2;  /* Places the left section second */
+    order: 2; 
 }
 #third_photo{
     width: 100%;
@@ -121,4 +119,10 @@ nav{
 }
 #history_text{
     word-spacing: 5px;
+}
+#idk{
+    margin-left: 190px;
+}
+#cont2_head{
+    margin-left: 190px;
 }
