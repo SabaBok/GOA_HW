@@ -9,23 +9,24 @@ body, html{
 }
 .navi{
     border-radius: 10px;
-    width: 200px;
+    width: 150px;
     height: 30px;
     display: flex;
     color: black;
+    /* border: 1px solid black; */
     justify-content: center;
     text-decoration: none;
     font-size: 20px;
     transition: ease-in-out 0.3s;
 }
 .navi:hover{
-    width: 250px;
+    width: 200px;
     background-color: rgb(167, 166, 166);
 }
 nav{
     display: flex;
     margin-top: 10px;
-    margin-left: 400px;
+    margin-left: 750px;
     margin-top: -60px;
 }
 #award_container {
