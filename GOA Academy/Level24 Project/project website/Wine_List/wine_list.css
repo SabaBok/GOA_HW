@@ -16,13 +16,12 @@
 }
 nav{
     display: flex;
-    margin-top: 10px;
     margin-left: 750px;
-    margin-top: -60px;
+    margin-top: -40px;
 }
 .logo{
-    width: 200px; 
-    height: 100px;
+    width: 11%; 
+    height: 11%;
     margin-left: 20px;
 }
 .container {
