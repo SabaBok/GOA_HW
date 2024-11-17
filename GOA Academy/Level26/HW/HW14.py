@@ -4,4 +4,5 @@ t_names = []
 for i in names:
     if i[0] == "t":
         t_names.append(i)
+        names.remove(t_names)
 print(t_names)
