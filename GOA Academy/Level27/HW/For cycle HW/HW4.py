@@ -2,6 +2,9 @@
 num = int(input("enter numbers :"))
 if num %2 == 0:
     num /= 2
+    print(num)
 else:
     num *= 3
+    print(num)
     num += 1
+    print(num)
