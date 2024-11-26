@@ -1,15 +1,16 @@
-#1) https://www.codewars.com/kata/55685cd7ad70877c23000102/train/python
+#1) https://www.codewars.com/kata/57356c55867b9b7a60000bd7/train/python
 
-def make_negative( number ):
-    num = 0
-    if number > 0:
-        num = -number
-    elif number < 0:
-        num = number
+def basic_op(operator, value1, value2):
+    if operator == "+":
+        return value1 + value2
+    elif operator == "-":
+        return value1 - value2
+    elif operator == "*":
+        return value1 * value2
+    elif operator == "/":
+        return value1 / value2
     else:
-        num = num
-    return num
-
-while True:
-    num = int(input("enter number :"))
-    print(make_negative(num))
+        return None
+    
+print(basic_op("+",10,5))
+ 
