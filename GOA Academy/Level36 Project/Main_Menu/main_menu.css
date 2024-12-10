@@ -1,0 +1,166 @@
+body, html{
+    margin:0;
+    padding:0;
+    background-color: 3C3B3B;
+}
+.navi{
+    border-radius: 15px;
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition: ease-in-out 0.3s;
+    color: white;
+
+}
+.navi:hover{
+    width: 200px;
+    background-color: rgb(2, 80, 7);
+}
+nav{
+    display: flex;
+    margin-left: 1000px;
+    margin-top: -100px;
+}
+.logo{
+    width: 11%; 
+    height: 15%;
+    margin-left: 20px;
+    border-radius: 20px;
+}
+.main_photo {
+    width: 1550px;
+    height: 600px;
+    border-radius: 20px;
+    position: relative;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.field_photo{
+    width: 350px;
+    height: 250px;
+    border-radius: 20px;
+    outline: 3px solid black;
+    border: 5px solid white;
+}
+.right_section {
+    flex: 0 0 60%;
+    margin-right: 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.right_section h2 {
+    font-size: 34px;
+    color: green;
+    margin: 0;
+}
+.right_section p {
+    font-size: 26px;
+    color: lightgray;
+    margin: 0;
+}
+.left_section {
+    flex: 0 0 20%;
+    margin-left: 30px;
+}
+.random_container1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.random_container2, .random_container3{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 60px;
+    border-radius: 20px;
+    background-color: white;
+}
+#everything_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 600px;
+    border-radius: 20px;
+    margin-top: 80px;
+    position: relative;
+}
+
+.random_container2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: white;
+}
+.left_sections {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.left_sections h1 {
+    margin-bottom: 10px;
+}
+#secons_photo {
+    width: 100%;
+    height: auto;
+    border-radius: 100px;
+}
+.right_sections {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    word-spacing: 5px;
+    font-size: 20px;
+}
+#award_text {
+    width: 100%;
+    font-size: 25px;
+}
+.random_container3 {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.random_container3 .right_section {
+    order: 1;  
+    width: 500px;
+}
+.random_container3 .left_section {
+    order: 2; 
+}
+#third_photo{
+    width: 100%;
+    height: auto;
+    border-radius: 100px;
+}
+#history_text{
+    word-spacing: 5px;
+    width: 100%;
+}
+#idk{
+    margin-left: 190px;
+}
+#cont2_head{
+    margin-left: 190px;
+}

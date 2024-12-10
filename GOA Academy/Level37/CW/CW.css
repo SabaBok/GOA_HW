@@ -1,0 +1,15 @@
+.but{
+    background-color: black;
+    color: white;
+    font-size: 30px;
+}
+#bot1{
+    background-color: red;
+    color: white;
+    font-size: 30px;
+}
+#bot2{
+    background-color: blue;
+    color: white;
+    font-size: 30px;
+}
