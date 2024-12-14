@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Payment.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6No2_k7LngO4POXhYvsUstfS4WUtguqyrBQ&s">
+    <title>Goa Academy - with us</title>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="../Main_Menu/main_page.html"><img class="logo" src="../zPhotos/logo.jpeg" alt="logo"></a>
+            <nav>
+                <a href="../Main_Menu/main_page.html" class="navi">Home</a>
+                <a href="../Mentors/Mentors.html" class="navi">Mentors</a>
+                <a href="../About Us/About_us.html" class="navi">about us</a>
+                <a href="../Payment/Payment.html" class="navi" target="_blank">Start With Us</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="pay">
+                <h2>With Us</h2>
+                <form action="">
+                    <div class="name">
+                        <label for="person"><i class='bx bxs-user'></i></label>
+                        <input type="text" placeholder="Name" required id="person">
+                        <input type="text" placeholder="Last name" id="lastname" required>
+                    </div>
+                    <div class="card_number">
+                        <label for="card"><i class='bx bxs-id-card' ></i></label>
+                        <input type="number" id="card" maxlength="17" required min="0" placeholder="Card Number">
+                    </div>
+                    <div class="card_deteils">
+                        <div class="CVC">
+                            <label for="cvc"><i class='bx bxs-credit-card' ></i></label>
+                            <input type="number"  min='100' max='999' placeholder="CVC" required id="cvc" >
+                        </div>
+                        <div class="code">
+                            <label for="Code"><i class='bx bx-lock' ></i> </label>
+                            <input type="password" required minlength="10" id="Code" placeholder="password">
+                        </div>
+                    </div>
+                    <div class="city">
+                        <label for="city"><i class='bx bx-globe' ></i></label>
+                        <input type="text" placeholde="City" id="city" placeholder="Place Of Origin">
+                    </div>
+                    <input type="reset">
+                    <input type="submit">
+                </form>
+                <button onclick="Update()">შეამოწმე ფასდაკლებაზე</button>
+            </div>
+        </section>
+        <section class="pict">
+            <div class="pic">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjYwODhkbHozMmQ0azZ1Z252bzdreDE4d2l5aXV6N2h4Nmdzemc3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1UX0XI4hlLYn64Rzmo/giphy.webp" alt="">
+                <div class="text"><h3>Speed 1</h3> <p>ფასი: <b id="speed_1">170.00₾</b></p></div>
+            </div>
+            <div class="pic">
+                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOG85bnpxMWp1YXE3Ync4M2Q2dm0wdGFuc3psY2NlcTV4Njc2Yml1ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VIfE4DE7vY49i/giphy.webp" alt="">
+                <div class="text"><h3>Speed 3</h3> <p>ფასი: <b id="speed_3">390.00₾</b></p></div>
+            </div>
+        </section>
+        <section class="pict">
+            <div class="pic">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2x4bzVpbDdpeTFlMTlnaWNzdnAxbDhud3dxaG1oMzYwZzVtendxdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nPHmhDcHOwO2k65JuZ/giphy.webp" alt="">
+                <div class="text"><h3>Speed 2</h3> <p>ფასი: <b id="speed_2">290.00₾</b></p></div>
+            </div>
+            <div class="pic">
+                <img src='https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2JrcW92cjF3MW9zaGYyc3dhZngxdzloaHk0amgyMXRvNGoyeXRtaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7uurRVHK6eb5K/giphy.webp' alt="">
+                <div class="text"><h3>Speed 4</h3> <p>ფასი: <b id="speed_4">490.00₾</b></p></div>
+            </div>
+        </section>
+    </main>
+    <script src="Payment.js"></script>
+</body>
+</html>

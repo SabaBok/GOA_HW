@@ -14,8 +14,7 @@ body, html{
     text-decoration: none;
     font-size: 20px;
     transition: ease-in-out 0.3s;
-    color: green;
-
+    color: white;
 }
 .navi:hover{
     background-color: rgb(2, 80, 7);
