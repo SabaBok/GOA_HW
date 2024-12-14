@@ -1,7 +1,9 @@
 body, html{
     margin:0;
     padding:0;
-    background-color: 3C3B3B;
+    background-color: black;
+    color: green;
+
 }
 .navi{
     border-radius: 15px;
@@ -12,7 +14,7 @@ body, html{
     text-decoration: none;
     font-size: 20px;
     transition: ease-in-out 0.3s;
-    color: white;
+    color: green;
 
 }
 .navi:hover{
@@ -82,16 +84,23 @@ nav{
     justify-content: center;
     align-items: center;
 }
-.random_container2, .random_container3{
-    width: 90%;
+.random_container2, .random_container3 {
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    margin-left: 60px;
+    margin: 20px auto;
     border-radius: 20px;
-    background-color: white;
+    transition: ease-in-out 0.3s;
+    background-color: black;
+    border: 1px solid green;
 }
+
+.random_container2:hover, .random_container3:hover {
+    width: 90%;
+    height: 60%;
+}
+
 #everything_container {
     display: flex;
     justify-content: center;
@@ -107,7 +116,6 @@ nav{
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background-color: white;
 }
 .left_sections {
     width: 45%;
@@ -139,13 +147,6 @@ nav{
     display: flex;
     justify-content: space-between;
     padding: 20px;
-}
-.random_container3 .right_section {
-    order: 1;  
-    width: 500px;
-}
-.random_container3 .left_section {
-    order: 2; 
 }
 #third_photo{
     width: 100%;
