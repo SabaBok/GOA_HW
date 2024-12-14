@@ -24,7 +24,7 @@ nav{
 }
 
 .logo{
-    height: 15%;
+    height: auto;
     margin-left: 20px;
     border-radius: 20px;
     transition: ease-in-out 0.07s;
@@ -105,28 +105,26 @@ a {
     border-radius: 10px;
     border: 2px solid green;
     background-color: black;
-
     color: white;
     transition: ease-in-out 0.2s;
 }
 .container button{
     width: 150px;
     height: 50px;
+    margin: auto;
 }
 
 .but{
     width: 130px;
-    border-radius: 1000px;
+    border-radius: 100px;
     transition: ease-in-out 0.3s;
     background: rgb(255,0,0);
     background: radial-gradient(circle, rgba(255, 156, 62, 0.743) 8%, rgba(6,107,0,1) 86%);
     color: white;
     border: 0px;
 }
-.but:hover{
-    width: 200px;
-    height: 75px;
-    
+.but:hover {
+    transform: scale(1.2); /* Slightly increase size */
 }
 .ment_photo {
     width: 355px;

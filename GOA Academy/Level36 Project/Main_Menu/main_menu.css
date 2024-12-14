@@ -29,6 +29,11 @@ nav{
     height: 15%;
     margin-left: 20px;
     border-radius: 20px;
+    transition: ease-in-out 0.07s;
+    border: 0px solid transparent;
+}
+.logo:hover{
+    border: 2px solid green;
 }
 .main_photo {
     width: 1550px;
