@@ -1,0 +1,43 @@
+#over{
+    width: 30%;
+    text-decoration:overline red;
+    color: red;
+}
+#under{
+    width: 30%;
+    text-decoration:underline blue;
+    color: blue;
+}
+#through{
+    width: 30%;
+    text-decoration:line-through yellow;
+    color: yellow;
+}
+#under_over{
+    text-decoration: underline overline green;
+    color: green;
+}
+#under_through{
+    text-decoration: underline line-through brown;
+    color: brown;
+}
+#through_over{
+    text-decoration: line-through overline cadetblue;
+    color: cadetblue;
+}
+#all{
+    text-decoration:line-through overline underline  orange;
+    color: orange;
+}
+#dec1{
+    text-decoration:wavy underline cadetblue;
+}
+#dec2{
+    text-decoration: dashed underline;
+}
+#dec3{
+    text-decoration: dotted underline;
+}
+#dec4{
+    text-decoration: double underline;
+}
