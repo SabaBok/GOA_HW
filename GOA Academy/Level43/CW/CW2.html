@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            border: none;
+            outline: none;
+            transition: 0.1s ease-in-out;
+        }
+
+        input[type = "text"]{
+            border-bottom: 3px solid red;
+        }
+        input[type = "text"]:hover{
+            border-radius: 10px;
+            border: 2px solid black;
+            color: red;
+        }
+
+        input[type = "password"]{
+            border-bottom: 3px dashed rebeccapurple;
+            color: blue;
+        }
+        input[type = "password"]:hover{
+            border-bottom: 3px dashed orange;
+            color: yellow;
+        }
+
+        input[type = "email"]{
+            border-bottom: 3px dotted green;
+        }
+        input[type = "email"]:hover{
+            border-left: 3px dotted red;
+            border-right: 3px dotted red;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="text1">enter the text here</label>
+        <input type="text" name="" placeholder="enter name" id="text1">
+
+        <label for="text2">enter the text here</label>
+        <input type="text" name="" placeholder="enter name" id="text2">
+
+        <label for="pass1">enter the password here</label>
+        <input type="password" name="" placeholder="enter name" id="pass1">
+
+        <label for="pass2">repeat password here</label>
+        <input type="password" name="" placeholder="enter name" id="pass2">
+
+        <label for="email">enter the email here</label>
+        <input type="email" name="" placeholder="enter name" id="email">
+
+
+    </form>
+</body>
+</html>
