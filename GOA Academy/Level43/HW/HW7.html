@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            border: none;
+            outline: none;
+            transition: 0.1s ease-in-out;
+            padding: 10px;
+            margin: auto;
+        }
+
+        input[type = "text"]{
+            border-bottom: 3px solid red;
+        }
+        input[type = "text"]:hover{
+            border-radius: 10px;
+            border: 2px solid black;
+            box-shadow: 0px 0px 20px red;
+            color: red;
+        }
+
+        input[type = "password"]{
+            border-radius: 15px;
+            border-bottom: 3px dashed rebeccapurple;
+            color: blue;
+        }
+        input[type = "password"]:hover{
+            border-bottom: 3px dashed orange;
+            box-shadow: 0px 0px 20px orange;
+            color: yellow;
+        }
+
+        input[type = "email"]{
+            border-radius: 10px;
+            border-bottom: 3px dashed green;
+        }
+        input[type = "email"]:hover{
+            box-shadow: 0px 0px 20px red;
+            border-bottom: 3px dashed red;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- 7) შექმენით რამოდენიმე input  , password  და , email  შემდეგ გასტილეთ  გამოიყენეთ box- shadow, padding, margin, border-radius. -->
+    <form action="">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+        <br><br><br>
+        <label for="pass">Password</label>
+        <input type="password" name="pass" id="pass">
+        <br><br><br>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+    </form>
+</body>
+</html>
