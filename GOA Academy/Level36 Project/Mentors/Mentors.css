@@ -124,7 +124,7 @@ a {
     border: 0px;
 }
 .but:hover {
-    transform: scale(1.2); /* Slightly increase size */
+    transform: scale(1.2);
 }
 .ment_photo {
     width: 355px;
