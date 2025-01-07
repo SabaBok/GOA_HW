@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Vinyl&family=Sixtyfour&family=Ysabeau+SC:wght@1..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -6,15 +7,14 @@
 body{
     background-color: #181a1b;
     font-family: 'Roboto','Sans-Serif';
+    display: flex;
+    flex-direction: column;    
 }
 header{
-    border: 2px solid gray;
-    border-radius: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 40px 0px;
-    background-color: aquamarine;
     background-color: #1c1f20;
 }
 nav ul {
@@ -35,17 +35,6 @@ nav ul li:hover{
     text-shadow: 0px 0px 10px gray;
 
 }
-.log-in{
-    font-size: 1.4rem;
-    cursor: pointer;
-    transition: 0.5s;
-    color: greenyellow;
-    text-shadow: 0px 0px 0px greenyellow;
-
-}
-.log-in:hover{
-    text-shadow: 0px 0px 20px greenyellow;
-}
 .navi{
     display: flex;
     justify-content: space-around;
@@ -54,17 +43,23 @@ nav ul li:hover{
     gap: 50px;
 }
 .title{
-    font-family: "Sixtyfour", serif;
-    color: greenyellow;
+    font-family: "Teko", serif;
+    color: white;
     font-size: 2.2rem;
     cursor: pointer;
     transition: 0.4s;
-    text-shadow: 0px 0px 0px greenyellow;
-
+    text-shadow: 0px 0px 0px beige;
 }
-.title:hover{
-    text-shadow: 0px 0px 10px greenyellow;
-
+.title-container{
+    border: 1px solid white;
+    background-color: rgba(152, 150, 150, 0.5);
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    bottom: 15px;
+    height: 30px;
+    display: flex;
+    align-items: center;
 }
 .kkk{
     color: white;

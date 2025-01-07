@@ -9,20 +9,62 @@
 </head>
 <body>
     <header>
-        <h1 class="title">UniGo</h1>
-        
+
         <div class="navi">
             <nav>
                 <ul>
                     <li><a href="#" class="kkk">Home</a></li>
                     <li><a href="#" class="kkk">Universities</a></li>
+                    <div class="title-container">
+                        <h1 class="title">UniGo</h1>
+                    </div>
                     <li><a href="#" class="kkk">Feedback</a></li>
+                    <li><a href="#" class="kkk">something</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
-
+        <div class="www">
+            <img src="../photos/aa81fea12075eafe6480ca1a4e660cb9.jpg" alt="image">
+            <p>Explore a diverse selection of universities <br>from around the world 
+                uncover features <br>detailed descriptions, <br>rankings, and key information <br>about each institution,
+                 giving you a closer look <br>at the universities that are <br>leading the way in <br>education, research, and innovation</p>
+        </div>
     </main>
+
+    <style>
+        body{
+            height: 100vh;
+        }
+        main{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        .www{
+            height: 60%;
+            width: 15%;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0px 0px 10px white;
+        }
+        .www p{
+            position: relative;
+            z-index: -1;
+            line-height: 24px;
+        }
+        .www:hover{
+            text-align: right;
+            width: 30%;
+            z-index: 1;
+        }
+    </style>
 </body>
 </html>
