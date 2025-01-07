@@ -1,1 +1,1 @@
-#ar gvqonda homework mtliani gakvetili waiyo jgupururi proeqtma da wina davalebebis shemowmebam
+#დავალება იყო რომ გაგეკეთებინათ გუნდური პროექტის იდესი პრეზენტაცია
