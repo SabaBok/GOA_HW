@@ -121,8 +121,8 @@ main{
 
 .subject{
     display: flex;
-    gap: 8px;
-    width:50%;
+    gap: 15px;
+    width: 60%;
     height: 500px;
     padding: 10px;
     align-items: center;
@@ -132,7 +132,7 @@ main{
     border-radius: 10px;
 }
 .subject a{
-    width: 80%;
+    width: 89%;
 }
 .but{
     width: 100%;
@@ -155,7 +155,8 @@ main{
 }
 .short-desc{
     width: 40%;
-    border: 2px solid gray;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
     border-radius: 15px;
     padding: 5px;
     line-height: 24px;
