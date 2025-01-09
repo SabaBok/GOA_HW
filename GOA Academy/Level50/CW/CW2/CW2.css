@@ -1,0 +1,8 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(sea-8445435_1920.jpg);
+    background-repeat: no-repeat;
+}

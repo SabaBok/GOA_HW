@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #999;
+    background-image: url(../CW2/sea-8445435_1920.jpg);
+    background-repeat: no-repeat;
+}
+form{
+    backdrop-filter:blur(100px) ;
+    padding: 30px;
+    color: rgb(6, 41, 41);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+form div{
+    position: relative;
+}
+i{
+    color: #333;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+}
+input{
+    border: none;
+    outline: none;
+    padding: 15px 45px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+.but{
+    position: relative;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+.but i {
+    position: relative;
+}

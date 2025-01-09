@@ -163,6 +163,7 @@ main{
 }
 .short-desc{
     width: 40%;
+    height: 280px;
     border-left: 2px solid gray;
     border-right: 2px solid gray;
     border-radius: 15px;
@@ -170,6 +171,9 @@ main{
     opacity: 70%;
     padding: 5px;
     line-height: 24px;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
 }
 .filtering{
     font-family: 'Montserrat';

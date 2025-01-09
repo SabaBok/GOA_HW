@@ -5,12 +5,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+hr{
+    border: 2px solid #4a4a4a;
+    border-radius: 5px;
+}
 body{
     background-color: #181a1b;
     font-family: 'Roboto','Sans-Serif';
     display: flex;
     flex-direction: column;    
-    height: 100vh;
+    height: 110vh;
 }
 header{
     display: flex;
@@ -18,8 +22,6 @@ header{
     align-items: center;
     padding: 30px;
     background-color: #1c1f20;
-    /* position: fixed;
-    z-index: 1; */
 }
 nav ul {
     display: flex;
@@ -36,7 +38,7 @@ nav ul li{
 nav ul li:hover{
     color: gray;
     cursor: pointer;
-    text-shadow: 0px 0px 10px gray;
+    text-shadow: 0px 0px 20px gray;
 
 }
 .navi{
@@ -66,7 +68,82 @@ nav ul li:hover{
     align-items: center;
 }
 
+
 .kkk{
     color: white;
     text-decoration: none;
+}
+
+main{
+    font-family: "Teko", serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+section{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 50%;
+    justify-content: center;
+}
+
+.big{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(201, 201, 181);
+    border-radius: 10px;
+    width: 66%;
+    height: 350px;
+    box-shadow: 0px 0px 10px rgb(201, 201, 181);
+    padding: 10px;
+}
+.first-cont{
+    display: flex;
+    justify-content: space-between;
+}
+.headers{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 280px;
+}
+.big img{
+    width: 65%;
+    height: 240px;
+    border-radius: 10px; 
+}
+.photo{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.history{
+    text-align: right;
+}
+.tree-image{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.small{
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    width: 33%;
+    background-color: rgb(201, 201, 181);
+    box-shadow: 0px 0px 10px rgb(201, 201, 181);
+    display: flex;
+    flex-direction: column;
+}
+.small .feedback{
+    font-size: 1.9rem;
+}
+.small img{
+    width: 55%;
 }
