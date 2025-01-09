@@ -18,6 +18,8 @@ header{
     align-items: center;
     padding: 30px;
     background-color: #1c1f20;
+    /* position: fixed;
+    z-index: 1; */
 }
 nav ul {
     display: flex;
