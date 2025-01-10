@@ -1,1 +1,1 @@
-#ar gvqonda classworki mtliani gakvetili waiyo jgupururi proeqtma da wina davalebebis shemowmebam
+#საკლასო დავალება არგქონია რადგან გაკვეთილი დაეთმო მასალის ახსნას და საკლასო არიყო საჭირო
