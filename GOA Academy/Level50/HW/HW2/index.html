@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>Frontend Mentor | Huddle landing page with alternating feature blocks</title>
   <link rel="stylesheet" href="style.css">
@@ -10,49 +10,60 @@
 </head>
 <body>
   <header>
-    <div class="choped-chin-header a1-head">
+    <section class="real-header">
       <img src="images/logo.svg" alt="logo">
-      <button>Try It Free</button>
-    </div>
-
-    <div class="egypt-property a2-head">
-      <h1>Build The Community Your Fans Will Love</h1>
-      <p>Huddle re-imagines the way we build communities. You have a voice, but so does your audience. 
-      Create connections with your users as you engage in genuine discussion. </p>
-      <button>Get Started For Free</button>
-    </div>
-
+      <button class="but">Try It Free</button>
+    </section>
+    <br><br><br>
+    <section class="second-header">
+      <div class="header-text">
+        <h1>Build The Community <br> Your Fans Will Love</h1>
+        <br>
+        <p>Huddle re-imagines the way we build communities. You have a voice, but so does your audience. 
+        Create connections with your users as you engage in genuine discussion. </p>
+        <br>
+        <button>Get Started For Free</button>
+      </div>
+  
+      <img src="images/illustration-mockups.svg" alt="">
+    </section>
   </header>
+
+  <br><br><br><br><br><br><br>
   
   <main>
-    <section>
+    <section class="good-sect">
       <div class="text">
         <h2>Grow Together</h2>
+        <br>
         <p>Generate meaningful discussions with your audience and build a strong, loyal community. 
         Think of the insightful conversations you miss out on with a feedback form. </p>
       </div>
-      <img src="" alt="photo1">
+      <img src="images/illustration-grow-together.svg" alt="photo1">
     </section>
-
-    <section>
-      <img src="" alt="photo2">
+     
+    <br><br><br>
+    <section class="good-sect">
+      <img src="images/illustration-flowing-conversation.svg" alt="photo2">
       <div class="text">
         <h2>Flowing Conversations</h2>
+        <br>
         <p>You wouldn't paginate a conversation in real life, so why do it online? Our threads 
         have just-in-time loading for a more natural flow.</p>
       </div>
     </section>
+    <br><br><br>
 
-    <section>
+    <section class="good-sect">
       <div class="text">
         <h2>Your Users</h2>
+        <br>
         <p>It takes no time at all to integrate Huddle with your app's authentication solution. 
         This means, once signed in to your app, your users can start chatting immediately.</p>
       </div>
-      <img src="" alt="photo3">
+      <img src="images/illustration-your-users.svg" alt="photo3">
     </section>
-    
-    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="sub-footer">
       <h1>Ready To Build Your Community?</h1>
       <button>Get Started For Free</button>
@@ -64,39 +75,44 @@
       <div class="first-row">
         <img src="images/logo.svg" alt="logo">
         <br>
-
-        <i class="fa-solid fa-location-dot"></i>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-        incididunt ut labore et dolore magna aliqua</p>
-        <br>
-
-        <i class="fa-solid fa-phone-volume"></i>
-        <p>+1-543-123-4567</p>
-        <br>
-
-        <i class="fa-solid fa-envelope"></i>
-        <p>example@huddle.com</p>
+        <ul>
+          <li id="first">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+            incididunt ut labore et dolore magna aliqua
+          </li>
+          <br>
+          <li id="second">
+            +1-543-123-4567
+          </li>
+          <br>
+          <li id="third">
+            example@huddle.com
+          </li>
+        </ul>
       </div>
-
+  
       <div class="second-row">
         <p>About Us</p>
+        <br>
         <p>What We Do</p>
+        <br>
         <p>FAQ</p>
       </div>
-
+  
       <div class="third-row">
         <p>Career</p>
+        <br>
         <p>Blog</p>
+        <br>
         <p>Contact Us</p>
       </div>
       
       <div class="fourth-row">
         <div class="icon">
-          <i></i>
-          <i></i>
-          <i></i>
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-instagram"></i>
         </div>
-        <p>&copy; Copyright 2018 Huddle. All rights reserved.</p>
+        <p>copy; Copyright 2018 Huddle. All rights reserved.</p>
       </div>
     </section>
   </footer>
