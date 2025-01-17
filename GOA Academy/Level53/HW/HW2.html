@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+        }
+        div{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            animation-name: Jump;
+            animation-duration: 1s;
+            border-radius: 50%;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes Jump{
+            /* from{
+                top: 0%;
+            }
+            
+            to{
+                top: 50%;
+            } */
+            0%{
+                top: 0%;
+            }
+            50%{
+                top: 50%;
+            }
+            100%{
+                top: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 2. შექმენით მრგვალი, ლურჯი დივი, ანიმაციის მეშვეობით კი მისი მოძრაობა ბურთის ხტუნავს მიამსგავსეთ, გამოიყენეთ @keyframe-ები. -->
+    <div></div>
+</body>
+</html>

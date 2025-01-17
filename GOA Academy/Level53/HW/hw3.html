@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        div{
+            width: 400px;
+            height: 400px;
+            animation-name: rot;
+            animation-timing-function: linear;
+            animation-duration: 2s;
+            background-color: aqua;
+            animation-iteration-count: infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        p{
+            animation-name: rot2;
+            animation-timing-function: linear;
+            animation-duration: 2s;
+            background-color: aqua;
+            animation-iteration-count: infinite;
+        }
+        @keyframes rot {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes rot2 {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(-360deg);
+            }
+        }
+        img{
+            animation-name: rot2;
+            animation-timing-function: linear;
+            animation-duration: 2s;
+            background-color: aqua;
+            animation-iteration-count: infinite;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!-- 3. შექმენით მარტივი ანიმაცია, რომელიც 200x200 div-ს 360 გრადუსით გადმოატრიალებს, გამოიყენეთ @keyframes და rotate(). -->
+    <div>
+        <img src="hd restaurant GIF.gif" alt="">
+        <p>i hate jews⭐</p>
+    </div>
+</body>
+</html>

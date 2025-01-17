@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+            animation-name: rot;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-duration: 2s;
+            background-color: black;
+            animation-delay: 1s;
+        }
+        @keyframes rot {
+            from{
+                transform: scale(2);
+            }
+            to{
+                transform: scale(0.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 5. შექმენით ანიმაცია, სადაც 200x200 div გაიზრდება ზომაში, შემდეგ კი თავის საწყის ზომაზე 2-ჯერ დაპატარავდება. -->
+    <div></div>
+</body>
+</html>
