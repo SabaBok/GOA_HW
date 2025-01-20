@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .parent{
+            border: 3px solid red;
+            width: 1470px;
+            height: 700px;
+            display: grid;
+            grid-template-columns: 200px 300px 400px 500px;
+            grid-template-rows: 100px 200px 300px;
+            gap: 20px;
+        }
+        .child{
+            background-color: blue;
+        }
+        .par1{
+            border: 3px solid rgb(0, 0, 0);
+            width: 1600px;
+            height: 700px;
+            display: grid;
+            grid-template-rows: 100px 200px 300px;
+            gap: 20px;
+        }
+        .child1{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+    <br>
+    <div class="par1">
+        <div class="child1"></div>
+        <div class="child1"></div>
+        <div class="child1"></div>
+        <div class="child1"></div>
+        <div class="child1"></div>
+        <div class="child1"></div>
+    </div>
+</body>
+</html>
