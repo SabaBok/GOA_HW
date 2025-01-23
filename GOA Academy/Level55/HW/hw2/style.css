@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+
+}
+main section{
+    width: 70%;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    grid-template-rows: repeat(2,50%);
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.first{
+    grid-column: 1/3;
+    background-color: white;
+    padding: 10px;
+
+}
+.second{
+    background-color: hsl(179, 62%, 43%);
+    padding: 10px;
+
+}
+.third{
+    background-color: hsl(179, 67%, 47%);
+
+    
+}
