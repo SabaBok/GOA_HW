@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Outfit:wght@100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+*{
+    font-family: "Red Hat Display", serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url(images/pattern-background-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: hsl(223, 100%, 96%);
+}
+.container{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    max-width: 23%;
+    height: 600px;
+    align-items: center;
+}
+.main-photo{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+}
+.cool{
+    width: 85%;
+    height: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.cool h2{
+    font-weight: 900;
+}
+.text{
+    text-align: center;
+    opacity: 60%;
+    line-height: 24px;
+}
+.plan-container{
+    width: 98%;
+    background-color: hsl(225, 100%, 98%);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+}
+.one{
+    display: flex;
+    width: 60%;
+    gap: 15px;
+}
+.proc{
+    border: none;
+    background-color: hsl(245, 75%, 52%);
+    color: white;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.35s;
+}
+.proc:hover{
+    background-color: hsl(245, 82%, 62%);
+}
+a{
+    transition: 0.2s;
+}
+a:hover{
+    color: hsl(245, 82%, 62%);
+}
+button{
+    cursor: pointer;
+}
+.cancel{
+    border: none;
+    background-color: #ffff;
+    opacity: 50%;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.cancel:hover{
+    opacity: 100%;
+}
