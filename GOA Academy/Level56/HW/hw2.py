@@ -16,5 +16,5 @@ def withdraw(n):
         n -=twenty*20
         print(f"{twenty} twenty removed")
     return [int(hundreed),int(fifty),int(twenty)]
-
+# not finished
 print(withdraw(250))

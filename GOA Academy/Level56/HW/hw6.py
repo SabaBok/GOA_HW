@@ -1,0 +1,2 @@
+#6)https://www.codewars.com/kata/560248d6ba06815d6f000098
+# ?? shesadzlbelia
