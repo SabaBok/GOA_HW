@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Lexend+Deca:wght@100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lexend Deca", serif;
+}
+@media (min-width:800px) {
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+    }
+    h1{
+        font-family: "Big Shoulders Display", serif;
+        text-transform: uppercase;
+    }
+    main{
+        display: grid;
+        width: 60%;
+        height: 60%;
+        color: white;
+        grid-template-columns: repeat(3,1fr);
+    }
+    p{
+        width: 80%;
+        opacity: 70%;
+        line-height: 25px;
+    }
+    .sedan{
+        background-color: hsl(31, 77%, 52%);
+    }
+    .sedan button{
+        color: hsl(31, 77%, 52%);
+    }
+
+
+    .suv{
+        background-color: hsl(184, 100%, 22%);
+    }
+    .suv button{
+        color: hsl(184, 100%, 22%);
+    }
+
+
+    .luxury{
+        background-color: hsl(179, 100%, 13%);
+    }
+    .luxury button{
+        color: hsl(179, 100%, 13%);
+    }
+    .s{
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 40px;
+    }
+    .cont{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .s img{
+        width: 25%;
+    }
+    .s button{
+        border-radius: 20px;
+        border: 2px solid white;
+        width: 50%;
+        height: 40px;
+        background-color: white;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+    .s button:active{
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+    }
+}
+@media (max-width:800px) {
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+    }
+    h1{
+        font-family: "Big Shoulders Display", serif;
+        text-transform: uppercase;
+    }
+    main{
+        display: grid;
+        width: 90%;
+        height: 90%;
+        color: white;
+        grid-template-columns: repeat(auto-fill,1fr);
+    }
+    p{
+        opacity: 70%;
+    }
+    .sedan{
+        background-color: hsl(31, 77%, 52%);
+    }
+    .sedan button{
+        color: hsl(31, 77%, 52%);
+    }
+
+
+    .suv{
+        background-color: hsl(184, 100%, 22%);
+    }
+    .suv button{
+        color: hsl(184, 100%, 22%);
+    }
+
+
+    .luxury{
+        background-color: hsl(179, 100%, 13%);
+    }
+    .luxury button{
+        color: hsl(179, 100%, 13%);
+    }
+    .s{
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .s img{
+        width: 25%;
+    }
+    .s button{
+        border-radius: 20px;
+        border: none;
+        width: 50%;
+        height: 40px;
+        background-color: white;
+        transition: 0.2s;
+    }
+
+}
