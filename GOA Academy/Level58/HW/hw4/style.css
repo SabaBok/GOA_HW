@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Deca:wght@100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", serif;
+}
+@media (min-width:800px) {
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: hsl(233, 47%, 7%);
+    }
+    .container{
+        gap: 30px;
+        display: flex;
+        align-items: center;
+        width: 80%;
+        border-radius: 10px;
+        height: 500px;
+        color: white;
+        background-color: hsl(244, 38%, 16%);
+    }
+    .container h2 span{
+        color: hsl(277, 64%, 61%);
+        font-family: "Lexend Deca", serif;
+    }
+    .container h2{
+        font-weight: bold;
+        font-family: "Lexend Deca", serif;
+        font-size: 36px;
+        width: 100%;
+    }
+    .container .img{
+        width: 50%;
+        order: 1;
+        height: 100%;
+        background-image: url(images/image-header-mobile.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: hsl(277, 60%, 65%);
+        background-blend-mode: multiply;
+    }
+    .left{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        align-items: center;
+        gap: 30px;
+        justify-content: space-around;
+        height: 100%;
+    }
+    .skibidi{
+        justify-content: center;
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .text{
+        color: hsla(0, 0%, 100%, 0.75);
+        width: 94%;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 30px;
+        opacity: 70%;
+    }
+    .stats{
+        width: 70%;
+        gap: 50px;
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        font-size: 1cqw;
+    }
+    .stats span{
+        color: hsla(0, 0%, 100%, 0.6);
+        text-transform: uppercase;
+        font-family: "Lexend Deca", serif;
+        font-size: 13px;
+        font-weight: 400;
+    }
+    .stats p{
+        font-weight: bold;
+        font-size: 25px;
+    }
+}
+@media (max-width:800px) {
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: hsl(233, 47%, 7%);
+    }
+    .container{
+        gap: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        border-radius: 10px;
+        height: 900px;
+        color: white;
+        text-align: center;
+        background-color: hsl(244, 38%, 16%);
+    }
+    .container h2 span{
+        color: hsl(277, 64%, 61%);
+        font-family: "Lexend Deca", serif;
+    }
+
+    .container h2{
+        font-weight: bold;
+        font-family: "Lexend Deca", serif;
+        font-size: 30px;
+        width: 70%;
+    }
+    .left{
+        display: flex;
+        gap: 50px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .skibidi{
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .skibidi h2{
+        width: 80%;
+    }
+    .container .img{
+
+        width: 100%;
+        height: 300px;
+        background-image: url(images/image-header-mobile.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: hsl(277, 64%, 61%);
+        background-blend-mode: multiply;
+    }
+    .text{
+        color: hsla(0, 0%, 100%, 0.75);
+        width: 75%;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 30px;
+    }
+    .stats{
+        width: 30%;
+        gap: 30px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .stats span{
+        color: hsla(0, 0%, 100%, 0.6);
+        text-transform: uppercase;
+        font-family: "Lexend Deca", serif;
+        font-size: 13px;
+        font-weight: 400;
+    }
+    .stats p{
+        font-weight: bold;
+        font-size: 25px;
+    }
+}
