@@ -4,36 +4,197 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "League Spartan", serif;
+}
+@media (min-width:860px) {
+    body{
+        background-image: url(images/bg-pattern-top-desktop.svg),
+        url(images/bg-pattern-bottom-desktop.svg);
+        background-size: contain;
+        background-position: -100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding-bottom: 10px;
+        background-color: rgb(249,247,249);
+    }
+    .all{
+        height: 600px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    header{
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
     
+    .title{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .title h2{
+        color: hsl(300, 43%, 22%);
+        font-size: 50px;
+    }
+    .title p{
+        color: hsl(303, 10%, 53%);
+        line-height: 20px;
+        font-size: 1.1rem;
+    }
+    
+    .k1{
+        margin-right: 170px;
+    }
+    .k2{
+        margin-right: 90px;
+    }
+    
+    .s1{
+        margin-top: 20px;
+    }
+    .s2{
+        margin-top: 40px;
+    }
+    
+    .quality-cont{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        width: 30%;
+    }
+    .quality-card {
+        gap: 10px;
+        width: 100%;
+        background-color: hsl(300, 24%, 96%);
+        border-radius: 5px;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        color: hsl(300, 43%, 22%);
+        font-weight: bold;
+    }
+    
+    
+    .card-container{
+        display: flex;
+        gap: 30px;
+    }
+    .card{
+        background-color: hsl(300, 43%, 22%);
+        width: 88%;
+        border-radius: 5px;
+        padding: 20px;
+        height: 230px;
+        color: white;
+        display: flex;
+        text-align: left;
+        line-height: 24px;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .stars{
+        display: flex;
+        gap: 10px;
+    }
+    .profile{
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    .profile img{
+        border-radius: 50%;
+        width: 15%;
+    }
+    .profile span{
+        color: hsl(333, 80%, 67%);
+    }
 }
-body{
-    /* background-image: url(images/bg-pattern-top-mobile.svg),
-    url(images/bg-pattern-top-mobile.svg); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-header{
-    padding: 20px;
-    border: 1px solid black;
-
-}
-.title{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.title h2{
-    color: hsl(300, 43%, 22%);
-    width: 50%;
-}
-.title p{
-    color: hsl(303, 10%, 53%);
-}
-.quality-stars {
-    background-color: hsl(300, 24%, 96%);
+@media (max-width:860px) {
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: auto;
+        padding-bottom: 10px;
+    }
+    header{
+        padding: 20px;
+    }
+    .title{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .title h2{
+        color: hsl(300, 43%, 22%);
+        width: 70%;
+        font-size: 30px;
+    }
+    .title p{
+        color: hsl(303, 10%, 53%);
+        line-height: 20px;
+    }
+    
+    
+    .quality-cont{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    .quality-card {
+        gap: 10px;
+        width: 100%;
+        background-color: hsl(300, 24%, 96%);
+        border-radius: 5px;
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: hsl(300, 43%, 22%);
+        font-weight: bold;
+    }
+    
+    
+    .card-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .card{
+        background-color: hsl(300, 43%, 22%);
+        width: 88%;
+        border-radius: 5px;
+        padding: 20px;
+        height: 230px;
+        color: white;
+        display: flex;
+        text-align: left;
+        line-height: 24px;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .profile{
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    .profile img{
+        border-radius: 50%;
+        width: 15%;
+    }
+    .profile span{
+        color: hsl(333, 80%, 67%);
+    }
 }
