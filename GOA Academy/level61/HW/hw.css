@@ -462,6 +462,9 @@ footer{
         flex-direction: row;
         gap: 100px;
     }
+    .super{
+        text-decoration: underline;
+    }
 }
 @media (max-width:974px) {
     .all-ender{
