@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois+Shadow&family=Just+Another+Hand&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+body{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding-bottom: 60px;
+    background-image: url(../../../photo/mexico.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+header{
+    width: 100%;
+    background-color: #171343;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 10px;
+}
+.heading{
+    font-family: "Just Another Hand", serif;
+    transform: translateX(-50%);
+}
+header div{
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    font-family: "Jacques Francois Shadow", serif;
+    font-size: 15px;
+    text-shadow: 0px 0px 00px 10px black;
+}
+h1{
+    font-family: "Just Another Hand", serif;
+    -webkit-text-stroke: 0.1px black;
+    color: white;
+}
+header img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+a{
+    text-decoration: none;
+}
+
+main{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.all-container{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 400px 600px;
+    gap: 50px;
+    justify-items: center;
+    align-items: start;
+}
+.cubes{
+    background-color: rgba(0, 0, 0, 0.009);
+    backdrop-filter: blur(100px);
+    border-radius: 10px;
+    border: 2px solid #0093D7;
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.cubes img{
+    width: 50%;
+}
+.photo-cont{
+    width: 100%;
+    height: 300px;
+}
+.food-text{
+    height: 100%;
+    width: 100%;
+    font-size: 17px;
+}
+.food-instr{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+    height: 100%;
+    width: 80%;
+    grid-column: 2/3;
+    grid-row: 1/3;
+    font-size: 17px;
+    list-style-position: inside
+}
+.food-instr h1{
+    font-size: 30px;
+}
+
+
+@media (max-width:1000px){
+    .photo-cont{
+        width: 100%;
+        height: 100%;
+    }
+    .photo-cont img{
+        width: 70%;
+    }
+    .food-text{
+        font-size: 15px;
+    }
+}
+@media (max-width:900px) {
+    .la-head{
+        display: none;
+    }
+    .heading{
+        transform: translateX(0%);
+    }
+    .photo-cont{
+        width: 100%;
+        height: 100%;
+    }
+}
+@media (max-width:800px){
+    main{
+        height: auto;
+    }
+    .all-container{
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5,auto);
+    }
+    .cubes{
+        grid-column: 1/2;
+    }
+    .photo-cont{
+        width: 100%;
+        height: 100%;
+        grid-row: 1/2;
+    }
+    .food-text{
+        grid-row: 2/3;
+    }
+    .food-instr{
+        width: 100%;
+        height: 100%;
+        grid-row: 3/5;
+    }
+}
