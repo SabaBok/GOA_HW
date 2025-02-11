@@ -81,6 +81,7 @@ main{
     border: 1px solid white;
     
     display: grid;
+    gap: 50px;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 1fr 1fr;
     justify-items: center;
@@ -138,7 +139,7 @@ main{
     width: 80%;
     grid-column: 2/3;
     grid-row: 2/3;
-    font-size: 2cqw;
+    font-size: 20px;
     justify-self: center;
     font-family: "Just Another Hand", serif;
     -webkit-text-stroke: 0.5px black;
