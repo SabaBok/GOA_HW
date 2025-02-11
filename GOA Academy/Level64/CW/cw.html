@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="GetName()">get name</button>
+    <button onclick="Calculate()">Calculate</button>
+
+
+    <!-- pirvei -->
+    <script src="script.js"></script>
+    
+    <!-- meore -->
+    <script>
+        //pirveli
+        function GetName(){
+            var userName = prompt("enter your name: ")
+            var userSurname = prompt("enter your last name: ")
+            alert(`hello ${userName} ${userSurname}`)
+        }
+
+        // meore
+        function Calculate(){
+            var num1 = Number(prompt("enter first number: "))
+            var num2 = Number(prompt("enter first number: "))
+            alert(`Addition ${num1 + num2}`)
+            alert(`Subtraction ${num1 - num2}`)
+            alert(`Multiplication ${num1 * num2}`)
+            alert(`Division ${num1 / num2}`)
+        }
+        //mesame
+        function ScreanName(){
+            alert(`hello ${userName}`)
+        }
+    </script>
+</body>
+</html>

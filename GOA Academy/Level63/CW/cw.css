@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", serif;
+}
+body{
+    height: 500vh;
+    display: flex;
+    flex-direction: column;
+}
+header{
+    width: 100%;
+    display: flex;
+    padding: 11.14px 100.23px 11.14px 100.23px;
+    align-items: center;
+    justify-content: center;
+}
+.all-header{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+nav ul{
+    display: flex;
+    list-style-type: none;
+    gap: 16.71px;
+    font-size: 11.14px;
+    font-weight: 500;
+    color: #4D4D4D;
+}
+.nav-bar{
+    display: flex;
+    align-items: center;
+    gap: 22.27px;
+}
+.nav-bar button{
+    background-color: #4CAF4F;
+    cursor: pointer;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 5.57px;
+    font-size: 11.14px;
+    font-weight: 500;
+    border-radius: 2.78px;
+    padding: 9.74px 22.27px 9.74px 22.77px;
+}
+.hero{
+    position: relative;
+    padding: 66.82px 100.23px 66.82px 100.23px;
+    width: 100%;
+    gap: 72.39px;
+    background-color: #F5F7FA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-text{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: start;
+    gap: 11.14px;
+}
+.hero-text h1{
+    font-size: 44.55px;
+    font-weight: 600;
+    color: #4D4D4D;
+    line-height: 52.9px;
+}
+.hero-text span{
+    color: #4CAF4F;
+}
+.hero-text p{
+    font-size: 11.14px;
+    font-weight: 400;
+    color: #717171;
+    line-height: 16.71px;
+}
+.hero-text button{
+    padding: 9.74px 22.27px 9.74px 22.27px;
+    border-radius: 2.78px;
+    background-color: #4CAF4F;
+    border: none;
+    color: white;
+    font-size: 11.14px;
+    font-weight: 500;
+    line-height: 16.71px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.ball{
+    display: flex;
+    gap: 5.57px;
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+}
+.ball div{
+    border-radius: 50%;
+    width: 6.96px;
+    height: 6.96px;
+    background-color: #4CAF4F;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 27.84px;
+}
+.clients{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100.23px 100.23px;
+}
+.client-text{
+
+}
