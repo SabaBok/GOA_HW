@@ -49,6 +49,10 @@ nav ul{
     border-radius: 2.78px;
     padding: 9.74px 22.27px 9.74px 22.77px;
 }
+.burger{
+    display: none;
+}
+
 .hero{
     position: relative;
     padding: 66.82px 100.23px 66.82px 100.23px;
@@ -106,6 +110,8 @@ nav ul{
     height: 6.96px;
     background-color: #4CAF4F;
 }
+
+
 main{
     display: flex;
     flex-direction: column;
@@ -118,5 +124,127 @@ main{
     align-items: center;
     justify-content: center;
     text-align: center;
+    gap: 40px;
     padding: 100.23px 100.23px;
+}
+.client-text h2{
+    color: #4D4D4D;
+    font-size: 25px;
+    font-weight: 600;
+}
+.client-text p{
+    color: #717171;
+    font-size: 11.14px;
+}
+.clients-grid-container{
+    width: 95%;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit,minmax(100px,2fr));
+}
+.clients-grid-container img{
+    width: 40px;
+}
+
+
+.comunity{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 11px;
+
+}
+.comunity-header{
+    width: 377px;
+}
+.comunity-header h1{
+    color: #4D4D4D;
+    font-size: 25.06px;
+}
+.comunity-header p{
+    color: #717171;
+    font-size: 11.14px;
+}
+.comunity-grid-container{
+    display: grid;
+    width: 100%;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+}
+.comunity-cards{
+    width: 208px;
+    height: 182px;
+    border-radius: 5.57px;
+    padding: 16.71px 22.27px;
+    box-shadow: 0px 1.39px 2.78px #ABBED133;
+}
+.comunity-cards h1{
+    color: #4D4D4D;
+    font-size: 19.49px;
+}
+.comunity-cards p{
+    color: #717171;
+    font-size: 9.74px;
+}
+
+
+.pixelgrade{
+    align-self: center;
+    width: 90%;
+    justify-content: center;
+    display: flex;
+    gap: 34px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.pixelgrade img{
+    width: 300px;
+    height: 300px;
+}
+.pixelgrade-text{
+    width: 418px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    align-items: start;
+}
+.pixelgrade-text h1{
+    color: #4D4D4D;
+    font-size: 25.06px;
+}
+.pixelgrade-text p{
+    color: #717171;
+    font-size: 9.74px;
+}
+.pixelgrade-text button{
+    background-color: #4CAF4F;
+    padding: 9.74px 22.27px;
+    border: none;
+    border-radius: 2.78px;
+    color: white;
+    font-size: 11.14px;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width:750px) {
+    nav ul li{
+        display: none;
+    }
+    .burger{
+        display: block;
+    }
+    /* .hero-text h1{
+        font-size: 21px;
+        line-height: 25px;
+    } */
 }
