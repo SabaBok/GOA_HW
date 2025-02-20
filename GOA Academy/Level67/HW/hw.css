@@ -4,7 +4,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", serif;
-    border: 1px solid black;
 }
 body{
     display: flex;
