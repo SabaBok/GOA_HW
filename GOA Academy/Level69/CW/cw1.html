@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1) მომხმარებელს შემოატანინეთ რიცხვი შემდეგ დაატრიალეთ ერთიდან ამ რიცხვამდე ციკლი, while ის დახმარებით და დაბეჭდეთ მხოლოდ 1 დან მომხმარებლის 
+        // შემოტანილ რიცხვამდე 3ისჯერადი და 5ის ჯერადი რიცხვი, ისეთი რიცხვები რომლებიც სამის ჯერადიც არის და ხუთის ჯერადიც
+        let input = Number(prompt("enter a number :"))
+        for(let i = 1; i <input; i++){
+            console.log(i)
+        }
+        console.log("\n")
+        console.log("\n")
+        console.log("\n")
+
+        let number = 1
+        while (number <= input){
+            if (number %3 == 0 && number %5 == 0){
+                console.log(number)
+            }
+            number++
+        }
+
+    </script>
+</body>
+</html>

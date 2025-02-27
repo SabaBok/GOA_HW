@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 2) მომხმარებელს შემოატანინეთ რიცხვი, შემდეგ შემოატანინეთ არჩევანი(ერთიდან მომხმარებლის რიცხვამდე დაბეჭდოს ლუწი, კენტი, კვადრატი ან 3 ის ჯერადი რიცხვი
+        let input = Number(prompt("enter a number :"))
+        let choice = prompt("enter the choice :")
+
+        for (let i = 0;i<=input;i++){
+            if (choice == "luwi" && i%2==0){
+                console.log(i)
+            }else if(choice == "kenti" && i%2 !=0){
+                console.log(i)
+            }else if(choice == "3is jeradi" && i%3==0){
+                console.log(i)
+            }else if(choice == "kvadrati"){
+                console.log(i**2)
+            }
+
+        }
+    </script>    
+
+</body>
+</html>
