@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="FirstLetters()">Click me</button>
+    <script>
+        // 3)შექმენით სია, ამ სიაში შეინახეთ String-ტიპის მონაცემები და for-ციკლის გამოყენებით ახალ სიაში დაამატეთ ძველი სიიდან ყოველი სიტყვის პირველი ასო
+        function FirstLetters(){
+            let myArr = ["i","want","to","meet","your","madre","pay","my","respects","to","your","padre","mi amor"]
+            let newArr = []
+            let fullWord = ""
+
+            for(let i of myArr){
+                newArr.push(i[0])
+                fullWord += i[0]
+            }  
+            alert(fullWord)
+            console.log(newArr)
+        }
+    </script>
+</body>
+</html>

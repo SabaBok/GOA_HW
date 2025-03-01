@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="Replacer()">Click me</button>
+    <script>
+        // 5)Splice მეთოდის გამოყენებით ჩაანაცვლეთ სიაში ყველა უარყოფითი რიცხვი 0 - ით
+        function Replacer(){
+            let myArr = [1,5,23,12,-10,-7]
+            myArr.splice(4,2)
+            myArr.push(0)            
+            myArr.push(0)
+            alert(myArr)            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="Corection()">Click me</button>
+    <script>
+        //6)შექმენით სია შეიყვანეთ user-ების სახელი და გვარი თუ user-ების სახელი და გვრი იწყება პატარა ასოთი slice-მეთოდის გამოყენებით ამოშალეთ ასეთი სახელები და გვარები სიიდან
+        function Corection(){
+            let myArr = ["Saba Bokuchava", "gela barkalaia", "lorwo Givia","Maia nutsubidze","Tornike Beruchashvili"]
+            let filteredArr = []
+            for(let i = 0;i<myArr.length;i++){
+                words = myArr[i].split(" ")
+                if(words[0][0] == words[0][0].toUpperCase() && words[1][0] == words[1][0].toUpperCase()){
+                    filteredArr.push(myArr[i])
+                }
+            }
+            alert(filteredArr)
+            console.log(filteredArr)
+        }
+
+</script>
+</body>
+</html>
