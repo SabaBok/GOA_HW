@@ -12,10 +12,10 @@
         function Corection(){
             let myArr = ["Saba Bokuchava", "gela barkalaia", "lorwo Givia","Maia nutsubidze","Tornike Beruchashvili"]
             let filteredArr = []
-            for(let i = 0;i<myArr.length;i++){
-                words = myArr[i].split(" ")
+            for(let fullName of myArr){
+                words = fullName.split(" ")
                 if(words[0][0] == words[0][0].toUpperCase() && words[1][0] == words[1][0].toUpperCase()){
-                    filteredArr.push(myArr[i])
+                    filteredArr.push(fullName)
                 }
             }
             alert(filteredArr)
