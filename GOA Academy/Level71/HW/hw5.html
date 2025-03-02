@@ -10,11 +10,13 @@
     <script>
         // 5)Splice მეთოდის გამოყენებით ჩაანაცვლეთ სიაში ყველა უარყოფითი რიცხვი 0 - ით
         function Replacer(){
-            let myArr = [1,5,23,12,-10,-7]
-            myArr.splice(4,2)
-            myArr.push(0)            
-            myArr.push(0)
-            alert(myArr)            
+            let myArr = [1,5,23,12,-10,-7,20]
+            for(let i = 0;i<myArr.length;i++){
+                if(myArr[i] < 0){
+                    myArr.splice(i,1,0)
+                }
+            }
+            alert(myArr)   
         }
     </script>
 </body>

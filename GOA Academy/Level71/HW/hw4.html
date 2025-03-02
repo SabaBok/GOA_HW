@@ -11,15 +11,13 @@
         // 4)შექმენით სია სადაც იქნება user-ების სახელი და გვარი და ახალ სიაში დაამატეთ ამ იუსერების  ინიციალები 
         // სახელის და გვარის პირველი ასოები, მაგალითად: გიორგი ბიბილაშვილი -> გ.ბ
         function Handler(){
-            let fullName = "გიორგი ბიბილაშვილი"
-            let handler = fullName[0] + "."
-
-            for(let i = 0;i<fullName.length;i++){
-                if(fullName[i] == " "){
-                    handler += fullName[i+1]
-                }
+            let nameList = ["გიორგი ბიბილაშვილი","saba bokuchava","nika tevzadze"]
+            let handlers = []
+            for(let i of nameList){
+                let parts = i.split(" ")
+                handlers.push(parts[0][0] + "." + parts[1][0])
             }
-            alert(handler)
+            alert(handlers)
         }
     </script>
 </body>
