@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 3)https://www.codewars.com/kata/54bb6ee72c4715684d0008f9/train/javascript
+        function solution(number){
+            if(number <1 ){
+                return 0
+            }
+            
+            function multipleCalc(n){
+                let p = Math.floor((number-1)/n)
+                return n*(p*(p +1 ))/2
+            } 
+            return multipleCalc(3) + multipleCalc(5) - multipleCalc(15)
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 2)https://www.codewars.com/kata/54da5a58ea159efa38000836/train/javascript
+        function findOdd(Arr) {
+            function Count(arr,element){
+                let ammount = 0
+                for(let i of arr){
+                    if(i == element){
+                        ammount ++
+                    }
+                }
+                return ammount
+            }
+            for(let i of Arr){
+                let counter = Count(Arr,i)
+                if(counter%2 !== 0){
+                    return i
+                }
+            }
+        }
+</script>
+</body>
+</html>

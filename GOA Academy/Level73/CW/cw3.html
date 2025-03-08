@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 3)https://www.codewars.com/kata/52597aa56021e91c93000cb0/train/javascript
+        function moveZeros(arr) {
+            let newArr = []
+            
+            for(let i of arr){
+                if(i !== 0){
+                newArr.push(i)
+                }
+            }
+            for(let a of arr){
+                if(a === 0){
+                newArr.push(a)    
+                }
+            }
+            return newArr
+        }
+    </script>
+</body>
+</html>

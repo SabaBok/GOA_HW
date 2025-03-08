@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function elimination(arr){
+            for(let i = 0;i<arr.length;i++){
+                for(let idk = i+1; idk<arr.length;idk++){
+                    if(arr[i] == arr[idk]){
+                        return arr[i]
+                    }
+                }
+            }
+            return null
+        }
+    </script>
+</body>
+</html>
