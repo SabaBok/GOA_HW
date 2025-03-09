@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 5)შექმნილ ობიექტს გადაუარეთ for ციკლით და გამოიტანეთ key და value შემდეგი ფორმატით: "{key} is {value}"
+        let yourName = prompt("enter name :")
+        let yourlastName = prompt("enter last name :")
+        let yourAge = Number(prompt("enter age :"))
+        let yourHobby = prompt("enter hobby :")
+        let myInfo = {
+            name:yourName,
+            lastName:yourlastName,
+            age:yourAge,
+            hobby:yourHobby,
+            Printer(){
+                console.log(`Welcome ${name}`)
+            }
+        }
+        for(let i in myInfo){
+            console.log(`${i} is ${myInfo[i]}`)
+        }
+    </script>
+</body>
+</html>

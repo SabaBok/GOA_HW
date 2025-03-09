@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // შექმენით ქვემოთ მოცემული ობიექტის მსგავსი ობიექტი თქვენს 
+        // სასურველ მანქანაზე და დაამატეთ ფუნქცია CarFullInfo, რომლის გამოძაღებაზეც გამოიტანს მთლიან ინფორმაციას მანქანაზე(აუცილებლად გამოიყენეთ string formatting
+        let carInfo = {
+            brand:"toyota",
+            model:"prius",
+            year:2015,
+            isElectric:false,
+            CarFullInfo(){
+                return `the brand of the car is ${this.brand} the model is ${this.model} the year is ${this.year} and for electricity it is ${this.isElectric}`
+            }
+        }
+        console.log(carInfo.CarFullInfo())
+    </script>
+</body>
+</html>

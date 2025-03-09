@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 2)არსებულ car ობიექტს , ობიექტის გარედან დაამატეთ color  და price  , ასევე ამოშალეთ milage , შემდეგ ყველაფერი გამოსახეთ console-ში 
+        let carInfo = {
+            company:"ford",
+            model:"f150",
+            year:"2019",
+            condition:"good",
+            conditionChecker(){
+                if(this.condition == "good"){
+                    console.log(`the car is in ${this.condition} condition`)
+                }else if(this.condition == "bad"){
+                    console.log(`the car is in ${this.condition} condition`)
+                }else{
+                    console.log(`the car is in ${this.condition} condition`)
+                }
+            }
+        }
+        carInfo.color = "darkblue"
+        carInfo.price = 75000
+    </script>
+</body>
+</html>

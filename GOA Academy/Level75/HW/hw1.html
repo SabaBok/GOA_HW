@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1)შექმენით ობიექტი car , რომელსაც ექნება 5 key -  company(მწარმოებელი) , model , milage ,year , condition , ამ ობიექტში ასევე უნდა იყოს შენახული ფუნქცია ,
+        //  ამ ფუნქციას პარამეტრად ჰქონდეს condition ,და ამ ფუნქციაში შეამოწმეთ , რომ თუ condition-არის კარგი ან ცუდი დაბეჭდეთ შემდეგი ტექსტი car is in {condition}
+        //  condition გამოიყენეთ format-ი
+        let carInfo = {
+            company:"ford",
+            model:"f150",
+            milage:100225,
+            year:"2019",
+            condition:"good",
+            conditionChecker(){
+                if(this.condition == "good"){
+                    console.log(`the car is in ${this.condition} condition`)
+                }else if(this.condition == "bad"){
+                    console.log(`the car is in ${this.condition} condition`)
+                }else{
+                    console.log(`the car is in ${this.condition} condition`)
+                }
+            }
+        }
+    </script>
+</body>
+</html>
