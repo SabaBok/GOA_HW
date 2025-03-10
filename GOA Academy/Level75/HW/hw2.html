@@ -11,20 +11,23 @@
         let carInfo = {
             company:"ford",
             model:"f150",
+            milage:100225,
             year:"2019",
             condition:"good",
-            conditionChecker(){
-                if(this.condition == "good"){
-                    console.log(`the car is in ${this.condition} condition`)
+            conditionChecker(cond){
+                if(cond == "good"){
+                    console.log(`the car is in ${cond} condition`)
                 }else if(this.condition == "bad"){
-                    console.log(`the car is in ${this.condition} condition`)
+                    console.log(`the car is in ${cond} condition`)
                 }else{
-                    console.log(`the car is in ${this.condition} condition`)
+                    console.log(`the car is in ${cond} condition`)
                 }
             }
         }
         carInfo.color = "darkblue"
         carInfo.price = 75000
+        delete carInfo.milage
+        carInfo.conditionChecker(carInfo.condition)
     </script>
 </body>
 </html>

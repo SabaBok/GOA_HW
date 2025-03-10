@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>saba</p>
+    <p>saba</p>
+    <p>saba</p>
+    <p>saba</p>
+    <p>saba</p>
+    <button onclick="changeName('saba bokuchava😲')">Change name</button>
+    <script>
+        let para = document.getElementsByTagName("p")
+        
+        function changeName(fullName){
+            nameParts = fullName.split(" ")
+            for(let i of para){
+                if(i.innerHTML == nameParts[0]){
+                    i.innerHTML = `${nameParts[0]} ${nameParts[1]}`
+                }else{
+                    i.innerHTML = nameParts[0]
+                }
+            }
+        }        
+    </script>
+</body>
+</html>

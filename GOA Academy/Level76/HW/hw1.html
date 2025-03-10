@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111;
+            align-items: center;
+            height: 100vh;
+        }
+        #cool{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+            height: 300px;
+            background: rgb(163,0,0);
+            background: radial-gradient(circle, rgba(163,0,0,1) 0%, rgba(0,141,255,0.7429096638655462) 100%);
+            border-radius: 20px;
+        }
+        #but{
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            padding-top: 50px;
+        }
+        #but button{
+            transition: 0.3s;
+            border:2px solid black;
+            cursor: pointer;
+            padding: 10px 25px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        #minus{
+            background-color: red;
+        }
+        #reset{
+            background-color: black;
+        }
+        #plus{
+            background-color: green;
+        }
+        #but button:hover{
+            transform: scale(1.2);
+            box-shadow: 0px 0px 20px white;
+        }
+    </style>
+</head>
+<body>
+    <div id="cool">
+        <h1>0</h1>
+        <div id="but">
+            <button onclick="mather(-1)" id="minus">minus</button>
+            <button onclick="reset()" id="reset">reset</button>
+            <button onclick="mather(1)" id="plus">plus</button>
+        </div>
+    </div>
+
+
+    <script>
+        let head = document.getElementsByTagName("h1")
+        let counter = 0
+        function mather(numb){
+            counter += numb
+            head[0].innerHTML = counter
+            changeColor()
+        }
+        function reset(){
+            head[0].innerHTML = 0
+            counter = 0
+            changeColor()
+        }
+        function changeColor(){
+            if(counter < 0){
+                head[0].style.color = "red"
+            }else if(counter > 0){
+                head[0].style.color = "green"
+            }else if(counter == 0){
+                head[0].style.color = "#000"
+            }
+        }
+    </script>
+</body>
+</html>
