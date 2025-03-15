@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+body{
+    height: 100vh;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 100px;
+}
+header i{
+    cursor: pointer;
+}
+header h1{
+    font-size: 28px;
+    font-weight: 700;
+}
+header h1 span{
+    color: #ffa03f;
+}
+.header-mid{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+.header-mid nav ul{
+    display: flex;
+    gap: 50px;
+    list-style: none;
+    opacity: 75%;
+    font-size: 24px;
+    font-weight: 500;
+}
+.header-mid nav ul li b{
+    opacity: 100%;
+    color: #000000;
+}
+nav ul li{
+    cursor: pointer;
+}
+
+
+
+main{
+    padding: 30px 120px;
+}
+.hero-grid-cont{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(300px,1fr));
+    width: 100%;
+}
+.hero-grid-text{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;   
+    margin-top: 100px; 
+}
+.hero-grid-text h1{
+    font-size: 80px;
+    line-height: 137%;
+    font-weight: 700;
+}
+.hero-grid-text h1 span{
+    text-decoration: underline #ffa03f;
+}
+
+#idk{
+    font-size: 24px;
+    opacity: 75%;
+    line-height: 137%;
+}
+.hero-grid-search-cont{
+    display: flex;
+    width: 105%;
+    border-radius: 42px;
+    box-shadow: 0px 0px 90px -28px #00000033;
+    background-color: #FFFFFF03;
+    backdrop-filter: blur(20px);
+    border: 1px solid black;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+    z-index: 10;
+}
+.hero-grid-search{
+    display: flex;
+    width: 100%;
+    gap: 80px;
+}
+.search-but{
+    padding: 20px;
+    border-radius: 16px;
+    font-size: 20px;
+    background-color: #ffa03f;
+    color: white;
+}
+.hero-grid-search div b{
+    font-size: 24px;
+}
+.hero-grid-search div p{
+    color: #000000A6;
+    font-size: 18px;
+}
+.hero-grid-image{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    grid-template-rows:repeat(4,427px) ;
+}
+.one{
+    grid-row: 1/3;
+    grid-column: 1/2;
+}
+.two{
+    grid-row: 2/3;
+    grid-column:1/2 ;
+}
+.three{
+    grid-row: 1/3;
+    grid-column: 2/4;
+    align-self: center;
+}
