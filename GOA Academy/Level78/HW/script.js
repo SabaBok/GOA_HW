@@ -32,9 +32,6 @@ let music3 = {
 }
 
 
-function skip(skipper){
-    counter += Number(skipper)
-}
 function musicOrder(){
     if(counter === 1){
         musica.src = music1.music
@@ -56,7 +53,6 @@ function musicOrder(){
         musTime.textContent = music3.length
     }
     musica.load()
-    musica.play()
 }
 musica.addEventListener('ended', function() {
     counter++
@@ -74,7 +70,7 @@ function skip(skipper) {
         counter = 3
     }
     musicOrder()
-
+    musica.play()
 }
 function isAudioPlaying(audio) {
     return !audio.paused && audio.currentTime > 0 && !audio.ended
@@ -86,4 +82,3 @@ function startPause(){
         musica.pause()
     }
 }
-
