@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1)შექმენით დოკუმენტში რამდენიმე ერთნაირი ელემენტი და querySelector()ის და  querySelectorAll() ის გამოყენებით javascript-იდან შეუცვალეთ სტილები -->
+    <h1>goa</h1>
+    <p>hi</p>
+    <p>hello</p>
+
+    <script>
+        let p = document.querySelector("p")
+        let pAll = document.querySelectorAll("p")
+        p.style.fontSize = "20px"
+        p.style.color = "red"
+        for(let i of pAll){
+            i.style.textDecoration = "underline"
+        }
+    </script>
+</body>
+</html>
