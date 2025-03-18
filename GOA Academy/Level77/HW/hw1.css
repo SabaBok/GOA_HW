@@ -265,3 +265,102 @@ main{
     color: #000000BF;
     line-height: 137%;
 }
+
+
+
+.dictat{
+    width: 100%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+.dictat-header{align-self: flex-start; padding: 150px;}
+.dictat-header p{font-size: 28px;}
+.dictat-header h1{font-size: 58px;}
+.dictat-midle{
+    display: flex;
+    gap: 70px;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+}
+.arr{
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #FFA03F;
+    box-shadow: 0px 0px 6px #00000021;
+}
+.dictat-card-container{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit,minmax(375px,1fr));
+    justify-items: center;
+    gap: 20px;
+}
+.dictat-card{
+    background-color: #fff;
+    box-shadow: 0px 24px 60px -24px #00000040;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.feedback{
+    background-color: #fff;
+    box-shadow: 0px 4px 27px -5px #00000040;
+    border-radius: 38px;
+    /* width: 118px;
+    height: 30px; */
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    position: absolute;
+    top: 63%;
+    right: 63%;
+}
+.feedback div{
+    display: flex;
+    gap: 3px;
+}
+.feedback i{
+    color: #FFB649;
+}
+.feedback p{
+    font-size: 14px;
+}
+.feedback p span{
+    color: #000000BF;
+    font-size: 12px;
+}
+.dictat-card-text{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+.stats{
+    display: flex;
+    gap: 50px;
+}
+.stats div{
+    color: #000000BF;
+    display: flex;
+    gap: 10px;
+}
+.dots{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.dot1{
+    padding: 8px;
+    background-color: #FFB649;
+    border-radius: 50%;
+}
+.dot{
+    padding: 14px;
+    background-color: #FFB649;
+    border-radius: 50%;
+}
