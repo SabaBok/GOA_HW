@@ -364,3 +364,134 @@ main{
     background-color: #FFB649;
     border-radius: 50%;
 }
+
+
+
+.dream{
+    width: 90%;
+    max-width: 2000px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dream-grid-cont{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(600px,1fr));
+    width: 100%;
+    gap: 100px;
+}
+.dream-image{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 111;
+    justify-self: center;
+}
+.shadow{
+    width: 548;
+    background-color: #D9D9D9;
+    height: 686px;
+    position: absolute;
+    z-index: -1;
+    border-radius: 40px;
+    bottom: 30px;
+    right: 50px;
+}
+.dream-book{
+    position: absolute;
+    width: 370px;
+    padding: 20px;
+    height: 120px;
+    color: #fff;
+    backdrop-filter: blur(20px);
+    bottom: -80px;
+    left: -80px;
+    border-radius: 15px;
+    background-color: #D9D9D980;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+}
+.dream-book img{
+    padding: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.dream-book p{
+    font-size: 24px;
+}
+.dream-img{
+    width: 548px;
+    height: 685px;
+    background-image: url(images/dream/main-image.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+.dream-play{
+    position: relative;
+    z-index: 222;
+    border-radius: 50%;
+    padding: 35px 35px 35px 45px;
+    backdrop-filter: blur(20px);
+}
+.dream-text{
+    justify-self: center;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    align-self: center;
+}
+.dream-text-header p{
+    color: #FFA03F;
+    font-size: 28px;
+}
+.dream-text-header h1{
+    font-size: 58px;
+}
+.dream-text-top{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: start;
+}
+.dream-text-top p{
+    font-size: 24px;
+    color: #000000BF;
+    line-height: 156%;
+}
+.dream-text-top button{
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 28px;
+    background-color: #FFA03F;
+    padding: 20px 60px;
+    border-radius: 14px;
+}
+.dream-stat{
+    display: flex;
+    gap: 100px;
+    width: 100%;
+}
+.dream-stat div{
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.dream-stat p{
+    font-size: 58px;
+    font-weight: 500;
+}
+.dream-stat span{
+    font-size: 28px;
+    color: #00000080;
+    font-weight: 400;
+}
