@@ -512,7 +512,6 @@ main{
 
 .testi{
     width: 85%;
-    border: 1px solid black;    
     display: flex;
     flex-direction: column;
     gap: 80px;
@@ -577,4 +576,21 @@ main{
     font-size: 24px;
     color: #000000BF;
     line-height: 134%;
+}
+.testi-arrow{
+    position: absolute;
+    z-index: 9999;
+    right: 23%;
+}
+.arr1{
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #FFA03F;
+    box-shadow: 0px 0px 6px #00000021;
+}
+.testi-right{
+    background-color: transparent;
+    border: 2px solid #FFA03F;
+    padding: 8px;
+    transform: rotateZ(180deg);
 }
