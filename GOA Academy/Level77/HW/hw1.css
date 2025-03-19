@@ -389,8 +389,8 @@ main{
     z-index: 111;
     justify-self: center;
 }
-.shadow{
-    width: 548;
+.shadow1{
+    width: 548px;
     background-color: #D9D9D9;
     height: 686px;
     position: absolute;
@@ -413,7 +413,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 10px;
     justify-content: center;
 }
 .dream-book img{
@@ -494,4 +494,87 @@ main{
     font-size: 28px;
     color: #00000080;
     font-weight: 400;
+}
+.dream-book-emoji img{
+    padding: 0px;
+}
+.dream-book-emoji{
+    display: flex;
+    gap: 20px;
+}
+.dream-book{
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.testi{
+    width: 85%;
+    border: 1px solid black;    
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+.testi-head p{
+    color: #FFA03F;
+    font-size: 28px;
+}
+.testi-head h1{
+    font-size: 58px;
+}
+.testi-head{
+    justify-self: start;
+}
+.testi-grid-cont{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(500px,1fr));
+    align-items: center;
+    gap: 20px;
+}
+.test-mid{
+    position: relative;
+}
+.testi-photo{
+    position: relative;
+}
+.testi-photo, .testi-photo img, .shadow2{
+    position: relative;
+    z-index: 1;
+}
+.shadow2{
+    width: 513px;
+    background-color: #D9D9D9;
+    height: 770px;
+    position: absolute;
+    z-index: -1;
+    border-radius: 40px;
+    bottom: -30px;
+    left: 30px;
+}
+.testi-text{
+    width:120%;
+    position: relative;
+    transform: translate(-45%, -0%);
+    z-index: 22222;
+    padding: 110px;
+    background-color: #fff;
+    box-shadow: 4px 0px 160px -50px #00000040;
+    border-left: 7px solid #ffa03f;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.testi-text div h2{
+    font-size: 38px;
+}
+.testi-text div p{
+    color: #FFA03F;
+    font-size: 24px;
+}
+#all{
+    font-size: 24px;
+    color: #000000BF;
+    line-height: 134%;
 }
