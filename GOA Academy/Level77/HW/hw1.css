@@ -13,6 +13,14 @@ header{
 header i{
     cursor: pointer;
 }
+.line{
+    cursor: pointer;
+    transform: rotateZ(-90deg);
+    font-size: 25px;
+}
+.burger{
+    display: none;
+}
 header h1{
     font-size: 28px;
     font-weight: 700;
@@ -438,12 +446,9 @@ main{
     backdrop-filter: blur(20px);
 }
 .dream-text{
-    justify-self: center;
-    align-self: center;
     display: flex;
     flex-direction: column;
     gap: 150px;
-    align-self: center;
 }
 .dream-text-header p{
     color: #FFA03F;
@@ -671,6 +676,7 @@ footer{
     justify-items: center;
     width: 100%;
     padding: 70px 120px;
+    gap: 10px;
 }
 .footer-travel{
     display: flex;
@@ -747,4 +753,82 @@ footer{
 }
 .contact-cont div i{
     font-size: 25px;
+}
+
+
+@media (max-width:1000px) {
+    .dictat-right, .dictat-left, nav{
+        display: none;
+    }
+    .burger{
+        display: block;
+    }
+    .dictat-header{
+        text-align: center;
+    }
+    .dream-book{
+        left: 40%;
+    }
+    form{
+        width: 80%;
+    }
+    .semi-footer h1{
+        font-size: 50px;
+        width: 90%;
+    }
+    .semi-footer p{
+        width: 90%;
+    }
+    .image-grid{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    .left-images{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .hero{
+        gap: 20px;
+    }
+    .search-bar{
+        width: 100%;
+    }
+    .dream-text{
+        align-items: center;
+        text-align: center;
+    }
+    .dream-text button{
+        align-self: center;
+    }
+    .dream-stat{
+        width: max-content;
+    }
+    .footer-holder{
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+    .footer-travel{
+        align-items: center;
+    }
+}
+@media (max-width:1200px) {
+    .testi-text{
+        transform: translate(0%, 0%);
+        justify-self: center;
+        width: 100%;
+    }
+    .testi-photo{
+        justify-self: center;
+    }
+    .arr1{
+        display: none;
+    }
+    .testi-grid-cont{
+        gap: 20px;
+    }
 }
