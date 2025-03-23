@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="sign-up.css">
+</head>
+<body>
+    <div class="sign-up">
+        <form onsubmit="signUp(event)">
+            <input type="email" required name="email" id="email" placeholder="Email">
+
+            <input type="password" required name="password" id="password" placeholder="Password">
+    
+            <input type="password" required name="re-password" id="re-password" placeholder="Re-Password">
+        
+            <input type="submit" name="submit" class="sub" id="submit" value="Sign Up">
+            
+        </form>
+        <a href="../log-in/log-in.html" style="color: #fff; text-decoration: none; opacity: 50%; font-size: 13px;">Alredy Signed Up?</a>
+    </div>
+    <script src="sign-up.js"></script>
+</body>
+</html>
