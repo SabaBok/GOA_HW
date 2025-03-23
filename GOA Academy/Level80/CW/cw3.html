@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 3) გააკეთეთ მსგავსი ფუნქციონალი Javascript-ის მეშვეობით თუმცა ამჯერად მომხმარებელს შემოატანინეთ სიტყვა. მეორე ინფუთის ველში ასევე გაამეორებინეთ თავდაპირველად 
+    შემოტანილი სიტყვა. იმ შემთხვევაში თუ შემოტანილი ორი მნიშვნელობა არ ემთხვევა ერთმანეთს, console-ში გამოიტანეთ "The values should be equal and not blank". 
+    ხოლო თუ ემთხვევა - "The operation was successful". -->
+    <form onsubmit="validate()">
+        First Word<input type="text" id="num1" required><br><br>
+        Second Word<input type="text" id="num2" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        function validate(){
+            const n1 = document.querySelector("#num1")
+            const n2 = document.querySelector("#num2")
+
+            if(n1.value == n2.value){
+                alert("correct form")
+                console.log("The operation was successful")
+            }else{
+                alert("incorect form")
+                console.log("both of the field's text should be the exact same")
+            }
+        }
+    </script>
+</body>
+</html>

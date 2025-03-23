@@ -4,7 +4,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
-    border: 1px solid black;
 }
 header{
     display: flex;
@@ -20,7 +19,7 @@ header i{
     font-size: 25px;
 }
 .burger{
-    display: none;
+    display: none !important;
 }
 header h1{
     font-size: 28px;
