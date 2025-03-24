@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 300vh;
+}
+header{
+    display: flex;
+    padding: 10px 80px;
+    justify-content: space-between;
+    align-items: center;
+}
+#redir{
+    text-decoration: none;
+    color: #000;
+}
+.logo{
+    display: flex;
+    gap: 20px;
+    width: 170px;
+    height: 40px;
+    align-items: center;
+    background-color: #D9D9D9;
+    border-radius: 100px;
+    padding: 22px 10px;
+}
+.logo img{
+    width: 30%;
+}
+.head-right{
+    display: flex;
+    gap: 5px;    
+}
+.add{
+    background-color: #FAD400;
+    border-radius: 100px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    height: 40px;
+
+}
+.log-in{
+    border: 2px solid #EAEBEC;
+    width: 120px;
+    border-radius: 100px;
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+    align-items: center;
+    font-size: 18px;
+    height: 40px;
+}
+.log-in div{
+    border-radius: 50%;
+    background-color: #EAEBEC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 7.5px;
+}
+
+
+
+.hero{
+    background-image: url(../images/main/bg1.jpg);
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero::after{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.55    );
+}
+.drop-down{
+    width: 60%;
+    border: 1px solid black;
+    height: 100px;
+    transform: translateY(-100px);
+}
+
+
+
+.listing{
+    padding: 0px 200px;
+    width: 100%;
+}
+.listing-card{
+    width: 350px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: #D9D9D9;
+}
+.card-img{
+    background-image: url(../images/building\ photos/ );
+    width: 100%;
+    border-radius: 10px;
+}
