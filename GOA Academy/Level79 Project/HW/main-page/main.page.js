@@ -78,3 +78,20 @@ for(let i of listing){
         }) 
     }
 }
+
+let drop = document.querySelectorAll(".drop-but")
+for(let i of drop){
+    let semi = i.querySelector(".semi-drop")
+    i.addEventListener("mouseenter",function(){
+        i.style.height = "250px"
+        semi.style.display = "block"
+        semi.style.opacity = 1
+    })
+    i.addEventListener("mouseleave",function(){
+        if(!i.matches(":hover") && !semi.matches(":hover")){
+            i.style.height = "auto"
+            semi.style.display = "none"
+            semi.style.opacity = 0
+        }
+    })
+}
