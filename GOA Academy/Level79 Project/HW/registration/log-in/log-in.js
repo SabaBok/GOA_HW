@@ -9,7 +9,7 @@ function logIn(event){
 
     if(email.value == corrEmail && pass.value == corrPass){
         window.location.href = '../../main-page/main-page.html'
-        localStorage.setItem('isLogged',true)
+        localStorage.setItem('isLogged',"true")
     }else{
         alert('Incorect Password or Email')
     }

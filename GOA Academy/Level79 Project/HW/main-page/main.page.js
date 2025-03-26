@@ -1,3 +1,20 @@
+let outLog = document.querySelector(".log-out")
+if(localStorage.getItem('isLogged') == "true"){
+    document.querySelector(".log-in").style.display = "none"
+    outLog.style.display = "flex"
+}else{
+    document.querySelector(".log-in").style.display = "flex"
+    outLog.style.display = "none"
+}
+outLog.addEventListener("click",function(){
+    localStorage.setItem('isLogged','false')
+    document.querySelector(".log-in").style.display = "flex"
+    outLog.style.display = "none"
+    alert("You Have Logged Out Of Your Account")
+})
+
+
+
 function nothing(){}
 let listing = document.querySelectorAll(".cool-cont")
 let blur = document.querySelector(".card-blur")
@@ -100,7 +117,8 @@ for(let i of drop){
 let cities = document.querySelector(".city").querySelectorAll("li")
 let everyFilt = document.querySelector(".drop-down").querySelectorAll("li")
 let sizeBut = document.querySelector(".size").querySelectorAll("li")
-function resetCities() {
+let priceBut = document.querySelector(".pricy").querySelectorAll("li")
+function resetColor() {
     for (let i of everyFilt) {
         i.style.backgroundColor = ""
         i.className = ""
@@ -110,12 +128,12 @@ function filterCity(){
     for(let i = 0;i<cities.length;i++){
         cities[i].addEventListener("click",function(){
             if(i == 0){
-                resetCities()
+                resetColor()
                 for(let i of listing){
                     i.style = "block"
                 }
             }else{
-                resetCities()
+                resetColor()
                 this.className = "selected"
                 if(this.className = "selected"){
                     this.style.backgroundColor = "#c3c3c3"
@@ -138,18 +156,45 @@ function filterSize(){
 
         sizeBut[i].addEventListener("click", function(){
             if(i == 0){
-                resetCities()
+                resetColor()
                 for(let iss of listing){
                     iss.style.display = "block"
                 }
             }else{
-                resetCities()
+                resetColor()
                 this.className = "selected"
                 if(this.className == "selected"){
                     this.style.backgroundColor = "#c3c3c3"
                     for(let iss of listing){
                         let sizeSpan = iss.querySelector(".square")
-                        if(Number(sizeSpan.textContent) > Number(filterSpan.textContent)){
+                        if(Number(sizeSpan.textContent) >= Number(filterSpan.textContent)){
+                            iss.style.display = "block"
+                        }else{
+                            iss.style.display = "none"
+                        }
+                    }
+                }
+            }
+        })
+    }
+}
+function filterPrice(){
+    for(let i = 0;i<priceBut.length;i++){
+        let filterSpan = priceBut[i].querySelector("span")
+        priceBut[i].addEventListener("click", function(){
+            if(i == 0){
+                resetColor()
+                for(let iss of listing){
+                    iss.style.display = "block"
+                }
+            }else{
+                resetColor()
+                this.className = "selected"
+                if(this.className == "selected"){
+                    this.style.backgroundColor = "#c3c3c3"
+                    for(let iss of listing){
+                        let price = iss.querySelector(".idk").querySelector("span")
+                        if(Number(price.textContent) >= Number(filterSpan.textContent)){
                             iss.style.display = "block"
                         }else{
                             iss.style.display = "none"

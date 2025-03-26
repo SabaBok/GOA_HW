@@ -25,12 +25,21 @@
                 </div>
             </a>
 
-            <div class="log-in">
+            <a href="../registration/log-in/log-in.html" target="_blank" class="log-in" style="color: #000; text-decoration: none;">
                 <div>
                     <i class="fa-solid fa-user"></i>
                 </div>
                 <p>Log In</p>
+            </a>
+
+            <div class="log-out">
+                <div>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </div>
+                <p>Log Out</p>
             </div>
+
+
         </div>
     </header>
     
@@ -54,20 +63,25 @@
                     <div class="semi-drop size">
                         <ul>
                             <li>All</li>
-                            <li>><span>100</span> m^2</li>
+                            <li>><span>20</span> m^2</li>
+                            <li>><span>40</span> m^2</li>
                             <li>><span>60</span> m^2</li>
-                            <li>><span>30</span> m^2</li>
+                            <li>><span>80</span> m^2</li>
+                            <li>><span>100</span> m^2</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="drop-but">
-                    <div class="hero-div">Price</div>
-                    <div class="semi-drop">
+                    <div class="hero-div" onmouseover="filterPrice()" onmouseout="nothing()">Price</div>
+                    <div class="semi-drop pricy">
                         <ul>
-                            <li>Tbilisi</li>
-                            <li>Kutaisi</li>
-                            <li>Batumi</li>
+                            <li>All</li>
+                            <li>><span>400</span></li>
+                            <li>><span>600</span>$</li>
+                            <li>><span>800</span>$</li>
+                            <li>><span>1000</span>$</li>
+                            <LI>><span>1200</span>$</LI>
                         </ul>
                     </div>
                 </div>
@@ -93,7 +107,7 @@
     
                     <div class="card-info">
                         <div class="card-price">
-                            <b>950$</b>
+                            <b class="idk"><span>950</span>$</b>
                             <p>2-room apartment for rent in Tbilisi</p>
                         </div>
                         
@@ -168,7 +182,7 @@
     
                     <div class="card-info">
                         <div class="card-price">
-                            <b>600 $</b>
+                            <b class="idk"><span>600</span> $</b>
                             <p>2-room apartment for rent in Tbilisi</p>
                         </div>
                         
@@ -243,7 +257,7 @@
     
                     <div class="card-info">
                         <div class="card-price">
-                            <b>500 $</b>
+                            <b class="idk"><span>500</span> $</b>
                             <p>2-room apartment for rent in Tbilisi</p>
                         </div>
                         
@@ -318,7 +332,7 @@
     
                     <div class="card-info">
                         <div class="card-price">
-                            <b>2,500 $</b>
+                            <b class="idk"><span>2500</span> $</b>
                             <p>7-room apartment for rent in Batumi</p>
                         </div>
                         
@@ -393,7 +407,7 @@
     
                     <div class="card-info">
                         <div class="card-price">
-                            <b>1,000 $</b>
+                            <b class="idk"><span>1000</span> $</b>
                             <p>11-room apartment for rent in Kutaisi</p>
                         </div>
                         
