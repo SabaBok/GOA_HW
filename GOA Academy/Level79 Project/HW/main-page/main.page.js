@@ -99,12 +99,21 @@ for(let i of drop){
 
 let cities = document.querySelector(".city").querySelectorAll("li")
 function filterCity(){
+    function resetCities() {
+        for (let i of cities) {
+            i.style.backgroundColor = ""
+        }
+    }
+
     cities[0].addEventListener("click", function(){
         for(let i of listing){
             i.style.display = "block"
         }
+        resetCities()
     })
     cities[1].addEventListener("click", function(){
+        resetCities()
+        this.style.backgroundColor = "#c3c3c3"
         for(let i of listing){
             if(!i.className.includes("tbil")){
                 i.style.display = "none"
@@ -115,6 +124,8 @@ function filterCity(){
         }
     })
     cities[2].addEventListener("click",function(){
+        resetCities()
+        this.style.backgroundColor = "#c3c3c3"
         for(let i of listing){
             if(!i.className.includes("kuta")){
                 i.style.display = "none"
@@ -125,6 +136,8 @@ function filterCity(){
         }
     })
     cities[3].addEventListener("click",function(){
+        resetCities()
+        this.style.backgroundColor = "#c3c3c3"
         for(let i of listing){
             if(!i.className.includes("batu")){
                 i.style.display = "none"
@@ -142,7 +155,7 @@ function filterSize(){
         let filterSpan = sizeBut[i].querySelector("span")
 
         sizeBut[i].addEventListener("click", function(){
-            if(i ==0){
+            if(i == 0){
                 for(let iss of listing){
                     iss.style.display = "block"
                 }
