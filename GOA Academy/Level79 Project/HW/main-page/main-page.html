@@ -38,20 +38,10 @@
         <section class="hero">
             <div class="drop-down">
                 <div class="drop-but">
-                    <div class="hero-div" style="border-top-left-radius: 7px; border-bottom-left-radius: 7px;">City</div>
-                    <div class="semi-drop">
+                    <div class="hero-div" onmouseover="filterCity()" onmouseout="nothing()" style="border-top-left-radius: 7px; border-bottom-left-radius: 7px;">City</div>
+                    <div class="semi-drop city">
                         <ul>
-                            <li>Tbilisi</li>
-                            <li>Kutaisi</li>
-                            <li>Batumi</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="drop-but">
-                    <div class="hero-div">idk</div>
-                    <div class="semi-drop">
-                        <ul>
+                            <li>All</li>
                             <li>Tbilisi</li>
                             <li>Kutaisi</li>
                             <li>Batumi</li>
@@ -61,11 +51,12 @@
 
                 <div class="drop-but">
                     <div class="hero-div">Size</div>
-                    <div class="semi-drop">
+                    <div class="semi-drop size">
                         <ul>
-                            <li>>100 m^2</li>
-                            <li>>60 m^2</li>
-                            <li>>30 m^2</li>
+                            <li>All</li>
+                            <li>><span>100</span> m^2</li>
+                            <li>><span>60</span> m^2</li>
+                            <li>><span>30</span> m^2</li>
                         </ul>
                     </div>
                 </div>
@@ -81,15 +72,15 @@
                     </div>
                 </div>
 
-                <div class="drop-but" style="border-top-right-radius: 7px; border-bottom-right-radius: 7px; border: none;">
-                    <div class="hero-div">FaQ</div>
+                <div class="drop-butt" style="border-top-right-radius: 7px; border-bottom-right-radius: 7px; border: none;">
+                    <div style="border-top-right-radius: 7px; border-bottom-right-radius: 7px; border: none;" class="hero-div">FaQ</div>
                 </div>
             </div>            
         </section>
         <br><br>
 
         <section class="listing">
-            <div class="cool-cont">
+            <div class="cool-cont tbil">
                 <div class="listing-card">
                     <div style="background-image: url(../images/building/building1/app1-1.jpg);" class="card-img">
                         <div class="card-pop">
@@ -164,7 +155,7 @@
                 </div>
             </div>
             
-            <div class="cool-cont">
+            <div class="cool-cont tbil">
                 <div class="listing-card">
                     <div style="background-image: url(../images/building/building2/app2-1.jpg);" class="card-img">
                         <div class="card-pop">
@@ -239,7 +230,7 @@
                 </div>
             </div>
 
-            <div class="cool-cont">
+            <div class="cool-cont tbil">
                 <div class="listing-card">
                     <div style="background-image: url(../images/building/building3/app3-1.jpg);" class="card-img">
                         <div class="card-pop">
@@ -314,7 +305,7 @@
                 </div>
             </div>
 
-            <div class="cool-cont">
+            <div class="cool-cont batu">
                 <div class="listing-card">
                     <div style="background-image: url(../images/building/building4/app4-1.jpg);" class="card-img">
                         <div class="card-pop">
@@ -389,7 +380,7 @@
                 </div>
             </div>
 
-            <div class="cool-cont">
+            <div class="cool-cont kuta">
                 <div class="listing-card">
                     <div style="background-image: url(../images/building/building5/app5-1.jpg);" class="card-img">
                         <div class="card-pop">

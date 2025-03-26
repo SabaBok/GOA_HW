@@ -1,6 +1,6 @@
+function nothing(){}
 let listing = document.querySelectorAll(".cool-cont")
 let blur = document.querySelector(".card-blur")
-let closes = document.querySelectorAll(".close")
 for(let i of listing){
     i.addEventListener("click",function(){
         this.querySelector(".full-card").style.display = "block"
@@ -8,6 +8,7 @@ for(let i of listing){
     })
 }
 
+let closes = document.querySelectorAll(".close")
 for(let i of closes){
     i.addEventListener("click",function(event){
         event.stopPropagation()
@@ -95,3 +96,61 @@ for(let i of drop){
         }
     })
 }
+
+let cities = document.querySelector(".city").querySelectorAll("li")
+function filterCity(){
+    cities[0].addEventListener("click", function(){
+        for(let i of listing){
+            i.style.display = "block"
+        }
+    })
+    cities[1].addEventListener("click", function(){
+        for(let i of listing){
+            if(!i.className.includes("tbil")){
+                i.style.display = "none"
+            }
+            if(i.className.includes("tbil")){
+                i.style.display = "block"
+            }
+        }
+    })
+    cities[2].addEventListener("click",function(){
+        for(let i of listing){
+            if(!i.className.includes("kuta")){
+                i.style.display = "none"
+            }
+            if(i.className.includes("kuta")){
+                i.style.display = "block"
+            }
+        }
+    })
+    cities[3].addEventListener("click",function(){
+        for(let i of listing){
+            if(!i.className.includes("batu")){
+                i.style.display = "none"
+            }
+            if(i.className.includes("batu")){
+                i.style.display = "block"
+            }
+        }
+    })
+}
+
+let sizeBut = document.querySelector(".size").querySelectorAll("li")
+function filterSize(){
+    for(let i = 0;i<sizeBut.length;i++){
+        let span = i.querySelector("span")
+
+        sizeBut[i].addEventListener("click", function(){
+            if(i ==0){
+                for(let iss of listing){
+                    iss.style.display = "block"
+                }
+            }else{
+                
+            }
+        })
+    }
+}
+
+
