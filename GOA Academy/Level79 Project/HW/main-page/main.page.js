@@ -60,7 +60,6 @@ for(let i of listing){
     leftArr.addEventListener("click",function(){
         if(counter == 0){
             counter = images.length-1
-
         }else{
             counter--
         }
