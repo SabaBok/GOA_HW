@@ -98,13 +98,15 @@ for(let i of drop){
 }
 
 let cities = document.querySelector(".city").querySelectorAll("li")
-function filterCity(){
-    function resetCities() {
-        for (let i of cities) {
-            i.style.backgroundColor = ""
-        }
+let everyFilt = document.querySelector(".drop-down").querySelectorAll("li")
+let sizeBut = document.querySelector(".size").querySelectorAll("li")
+function resetCities() {
+    for (let i of everyFilt) {
+        i.style.backgroundColor = ""
+        i.className = ""
     }
-
+}
+function filterCity(){
     for(let i = 0;i<cities.length;i++){
         cities[i].addEventListener("click",function(){
             if(i == 0){
@@ -114,52 +116,51 @@ function filterCity(){
                 }
             }else{
                 resetCities()
-                this.style.backgroundColor = "#c3c3c3"
-                for(let iss of listing){
-                    if(!iss.className.includes(this.textContent)){
-                        iss.style.display = "none"
-                    }
-                    if(iss.className.includes(this.textContent)){
-                        iss.style.display = "block"
+                this.className = "selected"
+                if(this.className = "selected"){
+                    this.style.backgroundColor = "#c3c3c3"
+                    for(let iss of listing){
+                        if(!iss.className.includes(this.textContent)){
+                            iss.style.display = "none"
+                        }
+                        if(iss.className.includes(this.textContent)){
+                            iss.style.display = "block"
+                        }
                     }
                 }
             }
         })
     }
 }
-
-let sizeBut = document.querySelector(".size").querySelectorAll("li")
 function filterSize(){
-    function resetColor() {
-        for (let i of sizeBut) {
-            i.style.backgroundColor = ""
-        }
-    }
-
     for(let i = 0;i<sizeBut.length;i++){
         let filterSpan = sizeBut[i].querySelector("span")
 
         sizeBut[i].addEventListener("click", function(){
             if(i == 0){
-                resetColor()
+                resetCities()
                 for(let iss of listing){
                     iss.style.display = "block"
                 }
             }else{
-                resetColor()
-                this.style.backgroundColor = "#c3c3c3"
-                for(let iss of listing){
-                    let sizeSpan = iss.querySelector(".square")
-                    if(Number(sizeSpan.textContent) > Number(filterSpan.textContent)){
-                        iss.style.display = "block"
-                    }else{
-                        iss.style.display = "none"
+                resetCities()
+                this.className = "selected"
+                if(this.className == "selected"){
+                    this.style.backgroundColor = "#c3c3c3"
+                    for(let iss of listing){
+                        let sizeSpan = iss.querySelector(".square")
+                        if(Number(sizeSpan.textContent) > Number(filterSpan.textContent)){
+                            iss.style.display = "block"
+                        }else{
+                            iss.style.display = "none"
+                        }
                     }
                 }
             }
         })
     }
 }
+
 
 
 
