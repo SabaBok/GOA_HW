@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 3) საიტზე დაამატეთ ერთი ფოტო. მასზე დაჭერის შედეგად უნდა იცვლებოდეს იგი მეორე ფოტოთი, ხოლო მეორე ფოტოზე მაუსის გადატარების შემთხვევაში ისიც უნდა ჩანაცვლდეს 
+    ამჯერად კიდევ განსხვავებული მესამე ფოტოთი. მესამე ფოტოზე კიდევ ერთხელ დაჭერა უნდა იწევევდეს თავდაპირველი ფოტოს დაბრუნებას; -->
+    <img src="download1.jpeg" alt="">
+
+    <script>
+        let img = document.querySelector("img")
+        img.addEventListener("click",function(){
+            this.src = "download2.jpeg"
+            this.addEventListener("mouseover",function(){
+                this.src = "download3.jpeg"
+                this.addEventListener("click",function(){
+                    this.src = "download1.jpeg"
+                })
+            })
+        })
+    </script>
+</body>
+</html>

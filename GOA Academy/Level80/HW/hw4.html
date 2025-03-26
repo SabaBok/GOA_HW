@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+        body{
+            background-size: cover;
+            background-color: #1a1a1a;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sign-up{
+            position: relative;
+            z-index: 11;
+            width: 45%;
+            min-width: 330px;
+            height: 600PX;
+            border: 1px solid black;
+            background-color: #333;
+            backdrop-filter: blur(100px);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 70px;
+            width: 90%;
+        }
+        form input{
+            width: 100%;
+            height: 60px;
+            outline: 0;
+            backdrop-filter: blur(20px);
+            border: 1px solid black;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 7px;
+            padding-left: 30px;
+            padding-top: 5px;
+            color: #fff;
+            font-size: 20px;
+        }
+        input::placeholder{
+            color: #fff;
+            opacity: 1;
+            font-size: 20px;
+        }
+        #submit{
+            width: 30%;
+            min-width: 300px;
+            background-color: #776464b7;
+            backdrop-filter: blur(0px);
+            padding-left: 0px;
+            padding-top: 0px;
+        }
+        .sub{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 4) შექმენით სარეგისტრაციო ვებ-საიტი, რომელიც დიზაინის მხრივ მაქსიმალურად დახვეწავთ. მომხმარებელს Input ველებში შემოატანინეთ Email, Password და კიდევ ერთხელ 
+    გაამეორებინეთ Password, აუცილებლად დაამატეთ Submit ღილაკიც. გაიხსენეთ ფუნქცია, რომელიც გაკვეთილზე გავაკეთეთ და თქვენით დაამატეთ მსგავსი ფუნქციონალი თქვენს 
+    სარეგისტრაციო საიტზე. იმ შემთხვევაში თუ შეყვანილი პაროლი და გამეორებული პაროლი არ ემთხვევა ერთმანეთს alert box-ში გამოიტანეთ "Passwords do not match eachother. 
+    Try again.", თუ ორივე პაროლის შესაყვანი ველი ცარიელი იქნება გამოიტანეთ "Input fields cannot be empty.", ხოლო იმ შემთხვევაში თუ  შეყვანილი პაროლი და 
+    გამეორებული პაროლი ემთხვევა ერთმანეთს alert box-ში "Your login was successful" გამოიტანეთ; -->
+
+
+    <div class="sign-up">
+        <form onsubmit="validate()">
+            <input type="email" required name="email" id="email" placeholder="Email">
+
+            <input type="password" required name="password" id="password" placeholder="Password">
+    
+            <input type="password" required name="re-password" id="re-password" placeholder="Re-Password">
+        
+            <input type="submit" name="submit" class="sub" id="submit" value="Sign Up">
+        </form>
+    </div>
+
+    <script>
+        let email = document.querySelector("#email")
+        let pass = document.querySelector("#password")
+        let rePass = document.querySelector("#re-password")
+        let sub = document.querySelector("#sub")
+
+        function validate(){
+            if(pass.value != rePass.value){
+                alert("Passwords do not match eachother Try Again")
+            }
+            if(pass.value == "" || rePass.value == ''){
+                alert("Input fields cannot be empty.")
+            }
+            if(pass.value == rePass.value){
+                alert("Your login was successful")
+            }
+        }
+    </script>
+</body>
+</html>
