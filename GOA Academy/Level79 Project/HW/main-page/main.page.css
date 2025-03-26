@@ -139,6 +139,7 @@ header{
     width: 100%;
     align-items: center;
     text-align: center;
+    flex-wrap: wrap;
 }
 .semi-drop ul li{
     border-radius: 7px;

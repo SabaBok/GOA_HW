@@ -105,61 +105,49 @@ function filterCity(){
         }
     }
 
-    cities[0].addEventListener("click", function(){
-        for(let i of listing){
-            i.style.display = "block"
-        }
-        resetCities()
-    })
-    cities[1].addEventListener("click", function(){
-        resetCities()
-        this.style.backgroundColor = "#c3c3c3"
-        for(let i of listing){
-            if(!i.className.includes("tbil")){
-                i.style.display = "none"
+    for(let i = 0;i<cities.length;i++){
+        cities[i].addEventListener("click",function(){
+            if(i == 0){
+                resetCities()
+                for(let i of listing){
+                    i.style = "block"
+                }
+            }else{
+                resetCities()
+                this.style.backgroundColor = "#c3c3c3"
+                for(let iss of listing){
+                    if(!iss.className.includes(this.textContent)){
+                        iss.style.display = "none"
+                    }
+                    if(iss.className.includes(this.textContent)){
+                        iss.style.display = "block"
+                    }
+                }
             }
-            if(i.className.includes("tbil")){
-                i.style.display = "block"
-            }
-        }
-    })
-    cities[2].addEventListener("click",function(){
-        resetCities()
-        this.style.backgroundColor = "#c3c3c3"
-        for(let i of listing){
-            if(!i.className.includes("kuta")){
-                i.style.display = "none"
-            }
-            if(i.className.includes("kuta")){
-                i.style.display = "block"
-            }
-        }
-    })
-    cities[3].addEventListener("click",function(){
-        resetCities()
-        this.style.backgroundColor = "#c3c3c3"
-        for(let i of listing){
-            if(!i.className.includes("batu")){
-                i.style.display = "none"
-            }
-            if(i.className.includes("batu")){
-                i.style.display = "block"
-            }
-        }
-    })
+        })
+    }
 }
 
 let sizeBut = document.querySelector(".size").querySelectorAll("li")
 function filterSize(){
+    function resetColor() {
+        for (let i of sizeBut) {
+            i.style.backgroundColor = ""
+        }
+    }
+
     for(let i = 0;i<sizeBut.length;i++){
         let filterSpan = sizeBut[i].querySelector("span")
 
         sizeBut[i].addEventListener("click", function(){
             if(i == 0){
+                resetColor()
                 for(let iss of listing){
                     iss.style.display = "block"
                 }
             }else{
+                resetColor()
+                this.style.backgroundColor = "#c3c3c3"
                 for(let iss of listing){
                     let sizeSpan = iss.querySelector(".square")
                     if(Number(sizeSpan.textContent) > Number(filterSpan.textContent)){
