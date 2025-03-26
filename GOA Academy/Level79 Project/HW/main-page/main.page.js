@@ -139,7 +139,7 @@ function filterCity(){
 let sizeBut = document.querySelector(".size").querySelectorAll("li")
 function filterSize(){
     for(let i = 0;i<sizeBut.length;i++){
-        let span = i.querySelector("span")
+        let filterSpan = sizeBut[i].querySelector("span")
 
         sizeBut[i].addEventListener("click", function(){
             if(i ==0){
@@ -147,10 +147,19 @@ function filterSize(){
                     iss.style.display = "block"
                 }
             }else{
-                
+                for(let iss of listing){
+                    let sizeSpan = iss.querySelector(".square")
+                    if(Number(sizeSpan.textContent) > Number(filterSpan.textContent)){
+                        iss.style.display = "block"
+                    }else{
+                        iss.style.display = "none"
+                    }
+                }
             }
         })
     }
 }
+
+
 
 
