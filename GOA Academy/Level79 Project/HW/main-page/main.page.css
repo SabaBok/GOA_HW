@@ -8,7 +8,7 @@
 body{
     display: flex;
     flex-direction: column;
-    height: 300vh;
+    padding-bottom: 50px;
 }
 header{
     display: flex;
