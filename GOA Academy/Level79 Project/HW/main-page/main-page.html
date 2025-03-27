@@ -100,7 +100,7 @@
                         <div class="card-pop">
                             <p><span class="square">55</span> m^2</p>
                             <p style="display: flex;
-                            gap: 10px;">1 <i class="fa-solid fa-bed"></i></p>
+                            gap: 10px;" class="beds">1 <i class="fa-solid fa-bed"></i></p>
                         </div>
                     </div>
     
@@ -997,8 +997,26 @@
         </section>
     </main>
 
-    <footer id="footer">
-
+    <footer>
+        <div class="nice">
+            <div class="image-container">
+                <img src="" alt="Uploaded Image" id="uploaded-image" style="display: none;">
+            </div>
+            <form class="inputs-container">
+                <button type="button" id="add-image-button">Add Image</button>
+                <input type="file" id="image-input" accept="image/*" style="display: none;">
+                <input type="number" placeholder="Add apartment price">
+                <input type="number" placeholder="Add apartment square footage">
+                <input type="text" placeholder="Add city">
+                <input type="tel" placeholder="Add number">
+                <input type="number" placeholder="Add rooms">
+                <input type="number" placeholder="Add bedrooms">
+                <input type="text" placeholder="Add street">
+                <input type="text" placeholder="Quick description">
+                <input type="text" placeholder="Owner's comment">
+                <button type="button" onclick="submit(event)">Submit</button>
+            </form>
+        </div>
     </footer>
 
     <script src="main.page.js"></script>

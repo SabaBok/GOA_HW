@@ -205,6 +205,77 @@ function filterPrice(){
     }
 }
 
+document.addEventListener("DOMContentLoaded", function (event) {
+    event.preventDefault();
+
+    const addImageButton = document.getElementById("add-image-button");
+    const imageInput = document.getElementById("image-input");
+    const uploadedImage = document.getElementById("uploaded-image");
+    let uploadedImageURL = "";
+
+    addImageButton.addEventListener("click", function () {
+        imageInput.click(); 
+    });
+
+    imageInput.addEventListener("change", function () {
+        const file = imageInput.files[0]; 
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                uploadedImage.src = e.target.result;
+                uploadedImage.style.display = "block";
+                uploadedImageURL = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+function submit(event) {
+    event.preventDefault();
+
+    // Get form inputs
+    let inputs = document.querySelectorAll(".inputs-container input");
+    let parent = document.querySelector(".listing"); // Target listing container
+
+    // Clone the existing listing template
+    let originalListing = document.querySelector(".cool-cont");
+    let clone = originalListing.cloneNode(true);
+
+    // Update cloned listing with form data
+    let displayImg = clone.querySelector(".card-img");
+    let square = clone.querySelector(".square");
+    let beds = clone.querySelector(".beds");
+    let price = clone.querySelector(".idk span");
+    let quickText = clone.querySelector(".card-price p");
+    let location = clone.querySelector(".card-loc p");
+
+    let fullCardPrice = clone.querySelector(".full-price");
+    let fullLocation = clone.querySelector(".full-card .card-loc p");
+    let fullDescription = clone.querySelector(".geo-text");
+
+    // Assign input values
+    price.textContent = inputs[0].value ;
+    square.textContent = inputs[1].value;
+    clone.classList.add(inputs[2].value); // Add city as a class
+    fullLocation.textContent = location.textContent = inputs[7].value;
+    beds.innerHTML = inputs[6].value;
+    quickText.textContent = inputs[8].value;
+    fullCardPrice.textContent = inputs[0].value;
+    fullDescription.textContent = inputs[9].value;
+
+    // Update image
+    if (uploadedImageURL) {
+        displayImg.style.backgroundImage = `url(${uploadedImageURL})`;
+        let fullImg = clone.querySelector(".full-card-img .slider-img");
+        if (fullImg) {
+            fullImg.src = uploadedImageURL;
+        }
+    }
+
+    // Append the updated clone to the listing
+    parent.appendChild(clone);
+}
 
 
 
