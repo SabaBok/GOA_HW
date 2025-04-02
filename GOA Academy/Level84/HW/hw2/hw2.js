@@ -11,7 +11,7 @@ function jump(){
 let isAlive = setInterval(function(){
     let dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"))
     let cactusTop = parseInt(window.getComputedStyle(cacti).getPropertyValue("left"))
-    if(cactusTop <150 && cactusTop>100 && dinoTop >=140){
+    if(cactusTop < 150 && cactusTop>100 && dinoTop >=140){
         alert("You Have Lost")
     }
 },10)
