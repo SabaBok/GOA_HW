@@ -6,27 +6,20 @@ high.textContent = localStorage.getItem("high");
 let counter = 0;
 let but = document.querySelectorAll(".but");
 let gameSpeed = 60;
-let jumpSpeed = 300;
-let cactusSpeed = 2000;
+let cactusSpeed = 10;
 
 for (let i of but) {
     i.addEventListener("click", function () {
         if (this.textContent == "Easy") {
-            gameSpeed = 2000;
-            jumpSpeed = 450;
+            gameSpeed = 300;
             cactusSpeed = 2500;
         } else if (this.textContent == "Normal") {
             gameSpeed = 50;
-            jumpSpeed = 300;
-            cactusSpeed = 2000;
+            cactusSpeed = 300;
         } else {
             gameSpeed = 10;
-            jumpSpeed = 150;
             cactusSpeed = 1000;
         }
-
-        dino.style.animationDuration = `${jumpSpeed / 1000}s`;
-
         location.reload();
     });
 }
@@ -39,7 +32,6 @@ setInterval(function () {
 function jump() {
     if (!dino.classList.contains("jump")) {
         dino.classList.add("jump");
-        dino.style.animation = `jump ${jumpSpeed / 1000}s linear`;
 
         setTimeout(function () {
             dino.classList.remove("jump");
