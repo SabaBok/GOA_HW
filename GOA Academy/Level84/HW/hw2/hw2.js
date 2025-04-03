@@ -1,68 +1,40 @@
 let dino = document.querySelector("#dino");
 let gameContainer = document.querySelector(".cont");
-let high = document.querySelector("#high");
-let cur = document.querySelector("#cur");
-high.textContent = localStorage.getItem("high");
-let counter = 0;
-let but = document.querySelectorAll(".but");
-let gameSpeed = 60;
-let jumpSpeed = 300;
-let cactusSpeed = 2000;
+let high = document.querySelector("#high")
+let cur = document.querySelector("#cur")
+high.textContent = localStorage.getItem("high")
 
-for (let i of but) {
-    i.addEventListener("click", function () {
-        if (this.textContent == "Easy") {
-            gameSpeed = 2000;
-            jumpSpeed = 450;
-            cactusSpeed = 2500;
-        } else if (this.textContent == "Normal") {
-            gameSpeed = 50;
-            jumpSpeed = 300;
-            cactusSpeed = 2000;
-        } else {
-            gameSpeed = 10;
-            jumpSpeed = 150;
-            cactusSpeed = 1000;
-        }
 
-        dino.style.animationDuration = `${jumpSpeed / 1000}s`;
-
-        location.reload();
-    });
-}
-
-setInterval(function () {
-    counter++;
-    cur.textContent = counter;
-}, gameSpeed);
+let counter = 0
+setInterval(function(){
+    counter++
+    cur.textContent = counter
+},60)
 
 function jump() {
     if (!dino.classList.contains("jump")) {
         dino.classList.add("jump");
-        dino.style.animation = `jump ${jumpSpeed / 1000}s linear`;
-
-        setTimeout(function () {
+        setTimeout(function(){
             dino.classList.remove("jump");
-        }, jumpSpeed);
+        }, 300);
     }
 }
 
 function spawnCactus() {
     let cactus = document.createElement("div");
     cactus.classList.add("cactus");
-    cactus.style.animation = `cacti ${cactusSpeed / 1000}s linear forwards`;
     gameContainer.appendChild(cactus);
 
-    setTimeout(function () {
+    setTimeout(function(){
         cactus.remove();
-    }, cactusSpeed);
+    }, 2000);
 }
 
-setInterval(function () {
+setInterval(function(){
     spawnCactus();
-}, Math.random() * 200 + 1000);
+}, Math.random() * 2000 + 1000);
 
-setInterval(function () {
+setInterval(function(){
     let dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
     let cacti = document.querySelectorAll(".cactus");
 
@@ -71,21 +43,15 @@ setInterval(function () {
 
         if (cactusLeft < 150 && cactusLeft > 100 && dinoTop >= 140) {
             alert("You Have Lost");
-            if (Number(cur.textContent) > Number(high.textContent)) {
-                high.textContent = cur.textContent;
-                localStorage.setItem("high", Number(high.textContent));
+            if(Number(cur.textContent) > Number(high.textContent)){
+                high.textContent = cur.textContent
+                localStorage.setItem("high",Number(high.textContent))
+                counter = 0
+                cur.textContent = 0
+            }else{
+                counter = 0
+                cur.textContent = 0
             }
-            counter = 0;
-            cur.textContent = 0;
-        }
-    }
-}, 10);
-
-setInterval(() => {
-    if (counter >= 600) {
-        gameContainer.style.backgroundColor = "#fff";
-        if (counter >= 1200) {
-            gameContainer.style.backgroundColor = "#333";
         }
     }
 }, 10);
@@ -95,3 +61,12 @@ document.addEventListener("keyup", function (e) {
         jump();
     }
 });
+
+setInterval(()=>{
+    if(counter >= 600){
+        gameContainer.style.backgroundColor = "#fff"
+        if(counter >=1200){
+            gameContainer.style.backgroundColor = "#333"
+        }
+    }
+},20)
