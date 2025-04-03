@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: #fff;
 }
 body{
     overflow: hidden;
@@ -10,15 +11,22 @@ body{
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+    background-color: #1a1a1a;
+    transition: 0.2s;   
 }
 .cont{
-    width: 70%;
-    border: 1px solid black;
+    width: 80%;
+    border: 1.5px solid black;
+    box-shadow: 0px 0px 20px 0px black;
+    background-color: #333;
     height: 200px;
+    position: relative;
+    border-radius: 7px;
+    overflow: hidden;
 }
 #dino{
     width: 50px;
-    position: relative;
+    position: absolute;
     top: 150px;
     left: 100px;
 }
@@ -26,38 +34,21 @@ body{
     animation: jump 0.3s linear;
 }
 @keyframes jump {
-    0%{
-        top: 150px;
-    }
-    50%{
-        top: 70px;
-    }
-    100%{
-        top: 150px;
-    }
+    0% { top: 150px; }
+    40% { top: 70px; }
+    100% { top: 150px; }
 }
-.line{
-    width: 100%;
-    position: relative;
-    height: 20px;
-    background-color: black;
-}
-
-#cactus{
+.cactus{
     width: 20px;
     height: 40px;
     background-image: url(cactus.png);
-    background-size: 20px 40px;
-    animation: cacti 2s infinite linear;
-    position: relative;
-    top: 105px;
-    left: 580px;
+    background-size: cover;
+    position: absolute;
+    top: 160px;
+    left: 100%;
+    animation: cacti 2s linear forwards;
 }
 @keyframes cacti {
-    0%{
-        left: 98%;
-    }
-    100%{
-        left:-20px;
-    }
+    0% { left: 100%; }
+    100% { left: -50px; }
 }
