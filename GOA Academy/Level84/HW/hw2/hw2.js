@@ -3,9 +3,8 @@ let gameContainer = document.querySelector(".cont");
 let high = document.querySelector("#high")
 let cur = document.querySelector("#cur")
 high.textContent = localStorage.getItem("high")
-
-
 let counter = 0
+
 setInterval(function(){
     counter++
     cur.textContent = counter
