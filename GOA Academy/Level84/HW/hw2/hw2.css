@@ -23,6 +23,7 @@ body{
     position: relative;
     border-radius: 7px;
     overflow: hidden;
+    transition: 1s;
 }
 #dino{
     width: 50px;

@@ -4,6 +4,7 @@ let high = document.querySelector("#high")
 let cur = document.querySelector("#cur")
 high.textContent = localStorage.getItem("high")
 
+
 let counter = 0
 setInterval(function(){
     counter++
@@ -13,7 +14,7 @@ setInterval(function(){
 function jump() {
     if (!dino.classList.contains("jump")) {
         dino.classList.add("jump");
-        setTimeout(() => {
+        setTimeout(function(){
             dino.classList.remove("jump");
         }, 300);
     }
@@ -24,16 +25,16 @@ function spawnCactus() {
     cactus.classList.add("cactus");
     gameContainer.appendChild(cactus);
 
-    setTimeout(() => {
+    setTimeout(function(){
         cactus.remove();
     }, 2000);
 }
 
-setInterval(() => {
+setInterval(function(){
     spawnCactus();
-}, Math.random() * 2000 + 500);
+}, Math.random() * 2000 + 1000);
 
-setInterval(() => {
+setInterval(function(){
     let dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
     let cacti = document.querySelectorAll(".cactus");
 
@@ -60,3 +61,12 @@ document.addEventListener("keyup", function (e) {
         jump();
     }
 });
+
+setInterval(()=>{
+    if(counter >= 600){
+        gameContainer.style.backgroundColor = "#fff"
+        if(counter >=1200){
+            gameContainer.style.backgroundColor = "#333"
+        }
+    }
+},20)
