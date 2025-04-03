@@ -53,3 +53,56 @@ body{
     0% { left: 100%; }
     100% { left: -50px; }
 }
+#mover{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: mover 7s linear infinite;
+}
+@keyframes mover {
+    0%{
+        top: 20%;
+    }
+    10%{
+        top: 30%;
+        left: 500px;
+    }
+    20%{
+        top: 40%;
+        left: 400px;
+    }
+    30%{
+        top: 30%;
+        left: 300px;
+    }
+    40%{
+        top: 30%;
+        left: 200px;
+    }
+    50%{
+        top: 20%;
+        left: 50%;
+    }
+    60%{
+        top: 30%;
+        left: 50%;
+    }
+    70%{
+        top: 40%;
+        left: 60%;
+    }
+    80%{
+        top: 40%;
+        left: 70%;
+    }
+    90%{
+        top: 30%;
+        left: 60%;
+    }
+    100%{
+        top: 20%;
+        left: 50%;
+    }
+
+}
