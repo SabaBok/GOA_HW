@@ -31,7 +31,7 @@ function spawnCactus() {
 
 setInterval(function(){
     spawnCactus();
-}, Math.random() * 2000 + 1000);
+}, Math.random() * 2000 + 500);
 
 setInterval(function(){
     let dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
@@ -51,6 +51,7 @@ setInterval(function(){
                 counter = 0
                 cur.textContent = 0
             }
+            location.reload()
         }
     }
 }, 10);
