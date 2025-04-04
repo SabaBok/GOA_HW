@@ -25,7 +25,9 @@ document.addEventListener("keydown", function(e){
     if(e.key == "w"){
         skew += 10
     }
-
+    if(e.key == "s"){
+        skew -= 10
+    }
 
     mover.style.transform = `translateY(${ver}px) translateX(${hor}px) rotate(${rot}deg) skew(${skew}deg)`
     console.log(e.key)
