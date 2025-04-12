@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1)შექმენით ცვლადი word - გადაეცით თქვენთვის სასურველი სიტყვა, შემდეგ მომხმარებელს შემოატანინეთ სასუველი ენა(მაგ:ქართული,ინგლისური,ფრანგული) და 
+    switch-კონსტრუქტორის გამოყენებით გააკეთეთ მარტივი translate როდესაც მომხმარებელი შემოიყვანს მაგალითად "ფრანგულს" თქვენი სიტყვა კონსოლში 
+    გადაითარგმნოს "ფრანგულად", ხოლო თუ მომხმარებელი შემოიტანს სხვა სიტყვას მაგ შემთხვევაში კონსოლში გამოიტანოს რომ ასეთი ენა არ არსებობს და ახლიდან სთხოვოს შეყვენა -->
+    <h1></h1>
+    <script>
+        let word = "hello"
+        let lang = prompt("enter a language(geo,eng,fre): ")
+        switch(lang){
+            case "geo":word="გამარჯობა"; break;
+            case "eng":word="Hello";break;
+            case "fre":word="Bonjour";break;
+        }
+        let text = document.querySelector("h1")
+        text.textContent = word
+</script>
+</body>
+</html>

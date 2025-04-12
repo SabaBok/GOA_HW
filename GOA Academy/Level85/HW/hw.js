@@ -15,7 +15,6 @@ let blure = document.querySelector("#blur")
 
 let instruments = document.querySelectorAll(".img-cont") // [instru1, instru2, instru3, instru4, instru5.......instru♾]
 document.addEventListener("keydown",function(e){ // e = event
-    console.log(e.key + "keydown")
     if(e.key == "w"){ // tu "W"-s daachers ragaca qnas|| "e.key"-amowmebs romel gilaks daachires
         let idk = new Audio(audios[0]) // igebs audios index0it da inaxavs variable-shi
         idk.play() // rtavs audio-s
@@ -53,8 +52,6 @@ document.addEventListener("keydown",function(e){ // e = event
     }
 })
 document.addEventListener("keyup",function(e){
-    console.log(e.key + "keyup")
-
     if(e.key == "w"){
         instruments[0].style.border = "10px solid #3d465d"
     }
@@ -82,10 +79,10 @@ document.addEventListener("keyup",function(e){
 // }, {once:true})    //{once:true} = marto ertxel iyos shesadzlebeli ro gaishvas || {once:false} = usasrulod imushavos ramdenjerac davawert || once = ერთხელ
 for(let i = 0;i<instruments.length;i++){
     instruments[i].addEventListener("mousedown", function(){
-        this.style.border = "10px solid #3d465d"
+        this.style.border = "10px solid #53607c"
     })
     instruments[i].addEventListener("mouseup", function(){
-        this.style.border = "10px solid #53607c"
+        this.style.border = "10px solid #3d465d"
         let idk = new Audio(audios[i])
         idk.play()
     })

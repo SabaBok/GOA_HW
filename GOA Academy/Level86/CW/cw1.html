@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1)შექმენით ცვლადი month ამ ცვლადში მომხმარებელს უნდა შემოატანინოთ თვე ოღონდ რიცხვების საშუალებით
+    (მაგ. 1=იანვარი , 2=თებერვალი , 3 = მარტი) , ამ რიცხვების მეშვეობით დაადგინეთ რომელი თვეა და გამოსახეთ კონსოლში, ამისთვის აუცილებლად გამოიყენეთ switch 
+    , იმ შემთხვევაში თუ მომხმარებელმა შემოიყვანა სხვა სიტყვა ან 12 ზე მეტი რიცხვი console-ში გამოიტანოს რომ "ასეთი თვე არ არსებობს" -->
+    <script>
+        let month = Number(prompt("enter month in numbers: "))
+        switch(month){
+            case 1:console.log("january"); break
+            case 2:console.log("february"); break
+            case 3:console.log("march"); break
+            case 4:console.log("april"); break
+            case 5:conole.log("may");break
+            case 6:conole.log("june");break
+            case 7:conole.log("july");break
+            case 8:conole.log("august");break
+            case 9:conole.log("september");break
+            case 10:conole.log("october");break
+            case 11:conole.log("november");break
+            case 12:conole.log("december");break
+            case month>12:console.log("such a month doesnt exist");break
+            case month<0:console.log("such a month doesnt exist");break
+        }
+    </script>
+</body>
+</html>
