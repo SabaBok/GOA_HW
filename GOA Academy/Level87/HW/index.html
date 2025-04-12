@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Day 88: 
+    1)უმეტესობას არ გქონდათ ამიტომ ისევ ეს დავალება გეექნებათ , დღევანდელი პროექტი გააკეთეთ სურათების გარეშე , დივების გამოყენებით ,
+    უამრავი გზა არსებობს მოიფიქრეთ და გააკეთეთ ისე რომელი გზითაც ყველაზე მეტად გაგიმარტივდებათ 
+    -->
+    
+    <section class="main-cont">
+        <div class="scores">
+            <div>
+                <p>Player 1 Score: <span class="pl1">0</span></p>
+                <p>Player 2 Score: <span class="pl2">0</span></p>
+            </div>
+        </div>
+
+        <div class="dices-cont">
+            <div class="dices">
+                <div class="cube one">
+                    <div class="d0 top-left"></div>
+                    <div class="d1 top-mid"></div>
+                    <div class="d2 top-right"></div>
+                    <div class="d3 mid-left"></div>
+                    <div class="d4 mid-mid"></div>
+                    <div class="d5 mid-right"></div>
+                    <div class="d6 bot-left"></div>
+                    <div class="d7 bot-mid"></div>
+                    <div class="d8 bot-right"></div>
+                </div>
+                
+                <h1>Player 1 Won</h1>
+
+                <div class="cube two">
+                    <div class="d0 top-left"></div>
+                    <div class="d1 top-mid"></div>
+                    <div class="d2 top-right"></div>
+                    <div class="d3 mid-left"></div>
+                    <div class="d4 mid-mid"></div>
+                    <div class="d5 mid-right"></div>
+                    <div class="d6 bot-left"></div>
+                    <div class="d7 bot-mid"></div>
+                    <div class="d8 bot-right"></div>
+                </div>
+            </div>
+            <button id="roll">Roll The Dice</button>
+        </div>
+    </section>
+    <div id="blur"></div>
+    <img src="gif.gif" class="gif" alt="">
+    <div class="pop">
+        <div class="pop-cont">
+            <div class="pop-card">
+                <div>
+                    <h2>Player 1 Score:</h2><br>
+                    <span class="scorer">0</span>
+                </div>
+                <h1 class="decide"></h1>
+            </div>
+
+            <div class="pop-card">
+                <div>
+                    <h2>Player 2 Score:</h2><br>
+                    <span class="scorer">0</span>
+                </div>
+                <h1 class="decide"></h1>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
