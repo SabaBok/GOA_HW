@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+}
+body{
+    height: 100vh;
+}
+header{
+    display: flex;
+    padding: 0px 100px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+}
+.shopping{
+    width: 300px;
+    height: 1000px;
+    position: absolute;
+    border: 1px solid black;
+    right: 0px;
+    top: 0px;
+    background-color: #fff;
+    z-index: 2;
+}
+.head-left img{
+    width: 130px;
+    border-radius: 10px;
+}
+.head-left{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+.head-nav ul{
+    display: flex;
+    gap: 50px;
+    list-style: none;
+    font-size: 1.3rem;
+}
+.head-nav ul li{
+    position: relative;
+    width: max-content;
+    cursor: pointer;    
+}
+.head-nav ul li::after{
+    position: absolute;
+    content: '';
+    bottom: 0px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #000;
+    transition: 0.3s ease-in-out;
+    transform: scaleX(0);
+}
+.head-nav ul li:hover::after{
+    transform: scale(1);
+}
+.cart{
+    position: relative;
+    z-index: 1;
+    width: 30px;
+}
+#close{
+    display: flex;
+    justify-content: end;
+    font-size: 1.5rem;
+    padding: 3px 5px;
+}
+#close div{
+    transition: 0.3s ;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+
+}
+#close div img{
+    width: 30px;
+}
+#close div:hover{
+    background-color: red;
+}
+#close div:active{
+    background-color: rgb(252, 143, 143);
+}
+.shopping-cont{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+.shopping-cont h1{
+    text-align: center;
+    font-size: 1.5rem;
+    border-bottom: 1px solid black;
+    width: max-content;
+    align-self: center;
+}
+.prod-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.product{
+    border-bottom: 1px solid #1a1a1a;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    align-items: center;
+    padding: 20px;
+}
+.product img{
+    width: 90px;
+    object-fit: cover;
+}
+.product div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+}
+.product div button{
+    padding: 3px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: red;
+    border-radius: 10px;
+    color: #fff;
+}
