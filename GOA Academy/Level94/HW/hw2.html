@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2)შექმენი სია სადაც რენდომულად შეიყვან რამდენიმე სახელს და გვარს , შემდეგ დაწერე ფუნქცია 
+    რომელიც დააბუნებს ახალ სიას სადაც წარმოდგენილი იქნება თითოეული სახელი და გვარი ისე როგორც ინიციალები (Giorgi Bibilashvili => G.B) -->
+    <script>
+        let myArr = ["saba bokuchava","davit sharia","lorwo givia","juja levana"]
+        let newArr = myArr.map(element =>{
+            let names = element.split(" ")
+            return `${element} --->  ${names[0][0].toUpperCase()}.${names[1][0].toUpperCase()}`
+        })
+        for(let i of newArr){
+            console.log(i)
+        }
+    </script>
+</body>
+</html>
