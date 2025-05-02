@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2)შექმენით სია სადაც გექნებათ 5 ობიექტი , ამ ობიექტებში შეინახავთ მომხმარებლის სახელს და ასაკს , თქვენი დავალებაა გაფილტროთ ეს 
+    სია და დატობოთ მხოლოდ იმ მომხმარებლის ობიექტები ვისი ასაკიც მეტი ან ტოლი იქნება 18 ზე -->
+    <script>
+        let coolArr = 
+        [
+            {
+                name:"saba",
+                age:16
+            },
+
+            {
+                name:"tornike",
+                age:16               
+            },
+
+            {
+                name:"davit",
+                age:15               
+            },
+
+            {
+                name:"sandro",
+                age:19               
+            },
+
+            {
+                name:"levani",
+                age:22
+            }
+        ]    
+        const ageChecker = el=> el.age >=18
+        let filteredArr = coolArr.filter(ageChecker)
+        console.log(filteredArr)
+    </script>
+</body>
+</html>

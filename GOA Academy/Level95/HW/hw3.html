@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 3)შექმენით სია სადაც გექნებათ ობიექტები , ამ ობიექტებში უნდა გქონდეთ სტუდენტის სახელი,გვარი და ქულები, ქულები უნდა იყოს სია , 
+    თქვენი დავალებაა გამოთვალოთ ქულების საშუალო შემდეგ გაფილტროთ მთავარი სია, ვისი საშუალო ქულაც იქნება მეტი ან ტოლი 90-ზე 
+    ისინი გადაიტანეთ გაფილტრულ სიაში , შემდეგ map()-ის საშუალებით გადაუარეთ გაფილტრულ სიას და დააბრუნეთ ახალ სიაში მხოლოდ სტუდენტის სახელები -->
+    <script>
+        let students = 
+        [
+            {
+                name:"saba",
+                lastName:"bokuchava",
+                scores:[100,100,100,100,100,100]
+            },
+            {
+                name:"magari",
+                lastName:"kaci",
+                scores:[90,90,90,90,90,90]
+            },
+            {
+                name:"bandzi",
+                lastName:"vigaca",
+                scores:[40,20,90,80,30,10]
+            }
+        ]
+        const gradeChecker = el =>{
+            for(let i in el){
+                let sum = 0
+                el.scores.forEach(x => {
+                    sum += x
+                });
+                if(sum/el.scores.length >=90){
+                    return el
+                }
+            }
+        }
+        let filteredStudents = students.filter(gradeChecker)
+        let finalStudents = filteredStudents.map(el=> `\n${el.name[0].toUpperCase() +el.name.slice(1)} ${el.lastName[0].toUpperCase() + el.lastName.slice(1)} --->${el.scores}`)
+        alert(finalStudents)
+    </script>
+</body>
+</html>

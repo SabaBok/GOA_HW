@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2)შექმენით სია სადაც გექნებათ რენდომ რიცხვები , შემდეგ ამ რიცხვებს გაფილტრავთ და ამოიღებთ მხოლოდ უარყოფით რიცხვებს , 
+    შემდეგ ამ სიას გადამაპავთ და თითოეულ ელემენტს გადააქცევთ დადებით რიცხვად -->
+    <script>
+        let coolArr = [1,4,2,-20,3,10,-11]
+        let betterArr = coolArr.filter( el => el < 0)
+        let evenBetterArr = betterArr.map(el => -el)
+        alert(evenBetterArr)
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1)შექმენით სია სადაც გექნებათ რენდომ რიცხვები , შემდეგ გაფილტრეთ ეს სია და 
+    დაამატეთ ახალ სიაში მხოლოდ ის ელემენტები რომლებიც იქნებიან კენტ ინდექსზე და მათი მნიშვნელობაც იქნება კენტი -->
+    <script>
+        let rand = []
+        while (rand.length < 10){
+            let cool = Math.floor(Math.random()*10)+1
+            if(!rand.includes(cool)){
+                rand.push(cool)
+            }
+        }
+
+        const func = (el,index) => index%2!=0 && el%2!=0
+        let filtered = rand.filter(func)
+        alert(filtered)
+    </script>
+</body>
+</html>
