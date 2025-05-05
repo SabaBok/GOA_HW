@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 5) შექმენით სარეგისტრაციო ფორმა. რეგისტრაციის შემდეგ მომხმარებლის მონაცემი უნდა შეინახოთ სიაში ობიექტის სახით. თითოეულ მომხმარებელს უნდა 
+    ჰქონდეს თავისი ობიექტი. ამ ობიექტებს კარგი იქნება თუ შექმნით ობიექტის კონსტრუქტორი ფუნქციის მეშვეობით. გააკეთეთ შემოწმება, 
+    რომ მომხმარებელი უკვე დაკავებული ემაილით ვერ დარეგისტრირდეს. რეგისტრაციის ფორმის ქვემოთ შექმენით ავტორიზაციის ფორმა, რომლის დადასტურების შემთხვევაში 
+    მოხდება შემოწმება შემოტანილი მონაცემებით თუ არსებობს ექაუნთი და ავტორიზაციის წარმატებით/წარუმატებლად დასრულების შემთხვევაში გამოიტანეთ შესაბამისი alert მესიჯი.
+    დაუმატეთ ამ საიტს დიზაინი. -->
+
+    <form action="">
+        <input type="email" name="email" placeholder="Email"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <br><br><br>
+    <form action="">
+        <input type="email" name="loginEmail" placeholder="Email"><br>
+        <input type="password" name="loginPassword" placeholder="Password"><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        function userInfo(email, password) {
+            this.email = email;
+            this.password = password;
+        }
+
+        let users = []
+        let form1 = document.querySelectorAll("form")[0]
+        form1.addEventListener("submit", e => {
+            e.preventDefault()
+            let email = e.target.email.value
+            let password = e.target.password.value
+
+            for(let i of users){
+                if(i.email == email){
+                    alert("This email is already registered")
+                    return
+                }
+            }
+            users.push(new userInfo(email, password))
+        })
+
+
+        let form2 = document.querySelectorAll("form")[1]
+        form2.addEventListener("submit", e => {
+            e.preventDefault()
+            let email = e.target.loginEmail.value
+            let password = e.target.loginPassword.value
+
+            for(let i of users){
+                if(i.email == email && i.password == password){
+                    alert("Login successful")
+                    return
+                }
+            }
+            alert("Login failed")
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        th{
+            width: 50%;
+        }
+        tr{
+            text-align: center;
+        }
+        table{
+            width: 100%;
+            gap: 20px;
+            border: 1px solid black;
+        }
+        table ,th,tr,td{
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="">
+        <input type="email" name="email"><br>
+        <input type="password" name="pass" id=""><br>
+        <button type="submit">Submit</button>
+    </form>
+    <br><br><br>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>password</th>
+        </tr>
+    </table>
+
+    <!-- 2)წინა დავალებაში გამოიყენეთ object constructor -->
+    <script>
+        function register(email,pass){
+            this.email = email
+            this.pass = pass
+        }
+
+        let form = document.querySelector("form")
+        let table = document.querySelector("table")
+        form.addEventListener("submit", e=>{
+            e.preventDefault()
+
+            let info = new register(e.target.email.value, e.target.pass.value)
+            table.innerHTML +=`
+            <tr>
+                <td>${info.email}</td>
+                <td>${info.pass}</td>
+            </tr>
+            `
+        })
+    </script>
+</body>
+</html>

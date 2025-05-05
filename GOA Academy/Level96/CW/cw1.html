@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        th{
+            width: 50%;
+        }
+        tr{
+            text-align: center;
+        }
+        table{
+            width: 100%;
+            gap: 20px;
+            border: 1px solid black;
+        }
+        table ,th,tr,td{
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="">
+        <input type="email" name="email"><br>
+        <input type="password" name="pass" id=""><br>
+        <button type="submit">Submit</button>
+    </form>
+    <br><br><br>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>password</th>
+        </tr>
+    </table>
+
+    <!-- 1) შექმენით სარეგიდტრაციო ფორმა და ცხრილი ფორმის დადასტურებისას, შეყვანილი მონაცემები უნდა დაემატოს ცხრილში, 
+    ახალი რიგის სახით, კომენტარებით ახსენით თითოეული ნაბიჯი -->
+    <script>
+        let form = document.querySelector("form")
+        let table = document.querySelector("table")
+        form.addEventListener("submit", e=>{
+            e.preventDefault()
+
+            let tr = document.createElement("tr")
+            table.appendChild(tr)
+
+            let td1 = document.createElement("td")
+            td1.textContent = e.target.email.value
+
+            let td2 = document.createElement("td")
+            td2.textContent = e.target.pass.value
+
+            tr.appendChild(td1)
+            tr.appendChild(td2)
+        })
+    </script>
+</body>
+</html>
