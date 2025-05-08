@@ -42,3 +42,33 @@ setInterval(() => {
     heart<100 && heart>80? heartImg.style.animationDuration = "0.9s" : 
     heartImg.style.animationDuration = "0.6s"
 },2000)
+
+
+let buy = document.querySelector(".buy");
+buy.addEventListener("click", e=>{
+    let header = document.querySelector("header");
+    let cover = document.createElement("div");
+    cover.style.width = "100%";
+    cover.style.height = "100%";
+    cover.style.position = "absolute";
+    cover.style.background = "#fff"
+    document.body.appendChild(cover);
+    cover.style.zIndex = "1000";
+    cover.style.top = "0";
+
+    let text = document.createElement("h1");
+    text.innerHTML = "Thank you for your purchase!";
+    text.style.position = "absolute";
+    text.style.top = "50%";
+    text.style.left = "50%";
+    text.style.transform = "translate(-50%,-50%)";
+    text.style.fontSize = "50px";
+    text.style.color = "#000";
+    text.style.zIndex = "1001";
+    text.style.fontFamily = "'Lexend', sans-serif;";
+    cover.appendChild(text);
+
+    setTimeout(() => {
+        alert("Thank you for your purchase!");
+    }, timeout = 200);
+})

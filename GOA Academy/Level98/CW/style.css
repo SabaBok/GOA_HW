@@ -5,12 +5,17 @@
     box-sizing: border-box;
     font-family: "Lexend", sans-serif;
 }
+body{
+    height: 100vh;
+}
 header{
     padding: 20px 0;
     display: flex;
     justify-content: center;
     width: 100%;
     align-items: center;
+    position: relative;
+    z-index: 1001;
     background-color: rgb(33, 33, 52);
 }
 header img{
