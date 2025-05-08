@@ -10,6 +10,16 @@
 <body>
     <header>
         <img src="imgs/Amazon-logo.png" alt="">
+
+        <div class="account">
+            <div class="account-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="account-text">
+                <p>Account</p>
+                <p>Sign In</p>
+            </div>
+        </div>
     </header>
     <br><br><br>
     <main>
@@ -53,6 +63,50 @@
         </section>
     </main>
 
+    <div id="blur"></div>
+    <div id="register-log">
+        <div class="register-log-container">
+            <div class="register form">
+                <div class="register-log-header">
+                    <h2>Register</h2><br>
+                </div>
+                <form action="">
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="email" placeholder="Email" name="email" required><br>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Password" name="pass" required><br>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="RePassword" name="rePass" required><br>
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+                <br><p>Already have an account? <span id="login">Log in</span></p>
+            </div>
+            
+            <div class="login form">
+                <div class="register-log-header">
+                    <h2>Log in</h2><br>
+                </div>
+                <form action="">
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="email" name="email" placeholder="Email" required><br>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="pass" placeholder="Password" required><br>
+                    </div>
+                    <button type="submit">Log In</button>
+                </form>
+                <br><p>Dont have an account? <span id="regist">Register</span></p>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

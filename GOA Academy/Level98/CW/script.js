@@ -51,7 +51,8 @@ buy.addEventListener("click", e=>{
     cover.style.width = "100%";
     cover.style.height = "100%";
     cover.style.position = "absolute";
-    cover.style.background = "#fff"
+    cover.style.background = "#00000039"
+    cover.style.backdropFilter = "blur(20px)";
     document.body.appendChild(cover);
     cover.style.zIndex = "1000";
     cover.style.top = "0";
@@ -63,7 +64,7 @@ buy.addEventListener("click", e=>{
     text.style.left = "50%";
     text.style.transform = "translate(-50%,-50%)";
     text.style.fontSize = "50px";
-    text.style.color = "#000";
+    text.style.color = "#fff";
     text.style.zIndex = "1001";
     text.style.fontFamily = "'Lexend', sans-serif;";
     cover.appendChild(text);
@@ -71,4 +72,77 @@ buy.addEventListener("click", e=>{
     setTimeout(() => {
         alert("Thank you for your purchase!");
     }, timeout = 200);
+})
+
+let blure = document.querySelector("#blur")
+let regForm = document.querySelector("#register-log")
+let click = document.querySelector(".account")
+let opener = false
+click.addEventListener("click", e=>{
+    if(!opener){
+        blure.style.display = "block";
+        regForm.style.display = "block";
+        opener = true;
+    }else{
+        blure.style.display = "none";
+        regForm.style.display = "none";
+        opener = false;
+    }
+})
+
+
+let regi = regForm.querySelector(".register")
+let form1 = regi.querySelector("form")
+let login = document.querySelector(".login")
+form1.addEventListener("submit", e=>{
+    e.preventDefault()
+    let email = e.target.email.value
+    let password = e.target.pass.value
+    let confirmPassword = e.target.rePass.value
+
+    if(password != confirmPassword &7 & password.length < 8){
+        alert("Passwords do not match or are less than 8 characters")
+        return
+    }
+    alert("Registration successful")
+    let data = {
+        email: email,
+        password: password
+    }
+    localStorage.clear()
+    localStorage.setItem("user", JSON.stringify(data))
+    login.classList.add("logina")
+    login.classList.remove("login")
+    regi.style.display = "none"
+})
+
+let form2 = login.querySelector("form")
+form2.addEventListener("submit", e=>{
+    e.preventDefault()
+    let email = e.target.email.value
+    let password = e.target.pass.value
+
+    let data = JSON.parse(localStorage.getItem("user"))
+    if(data.email == email && data.password == password){
+        alert("Login successful")
+        login.classList.add("login")
+        login.classList.remove("logina")
+        regForm.style.display = "none"
+        blure.style.display = "none"
+    }else{
+        alert("Invalid credentials")
+    }
+})
+
+let alrLog = document.querySelector("#login")
+alrLog.addEventListener("click", e=>{
+    login.classList.add("logina")
+    login.classList.remove("login")
+    regi.style.display = "none"
+})  
+let wantReg = document.querySelector("#regist")
+wantReg.addEventListener("click", e=>{
+    login.classList.add("login")
+    login.classList.remove("logina")
+    regi.style.display = "block"
 })
