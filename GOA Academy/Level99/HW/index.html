@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/ecd2bcc678.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- day 99:
+    1)მიიყვანეთ პროექტი დღეს რაზეც გაჩერდით იმ დონემდე,დაამატეთ ვალიდაციები და successfuly registration  -->
+    <header>
+        <img src="imgs/Amazon-logo.png" alt="">
+
+        <div class="account">
+            <div class="account-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="account-text">
+                <p>Account</p>
+                <p>Sign In</p>
+            </div>
+        </div>
+    </header>
+    <br><br><br>
+    <main>
+        <section class="all-container">
+            <section class="watch-cont">
+                <div class="watch-img">
+                    <h3 class="hour">00:00:00</h3>
+                    <div class="heart-rate">
+                        <img src="./imgs/heart.png" alt="">
+                        <p>78</p>
+                    </div>
+                </div>
+            </section>
+    
+            <section class="option-cont">
+                <div class="option-text">
+                    <h2>FitBit 19 - The Smartest Watch</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes</p>
+                </div>
+
+                <div class="option-colors">
+                    <h2>Select Color</h2>
+                    <div class="colors">
+                        <div id="0" style="background-color: #23211f;"></div>
+                        <div id="1" style="background-color: #ca3d22;"></div>
+                        <div id="2" style="background-color: #565681;"></div>
+                        <div id="3" style="background-color: #8a5362;"></div>
+                    </div>
+                </div>
+
+                <div class="option-features">
+                    <h3>Features</h3>
+                    <div>
+                        <button id="time">Time</button>
+                        <button id="heart">Heart Rate</button>
+                    </div>
+                </div>
+
+                <button class="buy">BUY NOW</button>
+            </section>
+        </section>
+    </main>
+
+    <div id="blur"></div>
+    <div id="register-log">
+        <div class="register-log-container">
+            <div class="register form">
+                <div class="register-log-header">
+                    <h2>Register</h2><br>
+                </div>
+                <form action="">
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="email" placeholder="Email" name="email" required><br>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Password" name="pass" required><br>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="RePassword" name="rePass" required><br>
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+                <br><p>Already have an account? <span id="login">Log in</span></p>
+            </div>
+            
+            <div class="login form">
+                <div class="register-log-header">
+                    <h2>Log in</h2><br>
+                </div>
+                <form action="">
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="email" name="email" placeholder="Email" required><br>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="pass" placeholder="Password" required><br>
+                    </div>
+                    <button type="submit">Log In</button>
+                </form>
+                <br><p>Dont have an account? <span id="regist">Register</span></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
