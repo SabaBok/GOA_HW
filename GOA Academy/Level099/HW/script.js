@@ -78,6 +78,9 @@ buy.addEventListener("click", e=>{
     }
 })
 
+
+
+
 let blure = document.querySelector("#blur")
 let regForm = document.querySelector("#register-log")
 let click = document.querySelector(".account")
@@ -94,25 +97,26 @@ click.addEventListener("click", e=>{
     }
 })
 
-
+function Account(email,password){
+    this.email = email;
+    this.password = password;
+}
 let regi = regForm.querySelector(".register")
 let form1 = regi.querySelector("form")
 let login = document.querySelector(".login")
+
 form1.addEventListener("submit", e=>{
     e.preventDefault()
     let email = e.target.email.value
     let password = e.target.pass.value
     let confirmPassword = e.target.rePass.value
 
-    if(password != confirmPassword && password.length < 8){
+    if(password != confirmPassword || password.length < 8){
         alert("Passwords do not match or are less than 8 characters")
         return
     }
     alert("Registration successful")
-    let data = {
-        email: email,
-        password: password
-    }
+    const data = new Account(email,password)
     localStorage.clear()
     localStorage.setItem("user", JSON.stringify(data))
     localStorage.setItem("isLogin", true)
