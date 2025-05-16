@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- day 99:
-    1)მიიყვანეთ პროექტი დღეს რაზეც გაჩერდით იმ დონემდე,დაამატეთ ვალიდაციები და successfuly registration  -->
+    <!-- day 100:
+    მიიყვანეთ ვებსაიტი იქამდე სადამდეც მივედით დღეს, დაამატეთ ასეთი ფუნქციონალი რომ როდესაც მომხმარებელი ექაუნთზე შევა ზედა 
+    მარჯვენა კუთღხეში მისი სახელი და გვარი გამოჩნდეს და ასევე შეეძლოს ექაუნთიდან გამოსვლა -->
     <header>
         <img src="imgs/Amazon-logo.png" alt="">
 
@@ -20,6 +21,19 @@
             <div class="account-text">
                 <p>Account</p>
                 <p>Sign In</p>
+            </div>
+        </div>
+
+        <div class="logged-in">
+            <div class="logged">
+                <div class="account-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+
+            <div class="account-text">
+                <p id="name">Name</p>
+                <p id="log-out">Log Out</p>
             </div>
         </div>
     </header>
@@ -73,6 +87,10 @@
                     <h2>Register</h2><br>
                 </div>
                 <form action="">
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Name" name="name" required><br>
+                    </div>
                     <div>
                         <i class="fa-solid fa-user"></i>
                         <input type="email" placeholder="Email" name="email" required><br>

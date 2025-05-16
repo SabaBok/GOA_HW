@@ -6,7 +6,7 @@
     font-family: "Lexend", sans-serif;
 }
 body{
-    height: 100vh;
+    min-height: 100vh;
 }
 header{
     padding: 20px 0;
@@ -24,6 +24,7 @@ header img{
 .account{
     position: absolute;
     right: 50px;
+
     display: flex;
     gap: 10px;
     align-items: center;
@@ -288,6 +289,47 @@ main{
     color: #ffa500;
 }
 
+.logged-in{
+    position: absolute;
+    right: 50px;
+    display: none;
+    gap: 5px;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #373737;
+    padding: 10px;
+    border: 1px solid #fff;
+}
+#name{
+    text-decoration: underline white;
+}
+#log-out{
+    cursor: pointer;
+    transition: 0.25s;
+}
+#log-out:hover{
+    color: #ffa500;
+}
+.logged{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: darkgray;
+}
+.account-icon i{
+    font-size: 1.4rem;
+    background-color: grey;
+    padding: 0px 4px;
+    padding: 5px 6px;
+    border-radius: 50%;
+}
+
+
 
 
 
@@ -296,5 +338,8 @@ main{
     header{
         justify-content: space-between;
         padding-left: 50px;
+    }
+    .account,.logged-in{
+        right: 10px;
     }
 }

@@ -1,3 +1,20 @@
+//checking if alredy logged in
+let click = document.querySelector(".account")
+let logger = document.querySelector(".logged-in")
+const confirmer = () => {
+    let info = localStorage.getItem("isLogin")
+    if(info){
+        logger.style.display = "flex"
+        click.style.display = "none"
+    }else{
+        logger.style.display = "none"
+        click.style.display = "flex"
+    }
+}
+confirmer()
+
+
+//clock function
 let time = document.querySelector(".hour");
 setInterval(() => {
     let date = new Date();
@@ -8,6 +25,7 @@ setInterval(() => {
 }, 1000);
 
 
+//color changer
 let colors = ["./imgs/black.png",'./imgs/red.png',"./imgs/blue.png","./imgs/pink.png"]
 let btn = document.querySelector(".colors").querySelectorAll("div");
 let watch = document.querySelector(".watch-img");
@@ -18,6 +36,8 @@ for(let i of btn){
     });
 }
 
+
+//heart shower
 let but = document.querySelector(".option-features").querySelector("div").querySelectorAll("button");
 let heart = document.querySelector(".heart-rate");
 for(let i of but){
@@ -32,6 +52,7 @@ for(let i of but){
     });
 }
 
+//heart rate generator
 let heartRate = document.querySelector(".heart-rate").querySelector("p");
 let heartImg = heart.querySelector("img");
 setInterval(() => {
@@ -44,6 +65,7 @@ setInterval(() => {
 },2000)
 
 
+//clicking on buy
 let buy = document.querySelector(".buy");
 buy.addEventListener("click", e=>{
     if(!localStorage.getItem("isLogin")){
@@ -79,11 +101,9 @@ buy.addEventListener("click", e=>{
 })
 
 
-
-
+//register opener
 let blure = document.querySelector("#blur")
 let regForm = document.querySelector("#register-log")
-let click = document.querySelector(".account")
 let opener = false
 click.addEventListener("click", e=>{
     if(!opener){
@@ -97,16 +117,18 @@ click.addEventListener("click", e=>{
     }
 })
 
-function Account(email,password){
+//registration
+function Account(name,email,password){
+    this.name = name;
     this.email = email;
     this.password = password;
 }
 let regi = regForm.querySelector(".register")
 let form1 = regi.querySelector("form")
 let login = document.querySelector(".login")
-
 form1.addEventListener("submit", e=>{
     e.preventDefault()
+    let userName = e.target.name.value
     let email = e.target.email.value
     let password = e.target.pass.value
     let confirmPassword = e.target.rePass.value
@@ -114,18 +136,24 @@ form1.addEventListener("submit", e=>{
     if(password != confirmPassword || password.length < 8){
         alert("Passwords do not match or are less than 8 characters")
         return
+    }else if(userName.length >7){
+        alert("User name is too long. choose a shorter handle")
+        return
     }
     alert("Registration successful")
-    const data = new Account(email,password)
+    const data = new Account(userName,email,password)
     localStorage.clear()
     localStorage.setItem("user", JSON.stringify(data))
-    localStorage.setItem("isLogin", true)
     login.classList.add("logina")
     login.classList.remove("login")
     regi.style.display = "none"
 })
 
+
+//log in
 let form2 = login.querySelector("form")
+let header = document.querySelector("header")
+let accName = document.querySelector("#name")
 form2.addEventListener("submit", e=>{
     e.preventDefault()
     let email = e.target.email.value
@@ -133,7 +161,11 @@ form2.addEventListener("submit", e=>{
 
     let data = JSON.parse(localStorage.getItem("user"))
     if(data.email == email && data.password == password){
+        localStorage.setItem("isLogin", true)
+        accName.innerHTML = data.name
         alert("Login successful")
+        logger.style.display = "flex"
+        click.style.display = "none"
         login.classList.add("login")
         login.classList.remove("logina")
         regForm.style.display = "none"
@@ -143,12 +175,26 @@ form2.addEventListener("submit", e=>{
     }
 })
 
+//log out
+let logOut = document.querySelector("#log-out")
+logOut.addEventListener("click", e=>{
+    let data = JSON.parse(localStorage.getItem("user"))
+    let logged = localStorage.setItem("isLogin",false)
+    logger.style.display = "none"
+    click.style.display = "flex"
+    alert("Logged out successfully")
+})
+
+
+//alredy logged in
 let alrLog = document.querySelector("#login")
 alrLog.addEventListener("click", e=>{
     login.classList.add("logina")
     login.classList.remove("login")
     regi.style.display = "none"
 })  
+
+//want to sign up
 let wantReg = document.querySelector("#regist")
 wantReg.addEventListener("click", e=>{
     login.classList.add("login")
