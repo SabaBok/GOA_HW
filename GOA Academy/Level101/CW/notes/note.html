@@ -6,7 +6,56 @@
     <title>Document</title>
 </head>
 <body>
+
+    <form action="">
+        <label for="">regi</label><br>
+        <input type="text" name="name" id=""><br>
+        <label for=""></label>pass<br>
+        <input type="password" name="pass" id=""><br>
+        <button>click</button>
+    </form>
+    <p></p>
     <script>
+        let users = []
+        let form = document.querySelector("form")
+        let p = document.querySelector("p")
+        function Idk(name,pass){
+            this.name = name
+            this.pass = pass
+        }
+        form.addEventListener("submit",e=>{
+            e.preventDefault()
+            let userName = e.target.name.value
+            let userPass = e.target.pass.value
+            let userInfo = new Idk(userName,userPass)
+            users.push(userInfo)
+            let stringyAccs = JSON.stringify(users)
+            localStorage.setItem("users",stringyAccs)
+
+            let reader = JSON.parse(localStorage.getItem("users"))
+            p.innerHTML = `<br>${JSON.stringify(reader)} `
+        })
+
+
+        // function Person(name,password){
+        //     this.name = name
+        //     this.password = password
+        // }
+
+        // const name = prompt("enter your name: ")
+        // const pass = prompt("enter password: ")
+
+        // let newDude = new Person(name,pass)
+
+        // localStorage.setItem("dude",JSON.stringify(newDude))
+
+
+        // const idk = `{
+        //     "name":"nigger"
+        // }`
+        // let parsed = JSON.parse(idk)
+        // console.log(parsed)
+
 
     </script>
 </body>
