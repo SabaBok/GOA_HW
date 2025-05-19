@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- level 102: -->
+    <!-- 2) დაამატეთ საიტზე ღილაკი როდესაც ამ ღილაკს დააჭერთ მომხმარებელს შემოატანინეთ სახელი, გვარი, ასაკი და მეილი ამ მონაცემების შექმენით ობიექტი 
+    შეგიძლიათ გამოიყენოთ კონსტრუქტორი, ეს ობიექტი დაამატეთ სიაში და შექმენით ექაუნთები, ეს ინფორმაცია უნდა ინახებოდეს localstorage ში, ყოველ ღილაკზე 
+    დაჭერის დროს უნდა შეიქმნას ახალი ექაუნთი(ობიექტი), დაემატოს ექაუნთებისთვის განკუთვნილ სიაში და განახლდეს localstorage -->
+    <button>Click me</button>
+    <button>Log in</button>
+
+    <script>
+        let names = JSON.parse(localStorage.getItem("info")) || []
+        let btn = document.querySelectorAll("button")[0]
+        let login = document.querySelectorAll("button")[1]
+
+        function Person(name,lastName,age,email){
+            this.name = name
+            this.lastName = lastName
+            this.age = age
+            this.email = email
+        }
+
+        btn.addEventListener("click",()=>{
+            let name = prompt("Enter name: ")
+            let lastName = prompt("enter last name: ")
+            let age = Number(prompt("enter age: "))
+            let email = prompt("enter email: ")
+
+            let info = new Person(name,lastName,age,email)
+            names.push(info)
+            localStorage.setItem("info",JSON.stringify(names))
+        })
+
+        login.addEventListener("click",()=>{
+            let info = JSON.parse(localStorage.getItem("info"))
+            let name = prompt("Enter name: ")
+            let lastName = prompt("enter last name: ")
+            let age = Number(prompt("enter age: "))
+            let email = prompt("enter email: ")
+
+            for(let i of info){
+                if(name == i.name && lastName == i.lastName && age == i.age && email == i.email){
+                    alert("correct you have logged in")
+                }
+            }
+        })
+    </script>
+</body>
+</html>
