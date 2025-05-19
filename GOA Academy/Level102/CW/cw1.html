@@ -12,19 +12,39 @@
     ში, ყოველ ღილაკზე დაჭერის დროს და ახალი სახელის შეყვანის დროს სიაში დაემატოს ახალი ელემენტი და localstorage ში განახლდეს ინფორმაციას ხოლო ამის შემდეგ 
     კონსოლში დაბეჭდეთ localstorage დან წამოღებული ინფორმაცია -->
     <button>Click me</button>
+    <button>Clear</button>
+    <div class="idk">
+
+    </div>
 
     <script>
-        let names = []
-        let btn = document.querySelector("button")
+        let names = JSON.parse(localStorage.getItem("names")) || []
+        let idk = document.querySelector(".idk")
+        let btn = document.querySelectorAll("button")[0]
+        let clear = document.querySelectorAll("button")[1]
+
+        const maker = ()=>{
+            idk.innerHTML = ""
+            for(let i of names){
+                idk.innerHTML +=`
+                <p>${i}</p>
+                `
+            }
+        }
+        maker()
+
+        clear.addEventListener("click",()=>{
+            localStorage.clear()
+            names = []
+            maker()
+        })
+        
         btn.addEventListener("click",()=>{
             let name = prompt("Enter name: ")
             names.push(name)
             localStorage.setItem("names",JSON.stringify(names))
-
-            let allNames = JSON.parse(localStorage.getItem("names"))
-            for(let i of allNames){
-                console.log(i)
-            }
+            maker()
+            console.log(JSON.parse(localStorage.getItem("names")))
         })
     </script>
 </body>
