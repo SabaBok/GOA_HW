@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- level 102: -->
+    <!-- 1) დაამატეთ საიტზე ღილაკი როდესაც ამ ღილაკს დააჭერთ მომხმარებელს შემოატანინეთ სახელი და მიღებული დაამატეთ სიაში და ეს სია შეინახეთ localstorage 
+    ში, ყოველ ღილაკზე დაჭერის დროს და ახალი სახელის შეყვანის დროს სიაში დაემატოს ახალი ელემენტი და localstorage ში განახლდეს ინფორმაციას ხოლო ამის შემდეგ 
+    კონსოლში დაბეჭდეთ localstorage დან წამოღებული ინფორმაცია -->
+    <button>Click me</button>
+
+    <script>
+        let names = []
+        let btn = document.querySelector("button")
+        btn.addEventListener("click",()=>{
+            let name = prompt("Enter name: ")
+            names.push(name)
+            localStorage.setItem("names",JSON.stringify(names))
+
+            let allNames = JSON.parse(localStorage.getItem("names"))
+            for(let i of allNames){
+                console.log(i)
+            }
+        })
+    </script>
+</body>
+</html>

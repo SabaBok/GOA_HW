@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+}
+main{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 5px;
+}
+#all{
+    width: 40%;
+    min-width: 340px;
+    max-width: 1200px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.top{
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.input{
+    width: 100%;
+}
+
+.input form{
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.input button{
+    width: 100px;
+    padding: 7px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgb(255, 140, 0);
+    border-radius: 5px;
+    transition: 0.25s;
+}
+.input button:hover{
+    background-color: rgb(240, 132, 0);
+}
+.input input{
+    flex: 1;
+    font-size: 16px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1.5px solid rgb(135, 135, 135);
+}
+
+.bot{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.todo-card{
+    width: 100%;
+    background-color: #e8e8e8;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    display: flex;
+    padding: 20px 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.todo-card p{
+    font-weight:bold;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+}
+.todo-card button{
+    padding: 10px 15px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    transition: 0.25s;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.todo-card button:hover{
+    background-color: rgb(234, 0, 0);
+}
