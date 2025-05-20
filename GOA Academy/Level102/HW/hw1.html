@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            gap: 30px;
+        }
+        #idk{
+            position: absolute;
+            top: 50%;
+            display: none;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: black;
+            border-radius: 5px;
+            z-index: 9999;
+            /* width: ; */
+            height: 30px;
+            animation: loading 1s linear;
+        }
+        @keyframes loading {
+            from{
+                width: 0px;
+            }
+            to{
+                width: 80%;
+            }
+        }
+        #kk{
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(1px);
+        }
+    </style>
+</head>
+<body>
+    <!-- day 102: -->
+    <!-- გააკეთეთ რეგისტრაცია და ლოგინი local storage ის გამოყენებით -->
+    <form action="">
+        <label for="">email</label><br>
+        <input type="email" name="email" placeholder="Enter Email" required><br>
+
+        <label for="">password</label><br>
+        <input type="password" name="pass" placeholder="Enter Password" required><br>
+
+        <button>Click</button>
+    </form><br>
+
+    <form action="">
+        <label for="">email</label><br>
+        <input type="email" name="email" placeholder="Enter Email" required><br>
+
+        <label for="">password</label><br>
+        <input type="password" name="pass" placeholder="Enter Password" required><br><br>
+        <button>Click</button>
+    </form>
+
+    <div id="idk"></div>
+    <div id="kk"></div>
+    <script>
+        function Info(email,password){
+            this.email = email
+            this.password = password
+        }
+        let arr = []
+        let register = document.querySelectorAll("form")[0]
+        let logIn = document.querySelectorAll("form")[1]
+
+        register.addEventListener("submit",e=>{
+            e.preventDefault()
+            let acc = new Info(e.target.email.value,e.target.pass.value)
+            arr.push(acc)
+            localStorage.setItem("account",JSON.stringify(arr))
+            alert("registered")
+        })
+
+        let kk = document.querySelector("#kk")
+        let idk = document.querySelector("#idk")
+        logIn.addEventListener("submit",e=>{
+            e.preventDefault()
+            let acc = JSON.parse(localStorage.getItem("account"))
+            for(let i of acc){
+                if(i.email == e.target.email.value && i.password == e.target.pass.value){
+                    idk.style.display = "block"
+                    kk.style.display = "block"
+                    setTimeout(() => {
+                        let p = document.createElement("p")
+                        p.textContent = "You have succesfully logged in"
+                        document.body.appendChild(p)
+                        p.style = `
+                            position:absolute;
+                            top:50%;
+                            left:50%;
+                            z-index:99999999;
+                            transform:translate(-50%,-50%);
+                            color:#fff;
+                        `
+                        alert("You have succesfully logged in")
+                    }, 1000);
+                }else{
+                }
+            }
+        })
+    </script>
+</body>
+</html>
