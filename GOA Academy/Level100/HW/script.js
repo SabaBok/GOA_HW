@@ -128,6 +128,7 @@ function Account(name,email,password){
 let regi = regForm.querySelector(".register")
 let form1 = regi.querySelector("form")
 let login = document.querySelector(".login")
+let arr = JSON.parse(localStorage.getItem("user")) || []
 form1.addEventListener("submit", e=>{
     e.preventDefault()
     let userName = e.target.name.value
@@ -144,8 +145,9 @@ form1.addEventListener("submit", e=>{
     }
     alert("Registration successful")
     const data = new Account(userName,email,password)
+    arr.push(data)
     localStorage.clear()
-    localStorage.setItem("user", JSON.stringify(data))
+    localStorage.setItem("user", JSON.stringify(arr))
     login.classList.add("logina")
     login.classList.remove("login")
     regi.style.display = "none"
@@ -161,27 +163,28 @@ form2.addEventListener("submit", e=>{
     let email = e.target.email.value
     let password = e.target.pass.value
 
-    let data = JSON.parse(localStorage.getItem("user"))
-    if(data.email == email && data.password == password){
-        localStorage.setItem("isLogin", true)
-        accName.innerHTML = data.name
-        alert("Login successful")
-        logger.style.display = "flex"
-        click.style.display = "none"
-        login.classList.add("login")
-        login.classList.remove("logina")
-        regForm.style.display = "none"
-        blure.style.display = "none"
-    }else{
-        alert("Invalid credentials")
+    for(let i of arr){
+        if(i.email == email && i.password == password){
+            localStorage.setItem("isLogin", true)
+            accName.innerHTML = i.name
+            alert("Login successful")
+            logger.style.display = "flex"
+            click.style.display = "none"
+            login.classList.add("login")
+            login.classList.remove("logina")
+            regForm.style.display = "none"
+            blure.style.display = "none"
+        }else{
+            alert("Invalid credentials")
+        }
     }
+
 })
 
 //log out
 let logOut = document.querySelector("#log-out")
 logOut.addEventListener("click", e=>{
-    let data = JSON.parse(localStorage.getItem("user"))
-    let logged = localStorage.setItem("isLogin",false)
+    localStorage.setItem("isLogin",false)
     logger.style.display = "none"
     click.style.display = "flex"
     alert("Logged out successfully")
