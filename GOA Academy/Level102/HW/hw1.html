@@ -64,7 +64,7 @@
         <input type="email" name="email" placeholder="Enter Email" required><br>
 
         <label for="">password</label><br>
-        <input type="password" name="pass" placeholder="Enter Password" required><br><br>
+        <input type="password" name="pass" placeholder="Enter Password" required><br>
         <button>Click</button>
     </form>
 
@@ -75,7 +75,7 @@
             this.email = email
             this.password = password
         }
-        let arr = []
+        let arr = JSON.parse(localStorage.getItem("account")) || []
         let register = document.querySelectorAll("form")[0]
         let logIn = document.querySelectorAll("form")[1]
 
@@ -91,8 +91,7 @@
         let idk = document.querySelector("#idk")
         logIn.addEventListener("submit",e=>{
             e.preventDefault()
-            let acc = JSON.parse(localStorage.getItem("account"))
-            for(let i of acc){
+            for(let i of arr){
                 if(i.email == e.target.email.value && i.password == e.target.pass.value){
                     idk.style.display = "block"
                     kk.style.display = "block"
@@ -110,7 +109,6 @@
                         `
                         alert("You have succesfully logged in")
                     }, 1000);
-                }else{
                 }
             }
         })
