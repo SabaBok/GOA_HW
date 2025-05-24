@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lexend", sans-serif;
+}
+body{
+    min-height: 100vh;
+}
+header{
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    z-index: 1001;
+    background-color: rgb(33, 33, 52);
+}
+header img{
+    width: 100px;
+}
+.account{
+    position: absolute;
+    right: 50px;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 50px;
+}
+.all-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 90%;
+    justify-items: center;
+    align-items: center;
+    min-width: 350px;
+}   
+.watch-img{
+    background-image: url(./imgs/pink.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #fff;
+    background-size: cover;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 500px;
+}
+.hour{
+    font-size: 1.8rem;
+}
+.heart-rate{
+    position: relative;
+    display: none;
+}
+.heart-rate img{
+    width: 150px;
+    position: relative;
+    top: -35px;
+    animation-name: normal-speed;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+@keyframes normal-speed {
+    0%{
+        transform: scale(1);
+    }
+    23%{
+        transform: scale(1.3);
+    }
+    30%{
+        transform: scale(1);
+    }
+    44%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.heart-rate p{
+    font-size: 2rem;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    bottom: 25px;
+    transform: translateX(-50%);
+}
+.option-cont{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    text-align: left;
+    align-items: start;
+    height: 100%;
+}
+.option-text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.option-text h2{
+    font-size: 2rem;
+}
+.option-text p{
+    opacity: 70%;
+    font-size: 0.8rem;
+}
+.option-colors{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.option-colors h2{
+    opacity: 80%;
+}
+.colors{
+    display: flex;
+    gap: 15px;
+}
+.colors div{
+    width: 60px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.option-features{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.option-features h3{
+    opacity: 80%;
+}
+.option-features div{
+    display: flex;
+    gap: 15px;
+}
+.option-features div button{
+    padding: 7px 12px;
+    background-color: #edebeb;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.option-features div button:hover{
+    background-color: #dcdcdc;
+}
+.buy{
+    background-color: #ffa500;
+    border: none;
+    cursor: pointer;
+    padding: 12px 22px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.buy:hover{
+    background-color: #ff8c00;
+}
+
+#blur{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000002c;
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+}
+#register-log{
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    min-width: 350px;
+    width: 30%;
+    max-width: 400px;
+    z-index: 1001;
+    height: 70%;
+    transform: translate(-50%, -50%);
+    background-color: #5922aa50;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 10px #0000005f;
+}
+.login{
+    display: none !important;
+}
+.logina{
+    display: block !important;
+}
+.register-log-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 70px;
+    gap: 30px;
+    color: #fff;
+}
+.register-log-header h2{
+    text-align: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 30px;
+}
+.form form div{
+    display: flex;
+    text-align: start;
+    gap: 15px;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    height: 50px;
+    align-items: center;
+    justify-content: start;
+}
+.form form div i{
+    font-size: 1.2rem;
+    color: #373737;
+}
+.form form input{
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+}
+.form form button{
+    background-color: #ffa500;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px;
+    transition: 0.25s;
+    color: #fff;
+}
+.form form button:hover{
+    background-color: #ff8c00;
+}
+.form p span{
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1.3rem;
+    text-align: center;
+    transition: 0.2s
+}
+.form p span:hover{
+    color: #ffa500;
+}
+
+.logged-in{
+    position: absolute;
+    right: 50px;
+    display: none;
+    gap: 5px;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #373737;
+    padding: 10px;
+    border: 1px solid #fff;
+}
+#name{
+    text-decoration: underline white;
+}
+#log-out{
+    cursor: pointer;
+    transition: 0.25s;
+}
+#log-out:hover{
+    color: #ffa500;
+}
+.logged{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: darkgray;
+}
+.account-icon i{
+    font-size: 1.4rem;
+    background-color: grey;
+    padding: 0px 4px;
+    padding: 5px 6px;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+@media (max-width: 600px) {
+    header{
+        justify-content: space-between;
+        padding-left: 50px;
+    }
+    .account,.logged-in{
+        right: 10px;
+    }
+}
