@@ -1,17 +1,13 @@
 //checking if alredy logged in
 let click = document.querySelector(".account")
 let logger = document.querySelector(".logged-in")
+let displayName = document.querySelector("#name")
+let btnBuy = document.querySelector("#buy-btn")
+btnBuy.style.display = "none"
+localStorage.setItem("isLogin",JSON.stringify(false))
 const confirmer = () => {
-    let info = localStorage.getItem("isLogin")
-    if(info){
-        logger.style.display = "flex"
-        let nameUser = JSON.parse(localStorage.getItem("user")).name
-        document.querySelector("#name").textContent = nameUser
-        click.style.display = "none"
-    }else{
-        logger.style.display = "none"
-        click.style.display = "flex"
-    }
+    let info = JSON.parse(localStorage.getItem("isLogin"))
+    info?btnBuy.style.display = "block":btnBuy.style.display = "none"
 }
 confirmer()
 
@@ -67,44 +63,6 @@ setInterval(() => {
 },2000)
 
 
-//buy menu
-let buy = document.querySelector(".buy");
-let blure = document.querySelector("#blur")
-let buyMenu = document.querySelector("#buy")
-let buyOpen = false
-let buyClose = document.querySelector("#buy-close")
-buy.addEventListener("click", e=>{
-    if(!JSON.parse(localStorage.getItem("isLogin"))){
-        alert("Please login to purchase")
-        return
-    }else{
-        //if menu is open
-        if(buyOpen == false){
-            buyMenu.style.display = "block"
-            blure.style.display = "block"
-            buyOpen = true
-        }
-        //closing the buy menu
-        buyClose.addEventListener("click",()=>{
-            buyMenu.style.display = "none"
-            blure.style.display = "none"
-            buyOpen = false
-        })
-    }
-
-})
-
-//checking buy info
-let buyForm = document.querySelector(".buy-menu form")
-buyForm.addEventListener("submit",e=>{
-    let credNumber = e.target.cardNumb.value
-    let cvs = e.target.cvs.value
-    let phoneNumb = e.target.phoneNumb.value
-    credNumber.length != 16 || cvs.length != 3 || phoneNumb.length != 9? alert("The given Information is wrong"):alert("The product has been bought");
-    buyOpen = false
-    buyOpen == false?buyMenu.style.display = "none":buyMenu.style.display = "block"
-})
-
 //register opener
 let regForm = document.querySelector("#register-log")
 let opener = false
@@ -130,6 +88,7 @@ let regi = regForm.querySelector(".register")
 let form1 = regi.querySelector("form")
 let login = document.querySelector(".login")
 let arr = JSON.parse(localStorage.getItem("user")) || []
+let blure = document.querySelector("#blur")
 form1.addEventListener("submit", e=>{
     e.preventDefault()
     let userName = e.target.name.value
@@ -166,18 +125,21 @@ form2.addEventListener("submit", e=>{
 
     for(let i of arr){
         if(i.email == email && i.password == password){
-            localStorage.setItem("isLogin", true)
+            localStorage.setItem("isLogin", JSON.stringify(true))
             accName.innerHTML = i.name
-            alert("Login successful")
             logger.style.display = "flex"
             click.style.display = "none"
             login.classList.add("login")
             login.classList.remove("logina")
             regForm.style.display = "none"
             blure.style.display = "none"
-        }else{
-            alert("Invalid credentials")
         }
+    }
+    if(JSON.parse(localStorage.getItem("isLogin"))){
+        alert("Login successful")
+        confirmer()
+    }else{
+        alert("Invalid credentials")
     }
 
 })

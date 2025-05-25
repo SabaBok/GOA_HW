@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Space Grotesk", sans-serif;
+}
+body{
+    height: 100vh;
+}
+main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(530px,1fr));
+    gap: 20px;
+    height: 100%;
+}
+#idk{
+    position: absolute;
+    height: 100%;
+    width: 30%;
+    left: 0;
+    background: url(images/bg-main-desktop.png) center no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+.left-sect{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    flex: 1;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    width: 450px;
+    height: 250px;
+    border-radius: 10px;
+    color: #fff;
+}
+.front-card{
+    background: url(images/bg-card-front.png) center no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    position: relative;
+    gap: 30px;
+    padding: 20px;
+}
+.front-card div{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+}
+.front-card p{
+    letter-spacing: 5px;
+    font-size: 1.7rem;
+}
+#front-circ{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#full-circ{
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+#empt-circ{
+    border: 1px solid #fff;
+    width: 20px;
+    height: 22px;
+    border-radius: 50%;
+}
+.back-card{
+    background: url(images/bg-card-back.png) center no-repeat;
+    background-size: cover;
+    position: relative;
+    transform: translateX(20%);
+}
+.back-card p{
+    position: absolute;
+    right: 55px;
+    bottom: 47%;
+}
+
+
+.right-sect{
+    width: 100%;
+    height: 100%;
+}
+.right-side{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-left: 50px;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.right-side div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+.right-side div span{
+    color: red;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    position: absolute;
+    bottom: -20px;
+}
+.right-side label{
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+.right-side form{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    width: 95%;
+    max-width: 416px;
+}
+.right-side input{
+    padding: 7px;
+    transition: 0.25s;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    outline: 1.5px solid hsl(212, 12%, 71%);
+}
+super{
+    display: flex;
+    gap: 10px;
+}
+input:focus{
+    outline:1px solid hsl(278, 94%, 30%);
+}
+button{
+    padding: 11px 30px;
+    border-radius: 7px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background-color: hsl(278, 68%, 11%);
+}
