@@ -6,18 +6,68 @@
 	<link rel="stylesheet" href="style.css">
 	<script src="https://kit.fontawesome.com/ecd2bcc678.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="darkmode">
 	<header>
-		<h1>name</h1>
+		<div id="idk">
+			<div class="logo">
+				<img src="logo.jpg" alt="">
+				<p>Saba's Lister</p>
+			</div>
 
-		<div class="like-deslike">
-			<i class="fa-solid fa-thumbs-up" style="cursor: pointer;"></i>
-			<i class="fa-solid fa-thumbs-down" style="cursor: pointer;"></i>
+			<div class="theme">
+				<div class="light-mode">
+					<i class="fa-solid fa-sun"></i>
+				</div>
+
+				<div class="night-mode">
+					<i class="fa-solid fa-moon"></i>
+				</div>
+			</div>
+
+			<div class="feedback">
+				<p>did you like it</p>
+				<div class="feed-cont">
+					<div>
+						<p>Yes</p>
+						<i class="fa-solid fa-thumbs-up" style="cursor: pointer;"></i>
+					</div>
+
+					<div>
+						<p>No</p>
+						<i class="fa-solid fa-thumbs-down" style="cursor: pointer; transform: rotateY(180deg);"></i>
+					</div>
+				</div>
+			</div>
 		</div>
 	</header>
 
 	<main>
+		<!-- <br></br> -->
+		<section class="main-cont">
+			<div class="main-top">
+				<div class="main-top-left">
+					<i class="fa-solid fa-list-check"></i>
+					<p>The List</p>
+				</div>
 
+				<div class="main-top-right">
+					<form action="">
+						<input type="text" name="todo" placeholder="Add A New Task">
+						<button><span>+</span> Add</button> 
+					</form>
+				</div>
+			</div>
+
+			<div class="main-mid">
+				<div>All</div>
+				<div>OnGoing</div>
+				<div>Finished</div>
+			</div>
+
+			<div class="main-bot"></div>
+			<div class="onGoing"></div>
+			<div class="finished"></div>
+		</section>
 	</main>
 	<script src="script.js"></script>
 </body>
