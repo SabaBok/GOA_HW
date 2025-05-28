@@ -367,6 +367,19 @@ footer input:focus{
 	border: 2px solid rgb(68, 140, 255);
 	box-shadow: 5px 0px 10px rgba(255, 255, 255, 0.3);
 }
+footer button{
+	padding: 15px 30px;
+	color: #fff;
+	font-size: 1.5rem;
+	border: none;
+	cursor: pointer;
+	transition: 0.3s;
+	background-color: #3498db;
+	border-radius: 20px;
+}
+footer button:hover{
+	background-color: #249eef7f;
+}
 
 
 
