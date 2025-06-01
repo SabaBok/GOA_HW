@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1) შექმენით ფუნქცია, რომელიც მიიღებს n რაოდენობის რიცხვს და დაბეჭდავს მათ ჯამს.
+    ფუნქციას გამოძახებისას უნდა გადასცეთ მინიმუმ 5 არგუმენტი. პირველი და მეორე არგუმენტები შეინახეთ ცვლადებში და დაბეჭდეთ მათი ნამრავლი, 
+    ხოლო სხვა დანარჩენი rest ოპერატორის გამოყენებით ჩასვით სიაში და დაბეჭდეთ მათი ჯამი -->
+    <script>
+        const sumOfN = (one,two,...n)=>{
+            let sume = 0
+            let multiply = one*two
+            for(const i of n){
+                sume +=i
+            }
+            return {sum:sume,mult:multiply}
+        }
+        console.log(sumOfN(1,2,3,4,5))
+    </script>
+</body>
+</html>

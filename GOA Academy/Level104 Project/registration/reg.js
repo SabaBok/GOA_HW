@@ -7,18 +7,21 @@ let regIdk = reg.querySelectorAll(".i")
 
 
 //registration
-function Info(email,number,pass){
+function Info(email,number,pass,logged){
     this.email = email
+    this.number = number
     this.pass = pass
+    this.logged = false
 }
 regForm.addEventListener("submit",e=>{
     e.preventDefault()
     let email = e.target.email.value
     let pass = e.target.pass.value
+    let mobNumb = e.target.mobNumb.value.trim()
     let rePass = e.target.rePass.value
 
-    if(pass.length >=8 &&rePass== pass){
-        accs.push(new Info(email,pass))
+    if(pass.length >=8 && rePass == pass){
+        accs.push(new Info(email,mobNumb,pass,false))
         localStorage.setItem("norma-acc",JSON.stringify(accs))
         reg.style.display = "none"
         log.style.display = "flex"
@@ -35,8 +38,10 @@ logForm.addEventListener("submit",e=>{
     let wrong = false
     for(let i of accs){
         if(i.email == email && i.pass == pass){
+            i.logged = true
             localStorage.setItem("norma-logged","true")
             window.location.href = '../index.html'
+            wrong = false
         }else{
             wrong = true
         }
