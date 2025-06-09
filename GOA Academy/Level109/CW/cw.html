@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // level 109:
+        //    1) 
+        //  const obj = {
+        //   arr: [
+        //     // item1
+        //     {
+        //       level: [10, 50, 100],
+        //     },
+
+        //     // item2
+        //     {
+        //       level: [20, 40, 60],
+        //       students: [
+        //         {
+        //           name: "jemala",
+        //           surname: "barkalaia",
+        //           score: [8, 8, 10],
+        //         },
+        //         {
+        //           name: "jumbera",
+        //           surname: "lamazi",
+        //           score: [10, 7, 9],
+        //         },
+        //       ],
+        //     },
+        //   ],
+        // };
+        // მოახდინეთ ამ ობიექტის სრული დესტრუქცია და მიღეეთ ცვლადები პირველი აითემის ლეველები ცალცალკე, მეორე აითემის ლეველები ცალცალკე, მეორე აითემში თითოეული სტუდენტის სახელი და გვარი და ასევე ამ სტუდენტის თითოეული ქულა
+
+        const obj = {
+            arr: [
+                // item1
+                {
+                    level: [10, 50, 100],
+                },
+
+                // item2
+                {
+                    level: [20, 40, 60],
+                    students: [
+                        {
+                            name: "jemala",
+                            surname: "barkalaia",
+                            score: [8, 8, 10],
+                        },
+                        {
+                            name: "jumbera",
+                            surname: "lamazi",
+                            score: [10, 7, 9],
+                        },
+                    ],
+                },
+
+            ],
+        };
+
+        const {
+            arr: [
+                { level: [i1, i2, i3] },
+                {
+                    level: [l1, l2, l3],
+                    students: [
+                        {
+                            name: student1_name,
+                            surname: student1_surname,
+                            score: [student1_score1, student1_score2, student1_score3],
+                        },
+                        {
+                            name: student2_name,
+                            surname: student2_surname,
+                            score: [student2_score1, student2_score2, student2_score3],
+                        },
+                    ],
+                },
+            ],
+        } = obj;
+    </script>
+</body>
+
+</html>
