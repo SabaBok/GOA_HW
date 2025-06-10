@@ -16,7 +16,6 @@ dark.addEventListener('click', () => {
 //setting up old events
 let tasks = JSON.parse(localStorage.getItem('events')) || []
 const mainBot = document.querySelector(".all")
-const onGoing = document.querySelector('.onGoing')
 const finished = document.querySelector(".finished")
 const setUpOldEvents = ()=>{
     for(let i of tasks){
@@ -24,21 +23,12 @@ const setUpOldEvents = ()=>{
             mainBot.innerHTML+=`
                 <div class="card ${i.status}">
                     <div class="card-left">
+                        <form action="" class='edit-input'>
+                            <input type="text" name="textEdit" value='${i.event}' required">
+                            <button>Finish</button>
+                        </form>
                         <h3>${i.event}</h3>
-                        <span>${i.month} ${i.day}, ${i.year}</span>
-                    </div>
-
-                    <div class="card-right">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <i class="fa-solid fa-trash-can"></i>
-                    </div>
-                </div>
-            `
-            onGoing.innerHTML+=`
-                <div class="card ${i.status}">
-                    <div class="card-left">
-                        <h3>${i.event}</h3>
-                        <span>${i.month} ${i.day}, ${i.year}</span>
+                        <span>${i.date}</span>
                     </div>
 
                     <div class="card-right">
@@ -51,8 +41,12 @@ const setUpOldEvents = ()=>{
             finished.innerHTML+=`
                 <div class="card ${i.status}">
                     <div class="card-left">
+                        <form action="" class='edit-input'>
+                            <input type="text" name="textEdit" value='${i.event}' required">
+                            <button>Finish</button>
+                        </form>
                         <h3>${i.event}</h3>
-                        <span>${i.month} ${i.day}, ${i.year}</span>
+                        <span>${i.date}</span>
                     </div>
 
                     <div class="card-right">
@@ -67,20 +61,17 @@ const setUpOldEvents = ()=>{
 setUpOldEvents()
 
 
-
 //feedback
 let idk = document.querySelector('.feed-cont').querySelectorAll('div')
 for(let i=0;i<idk.length;i++){
     idk[i].addEventListener('click', () => i==0?alert("thank you"):alert("we are sorry to hear that"));
 }
 
-
 //creating new task
-function InfoSaver(event,month,day,year,status){
+function InfoSaver(event,date,status){
     this.event = event;
-    this.month = month;
-    this.day = day;
-    this.year = year;
+    this.date = date
+    this.status = status;
 }
 let input = document.querySelector('.main-top-right').querySelector('form')
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -91,30 +82,23 @@ input.addEventListener('submit', e=> {
     let month = monthNames[time.getMonth()]
     let day = time.getDate()
     let year = time.getFullYear()
+    let date = `${month} ${day}, ${year}`
+
     let task = e.target.todo.value
     let status = "onGoing"
-    tasks.push(new InfoSaver(task,month,day,year,status))
+    tasks.push(new InfoSaver(task,date,status))
     localStorage.setItem("events",JSON.stringify(tasks))
 
     if (!task.trim()) return;
     mainBot.innerHTML+=`
         <div class="card ${status}">
 			<div class="card-left">
+                <form action="" class='edit-input'>
+                    <input type="text" name="textEdit" value='${task}' required">
+                    <button>Finish</button>
+                </form>
 				<h3>${task}</h3>
-				<span>${month} ${day}, ${year}</span>
-			</div>
-
-			<div class="card-right">
-				<i class="fa-solid fa-pen-to-square"></i>
-				<i class="fa-solid fa-trash-can"></i>
-			</div>
-		</div>
-    `
-    onGoing.innerHTML+=`
-        <div class="card ${status}">
-			<div class="card-left">
-				<h3>${task}</h3>
-				<span>${month} ${day}, ${year}</span>
+				<span>${date}</span>
 			</div>
 
 			<div class="card-right">
@@ -126,23 +110,93 @@ input.addEventListener('submit', e=> {
     e.target.todo.value = ''
 })
 
+//swicthing display
+let displaySwitchers = document.querySelector(".main-mid-container").querySelectorAll("div")
+let displayAll = true
+for(let i of displaySwitchers){
+    i.addEventListener("click",e=>{
+        let [firstDisplay,secDisplay] = displaySwitchers
+        if(displayAll){
+            mainBot.style.display = "none"
+            finished.style.display = 'flex'
+            firstDisplay.classList.remove("active")
+            firstDisplay.classList.add("deActive")
+            secDisplay.classList.remove("deActive")
+            secDisplay.classList.add("active")
+            displayAll = false
+        }else{
+            mainBot.style.display = "flex"
+            finished.style.display = 'none'
+            firstDisplay.classList.add("active")
+            firstDisplay.classList.remove("deActive")
+            secDisplay.classList.add("deActive")
+            secDisplay.classList.remove("active")
+            displayAll = true
+        }
+    })
+}
+
 //completing task
 document.addEventListener("click",e=>{
     if(e.target.classList.contains("card")){
-        finished.appendChild(e.target)
-        e.target.classList.remove("onGoing")
-        e.target.classList.add("finished")
+        let cardInfo = e.target.children[0].children
+        let [,cardText,cardDate] = cardInfo
+        if(e.target.parentElement.classList.contains("all")){
+            finished.appendChild(e.target)
+            for(let i = 0; i<tasks.length; i++){
+                if(tasks[i].event == cardText.textContent && tasks[i].date == cardDate.textContent){
+                    tasks[i].status = "finished"
+                    console.log("moved")
+                    localStorage.setItem('events',JSON.stringify(tasks))
+                }
+            }
+            e.target.classList.remove("onGoing")
+            e.target.classList.add("finished")
+        }else{
+            for(let i = 0; i<tasks.length; i++){
+                if(tasks[i].event == cardText.textContent && tasks[i].date == cardDate.textContent){
+                    tasks[i].status = "onGoing"
+                    localStorage.setItem('events',JSON.stringify(tasks))
+                }
+            }
+            mainBot.append(e.target)
+            e.target.classList.remove("finished")
+            e.target.classList.add("onGoing")
+        }
     }
 })
 
-//switching modes
-// const mainMid = document.querySelector(".main-mid-container")
-// const cardAll = mainMid.querySelectorAll("div")
-// for(let i of cardAll){
-//     i.addEventListener("click", e=>{
-//         if(i.textContent = "All"){
-//             console.log("all")
-//         }
-//     })
-// }
+//deleting
+document.addEventListener("click",e =>{
+    if(e.target.classList.contains("fa-trash-can")){
+        let card = e.target.parentElement.parentElement
+        let cardInfo = card.children[0].children
+        let [,cardText,cardDate] = cardInfo
+        for(let i =0; i<tasks.length; i++){
+            if(tasks[i].event == cardText.textContent && cardDate.textContent == tasks[i].date){
+                card.remove()
+                tasks.splice(i,1)
+                localStorage.setItem("events",JSON.stringify(tasks))
+            }
+        }
+    }
 
+})
+
+//editing
+document.addEventListener("click", e=>{
+    if(e.target.classList.contains("fa-pen-to-square")){
+        let cardText = e.target.parentElement.parentElement.children[0].children[1]
+        let editForm = cardText.parentElement.querySelector("form")
+        cardText.style.display = "none"
+        editForm.style.display = "flex"
+
+        // saving the new text
+        editForm.addEventListener("submit",event=>{
+            event.preventDefault()
+            cardText.textContent = event.target.textEdit.value
+            cardText.display = 'block'
+            editForm.style.display = 'none'
+        })
+    }
+})
