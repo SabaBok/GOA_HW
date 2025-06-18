@@ -1,30 +1,33 @@
-//the color theme setter
+//setting the theme
 let theme = localStorage.getItem('theme') || 'light';
-theme === "dark" ? document.body.classList.add('darkmode') : document.body.classList.remove('darkmode');
-const light = document.querySelector('.fa-sun')
-const dark = document.querySelector('.fa-moon')
-light.addEventListener('click', () => {
-    document.body.classList.add('darkmode');
-    localStorage.setItem('theme', 'dark');
-})
-dark.addEventListener('click', () => {
-    document.body.classList.remove('darkmode');
-    localStorage.setItem('theme', 'light');
-})
+theme==="dark"?
+document.body.classList.add('darkmode'):
+document.body.classList.remove('darkmode');
 
+//changing themes
+const themeToggle = document.querySelector('.theme');
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('darkmode');
+    
+    document.body.classList.contains('darkmode')?
+    localStorage.setItem('theme','dark'):
+    localStorage.setItem('theme','light');
+});
 
 //setting up old events
 let tasks = JSON.parse(localStorage.getItem('events')) || []
 const mainBot = document.querySelector(".all")
 const finished = document.querySelector(".finished")
 const setUpOldEvents = () => {
+    mainBot.innerHTML = '';
+    finished.innerHTML = '';
     for (let i of tasks) {
         if (i.status === "onGoing") {
             mainBot.innerHTML += `
                 <div class="card ${i.status}">
                     <div class="card-left">
                         <form action="" class='edit-input'>
-                            <input type="text" name="textEdit" value='${i.event}' required">
+                            <input type="text" name="textEdit" value="${i.event}" required">
                             <button>Finish</button>
                         </form>
                         <h3>${i.event}</h3>
@@ -42,7 +45,7 @@ const setUpOldEvents = () => {
                 <div class="card ${i.status}">
                     <div class="card-left">
                         <form action="" class='edit-input'>
-                            <input type="text" name="textEdit" value='${i.event}' required">
+                            <input type="text" name="textEdit" value="${i.event}" required">
                             <button>Finish</button>
                         </form>
                         <h3>${i.event}</h3>
@@ -62,9 +65,18 @@ setUpOldEvents()
 
 
 //feedback
-let idk = document.querySelector('.feed-cont').querySelectorAll('div')
-for (let i = 0; i < idk.length; i++) {
-    idk[i].addEventListener('click', () => i == 0 ? alert("thank you") : alert("we are sorry to hear that"));
+const changeText = document.querySelector('.feedText')
+let feedDivs = document.querySelector('.feed-cont').querySelectorAll('div')
+for (let i = 0; i < feedDivs.length; i++) {
+    feedDivs[i].addEventListener('click', e => {
+        if(i == 0){
+            changeText.textContent = "thank you"
+            changeText.style.color = "green"
+        }else{
+            changeText.textContent = "that's rude"
+            changeText.style.color = 'red'
+        }
+    });
 }
 
 //creating new task
@@ -73,41 +85,62 @@ function InfoSaver(event, date, status) {
     this.date = date
     this.status = status;
 }
-let input = document.querySelector('.main-top-right').querySelector('form')
-const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
-input.addEventListener('submit', e => {
+let eventForm = document.querySelector('.main-top-right').querySelector('form')
+let formError = eventForm.querySelector("label")
+eventForm.addEventListener('submit', e => {
     e.preventDefault()
-    let time = new Date()
-    let month = monthNames[time.getMonth()]
-    let day = time.getDate()
-    let year = time.getFullYear()
-    let date = `${month} ${day}, ${year}`
+    let formInput = eventForm.querySelector("input")
+
+    let time = new Date();
+    let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let month = monthNames[time.getMonth()];
+    let day = time.getDate();
+    let hour = time.getHours();
+    let minute = time.getMinutes();
+
+    day = day < 10 ? `0${day}` : day;
+    minute = minute < 10 ? `0${minute}` : minute;
+
+    let period = hour >= 12 ? "PM" : "AM";
+    hour = hour % 12;
+    hour = hour === 0 ? 12 : hour;
+    let hourStr = hour < 10 ? `0${hour}` : hour;
+
+    let clock = `${hourStr}:${minute} ${period}`;
+    let date = `${month} ${day}, ${clock}`;
 
     let task = e.target.todo.value
     let status = "onGoing"
-    tasks.push(new InfoSaver(task, date, status))
-    localStorage.setItem("events", JSON.stringify(tasks))
 
-    if (!task.trim()) return;
-    mainBot.innerHTML += `
-        <div class="card ${status}">
-			<div class="card-left">
-                <form action="" class='edit-input'>
-                    <input type="text" name="textEdit" value='${task}' required">
-                    <button>Finish</button>
-                </form>
-				<h3>${task}</h3>
-				<span>${date}</span>
-			</div>
+    if (!task.trim()){
+        formError.style.display = "block"
+        formError.style.opacity = "0.7"
+        formInput.style.outline = "2px solid red"
+        // return
+    }else{
+        formError.style.display = "none"
+        formError.style.opacity = "0"
+        formInput.style.outline = "2px solid var(--primary-light)"
+        tasks.push(new InfoSaver(task, date, status))
+        localStorage.setItem("events", JSON.stringify(tasks))    
+        mainBot.innerHTML += `
+            <div class="card ${status}">
+                <div class="card-left">
+                    <form action="" class='edit-input'>
+                        <input type="text" name="textEdit" value="${task}" required">
+                        <button>Finish</button>
+                    </form>
+                    <h3>${task}</h3>
+                    <span>${date}</span>
+                </div>
 
-			<div class="card-right">
-				<i class="fa-solid fa-pen-to-square"></i>
-				<i class="fa-solid fa-trash-can"></i>
-			</div>
-		</div>
-    `
-    e.target.todo.value = ''
+                <div class="card-right">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash-can"></i>
+                </div>
+            </div>`
+        e.target.todo.value = ''
+    }
 })
 
 //swicthing display
@@ -138,33 +171,43 @@ for (let i of displaySwitchers) {
 
 //completing task
 document.addEventListener("click", e => {
-    if (e.target.classList.contains("card")) {
-        let cardInfo = e.target.children[0].children
-        let [, cardText, cardDate] = cardInfo
-        if (e.target.parentElement.classList.contains("all")) {
-            finished.appendChild(e.target)
+    // Skip if trash or edit icons were clicked
+    if (
+        e.target.classList.contains("fa-trash-can") || 
+        e.target.classList.contains("fa-pen-to-square") || 
+        e.target.closest(".edit-input") // <-- THIS LINE IS THE FIX
+    ) {
+        return;
+    }
+
+    const card = e.target.closest(".card");
+    if (card) {
+        let cardInfo = card.children[0].children;
+        let [, cardText, cardDate] = cardInfo;
+
+        if (card.parentElement.classList.contains("all")) {
+            finished.appendChild(card);
             for (let i = 0; i < tasks.length; i++) {
                 if (tasks[i].event == cardText.textContent && tasks[i].date == cardDate.textContent) {
-                    tasks[i].status = "finished"
-                    console.log("moved")
-                    localStorage.setItem('events', JSON.stringify(tasks))
+                    tasks[i].status = "finished";
+                    localStorage.setItem('events', JSON.stringify(tasks));
                 }
             }
-            e.target.classList.remove("onGoing")
-            e.target.classList.add("finished")
+            card.classList.remove("onGoing");
+            card.classList.add("finished");
         } else {
             for (let i = 0; i < tasks.length; i++) {
                 if (tasks[i].event == cardText.textContent && tasks[i].date == cardDate.textContent) {
-                    tasks[i].status = "onGoing"
-                    localStorage.setItem('events', JSON.stringify(tasks))
+                    tasks[i].status = "onGoing";
+                    localStorage.setItem('events', JSON.stringify(tasks));
                 }
             }
-            mainBot.append(e.target)
-            e.target.classList.remove("finished")
-            e.target.classList.add("onGoing")
+            mainBot.append(card);
+            card.classList.remove("finished");
+            card.classList.add("onGoing");
         }
     }
-})
+});
 
 //deleting
 document.addEventListener("click", e => {
@@ -193,13 +236,18 @@ document.addEventListener("click", e => {
 
         cardText.style.display = "none"
         editForm.style.display = "flex"
+
+        let input = editForm.querySelector("input")
+        input.focus();
+        input.setSelectionRange(input.value.length, input.value.length);
         textEditOpen = true
         let newText = ''
         let newDate = ''
 
         // saving the new text
-        editForm.addEventListener("submit",e=>{
+        editForm.onsubmit = e=>{
             e.preventDefault()
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             let parent = e.target.parentElement
             let cardText = parent.querySelector("h3")
             let date = cardText.parentElement.children[2]
@@ -207,8 +255,14 @@ document.addEventListener("click", e => {
             let time = new Date()
             let month = monthNames[time.getMonth()]
             let day = time.getDate()
-            let year = time.getFullYear()
-            let dates = `${month} ${day}, ${year}`
+            let hour = time.getHours();
+            let minute = time.getMinutes();
+            let period = hour >= 12 ? "PM" : "AM";
+            hour = hour % 12 || 12;
+            minute = minute < 10 ? `0${minute}` : minute;
+            hour = hour < 10 ? `0${hour}` : hour;
+            let clock = `${hour}:${minute} ${period}`;
+            let dates = `${month} ${day}, ${clock}`;
 
             newText = e.target.textEdit.value
             newDate = dates
@@ -226,7 +280,7 @@ document.addEventListener("click", e => {
             }
             cardText.textContent = newText
             cardDate.textContent = newDate
-        })
+        }
     }
 })
 

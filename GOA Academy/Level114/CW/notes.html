@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        class Car{
+            constructor(name,model,year,color){
+                this.name = name
+                this.model = model
+                this.year = year
+                this.color = color
+            }
+
+            sound(){
+                console.log('honk')
+            }
+        }
+
+        const merce = new Car('mercedes','g-class',2018,'black')
+        console.group("mercedes")
+        for(let i in merce){
+            console.log(merce[`${i}`])
+        }
+        console.groupEnd()
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>To-Do Cards</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://kit.fontawesome.com/ecd2bcc678.js" crossorigin="anonymous"></script>
+</head>
+<body class="darkmode">
+	<!-- Level 113:  შექმენით რაც შეიძლება დახვეწილი ToDo აპლიკაცია; ახალი დიზაინითა და ახალი ფუნქციონალით. დედლაინი - ხუთშაბათამდე. -->
+	<header>
+		<div id="idk">
+			<div class="logo">
+				<img src="logo.jpg" alt="">
+				<p>Saba's Lister</p>
+			</div>
+
+			<div class="theme">
+				<div class="light-mode">
+					<i class="fa-solid fa-sun"></i>
+				</div>
+
+				<div class="night-mode">
+					<i class="fa-solid fa-moon"></i>
+				</div>
+			</div>
+
+			<div class="feedback">
+				<p class="feedText">did you like it</p>
+				<div class="feed-cont">
+					<div>
+						<p>Yes</p>
+						<i class="fa-solid fa-thumbs-up" style="cursor: pointer;"></i>
+					</div>
+
+					<div>
+						<p>No</p>
+						<i class="fa-solid fa-thumbs-down" style="cursor: pointer; transform: rotateY(180deg);"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<i class="fa-solid fa-bars burger"></i>
+	</header>
+
+	<main>
+		<section class="main-cont">
+			<div class="main-top">
+				<div class="main-top-left">
+					<i class="fa-solid fa-list-check"></i>
+					<p>The List</p>
+				</div>
+
+				<div class="main-top-right">
+					<form action="">
+						<div>
+							<input type="text" id="task" name="todo" placeholder="Add A New Task">
+							<label for="task">The Input May Not Be Empty</label>
+						</div>
+						<button><span>+</span> Add</button> 
+					</form>
+				</div>
+			</div>
+
+			<div class="main-mid">
+				<div class="main-mid-container">
+					<div class="active">All</div>
+					<div class="deActive">Finished</div>
+				</div>
+			</div>
+
+			<div class="main-bot all"></div>
+			<div class="main-bot finished"></div>
+		</section>
+	</main>
+	<script src="script.js" defer></script>
+</body>
+</html>

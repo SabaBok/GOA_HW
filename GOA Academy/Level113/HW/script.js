@@ -1,17 +1,20 @@
-//the color theme setter
+//setting the theme
 let theme = localStorage.getItem('theme') || 'light';
-theme === "dark" ? document.body.classList.add('darkmode') : document.body.classList.remove('darkmode');
-const light = document.querySelector('.fa-sun')
-const dark = document.querySelector('.fa-moon')
-light.addEventListener('click', () => {
-    document.body.classList.add('darkmode');
-    localStorage.setItem('theme', 'dark');
-})
-dark.addEventListener('click', () => {
-    document.body.classList.remove('darkmode');
-    localStorage.setItem('theme', 'light');
-})
+theme==="dark"?
+document.body.classList.add('darkmode'):
+document.body.classList.remove('darkmode');
 
+//changing themes
+const themeToggle = document.querySelector('.theme');
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('darkmode');
+    
+    if (document.body.classList.contains('darkmode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
 
 //setting up old events
 let tasks = JSON.parse(localStorage.getItem('events')) || []
@@ -62,9 +65,18 @@ setUpOldEvents()
 
 
 //feedback
-let idk = document.querySelector('.feed-cont').querySelectorAll('div')
-for (let i = 0; i < idk.length; i++) {
-    idk[i].addEventListener('click', () => i == 0 ? alert("thank you") : alert("we are sorry to hear that"));
+const changeText = document.querySelector('.feedText')
+let feedDivs = document.querySelector('.feed-cont').querySelectorAll('div')
+for (let i = 0; i < feedDivs.length; i++) {
+    feedDivs[i].addEventListener('click', () => {
+        if(i == 0){
+            changeText.textContent = "thank you"
+            changeText.style.color = "green"
+        }else{
+            changeText.textContent = "that's rude"
+            changeText.style.color = 'red'
+        }
+    });
 }
 
 //creating new task
@@ -73,41 +85,62 @@ function InfoSaver(event, date, status) {
     this.date = date
     this.status = status;
 }
-let input = document.querySelector('.main-top-right').querySelector('form')
-const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
-input.addEventListener('submit', e => {
+let eventForm = document.querySelector('.main-top-right').querySelector('form')
+let formError = eventForm.querySelector("label")
+eventForm.addEventListener('submit', e => {
     e.preventDefault()
-    let time = new Date()
-    let month = monthNames[time.getMonth()]
-    let day = time.getDate()
-    let year = time.getFullYear()
-    let date = `${month} ${day}, ${year}`
+    let formInput = eventForm.querySelector("input")
+
+    let time = new Date();
+    let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let month = monthNames[time.getMonth()];
+    let day = time.getDate();
+    let hour = time.getHours();
+    let minute = time.getMinutes();
+
+    day = day < 10 ? `0${day}` : day;
+    minute = minute < 10 ? `0${minute}` : minute;
+
+    let period = hour >= 12 ? "PM" : "AM";
+    hour = hour % 12;
+    hour = hour === 0 ? 12 : hour;
+    let hourStr = hour < 10 ? `0${hour}` : hour;
+
+    let clock = `${hourStr}:${minute} ${period}`;
+    let date = `${month} ${day}, ${clock}`;
 
     let task = e.target.todo.value
     let status = "onGoing"
-    tasks.push(new InfoSaver(task, date, status))
-    localStorage.setItem("events", JSON.stringify(tasks))
 
-    if (!task.trim()) return;
-    mainBot.innerHTML += `
-        <div class="card ${status}">
-			<div class="card-left">
-                <form action="" class='edit-input'>
-                    <input type="text" name="textEdit" value='${task}' required">
-                    <button>Finish</button>
-                </form>
-				<h3>${task}</h3>
-				<span>${date}</span>
-			</div>
+    if (!task.trim()){
+        formError.style.display = "block"
+        formError.style.opacity = "0.7"
+        formInput.style.outline = "2px solid red"
+        // return
+    }else{
+        formError.style.display = "none"
+        formError.style.opacity = "0"
+        formInput.style.outline = "2px solid var(--primary-light)"
+        tasks.push(new InfoSaver(task, date, status))
+        localStorage.setItem("events", JSON.stringify(tasks))    
+        mainBot.innerHTML += `
+            <div class="card ${status}">
+                <div class="card-left">
+                    <form action="" class='edit-input'>
+                        <input type="text" name="textEdit" value='${task}' required">
+                        <button>Finish</button>
+                    </form>
+                    <h3>${task}</h3>
+                    <span>${date}</span>
+                </div>
 
-			<div class="card-right">
-				<i class="fa-solid fa-pen-to-square"></i>
-				<i class="fa-solid fa-trash-can"></i>
-			</div>
-		</div>
-    `
-    e.target.todo.value = ''
+                <div class="card-right">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash-can"></i>
+                </div>
+            </div>`
+        e.target.todo.value = ''
+    }
 })
 
 //swicthing display

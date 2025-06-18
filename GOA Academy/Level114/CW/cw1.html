@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        class GuinneaPig{
+            constructor(color,size,year,month,day){
+                this.color = color
+                this.size = color
+                this.year = year
+                this.month = month
+                this.day = day
+            }
+        
+            findAge(){
+                const date = new Date()
+                const nowYear = date.getFullYear()
+                const nowMonth = date.getMonth()+1
+                const nowDay = date.getDate()
+
+                let ageYears = nowYear - this.year;
+                let ageMonths = nowMonth - this.month;
+                let ageDays = nowDay - this.month;
+
+                if (ageDays < 0) {
+                    nowMonth -= 1;
+                    if (nowMonth === 0) {
+                        nowMonth = 12;
+                        nowYear -= 1;
+                    }
+                    const daysInPrevMonth = new Date(nowYear, nowMonth, 0).getDate();
+                    ageDays += daysInPrevMonth;
+                    ageMonths -= 1;
+                }
+
+                if (ageMonths < 0) {
+                    ageMonths += 12;
+                    ageYears -= 1;
+                }
+
+                console.log(`the pig is ${ageYears} years, ${ageMonths} months and ${ageDays} days old`)
+            }
+
+            checkBirthday(){
+                const date = new Date()
+                const nowYear = date.getFullYear()
+                const nowMonth = date.getMonth() + 1
+                const nowDay = date.getDate()
+
+                this.month == nowMonth && this.day == nowDay?console.log("happy birthday"):console.log("its not his birthday")
+            }
+        }
+
+        const pig1 = new GuinneaPig("black","big",2018,6,10)
+
+        pig1.findAge()
+        pig1.checkBirthday()
+    </script>
+</body>
+</html>
