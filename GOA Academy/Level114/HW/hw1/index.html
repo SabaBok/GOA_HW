@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8" />
 	<title>To-Do Cards</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="https://kit.fontawesome.com/ecd2bcc678.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="darkmode">
 	<!-- Level 113:  შექმენით რაც შეიძლება დახვეწილი ToDo აპლიკაცია; ახალი დიზაინითა და ახალი ფუნქციონალით. დედლაინი - ხუთშაბათამდე. -->
 	<header>
@@ -40,8 +42,39 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<i class="fa-solid fa-bars burger"></i>
+
+		<div class="side-bar">
+			<i class="fa-solid fa-xmark close"></i>
+
+			<div class="side-bar-bot">
+				<div class="side-theme">
+					<div class="light-mode">
+						<i class="fa-solid fa-sun"></i>
+					</div>
+
+					<div class="night-mode">
+						<i class="fa-solid fa-moon"></i>
+					</div>
+				</div>
+
+				<div class="side-feedback">
+					<p class="side-feed-text">did you like it</p>
+					<div class="side-feed-cont">
+						<div>
+							<p>Yes</p>
+							<i class="fa-solid fa-thumbs-up" style="cursor: pointer;"></i>
+						</div>
+
+						<div>
+							<p>No</p>
+							<i class="fa-solid fa-thumbs-down" style="cursor: pointer; transform: rotateY(180deg);"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</header>
 
 	<main>
@@ -58,7 +91,7 @@
 							<input type="text" id="task" name="todo" placeholder="Add A New Task">
 							<label for="task">The Input May Not Be Empty</label>
 						</div>
-						<button><span>+</span> Add</button> 
+						<button><span>+</span> Add</button>
 					</form>
 				</div>
 			</div>
@@ -76,4 +109,5 @@
 	</main>
 	<script src="script.js" defer></script>
 </body>
+
 </html>

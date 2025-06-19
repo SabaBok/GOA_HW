@@ -18,7 +18,7 @@ body{
     --primary:#0071ff; /*button, selected,edit*/
     --primary-light:#0073ff36; /*button, selected,edit*/
     --primary-mid:#0073ffaa; /*button, selected,edit*/
-    --secondary:#6c5ce7;
+    --secondary:#a79df4;
     --danger: #ff7675;
     --warning: #fdcb6e;
     --text: #2d3436;
@@ -74,6 +74,7 @@ header img{
     height: 50px;
     width: 130px;
     border-radius: 10px;
+    position: relative;
 }
 .logo{
     display: flex;
@@ -119,16 +120,92 @@ header img{
     color: var(--text);
     cursor: pointer;
 }
-.theme div:last-child{
+.theme div:last-child,
+.side-theme div:last-child {
     display: none;
 }
-.darkmode .theme div:first-child{
+.darkmode .theme div:first-child,
+.darkmode .side-theme div:first-child {
     display: none;
 }
-.darkmode .theme div:last-child{
+.darkmode .theme div:last-child,
+.darkmode .side-theme div:last-child {
     display: block;
 }
+.side-bar{
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 13%;
+    max-width: 300px;
+    min-width: 200px;
+    background-color: var(--secondary);
+    transform: translateX(101%);
+    transition: 0.4s;
+    opacity: 0;
+    z-index: 111;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    gap: 30px;
+}
+.side-bar-bot{
+    height: 100%;
+    width: 95%;
+    position: relative;
+    z-index: 222;
+}
+
+/* Close icon */
+.side-bar .close {
+    align-self: flex-end;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+/* Theme section */
+.side-theme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--background);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+/* Feedback section */
+.side-feedback {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--text);
+}
+
+.side-feed-cont {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.side-feed-cont div {
+    cursor: pointer;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: 0.25s;
+}
+.side-feed-cont div:hover {
+    background-color: var(--primary);
+}
 
 main{
     width: 100%;

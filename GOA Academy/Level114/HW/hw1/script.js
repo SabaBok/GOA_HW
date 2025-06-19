@@ -1,18 +1,21 @@
 //setting the theme
 let theme = localStorage.getItem('theme') || 'light';
-theme==="dark"?
-document.body.classList.add('darkmode'):
-document.body.classList.remove('darkmode');
+theme === "dark" ?
+    document.body.classList.add('darkmode') :
+    document.body.classList.remove('darkmode');
 
 //changing themes
-const themeToggle = document.querySelector('.theme');
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('darkmode');
-    
-    document.body.classList.contains('darkmode')?
-    localStorage.setItem('theme','dark'):
-    localStorage.setItem('theme','light');
-});
+const themeToggle = [document.querySelector('.theme'), document.querySelector(".side-theme")]
+for (let i of themeToggle) {
+    i.addEventListener('click', () => {
+        document.body.classList.toggle('darkmode');
+
+        document.body.classList.contains('darkmode') ?
+            localStorage.setItem('theme', 'dark') :
+            localStorage.setItem('theme', 'light');
+    });
+}
+
 
 //setting up old events
 let tasks = JSON.parse(localStorage.getItem('events')) || []
@@ -66,15 +69,28 @@ setUpOldEvents()
 
 //feedback
 const changeText = document.querySelector('.feedText')
-let feedDivs = document.querySelector('.feed-cont').querySelectorAll('div')
+const feedDivs = document.querySelector('.feed-cont').querySelectorAll('div')
+const sideChangeText = document.querySelector(".side-feed-text")
+const sideFeed = document.querySelector(".side-feed-cont").querySelectorAll('div')
 for (let i = 0; i < feedDivs.length; i++) {
     feedDivs[i].addEventListener('click', e => {
-        if(i == 0){
+        if (i == 0) {
             changeText.textContent = "thank you"
             changeText.style.color = "green"
-        }else{
+        } else {
             changeText.textContent = "that's rude"
             changeText.style.color = 'red'
+        }
+    });
+}
+for (let i = 0; i < sideFeed.length; i++) {
+    sideFeed[i].addEventListener('click', e => {
+        if (i == 0) {
+            sideChangeText.textContent = "thank you"
+            sideChangeText.style.color = "lime"
+        } else {
+            sideChangeText.textContent = "that's rude"
+            sideChangeText.style.color = 'red'
         }
     });
 }
@@ -112,17 +128,17 @@ eventForm.addEventListener('submit', e => {
     let task = e.target.todo.value
     let status = "onGoing"
 
-    if (!task.trim()){
+    if (!task.trim()) {
         formError.style.display = "block"
         formError.style.opacity = "0.7"
         formInput.style.outline = "2px solid red"
         // return
-    }else{
+    } else {
         formError.style.display = "none"
         formError.style.opacity = "0"
         formInput.style.outline = "2px solid var(--primary-light)"
         tasks.push(new InfoSaver(task, date, status))
-        localStorage.setItem("events", JSON.stringify(tasks))    
+        localStorage.setItem("events", JSON.stringify(tasks))
         mainBot.innerHTML += `
             <div class="card ${status}">
                 <div class="card-left">
@@ -173,8 +189,8 @@ for (let i of displaySwitchers) {
 document.addEventListener("click", e => {
     // Skip if trash or edit icons were clicked
     if (
-        e.target.classList.contains("fa-trash-can") || 
-        e.target.classList.contains("fa-pen-to-square") || 
+        e.target.classList.contains("fa-trash-can") ||
+        e.target.classList.contains("fa-pen-to-square") ||
         e.target.closest(".edit-input") // <-- THIS LINE IS THE FIX
     ) {
         return;
@@ -245,7 +261,7 @@ document.addEventListener("click", e => {
         let newDate = ''
 
         // saving the new text
-        editForm.onsubmit = e=>{
+        editForm.onsubmit = e => {
             e.preventDefault()
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             let parent = e.target.parentElement
@@ -271,11 +287,11 @@ document.addEventListener("click", e => {
             e.target.style.display = 'none'
             textEditOpen = false
             //updating the localstorage and the list
-            for(let i = 0; i<tasks.length; i++){
-                if(tasks[i].event == cardText.textContent && tasks[i].date == date.textContent){
+            for (let i = 0; i < tasks.length; i++) {
+                if (tasks[i].event == cardText.textContent && tasks[i].date == date.textContent) {
                     tasks[i].event = newText
                     tasks[i].date = newDate
-                    localStorage.setItem("events",JSON.stringify(tasks))
+                    localStorage.setItem("events", JSON.stringify(tasks))
                 }
             }
             cardText.textContent = newText
@@ -295,4 +311,20 @@ document.addEventListener("click", e => {
             textEditOpen = false
         }
     }
+})
+
+//sidebar - open
+const burger = document.querySelector(".burger")
+const sideBar = document.querySelector(".side-bar")
+burger.addEventListener("click", e => {
+    sideBar.classList.toggle("side-active")
+    sideBar.style.transform = "translateX(0)"
+    sideBar.style.opacity = "100%"
+})
+//sidebar - close
+const sideClose = document.querySelector(".close")
+sideClose.addEventListener("click", e => {
+    sideBar.classList.toggle("side-active")
+    sideBar.style.transform = "translateX(101%)"
+    sideBar.style.opacity = "0"
 })
