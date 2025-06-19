@@ -159,7 +159,6 @@ header img{
     z-index: 222;
 }
 
-/* Close icon */
 .side-bar .close {
     align-self: flex-end;
     font-size: 1.5rem;
@@ -168,7 +167,6 @@ header img{
     color: var(--text);
 }
 
-/* Theme section */
 .side-theme {
     display: flex;
     align-items: center;
@@ -179,7 +177,6 @@ header img{
     border-radius: 20px;
 }
 
-/* Feedback section */
 .side-feedback {
     text-align: center;
     display: flex;
