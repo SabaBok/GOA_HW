@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1) შექმენით Shape მშობელი კლასი, რომელსაც ექნება: 
+    --- თვისებები --- 
+    სოგრძე: Number, 
+    სიგანე: Number, 
+    ფერი: String 
+    და კოორდინატები(სიის/მასივის სახით[x;y]): Array
+    --- მეთოდები --- 
+    სიგრძის შეცვლა(გაზრდა/შემცირება), 
+    სიგანის შეცვლა(გაზრდა/შემცირება), 
+    ფერის შეცვლა,
+    კოორდინატების შევლა,
+    ფიგურის დახატვა - მეთოდი, რომელიც კონსოლზე დაბეჭდავს: 
+    'კოორდინატებზე - ${კოორდინატები} იხატება ფიგურა, რომლის ზომებია ${სიგრძე}/${სიგანე}, რომლის ფერია &{ფერი}.
+    --- --- --- --- --- ---
+    შექმნეთი შვილეული კლასები - მაგ(Cirle, Rectangle, Triangle და ა.შ.), რომლებიც მემკვიდრეობით მიიღებენ Shape კლასის თვისებებსა და მეთოდებს.
+    --- --- --- --- --- ---
+    შეუცვალეთ თითოეულ შვილეულ კლასს ფიგურის დახატვის მეთოდი, მაგ. Triangle კლასის შემთქვევაში, ფიგურის დახატვის მეთოდი კონსოლზე დაბეჭდავს:
+    'კოორდინატებზე - ${კოორდინატები} იხატება სამკუთხედი, რომლის ზომებია ${სიგრძე}/${სიგანე}, რომლის ფერია &{ფერი}. -->
+    <script>
+        class Shape{
+            constructor(length,width,color,cordinates){
+                this.length = length
+                this.width = width
+                this.color = color
+                this.cordinates = cordinates
+            }
+
+            changeLength(newLength){
+                this.length = newLength
+            }
+            changeWidth(newWidth){
+                this.width = newWidth
+            }
+            changeColor(newColor){
+                this.color = newColor
+            }
+            changeCords(newCords){
+                this.cordinates = newCords
+            }
+        }
+        
+        class Circle extends Shape{
+            drawShape(){
+                console.log(`კოორდინატებზე - ${this.cordinates} იხატება წრე, რომლის ზომებია ${this.length}/${this.width}, რომლის ფერია ${this.color}.`)
+            }
+        }
+        class Triangle extends Shape{
+            drawShape(){
+                console.log(`კოორდინატებზე - ${this.cordinates} იხატება სამკუთხედი, რომლის ზომებია ${this.length}/${this.width}, რომლის ფერია ${this.color}.`)
+            }
+        }
+
+        const tri = new Triangle(10,10,'blue',[10,5])
+        tri.drawShape()
+</script>
+</body>
+</html>
