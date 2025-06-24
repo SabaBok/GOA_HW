@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Level 117: 
+    შექმენით საიტი მანქანების შესახებ, დღეს ნასწავლი მასალის გამოყენებით: 
+    --- ვიზუალური მხარე ---
+    ◾ საიტის დიზანი: თქვენ როგორიც გაგიხარდებათ.
+    ◾ ააგეთ სია(ul/ol), სადაც მოთავსებული იქნება სხვადასხვა ბრენდისა და მახასიათებლების მქონე მანქანები.
+    ◾ თითოეულ მანქანის სახელზე დაჭერით უნდა გამოჩნდეს მანქანის სურათი და მახასიათებლები; გარდა ამისა getInfo და engineSound ღილაკები.
+    --- ტექნიკური მხარე ---
+    ◾ შექმენით მშობელი Car კლასი, ზოგადი თვისებებითა და getInfo მეთოდით.
+    ◾ შექმენით შვილეული კლასები(მაგ. BMW, Mercedes, Audi და ა.შ), რომლებსაც დამატებით ექნებათ რამოდენიმე თვისება და მეთოდი.
+    ◾ გამოიყენეთ დღეს ნასწავლი super keyword
+    ◾ საიტზე getInfo და engineSound ღილაკებზე დაჭერით უნდა დაიკვრას შესაბამისი აუდიო ფაილები და საიტზე გამოჩნდეს კონკრეტული მანქანის სურათი და მახასიათებლები.
+    ◾ საიტზე თითოეული მანქანის შესაბამისი მახასიათებლები Car კლასის შვილეული კლასების ობიექტების getInfo მეთოდის გამოყენებით უნდა გამოსახოთ. -->
+    <div id="blur"></div>
+    <main>
+        <div class="all-container">
+            <div class="card">
+                <img src="./images/bmwLogo.png" alt="">
+                <div class="card-content">
+                    <h2>BMW M5</h2>
+                    <div>
+                        <button class="getInfo BMW Info">Get Info</button>
+                        <button class="engineSound BMW Eng">Engine Sound</button>
+                    </div>
+
+                </div>
+
+                <div class="card-hidden">
+                    <img src="./images/bmwLogo.png" alt="">
+                    <ul></ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="./images/mercBenz.png" alt="">
+                <div class="card-content">
+                    <h2>Mercedes-Benz S-Class</h2>
+                    <div>
+                        <button class="getInfo Mercedes Info">Get Info</button>
+                        <button class="engineSound Mercedes Eng">Engine Sound</button>
+                    </div>
+
+                </div>
+
+                <div class="card-hidden">
+                    <img src="./images/mercBenz.png" alt="">
+                    <ul></ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="./images/audiA8.png" alt="">
+                <div class="card-content">
+                    <h2>Audi A8</h2>
+                    <div>
+                        <button class="getInfo Audi Info">Get Info</button>
+                        <button class="engineSound Audi Eng">Engine Sound</button>
+                    </div>
+
+                </div>
+
+                <div class="card-hidden">
+                    <img src="./images/audiA8.png" alt="">
+                    <ul></ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="./images/tesla.png" alt="">
+                <div class="card-content">
+                    <h2>Tesla Model S</h2>
+                    <div>
+                        <button class="getInfo Tesla Info">Get Info</button>
+                        <button class="engineSound Tesla Eng">Engine Sound</button>
+                    </div>
+
+                </div>
+
+                <div class="card-hidden">
+                    <img src="./images/tesla.png" alt="">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -45,6 +45,9 @@
             changeCords(newCords){
                 this.cordinates = newCords
             }
+            drawShape(){
+                console.log(`კოორდინატებზე - ${this.cordinates} იხატება ფიგურა, რომლის ზომებია ${this.length}/${this.width}, რომლის ფერია ${this.color}.`)
+            }
         }
         
         class Circle extends Shape{
