@@ -21,8 +21,8 @@ class Car extends AllCars{
     getInfo() {
         return `${this.brand} ${this.model} (${this.year}) - ${this.color} - $${this.price} - Horn: ${this.horn}`;
     }
-    signalHorn() {
-        alert(this.horn);
+    signalHorn(){
+        alert(this.horn)
     }
 }
 
@@ -61,11 +61,7 @@ Backblur.addEventListener('click', e=> {
 const engine = document.querySelectorAll('.engineSound');
 for(let eng of engine) {
     for(let veh of allVehicles) {
-        if(eng.classList.contains(veh.brand) && eng.classList.contains('Eng')) {
-            eng.addEventListener('click', e=> {
-                veh.signalHorn();
-            });
-        }
+        if(eng.classList.contains(veh.brand) && eng.classList.contains('Eng')) eng.addEventListener('click', e=> veh.signalHorn());
     }
 }
 

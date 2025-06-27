@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Level 118:
+    შექმენით Employee მშობელი კლასი, რომელსაც ექნება:
+    --- თვისებები ---
+    ◽ id: Number პრივატული თვისება
+    ◽ firstName: String
+    ◽ lastName: String
+    ◽ monthSalary: Number პრივატული თვისება
+    --- მეთოდები ---
+    ◽ fullName - გეტერი აბრუნებს '${firstName} ${lastName}', ხოლო სეტერი '${firstName} ${lastName}' <- ასეთი ფორმატის
+    string_ს ხლეჩს და ინახავს შესაბამის ატრიბუტებში ◽ yearSalary - გეტერი აბრუნებს 1 წლის ხელფასს. სეტერი არ აქვს ◽
+    monthSalary - სეტერში გააკონტროლეთ, რომ ახალი ხელფასის ოდენობა იყოს ნულზე მეტი. გეტერით დააბრუნეთ ხელფასი. ◽ id
+    - გეტერი დააბრუნებს აიდის. სეტერი არ ექნება შექმენით შვილეული კლასები (მაგ. Manager, Boss და ა.შ.), რომლებიც
+    მემკვიდრეობით მიიღებენ Employee კლასის თვისებებსა და მეთოდებს. --- შვილეულ კლასს უნდა ჰქონდეს --- ◽ department:
+    String თვისება(გამოიყენეთ super) ◽ changeDepartment - სეტერი, რომელიც მიიღებს შემდეგ სიას[newDepartament,
+    newSalary], მოახდენს მონაცემთა ვალიდაციას და თუ ახალი ხელფასი უფრო მომგებიანია, შეცვლის ობიექტის monthSalary და
+    departament თვისებებს. ◽ მეთოდი info - დააბრუნებს ინფორმაციას ობიექტის შესაახებ ◽ გადაწერეთ/შეცვალეთ მშობელი
+    კლასის yearSalary გეტერი(ვთქვათ მენეჯერს აქვს პრემიები😏) -->
+    <script>
+        class Employee{
+            #id
+            #monthSalary
+            constructor(id,firstName,lastName,monthSalary){
+                this.#id = id;
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.#monthSalary = monthSalary;
+            }
+
+            get fullName(){
+                return `${this.firstName} ${this.lastName}`
+            }
+            set fullName(name){
+                const [first,last] = name.split(' ')
+                this.firstName = first
+                this.lastName = last
+            }
+
+            get yearSalary(){
+                return this.#monthSalary*12
+            }
+            set monthlySalary(newSalary){
+                if(newSalary > 0){
+                    this.#monthSalary = newSalary
+                }else{
+                    console.log("the new salary must be a positive number")
+                }
+            }
+            get monthlySalary(){
+                return this.#monthSalary
+            }
+
+            get iD(){
+                return this.#id
+            }   
+        }
+
+        class Manager extends Employee{
+            constructor(id,firstName,last,monthSalary, departament){
+                super(id,firstName,last,monthSalary)
+                this.departament = departament
+            }
+
+            set changeDepartment(newInfo){
+                const [newDep,newSalary] = newInfo
+                if(newSalary > this.monthSalary){
+                    this.departament = newDep
+                    this.monthSalary = newSalary
+                }else{
+                    console.log("it is not a good promotion")
+                }
+            }
+
+            info(){
+                return `${this.firstName}, ${this.lastName}, ${this.iD}, ${this.monthlySalary}, ${this.yearSalary}, ${this.departament}`
+            }
+            get yearSalary(){
+                return this.monthlySalary * 14
+            }
+        }
+    </script>
+</body>
+
+</html>
