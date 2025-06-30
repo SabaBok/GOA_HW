@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--✅ დავალება 5: Set-ით რეალური მაგალითი
+
+    🧠 თემა: Set
+    📌 დავალება:
+    წარმოიდგინე რომ ხარ კონცერტზე და ბილეთზე შემოწმება გიწევს. სახელების სია (array) მოგეცა, სადაც ზოგიერთი ადამიანი
+    ორჯერ წერია. გამოიყენე Set რომ ერთი და იმავე ადამიანს ერთხელ ჩაუტარო შემოწმება.|-->
+    <script>
+        const unChecked = ['saba bokuchava','tornike beruchashvili','davit sharia','saba bokuchava','sandro kalandarishvili','davit sharia']
+        const checked = new Set(unChecked)
+        for(let i of checked.values()){
+            console.log(`${i} has been checked`)
+        }
+</script>
+</body>
+
+</html>

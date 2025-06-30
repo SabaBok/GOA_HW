@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--✅ დავალება 3: ასინქრონული მუშაობის მიმდევრობა
+
+    🧠 თემა: setTimeout
+    📌 დავალება:
+    დაწერე 3 ცალკე setTimeout, რომლებიც აჩვენებენ:
+
+    "Start"
+
+    "Middle" (1 წამის შემდეგ)
+
+    "End" (2 წამში)
+
+    ამით ნახავ როგორ მუშაობს ასინქრონული კოდები.-->
+    <script>
+        console.log("start")
+        setTimeout(() => {
+            console.log("midle")
+        }, 1000);
+        setTimeout(() => {
+            console.log("end")
+        }, 2000);
+    </script>
+</body>
+
+</html>
