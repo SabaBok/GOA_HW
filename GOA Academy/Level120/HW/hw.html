@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Level 120:
+    შექმენით OrderManager კლასი, რომელსაც ექნება:
+    --- თვისებები ---
+    activeOrders: Map - ობიექტის შექმნისას ცარიელი მაპი
+    completedOrders: Set - ობიექტის შექმნისას ცარიელი სეტი
+    activeOrders მაპი შეინახავს აქტიურ შეკვეთებს სადაც key იქნება orderId: Number, ხოლო value იქნება customerName:
+    String
+    completedOrders სეტი კი იმ მომხმარებლების სახელებს შეინახავს, რომლების შეკვეთებიც შევასრულეთ.
+    --- მეთოდები ---
+    processOrder(orderId, customerName, callback)
+    printStatus()
+    printStatus მეთოდი კონსოლზე ბეჭდავს ყველა აქტიურ შეკვეთას(activeOrders) და ყველა დასრულებულ
+    შეკვეთას(completedOrders). გამოიყენეთ ლუპი ანდა დესტრუქცია
+    processOrder მეთოდი ქმნის შეკვეთას(ამატებს activeOrdersში), კონსოლზე გამოაქვს შეტყობინება, რომ ახალი შეკვეთა მივიღეთ
+    და 3 წამით ამუშავებს შეკვეთას (setTimeout)
+    setTimeout ის შიგნით:
+    1)ამოშალეთ შეკვეთა activeOrdersდან და მომხმარებლის სახელი შეინახეთ completedOrders სეტში
+    2)გამოიძახეთ callBack ფუნქცია(დააბეჭდინეთ, რომ ესა და ეს შეკვეთა შესრულდა)
+    3)გამოიძახეთ printStatus მეთოდი
+    callBack(orderId) ფუნქცია შექმენით კლასის გარეთ და შემდეგი რამ დააბეჭდინეთ კონსოლზე: 'შეკვეთა #${orderId} დამთავრდა'
+    ამის შემდეგ შექმენით OrderManager კლასის ობიექტი და გააკეთეთ რამოდენიმე შეკვეთა განსხავებული id და სახელებით-->
+
+    <script>
+        class OrderManager{
+            constructor(){
+                this.activeOrders = new Map()
+                this.completedOrders = new Set()
+            }
+            processOrder(orderId,customerName,callBack){
+                this.activeOrders.set(orderId,customerName)
+                console.log(`New order received: ${orderId} for ${customerName}`)
+                setTimeout(() => {
+                    this.activeOrders.delete(orderId)
+                    this.completedOrders.add(customerName)
+                    callBack(orderId)
+                    this.printStatus()
+                }, 3000)
+            }
+            printStatus(){
+                for(let i of this.activeOrders.keys()){
+                    console.log(`active order id's are --> ${i} for ${this.activeOrders.get(i)}`)
+                }
+                for(let i of this.completedOrders.values()){
+                    console.log(`the completed orders are --> ${i}`)
+                }
+            }
+        }
+
+        let map = new Map()
+        map.set(1,'Davit')
+        map.set(2,'Nino')
+        map.set(3,'Saba')
+        map.set(4,'Giorgi')
+        
+        let set = new Set()
+        set.add('Davit')
+        set.add('Nino')
+        const ord1 = new OrderManager(map,set)
+        for(let i of map.keys()){
+            ord1.processOrder(i,map.get(i),()=>{
+                console.log(`Order #${i} completed`)
+            })
+        }
+    </script>
+</body>
+
+</html>
