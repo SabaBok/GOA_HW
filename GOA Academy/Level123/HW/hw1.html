@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            gap: 50px;
+            align-items: center;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    </style>
+</head>
+
+<body>
+<!--1) დაასრულეთ წინა დავალება (სურვილისამებრ)-->
+    <div>
+        <h2>Active orders</h2>
+        <ol id="active-orders"></ol>
+    </div>
+    <form action="">
+        <input type="text" placeholder="Enter Name" name="name">
+        <input type="text" placeholder="Enter Food" name="food">
+        <button>Order</button>
+    </form>
+
+    <div>
+        <h2>Completed Orders</h2>
+        <ol id="completed-orders"></ol>
+    </div>
+
+    <script>
+        class OrderManager {
+            constructor() {
+                this.activeOrders = new Map()
+                this.completedOrders = new Set()
+            }
+
+            processOrder(orderId, customerName, food, callBack) {
+                this.activeOrders.set(orderId, { customerName, food })
+                this.saveOrders()
+                renderOrders()
+
+                setTimeout(() => {
+                    this.activeOrders.delete(orderId)
+                    this.completedOrders.add(`${customerName} - ${food}`)
+                    this.saveOrders()
+                    callBack(orderId)
+                    renderOrders()
+                }, 3000)
+            }
+
+            saveOrders() {
+                localStorage.setItem("activeOrders", JSON.stringify(Array.from(this.activeOrders.entries())))
+                localStorage.setItem("completedOrders", JSON.stringify(Array.from(this.completedOrders)))
+            }
+
+            loadOrders() {
+                const savedActive = JSON.parse(localStorage.getItem("activeOrders")) || []
+                const savedCompleted = JSON.parse(localStorage.getItem("completedOrders")) || []
+
+                for (let [id, data] of savedActive) {
+                    this.activeOrders.set(id, data)
+                }
+                for (let entry of savedCompleted) {
+                    this.completedOrders.add(entry)
+                }
+            }
+        }
+
+        const orderManager = new OrderManager()
+        orderManager.loadOrders()
+
+        const form = document.querySelector("form")
+        const activeOl = document.getElementById("active-orders")
+        const completedOl = document.getElementById("completed-orders")
+
+        function renderOrders() {
+            activeOl.innerHTML = ""
+            for (let [id, data] of orderManager.activeOrders.entries()) {
+                const li = document.createElement("li")
+                li.textContent = `#${id}: ${data.customerName} ordered ${data.food}`
+                activeOl.appendChild(li)
+            }
+
+            completedOl.innerHTML = ""
+            for (let entry of orderManager.completedOrders) {
+                const li = document.createElement("li")
+                li.textContent = entry
+                completedOl.appendChild(li)
+            }
+        }
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault()
+            const name = form.elements["name"].value.trim()
+            const food = form.elements["food"].value.trim()
+            if (!name || !food) return
+
+            const orderId = Date.now().toString()
+            orderManager.processOrder(orderId, name, food, (id) => {
+                console.log(`Order #${id} completed.`)
+            })
+
+            form.reset()
+        })
+
+        renderOrders()
+    </script>
+</body>
+
+</html>
