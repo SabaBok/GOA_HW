@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card{
+            border: 1px solid black;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .event-list{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <main>
+        <form action="" class="event-top">
+            <input placeholder="Type the Event" required name="task" type="text">
+            <button>Add Event</button>
+        </form>
+
+        <div class="event-list"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
