@@ -27,15 +27,12 @@ function filterData() {
 
     let filteredData = [...allData];
 
-    // If name filter active — sort by category name alphabetically
     if (filterName) {
         filteredData.sort((a, b) => a.category.localeCompare(b.category));
     }
-    // If size filter active — sort by area descending
     if (filterSize) {
         filteredData.sort((a, b) => b.area - a.area);
     }
-    // If price filter active — sort by calculated price descending
     if (filterPrice) {
         filteredData.sort((a, b) => {
             let priceA = a.area / 1000 + a.bbox.reduce((cur, next) => cur + next) / a.bbox.length;

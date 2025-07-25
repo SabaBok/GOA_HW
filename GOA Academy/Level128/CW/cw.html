@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--level 128:-->
+    <!--1) შექმენით ფუნქცია რომელიც დააბრუნებს ფრომისს შემდეგ მიიღეთ ფრომისი წაიკითხეთ მის მიერ დაresolve ებული მნიშვნელობა
+    და დაბეჭდეთ შესაბამისი აიქონი ❄️ მნიშვნელობიდან გამომდინარე-->
+
+    <script>
+        function getData(data){
+            return new Promise((resolve,reject)=>{
+                resolve('❄')
+            })
+        }
+
+        function getWeather(data){
+            data=='❄'? console.log('its snowy'):console.log('its not snowy')
+        }
+        getData().then(getWeather)
+    </script>
+</body>
+</html>

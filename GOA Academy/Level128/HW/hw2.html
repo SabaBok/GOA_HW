@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--2️⃣ შექმენი Promise, რომელიც აბრუნებს რიცხვს (მაგ. 2). შემდეგი then()-ებში გაამრავლე ეს რიცხვი ჯერ 2-ზე, შემდეგ მიღებული შედეგი 3-ზე, 
+    შემდეგ 4-ზე. ბოლო then()-ში დაბეჭდე საბოლოო შედეგი-->
+
+    <script>
+        function getNumber(){
+            return new Promise((res,rej)=>{
+                let randNumb = Math.floor(Math.random()*10)+1
+                console.log('the first is '+randNumb)
+                res(randNumb)
+            })
+        }
+
+        getNumber()
+        .then(data => data*2)
+        .then(data => data*3)
+        .then(data => data*4)
+        .then(data => console.log(data))
+    </script>
+</body>
+</html>

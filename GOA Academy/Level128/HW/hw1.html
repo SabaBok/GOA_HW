@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--1️⃣ დაწერე სამი Promise, რომლებიც აბრუნებენ "Step 1", "Step 2", "Step 3" თითოეული 1 წამიანი დაყოვნებით. თითოეული უნდა შესრულდეს მხოლოდ მაშინ, 
+    როცა წინა დასრულდება. გამოიყენე მხოლოდ then() ჩეინინგი.-->
+
+    <script>
+        function step1(){
+            return new Promise((res,rej)=>{
+                setTimeout(() => {
+                    console.log('the firts step is done')
+                    res('the first step is done')
+                }, 1000);
+            })
+        }
+
+        function step2(){
+            return new Promise((res,rej)=>{
+                setTimeout(() => {
+                    console.log('the second step is done')
+                    res('the second step is done')
+                }, 1000);
+            })
+        }
+
+        function step3(){
+            return new Promise((res,rej)=>{
+                setTimeout(() => {
+                    console.log('the third step is done')
+                    res('the third step is done')
+                }, 1000);
+            })
+        }
+
+
+        step1()
+        .then(step2)
+        .then(step3)
+        .then(() => console.log('all the steps are done'))
+    </script>
+</body>
+</html>

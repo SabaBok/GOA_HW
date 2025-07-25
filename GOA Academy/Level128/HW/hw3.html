@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--3️⃣ დაწერე Promise, რომელიც 2 წამის შემდეგ აბრუნებს მომხმარებლის სახელს (მაგ. "Gio"). 
+    შემდეგ then()-ში დააბრუნე ტექსტი "Hello, Gio!" და ბოლოს დაბეჭდე ეს ტექსტი-->
+
+    <script>
+        function getName(){
+            return new Promise(res=>{
+                setTimeout(() => {
+                    res('gio')
+                }, 2000);
+            })
+        }
+
+        getName().then(name=> console.log(`hello, ${name}`))
+    </script>
+</body>
+</html>

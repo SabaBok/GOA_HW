@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--5️⃣ შექმენი Promise, რომელიც აბრუნებს ინფორმაციას მომხმარებლის შესახებ. პრომისი უნდა აბრუნებდეს ინფორმაციას მომხმარებლის შესახებ
+    ( მისი სახელი, გვარი, ასაკი, სქესი და ა.შ.) ობიექტის სახით. პრომისი შიგნით შექმენით ორი ცვლადი: isUserFound და timeToFindUser. პირველში, 
+    რანდომულად დააგენერეითეთ 0 ან 1, ხოლო მეორეში რიცხვი 0 დან 10 მდე. Promise მომხმარებლის ინფორმაციას უნდა აბრუნებდეს იმ შემთხვევაში 
+    თუ isUserFound === 1 და ამას იმდენი წამი უნდა ანდომებდეს დროს(setTimeout) რამდენიც არის timeToFindUser_ში. თუ isUserFound აღმოჩნდა 0, 
+    მაშინ დაარეჯექთეთ რაიმე შეტყობინება. ამ პრომისზე გამოიძახეთ then მეთოდი, რომელსაც გადასცემთ ორ არგუმენტს. ერთ ფუნქციას, რომელიც დაბეჭდავს
+    მომხმარებლის ინფორმაციას, ხოლო მეორე ფუნქციას, რომელიც დაბეჭდავს ერორს-->
+
+    <script>
+        function getPerson(){
+            return new Promise((res,rej)=>{
+                const isUserFound = Math.round(Math.random()*2)
+                const timeToFindUser = Math.round(Math.random*10)
+
+                const person = {
+                    name:'saba',
+                    latName:'bokuchava',
+                    age:17,
+                    gender:'male',
+                }
+                if(isUserFound === 1){
+                    setTimeout(() => {
+                        res(person)
+                    }, timeToFindUser);
+                }else if(isUserFound ===0) rej("the person has not been found")
+            })
+        }
+        
+        function foundDude(data){
+            console.log(data)
+        }
+        function noDude(data){
+            console.log(data)
+        }
+        getPerson().then(foundDude,noDude)
+    </script>
+</body>
+</html>
