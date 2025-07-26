@@ -1,5 +1,6 @@
 const weatherForm = document.querySelector('form')
 const card = document.querySelector('.card-city')
+const recCities = document.querySelectorAll('.main-right-cities div')
 
 const temp = document.querySelector('.temp')
 const [cityName, weekDay, fullDate] = card.children
@@ -14,7 +15,7 @@ const wind = document.querySelector('#wind')
 
 const apiKey = 'a008dadb0be1cac66555d8d817ad6d98'
 
-const randomCities = [
+const Cities = [
     "New York",
     "London",
     "Tokyo",
@@ -47,12 +48,39 @@ const randomCities = [
     "Cape Town",
     "Amsterdam"
 ]
-async function renderFirstCity() {
-    const randNumb = Math.floor(Math.random() * randomCities.length)
-
-    const data = await GetData(randomCities[randNumb])
-    renderCity(data,randomCities[randNumb])
+const randCities = new Set([])
+while(randCities.size<9){
+    const randNum = Math.floor(Math.random() * Cities.length)
+    if(randCities)
+    randCities.add(Cities[randNum])
+    //console.lozg(Cities[randNum ])
 }
+
+
+async function renderFirstCity() {
+    const randNumb = Math.floor(Math.random() * Cities.length)
+
+    const data = await GetData(Cities[randNumb])
+    renderCity(data,Cities[randNumb])
+}
+async function renderRecCities() {
+    let neededRandCities = [...randCities]
+    for(let i of recCities){
+        const randNumber = Math.floor(Math.random() * randCities.size)
+        //console.log(neededRandCities[randNumber])
+        const data = await GetData(neededRandCities[randNumber])
+        i.innerHTML =`
+            <p>${neededRandCities[randNumber]} <span>${data.main.temp} &deg;C</p>
+            <i class="weatherIcon"></i>
+        `
+        setWeatherIconByDescription(data.weather[0].description)
+
+        i.addEventListener('click',() => renderCity(data, neededRandCities[randNumber]))
+    }
+    
+}
+renderFirstCity()
+renderRecCities()
 
 weatherForm.addEventListener('submit', async e => {
     e.preventDefault()
@@ -109,7 +137,7 @@ async function GetData(city) {
         throw new Error(`API Error ${response.status}`)
     }
     const data = await response.json()
-    console.log(data)
+    //console.log(data)
     return data
 }
 
@@ -191,7 +219,8 @@ function setWeatherIconByDescription(description) {
     const key = description.toLowerCase()
     const iconClass = iconMap[key] || "fa-question"
 
-    const iconElement = document.getElementById("weatherIcon")
-
-    iconElement.className = "fa-solid " + iconClass
+    const iconElement = document.querySelectorAll(".weatherIcon")
+    for(let i of iconElement){
+        i.className = "fa-solid " + iconClass
+    }
 }
