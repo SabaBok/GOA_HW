@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/ecd2bcc678.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <!--Level 129: 
     შექმენით ამინდის პროგნოზის აპლიკაცია ☀❄. 
@@ -21,47 +23,85 @@
         </div>
 
         <form class="head-search">
-            <input type="text" placeholder="Location" name="location">
+            <input type="text" placeholder="Location" name="location" required>
             <i class="fa-solid fa-location-dot"></i>
         </form>
 
-        <div class="theme"><p>&copy All Rights To Saba</p></div>
+        <div class="theme">
+            <p>&copy All Rights To Saba</p>
+        </div>
     </header>
 
     <main>
         <div class="main-container">
             <div class="main-left">
                 <div class="main-left-top">
-                    <h3>36&deg;<span>C</span></h3>
-                    <div>
+                    <h3 class="temp">36<span>&deg;C</span></h3>
+
+                    <div class="card-city">
                         <h1>City Name</h1>
-                        <p>Time Hour</p>
                         <p>Week Day</p>
                         <p>Full Date</p>
                     </div>
 
-                    <div>
+                    <div class="card-emoji">
                         <img src="" alt="">
-                        <p></p>
+                        <p>sunny</p>
                     </div>
+
                 </div>
 
                 <div class="main-left-mid">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div id="feelsLike"><span>Feels Like: </span></div>
+
+                    <div id="cloudiness"><span>cloudiness: </span></div>
+
+                    <div id="UV"><span>UV: </span></div>
                 </div>
 
                 <div class="main-left-bot">
-                    <div>Presure <span>Unit</span></div>
-                    <div>Wind <span>Unit</span></div>
+                    <div>
+                        <i class="fa-solid fa-droplet"></i>
+                        <p>Humidity</p>
+                        <b id="humidity">Unit <span>%</span></b>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-wind"></i>
+                        <p>Wind</p>
+                        <b id="Wind">Unit <span>km/h</span></b>
+                    </div>
                 </div>
             </div>
 
-            <div class="main-right"></div>
+            <div class="main-right">
+                <b>Suggested Cities</b>
+
+                <div class="main-right-cities">
+                    <div>
+                        <p>Tbilisi <span>36 &deg;C</span></p>
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <div>s</div>
+                    <div>s</div>
+
+                    <div>s</div>
+                    <div>s</div>
+                    <div>s</div>
+
+                    <div>s</div>
+                    <div>s</div>
+                    <div>s</div>
+                </div>
+
+                <div class="main-right-credits">
+                    <p>Designed And Built By <span><b>Saba Bokuchava</b></span> Using HTML, CSS, JS And Weather API</p>
+                </div>
+            </div>
         </div>
     </main>
 
     <script src="script.js"></script>
 </body>
+
 </html>
