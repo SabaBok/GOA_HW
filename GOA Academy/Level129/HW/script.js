@@ -77,7 +77,6 @@ async function renderRecCities() {
 
         i.addEventListener('click',() => renderCity(data, neededRandCities[randNumber]))
     }
-    
 }
 renderFirstCity()
 renderRecCities()
@@ -124,9 +123,6 @@ function renderCity(data, city) {
     wind.textContent = `Wind: ${dataWindSpeed.toFixed(1)} km/h`
     windDir.textContent = `Wind Direction: ${degToCompass(data.wind.deg)}`
 }
-function displayError(error) {
-    console.log(`error: ${error}`) // temporary solution
-}
 async function GetData(city) {
     const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
     const response = await fetch(apiURL)
@@ -141,7 +137,7 @@ async function GetData(city) {
     return data
 }
 
-
+// custom functions
 function degToCompass(deg) {
     const directions = [
         "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
