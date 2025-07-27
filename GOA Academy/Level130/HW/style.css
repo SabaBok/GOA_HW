@@ -108,6 +108,23 @@ main{
     gap: 10px;
     text-align: center;
 }
+.card-emoji i{
+    font-size: 3rem;
+}
+.card-emoji{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.card-city h1{
+    text-transform: capitalize;
+}
+.card-emoji p{
+    text-transform: capitalize;
+    font-size: 1,4rem;
+    font-weight: bold;
+}
 .main-left-mid{
     width: 100%;
     display: flex;
