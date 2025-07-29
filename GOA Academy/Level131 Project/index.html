@@ -7,10 +7,25 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/ecd2bcc678.js" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "oXn9XmCi58GjVRTLn",
+            });
+        })();
+    </script>
 </head>
 
 <body>
     <main>
+        <div class="modal">
+            <b></b>
+            <p>Insert Text</p>
+            <div></div>
+        </div>
         <div class="login">
             <b class="head-text">FINE<p>bank</p>.IO</b>
 
@@ -30,9 +45,8 @@
 
                     <div class="sec-inp">
                         <input type="password" placeholder="* * * * * * * * * * * * * * * * * * * * * * * * * *"
-                            id="pass" name="pass" required>
-                        <i class="fa-regular fa-eye pass-show"></i>
-                        <i class="fa-regular fa-eye-slash pass-no-show"></i>
+                            id="pass" class="passInp" name="pass" required>
+                        <i class="fa-regular fa-eye pass-show pass-emj"></i>
                     </div>
                 </div>
 
@@ -51,7 +65,7 @@
                 </div>
 
                 <div class="sign-google">
-                    <img src="../images/google.png" alt="Google Icon">
+                    <img src="./images/google.png" alt="Google Icon">
                     <p>Continue With Google</p>
                 </div>
 
@@ -68,14 +82,14 @@
                 <div class="inp">
                     <label for="fullName">Full Name</label>
                     <div>
-                        <input type="tex" id="fullName" placeholder="Tanzir Rahman" name="fullName" required>
+                        <input type="text" id="fullNameReg" placeholder="Tanzir Rahman" name="fullName" required>
                     </div>
                 </div>
 
                 <div class="inp">
                     <label for="email">Email Address</label>
                     <div>
-                        <input type="email" id="email" placeholder="hello@example.com" name="email" required>
+                        <input type="email" id="emailReg" placeholder="hello@example.com" name="email" required>
                     </div>
                 </div>
 
@@ -86,9 +100,8 @@
 
                     <div class="sec-inp">
                         <input type="password" placeholder="* * * * * * * * * * * * * * * * * * * * * * * * * *"
-                            id="pass" name="pass" required>
-                        <i class="fa-regular fa-eye pass-show"></i>
-                        <i class="fa-regular fa-eye-slash pass-no-show"></i>
+                            id="passReg" class="passInp" name="pass" required>
+                        <i class="fa-regular fa-eye pass-show pass-emj"></i>
                     </div>
                 </div>
 
@@ -104,7 +117,7 @@
                 </div>
 
                 <div class="sign-google">
-                    <img src="../images/google.png" alt="Google Icon">
+                    <img src="./images/google.png" alt="Google Icon">
                     <p>Continue With Google</p>
                 </div>
 
@@ -122,16 +135,18 @@
                 <div class="inp">
                     <label for="email">Email Address</label>
                     <div>
-                        <input type="email" id="email" placeholder="hello@example.com" name="email" required>
+                        <input type="email" id="emailForg" placeholder="hello@example.com" name="email" required>
                     </div>
                 </div>
 
-                <button>Sign Up</button>
+                <button>Password Reset</button>
 
                 <p class="for-acc">Back to login</p>
             </form>
         </div>
     </main>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
