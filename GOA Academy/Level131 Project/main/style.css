@@ -16,6 +16,7 @@ body{
 #blur{
     display: none;
     position: fixed;
+    z-index: 1;
     width: 100%;
     height: 100%;
     backdrop-filter: blur(5px);
@@ -37,8 +38,13 @@ body{
         opacity: 0%;
     }
 }
+.fa-bell{
+    position: relative !important;
+    z-index: 0 !important;
+}
 aside{
     position: fixed;
+    z-index: 2;
     left: 0;
     width: 250px;
     height: 100%;
@@ -212,13 +218,17 @@ header{
 .header-search form i{
     color: #525256;
     cursor: pointer;
+    position: relative;
+    z-index: 0;
 }
 .header-notis{
     position: relative;
     width: 100%;
+    z-index: 0;
 }
 #notis{
     position: absolute;
+    z-index: 0;
     background-color: #fff;
     width: 200px;
     left: 50%;
@@ -260,6 +270,8 @@ header{
 .fa-bell{
     cursor: pointer;
     transition: 0.3s;
+    position: relative;
+    z-index: 0;
 }
 .fa-bell:hover{
     color: #666666b5;
@@ -402,9 +414,115 @@ main h4{
 .balance-create-card button:last-child:hover{
     color: #299d9198;
 }
+#add-card{
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    padding: 20px;
+    width: 300px;
+    height: 450px;
+    border-radius: 5px;
+    display: none;
+}
+#add-card form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+#add-card form div{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+#add-card form div input{
+    border: 0;
+    outline: 0;
+    background-color: #e2e3e4;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 1.1rem;
+}
+#add-card button{
+    padding: 7px 30px;
+    border: 0;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #299D91;
+    color: #fff;
+}
+
+.modal{
+    opacity: 0;
+    position: fixed;
+    z-index: 2;
+    top: 15px;
+    right: 2%;
+    width: 300px;
+    height: 100px;
+    background-color: #ededed;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1 );
+    text-align: center;
+    transition: 0.3s;
+    text-transform: capitalize;
+}
+.modal div{
+    width: 90%;
+    height: 1px;
+    background-color: blue;
+    border-radius: 20px;
+}
+@keyframes modalTime {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 90%;
+    }
+}
+@keyframes modalAppear {
+    0% {
+        opacity: 0%;
+        transform: translate(2%, -15px);
+    }
+    100% {
+        opacity: 100%;
+        transform: translate(2%, 0);
+    }
+}
+@keyframes modalAppearMobile {
+    0% {
+        opacity: 0%;
+        transform: translate(50%, -15px);
+    }
+    100% {
+        opacity: 100%;
+        transform: translate(50%, 0);
+    }
+}
 
 
-
+@media (max-width:600px) {
+    .modal{
+        width: 95%;
+        right: 50%;
+        animation: modalAppearMobile 0.4s ease-in-out;
+        transform: translate(50%, 0);
+    }
+}
 @media (max-width:1034px) {
     main{
         align-items: center;
