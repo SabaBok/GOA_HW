@@ -72,6 +72,8 @@
     </aside>
 
     <header>
+        <i class="fa-solid fa-bars burger"></i>
+
         <div class="header-date">
             <i class="fa-solid fa-angles-right"></i>
             <p>july 7, 2025</p>
@@ -99,12 +101,46 @@
             </form>
         </div>
     </header>
-    
-    <main>
-        <div class="balance">
 
-        </div>
-    </main>
+    <div id="balance">
+        <main>
+            <h4>Balances</h4>
+            <div class="balance-cont">
+                <div class="balance-card">
+                    <div class="balance-card-top">
+                        <p>${CardType}</p>
+                        <div>
+                            <span>${BankName}</span>
+                            <img src="${ImgSrc}" alt="BankImage">
+                        </div>
+                    </div>
+
+                    <div class="balance-card-mid">
+                        <div>
+                            <p>${CardNumber}</p>
+                            <span>Account Number</span>
+                        </div>
+
+                        <div>
+                            <p>$${MoneyAmmount}</p>
+                            <span>Total Amount</span>
+                        </div>
+                    </div>
+
+                    <div class="balance-card-bot">
+                        <button>Remove</button>
+                        <button>Details <i class="fa-solid fa-angle-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="balance-create-card">
+                    <button>Add Account</button>
+                    <button>Edit Accounts</button>
+                </div>
+            </div>
+        </main>
+
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

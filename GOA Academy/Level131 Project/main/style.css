@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 *{
     margin: 0;
     padding: 0;
@@ -9,6 +8,10 @@
 body{
     min-height: 100vh;
     background-color: #f4f5f7;
+}
+.burger{
+    display: none !important;
+    font-size: 2rem;
 }
 aside{
     position: fixed;
@@ -22,6 +25,7 @@ aside{
     align-items: center;
     gap: 100px;
     padding: 30px 20px;
+    transition: 0.3s;
 }
 aside b{
     font-family: "Poppins", sans-serif;
@@ -143,9 +147,9 @@ aside b p{
 
 header,main{
     margin-left: 250px;
+    width: calc(100vw - 250px);
 }
 header{
-    width: calc(100vw - 250px);
     height: 100px;
     display: flex;
     align-items: center;
@@ -245,4 +249,156 @@ header{
     background-color: #f4f5f7;
     padding: 5px 15px;
     border-radius: 5px;
+}
+
+main{
+    height: calc(100vh - 100px);
+    border: 1px solid black;
+    padding: 20px 30px;
+}
+main h4{
+    color: #878787;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.balance-cont{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,330px);
+    grid-auto-rows: 250px;
+    gap: 32px 24px;
+    align-items: center;
+    justify-items: center;
+}
+.balance-card{
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.balance-card-top{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.114);
+}
+.balance-card-top img{
+    width: 50px;
+}
+.balance-card-top div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.balance-card-mid{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+.balance-card-mid div{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+.balance-card-mid div p{
+    font-size: 1.3rem;
+}
+.balance-card-mid div span{
+    font-size: 0.9rem;
+    color: #9F9F9F;
+}
+.balance-card-bot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+}
+.balance-card-bot button:first-child{
+    border: 0;
+    cursor: pointer;
+    color: #299D91;
+    background-color: transparent;
+    transition: 0.3s;
+}
+.balance-card-bot button:first-child:hover{
+    color: #299d9198;
+}
+.balance-card-bot button:last-child{
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #299D91;
+    border-radius: 5px;
+    padding: 7px 18px;
+    text-align: center;
+    transition: 0.3s;
+}
+.balance-card-bot button:last-child:hover{
+    background-color: #299d9198;
+}
+.balance-create-card{
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.balance-create-card button{
+    border: 0;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.balance-create-card button:first-child{
+    background-color: #299D91;
+    padding: 10px 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.balance-create-card button:first-child:hover{
+    background-color: #299d9198;
+}
+.balance-create-card button:last-child{
+    color: rgba(0, 0, 0, 0.4);
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.balance-create-card button:last-child:hover{
+    color: #299d9198;
+}
+
+
+
+
+@media (max-width:800px) {
+    .burger{
+        display: block !important;
+    }
+    .header-date{
+        display: none;
+    }
+    .header-search{
+        gap: 10px;
+    }
+    header,main{
+        width: 100%;
+        margin-left: 0;
+    }
+    aside{
+        transform: translateX(-100%);
+    }
 }
