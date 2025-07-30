@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <script src="https://kit.fontawesome.com/ecd2bcc678.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <div id="blur"></div>
     <aside>
         <div class="aside-top">
             <b>FINE<p>bank</p>.IO</b>
@@ -17,32 +20,32 @@
                     <i class="fa-solid fa-border-all"></i>
                     <p>Overview</p>
                 </div>
-    
+
                 <div>
                     <i class="fa-solid fa-wallet"></i>
                     <p>Balances</p>
                 </div>
-    
+
                 <div>
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     <p>Transactions</p>
                 </div>
-    
+
                 <div>
                     <i class="fa-solid fa-receipt"></i>
                     <p>Bills</p>
                 </div>
-    
+
                 <div>
                     <i class="fa-solid fa-money-bill-transfer"></i>
                     <p>Expenses</p>
                 </div>
-    
+
                 <div>
                     <i class="fa-solid fa-crosshairs"></i>
                     <p>Goals</p>
                 </div>
-    
+
                 <div>
                     <i class="fa-solid fa-gear"></i>
                     <p>Settings</p>
@@ -59,7 +62,8 @@
             <section></section>
 
             <div class="profile">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAABlBMVEXJycmcnJyshIZ4AAAB7ElEQVR4nO3bUW7DMAwEUfv+ly4SGEXQ2kksk1xqPXMCvj8BIpeFiIiIiIiIiIiIiIiIiKio9TX1MIOt+6nHOtcBYjbMB8YklC8UM1i+ZjSnnHL0lZxkdKUMMFpSBh3tJMOOXpILjFaUi442ksuOJpIARwtJiKOBJMihl7hAwhxiSaBDKgl1KCUukGCHThIOEUniHRpIgkMjcYGkOBQSIM0kWQ4g3RzVEiBApnPUSoAAAaJzVEqAAAECBAgQIECAzCopdAABAkQoKXUAATKfpNjhA7H5Q+RXtx3EZvPBB2KzHeSzr+WzQWez0+gDsdn79dnE9tmN94HY3I/4XPT43Fj5XL353CEuNpehi8+trs/19GJzz74MSNQDH2fCeGTCeGTCeOah2LJA/OZgICIioq35nygOr9+Phhk0JxCNMQOKhpZhRS/LRUYTSoCigyWMoaWEMnSUcIaGksIQUNIcRjvlhZRkR5UknVFEKXHkS4oY6ZRCR6qk1JEoKXakScodSRKBI0MiYSRQZI5gidARK3GBSB2BErEjTKJmrEESNeKZiyNCohZsuTguS9TjvwSkmeOSRD36n4CoB//X3SHqsXe6N0Q99G53hqhHPghIt1wc5yXqeQ+7K0Q97puAdOueEPWwbwPSLSDd2p34B3GsN/j6gvMWAAAAAElFTkSuQmCC" alt="profile pic">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAABlBMVEXJycmcnJyshIZ4AAAB7ElEQVR4nO3bUW7DMAwEUfv+ly4SGEXQ2kksk1xqPXMCvj8BIpeFiIiIiIiIiIiIiIiIiKio9TX1MIOt+6nHOtcBYjbMB8YklC8UM1i+ZjSnnHL0lZxkdKUMMFpSBh3tJMOOXpILjFaUi442ksuOJpIARwtJiKOBJMihl7hAwhxiSaBDKgl1KCUukGCHThIOEUniHRpIgkMjcYGkOBQSIM0kWQ4g3RzVEiBApnPUSoAAAaJzVEqAAAECBAgQIECAzCopdAABAkQoKXUAATKfpNjhA7H5Q+RXtx3EZvPBB2KzHeSzr+WzQWez0+gDsdn79dnE9tmN94HY3I/4XPT43Fj5XL353CEuNpehi8+trs/19GJzz74MSNQDH2fCeGTCeGTCeOah2LJA/OZgICIioq35nygOr9+Phhk0JxCNMQOKhpZhRS/LRUYTSoCigyWMoaWEMnSUcIaGksIQUNIcRjvlhZRkR5UknVFEKXHkS4oY6ZRCR6qk1JEoKXakScodSRKBI0MiYSRQZI5gidARK3GBSB2BErEjTKJmrEESNeKZiyNCohZsuTguS9TjvwSkmeOSRD36n4CoB//X3SHqsXe6N0Q99G53hqhHPghIt1wc5yXqeQ+7K0Q97puAdOueEPWwbwPSLSDd2p34B3GsN/j6gvMWAAAAAElFTkSuQmCC"
+                    alt="profile pic">
 
                 <div>
                     <p>Tanzir Rahman</p>
@@ -111,7 +115,7 @@
                         <p>${CardType}</p>
                         <div>
                             <span>${BankName}</span>
-                            <img src="${ImgSrc}" alt="BankImage">
+                            <img src="${ImgSrc}" alt="">
                         </div>
                     </div>
 
@@ -143,4 +147,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
