@@ -274,6 +274,9 @@ header{
 main{
     height: calc(100vh - 100px);
     padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 main h4{
     color: #878787;
@@ -281,16 +284,18 @@ main h4{
     font-weight: 600;
 }
 .balance-cont{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,330px);
-    grid-auto-rows: 250px;
+    display: flex;
+    flex-wrap: wrap;
     gap: 32px 24px;
     align-items: center;
-    justify-items: center;
+    justify-content: start;
+}
+.balance-create-card,
+.balance-card{
+    width: 350px;
+    height: 250px;
 }
 .balance-card{
-    width: 100%;
-    height: 100%;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     border-radius: 10px;
@@ -362,8 +367,6 @@ main h4{
     background-color: #299d9198;
 }
 .balance-create-card{
-    width: 100%;
-    height: 100%;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     border-radius: 10px;
@@ -402,10 +405,22 @@ main h4{
 
 
 
-
+@media (max-width:1034px) {
+    main{
+        align-items: center;
+    }
+    .balance-cont{
+        justify-content: center;
+    }
+}
 @media (max-width:800px) {
     .burger{
         display: block !important;
+    }    
+    .balance-cont{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     .header-date{
         display: none;
@@ -423,12 +438,5 @@ main h4{
     aside{
         transform: translateX(-100%);
         z-index: 1;
-    }
-    main{
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
     }
 }

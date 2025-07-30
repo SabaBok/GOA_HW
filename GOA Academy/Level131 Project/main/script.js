@@ -35,10 +35,11 @@ burger.addEventListener('click', e => {
 blure.addEventListener('click',e=>{
     if(asideOpen){
         blure.style.animation = 'BlurDissappear 0.3s ease-in-out'
-        aside.style.transform = 'translateX(-100%)'
+        aside.style.transform = ''
         setTimeout(() => {
             blure.style.display = 'none'
             asideOpen = false
+            blure.style.animation = ''
         }, 300);
     }
 })
