@@ -25,7 +25,7 @@ let cardWindowOpen = false
 async function RenderAllCards() {
     balanceCont.innerHTML = "";
 
-    let user = allAccs.find(user => user.logged && user.keepSigned);
+    let user = allAccs.find(user => user.logged);
     if (!user) return;
 
     let html = "";
@@ -78,7 +78,7 @@ RenderAllCards()
 function removeCard(e) {
     const parent = e.target.closest('.balance-card')
     const accNumb = parent.querySelector('.balance-card-mid div p').textContent
-    let user = allAccs.find(user => user.logged && user.keepSigned)
+    let user = allAccs.find(user => user.logged)
     if (!user) return
     for (let i = 0; i < user.cards.length; i++) {
         if (user.cards[i].accNumber == accNumb) {
@@ -187,7 +187,7 @@ function displayCardAdd() {
 }
 cardWindowForm.addEventListener('submit', async e => {
     e.preventDefault()
-    let acc = allAccs.find(user => user.logged && user.keepSigned)
+    let acc = allAccs.find(user => user.logged)
     let allLeters = 'abcdefghijklmnopqrstuvwxyz'
     let fullname
     const accNumber = e.target.accNumber.value
@@ -210,12 +210,14 @@ cardWindowForm.addEventListener('submit', async e => {
     const cardType = bankInfo.type
     const logo = bankInfo.logo
     allAccs.forEach(el => {
-        if (el.logged && el.keepSigned) {
+        if (el.logged) {
             fullname = el.fullName
         }
     })
-    balanceCont.innerHTML = `
-        <div class="balance-card">
+    // Create the new card DOM element
+    let newCard = document.createElement("div")
+    newCard.className = "balance-card"
+    newCard.innerHTML = `
         <div class="balance-card-top">
             <p>${cardType}</p>
             <div>
@@ -240,12 +242,13 @@ cardWindowForm.addEventListener('submit', async e => {
             <button>Remove</button>
             <button>Details <i class="fa-solid fa-angle-right"></i></button>
         </div>
-    </div>
-
-    ${balanceCont.innerHTML}
     `
+
+    // Find the "add/edit card" section and insert the new card before it
+    let createCardEl = document.querySelector('.balance-create-card')
+    balanceCont.insertBefore(newCard, createCardEl)
     for (let i of allAccs) {
-        if (i.logged && i.keepSigned) {
+        if (i.logged) {
             i.cards.push(new CardTemp(fullname, accNumber, bank, cardType, branchName, money))
         }
     }
@@ -273,6 +276,7 @@ cardWindowForm.addEventListener('submit', async e => {
             message: 'New Card Added',
             timestamp: now.toISOString()
         })
+        localStorage.setItem('finebank-accs', JSON.stringify(allAccs))
     }
 })
 
@@ -298,8 +302,8 @@ async function setCardBrand(cardNumber) {
             case 'mastercard':
                 logo = '../images/mastercard.png'
                 break;
-            case 'amex':
-                logo == '../images/amExp.png'
+            case 'american express':
+                logo = '../images/amExp.png'
                 break;
             case 'unionpay':
                 logo = '../images/unionPay.png'
