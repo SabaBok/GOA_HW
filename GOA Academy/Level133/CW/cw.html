@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+ <!--Level 133:  -->
+<!--შექმენით 3 პრომისი, პირველი პრომისი დაარეზოლვებს მომხმარებლის ინფორმაციას ობიექტის სახით, მეორე პრომისი დააბრუნებს მომხმარებლის პოსტებს( [ { postName, PostImage },  
+{ postName, PostImage } ,  { postName, PostImage } ]), მესამე პრომისმა დაარეზოლვოს მომხმარებლის მეგობრები, ეგეც ლისტის სახით, თითოეული მეგობარი იქნება ობიექტი. 
+ თითოეულ პრომის ქონდეს შესრულების სხვადასხვა დრო. ეს სამივე პრომისი გაუშვით პარალელურად. საბოლოოდ გადაუარეთ დიდი პრომისის სიას და დაბეჭდეთ ეს ყველა ინფორმაცია-->
+
+    <script>
+        const prom1 = new Promise((res, rej) => {
+            setTimeout(() => {
+                res({
+                    name: 'saba',
+                    lastname: 'bokuchava',
+                    age: 17
+                })
+            }, 1000);
+        })
+        const prom2 = new Promise((res, rej) => {
+            setTimeout(() => {
+                res([
+                    {
+                        name: "how to walk",
+                        img: 'img src',
+                        likes: 100,
+                        views: 1532
+                    },
+
+                    {
+                        name: "how to walk",
+                        img: 'img src',
+                        likes: 100,
+                        views: 1532
+                    }
+                ])
+            }, 2000);
+        })
+        const prom3 = new Promise((res, rej) => {
+            setTimeout(() => {
+                res([
+                    {
+                        name:'iakobi',
+                        lastname:'gvari ar aqvs'
+                    }
+                ])
+            }, 3000);
+        })
+
+        Promise.all([prom1,prom2,prom3]).then(data=>console.log(data))
+    </script>
+</body>
+
+</html>
