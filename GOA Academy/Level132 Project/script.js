@@ -98,7 +98,7 @@ function AccConstructor(fullName, email, pass) {
     this.keepSigned = false
     this.logged = false
     this.cards = []
-    this.notifications = []
+    this.notifications = {newNotif:false, notifs:{}}
 }
 registerForm.addEventListener('submit', e => {
     e.preventDefault()

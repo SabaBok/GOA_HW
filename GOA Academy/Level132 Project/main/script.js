@@ -5,7 +5,6 @@ const modal = document.querySelector('.modal')
 const notisOpener = document.querySelector('.fa-bell')
 const notis = document.querySelector('#notis')
 let notisOpen = false
-let newNotis = false
 
 //side-bar
 const burger = document.querySelector('.burger')
@@ -74,12 +73,13 @@ async function RenderAllCards() {
 }
 
 RenderAllCards()
-
 function removeCard(e) {
     const parent = e.target.closest('.balance-card')
     const accNumb = parent.querySelector('.balance-card-mid div p').textContent
+    let now = new Date()
     let user = allAccs.find(user => user.logged)
     if (!user) return
+
     for (let i = 0; i < user.cards.length; i++) {
         if (user.cards[i].accNumber == accNumb) {
             user.cards.splice(i, 1)
@@ -89,15 +89,26 @@ function removeCard(e) {
     parent.style.opacity = '0'
     setTimeout(() => {
         parent.remove()
-        localStorage.setItem('finebank-accs', JSON.stringify(allAccs))
-        modalAppear('the card has been removed')
-    }, 200);
+        modalAppear('The card has been removed')
+    }, 200)
+    
+    // Add notification
+    user.notifications.newNotif = true
+    user.notifications.notifs.push({
+        message: 'A Card Has Been Removed',
+        timeStamp: now.toISOString()
+    })
 
-    //parent.remove()
-    //localStorage.setItem('finebank-accs', JSON.stringify(allAccs))
-    //modalAppear('the card has been removed')
+    // Update badge if needed
+    if (!notisOpener.classList.contains('notis')) {
+        notisOpener.classList.add('notis')
+    }
+
+    localStorage.setItem('finebank-accs', JSON.stringify(allAccs))
+    renderNotis()
 }
-function seeDetaild(e) {
+
+function seeDetails(e) {
 
 }
 
@@ -123,13 +134,15 @@ function modalAppear(text) {
 
 //notification opener
 notisOpener.addEventListener('click', e => {
+    let acc = allAccs.find(el => el.logged)
     if (!notisOpen) {
         notis.style.display = 'flex'
         notisOpen = true
         notis.style.animation = 'NotisAppear 0.4s ease-in-out'
-        if (newNotis) {
-            newNotis = false
+        if (acc.notifications.newNotif) {
+            acc.notifications.newNotif = false
             notisOpener.classList.remove('notis')
+            localStorage.setItem('finebank-accs',JSON.stringify(allAccs))
         }
     } else {
         notis.style.animation = 'NotisDissappear 0.4s ease-in-out'
@@ -139,6 +152,23 @@ notisOpener.addEventListener('click', e => {
         }, 380);
     }
 })
+//notification history
+function renderNotis() {
+    notis.innerHTML = "" // CLEAR OLD
+
+    let acc = allAccs.find(el => el.logged).notifications
+    for (let i of acc.notifs.slice().reverse()) {
+        notis.innerHTML += `
+            <section>
+                <p><i class="fa-solid fa-exclamation"></i> ${i.message}</p>
+                <small>${formatTime(new Date(i.timeStamp))}</small>
+            </section>
+        `
+    }
+    acc.newNotif ? notisOpener.classList.add('notis') : notisOpener.classList.remove('notis')
+}
+
+renderNotis()
 
 //side-bar opener
 burger.addEventListener('click', e => {
@@ -209,12 +239,8 @@ cardWindowForm.addEventListener('submit', async e => {
     const bank = bankInfo.brand
     const cardType = bankInfo.type
     const logo = bankInfo.logo
-    allAccs.forEach(el => {
-        if (el.logged) {
-            fullname = el.fullName
-        }
-    })
-    // Create the new card DOM element
+    allAccs.forEach(el => el.logged ? fullname = el.fullName : null)
+
     let newCard = document.createElement("div")
     newCard.className = "balance-card"
     newCard.innerHTML = `
@@ -239,12 +265,11 @@ cardWindowForm.addEventListener('submit', async e => {
         </div>
 
         <div class="balance-card-bot">
-            <button>Remove</button>
+            <button onClick='removeCard(event)'>Remove</button>
             <button>Details <i class="fa-solid fa-angle-right"></i></button>
         </div>
     `
 
-    // Find the "add/edit card" section and insert the new card before it
     let createCardEl = document.querySelector('.balance-create-card')
     balanceCont.insertBefore(newCard, createCardEl)
     for (let i of allAccs) {
@@ -261,7 +286,6 @@ cardWindowForm.addEventListener('submit', async e => {
     cardWindowOpen = false
     if (!notisOpener.classList.contains('notis')) {
         notisOpener.classList.add('notis')
-        newNotis = true
         let now = new Date()
         let timeString = formatTime(now)
 
@@ -271,11 +295,12 @@ cardWindowForm.addEventListener('submit', async e => {
                 <small>${timeString}</small>
             </section>
         `
-
-        acc.notifications.push({
-            message: 'New Card Added',
-            timestamp: now.toISOString()
-        })
+        acc.notifications.newNotif = true
+        acc.notifications.notifs.push(
+            {
+                message: 'New Card Added',
+                timeStamp: now.toISOString()
+            })
         localStorage.setItem('finebank-accs', JSON.stringify(allAccs))
     }
 })
@@ -350,6 +375,10 @@ function formatTime(date) {
         return `${day}/${month}/${year} at ${timePart}`
     }
 }
-//let user = allAccs.find(user => user.logged && user.keepSigned)
-//user.notifications = []
+
+//let user = allAccs.find(user => user.logged)
+//user.notifications = {
+//    newNotif:false,
+//    notifs:[]
+//}
 //localStorage.setItem('finebank-accs',JSON.stringify(allAccs))
