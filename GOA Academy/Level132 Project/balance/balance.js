@@ -1,6 +1,10 @@
 const allAccs = JSON.parse(localStorage.getItem('finebank-accs')) || []
 const modal = document.querySelector('.modal')
 
+//versions
+const balance = document.querySelector('#balance')
+const details = document.querySelector('#details')
+
 //notification
 const notisOpener = document.querySelector('.fa-bell')
 const notis = document.querySelector('#notis')
@@ -56,7 +60,7 @@ async function RenderAllCards() {
 
                 <div class="balance-card-bot">
                     <button onClick='removeCard(event)'>Remove</button>
-                    <button>Details <i class="fa-solid fa-angle-right"></i></button>
+                    <button onClick='seeDetails(event)'>Details <i class="fa-solid fa-angle-right"></i></button>
                 </div>
             </div>
         `;
@@ -109,7 +113,14 @@ function removeCard(e) {
 }
 
 function seeDetails(e) {
+    let cardNumb = e.target.closest('.balance-card-mid div p')
+    let user = allAccs.find(el => el.logged)
+    let card = user.cards.find(el => el.accNumber == cardNumb )
 
+    balance.style.display = 'none'
+    details.style.display = 'block'
+    renderAllTransactions(card)
+    renderAllDetails(card)
 }
 
 //modal creation
@@ -237,7 +248,12 @@ cardWindowForm.addEventListener('submit', async e => {
     }
     let bankInfo = await setCardBrand(accNumber)
     const bank = bankInfo.brand
-    const cardType = bankInfo.type
+    const cardType = e.target.cardType.value
+    if(cardType.includes('1234567890')){
+        modalAppear('enter a valid card type')
+        e.target.cardType.style.border = '1px solid red'
+        return
+    }
     const logo = bankInfo.logo
     allAccs.forEach(el => el.logged ? fullname = el.fullName : null)
 
@@ -266,7 +282,7 @@ cardWindowForm.addEventListener('submit', async e => {
 
         <div class="balance-card-bot">
             <button onClick='removeCard(event)'>Remove</button>
-            <button>Details <i class="fa-solid fa-angle-right"></i></button>
+            <button onClick='seeDetails(event)'>Details <i class="fa-solid fa-angle-right"></i></button>
         </div>
     `
 
@@ -318,7 +334,6 @@ async function setCardBrand(cardNumber) {
         if (data.Status !== "SUCCESS") throw new Error("BIN lookup failed");
 
         const scheme = data.Scheme.toLowerCase() || "Unknown";
-        const type = data.Type.toLowerCase() || "Unknown";
         let logo
         switch (scheme.toLowerCase()) {
             case 'visa':
@@ -340,7 +355,6 @@ async function setCardBrand(cardNumber) {
 
         return {
             brand: scheme,
-            type: type,
             logo: logo
         };
     } catch (error) {

@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://kit.fontawesome.com/ecd2bcc678.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="balance.css">
-    <link rel="stylesheet" href="details.css">
-    <link rel="stylesheet" href="all.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -18,37 +16,37 @@
             <b>FINE<p>bank</p>.IO</b>
 
             <div class="aside-nav">
-                <div>
+                <div class="nonAc">
                     <i class="fa-solid fa-border-all"></i>
                     <p>Overview</p>
                 </div>
 
-                <div>
+                <div class="ac">
                     <i class="fa-solid fa-wallet"></i>
                     <p>Balances</p>
                 </div>
 
-                <div>
+                <div class="nonAc">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     <p>Transactions</p>
                 </div>
 
-                <div>
+                <div class="nonAc">
                     <i class="fa-solid fa-receipt"></i>
                     <p>Bills</p>
                 </div>
 
-                <div>
+                <div class="nonAc">
                     <i class="fa-solid fa-money-bill-transfer"></i>
                     <p>Expenses</p>
                 </div>
 
-                <div>
+                <div class="nonAc">
                     <i class="fa-solid fa-crosshairs"></i>
                     <p>Goals</p>
                 </div>
 
-                <div>
+                <div class="nonAc">
                     <i class="fa-solid fa-gear"></i>
                     <p>Settings</p>
                 </div>
@@ -100,14 +98,14 @@
         </div>
     </header>
 
+    <div class="modal">
+        <b></b>
+        <p>Insert Text</p>
+        <div></div>
+    </div>
+
     <div id="balance">
         <main>
-            <div class="modal">
-                <b></b>
-                <p>Insert Text</p>
-                <div></div>
-            </div>
-
             <h4>Balances</h4>
             <div class="balance-cont">
                 <!--<div class="balance-card">
@@ -147,7 +145,8 @@
                 <form action="">
                     <div>
                         <label for="accNumber">Account Number</label>
-                        <input type="text" id="accNumber" name="accNumber" placeholder="ex. 3388 4556 8860 8157" required>
+                        <input type="text" id="accNumber" name="accNumber" placeholder="ex. 3388 4556 8860 8157"
+                            required>
                     </div>
 
                     <!--<div>
@@ -155,14 +154,15 @@
                         <input type="text" id="bank" name="bank" placeholder="ex. Master card" required>
                     </div>-->
 
-                    <!--<div>
+                    <div>
                         <label for="cardType">Card Type</label>
                         <input type="text" id="cardType" name="cardType" placeholder="ex. Credit Card" required>
-                    </div>-->
+                    </div>
 
                     <div>
                         <label for="branchName">Branch Street</label>
-                        <input type="text" id="branchName" name="branchName" placeholder="ex. Pasanauri 300 Aragveli St" required>
+                        <input type="text" id="branchName" name="branchName" placeholder="ex. Pasanauri 300 Aragveli St"
+                            required>
                     </div>
 
                     <div>
@@ -177,12 +177,77 @@
 
     </div>
 
-    <!--<div id="details">
+    <div id="details">
         <main>
+            <div class="acc-details dets-div">
+                <h4>Account Details</h4>
+                <section class="acc-details-container">
+                    <div class="acc-details-top">
+                        <div>
+                            <span>Bank</span>
+                            <p>s</p>
+                        </div>
 
+                        <div>
+                            <span>Account Type</span>
+                            <p>s</p>
+                        </div>
+
+                        <div>
+                            <span>Balance</span>
+                            <p>
+                                <idk>$</idk>s
+                            </p>
+                        </div>
+
+                        <div>
+                            <span>Branch Name</span>
+                            <p>s</p>
+                        </div>
+
+                        <div>
+                            <span>Account Number</span>
+                            <p>s</p>
+                        </div>
+                    </div>
+
+                    <div class="acc-details-bot">
+                        <button>Edit Details</button>
+                        <button>Remove</button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="transaction-history dets-div">
+                <h4>Transactions History</h4>
+                <section class="transacs-cont">
+                    <div class="table">
+                        <table>
+                            <tr>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Transaction type</th>
+                                <th>Receipt</th>
+                                <th>Ammount</th>
+                            </tr>
+
+                            <tr>
+                                <td>17 may, 2025</td>
+                                <td>Complete</td>
+                                <td>Credit</td>
+                                <td>b68679g7869</td>
+                                <td><idk>$</idk>2500</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <button>Load More</button>
+                </section>
+            </div>
         </main>
-    </div>-->
-    <script src="script.js"></script>
+    </div>
+    <script src="balance.js"></script>
+    <script src="details.js"></script>
 </body>
 
 </html>
