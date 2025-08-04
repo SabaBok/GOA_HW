@@ -5,14 +5,20 @@ const detailDivs = detailCont.querySelector('div').querySelectorAll('div')
 const loadMoreBtn = document.querySelector('.transacs-cont button')
 const table = document.querySelector('.table')
 const transHist = document.querySelector('.transaction-history')
+const editDets = document.querySelector('.acc-details-bot').querySelectorAll('button')[0]
+const removeCardDets = document.querySelector('.acc-details-bot').querySelectorAll('button')[1]
+const asideBalance = document.querySelector('.ac')
+
+let currCard
 
 function renderAllDetails(card) {
+    currCard = card
     const [bank, accType, balance, branch, accNumb] = detailDivs
     bank.querySelector('p').textContent = card.bank
     accType.querySelector('p').textContent = card.cardType
-    balance.querySelector('p').textContent = card.money
+    balance.querySelector('p').textContent = `$${card.money}`
     branch.querySelector('p').textContent = card.branchName
-    accNumb.querySelector('p').textContent = card.accNumber
+    accNumb.querySelector('p').textContent = `${card.accNumber.slice(0,14)} ****`
 }
 loadMoreBtn.addEventListener('click', () => {
     table.classList.add('expanded')
@@ -33,3 +39,18 @@ function renderAllTransactions(card) {
         `
     }
 }
+
+//editing Details
+editDets.addEventListener('click',e=>{
+
+})
+//removing card
+removeCardDets.addEventListener('clikc',e=>{
+    
+})
+
+//closing details opening balance
+asideBalance.addEventListener('click',e=>{
+    balance.style.display = ''
+    details.style.display = 'none'
+})

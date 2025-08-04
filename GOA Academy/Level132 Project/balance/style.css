@@ -596,6 +596,7 @@ header{
     flex-direction: column;
     align-items: start;
     text-align: left;
+    text-transform: capitalize;
 }
 .acc-details-top div span{
     color: #9F9F9F;
