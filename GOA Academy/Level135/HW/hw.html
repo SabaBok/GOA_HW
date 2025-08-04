@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Level 135: 
+    შექმენით 3 Promise:
+    ◻️fastTask – დასრულდეს resolve("Fast task finished") 500ms-ში.
+    ◻️mediumTask – დასრულდეს resolve("Medium task finished") 1000ms-ში.
+    ◻️slowTask – დასრულდეს resolve("Slow task finished") 1500ms-ში.
+    შემდეგ გამოიყენეთ Promise.race, რათა გამოიტანოთ მხოლოდ ის შედეგი, რომელიც პირველი დასრულდა.
+    არ დაგავიწყდეთ Level 134 დავალებები-->
+
+    <script>
+        const fastTask = new Promise((res,rej)=> setTimeout(res('Fast task finished'),500))
+        const mediumTask = new Promise((res,rej)=> setTimeout(res('Medium task finished'),1000))
+        const slowTask = new Promise((res,rej)=> setTimeout(res('Slow task finished'),1500))
+
+        Promise.race([fastTask,mediumTask,slowTask])
+            .then(data => console.log(data))
+    </script>
+</body>
+</html>

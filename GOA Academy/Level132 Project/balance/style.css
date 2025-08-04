@@ -322,7 +322,7 @@ header{
 }
 .balance-create-card,
 .balance-card{
-    width: 300px;
+    width: 350px;
     height: 250px;
 }
 .balance-card{
@@ -351,6 +351,9 @@ header{
     align-items: center;
     gap: 10px;
     height: 34px;
+}
+.balance-card-top p{
+    color: #878787;
 }
 .balance-card-mid{
     display: flex;
@@ -544,9 +547,9 @@ header{
     background-color: rgba(47, 184, 170, 0.605);
 }
 
-#balance{
+/*#balance{
     display: none;
-}
+}*/
 
 #details main{
     min-height: calc(100vh - 100px);

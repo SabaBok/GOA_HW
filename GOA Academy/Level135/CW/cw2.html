@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Level 135:  -->
+    <!--შექმენით რაღაცა პრომისი რომელიც რაიმე მნიშვნელობას დააბრუნებს გარკვეული დროის(1 წამიდან 10 წამამდე) შემდეგ. შექმენით ასევე მეორე პრომისი, რომელიც იქნება დროის ლიმიტერი - დაარეჯექთებს რაიმე ერორს, ვთქვათ 5 წამში. გამოიყენეთ race მეთოდი-->
+    <script>
+        function createRandomPromise() {
+            return new Promise((res) => {
+                const delay = (Math.floor(Math.random() * 10)+1) * 1000
+                setTimeout(() => {
+                    res("Promise resolved successfully!")
+                }, delay)
+            })
+        }
+
+        function createTimeoutPromise() {
+            return new Promise((res,rej) => {
+                setTimeout(() => {
+                    rej("Promise timed out after 5 seconds")
+                }, 5000)
+            })
+        }
+
+        Promise.race([createRandomPromise(), createTimeoutPromise()])
+            .then(data => console.log(data))
+            .catch(data => console.log(data))
+    </script>
+</body>
+
+</html>

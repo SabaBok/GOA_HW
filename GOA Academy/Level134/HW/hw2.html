@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--2. შექმენით 'უნივერსალური API':
+
+    ▪პრომისი - getWeather - არეზოლვებს რანდომულ ამინდის ემოჯის ან არეჯექთებს: 'No info'
+    ▪პრომისი - getCurrency - არეზოლვებს დოლარის კურს(HardCode - 2.7) ან არეჯექთებს: 'No info'
+    ▪პრომისი - getNews - არეზოლვებს რაღაცა სიახლეს ან არეჯექთებს: 'No info'
+    გამოიყენეთ Promise.allSettled, რომ მიიღოთ ყველა პრომისის შედეგი/პასუხი.
+    კონსოლში უნდა გამოიტანოთ თითოეული {status, value} ან {status, reason}.-->
+    <script>
+        const getWeather = new Promise((res,rej) => {
+            let num = Math.floor(Math.random()*2)
+            let emojis = ['☀','🌧','☁','❄','⛅']
+            let weather = emojis[Math.floor(Math.random() * emojis.length)]
+            num == 0 ? res(weather) : rej('No Info')
+        })
+        const getCurrency = new Promise((res,rej)=>{
+            let num = Math.floor(Math.random()*2)
+            let dollar = 2.7
+            num == 0 ? res(dollar) : rej('No Info')
+        })
+        const getNews = new Promise(res =>{
+            let num = Math.floor(Math.random()*2)
+            let allNews = ['kata mokvda','dxagli mokvda','qurda moipara','qurdi dawres','qurdis damwreli gatyepes']
+            let news = allNews[Math.floor(Math.random() * allNews.length)]
+            num == 0 ? res(news) : rej('No Infoe')
+        })
+
+        Promise.allSettled([getWeather,getCurrency,getNews])
+            .then(data => console.log(data))
+            .catch(data => console.log(data))
+    </script>
+</body>
+</html>

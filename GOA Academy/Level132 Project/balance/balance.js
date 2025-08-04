@@ -111,16 +111,16 @@ function removeCard(e) {
     localStorage.setItem('finebank-accs', JSON.stringify(allAccs))
     renderNotis()
 }
-
 function seeDetails(e) {
-    let cardNumb = e.target.closest('.balance-card-mid div p')
+    const cardEl = e.target.closest('.balance-card')  // Go to card container
+    const cardNumb = cardEl.querySelector('.balance-card-mid div p').textContent
     let user = allAccs.find(el => el.logged)
-    let card = user.cards.find(el => el.accNumber == cardNumb )
-
+    let card = user.cards.find(el => el.accNumber == cardNumb)
+    
     balance.style.display = 'none'
-    details.style.display = 'block'
-    renderAllTransactions(card)
+    details.style.display = 'block' 
     renderAllDetails(card)
+    renderAllTransactions(card)
 }
 
 //modal creation

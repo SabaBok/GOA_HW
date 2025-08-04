@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--შექმენით უნივერსალური ფუნქცია:
+
+    ▪fakeServer(serverName)
+    ფუნქციის შიგნით დააგენერეითეთ:
+    ▪0 ან 1 და შეინახეთ იგი willResolve ცვლადში
+    ▪რიცხვი 100 დან 4000 და შეინახეთ იგი time ცვლადში
+    ამ ფუნქციამ უნდა დააბრუნოს პრომისი, რომელიც დააბრუნებს პასუხს time დროში.
+    პრომისი დაარეზოლვებს received data from ${serverName} in ${time}ms იმ შემთხვევაში თუ willResolve === 1
+    თუ willResolve === 0 პრომისი დაარეჯექთებს რაიმე ერორს.
+    გამოიყენეთ Promise.any და მის შიგნით რამდენჯერმე გამოიძახეთ შექმნილი ფუნქცია.
+    თუ ყველა ჩავარდება, დაიჭირეთ AggregateError და გამოიტანეთ ყველა ჩავარდნის მიზეზი .errors მასივით.
+    ეს დავალებები გექნებათ ხუთშაბათისთვის-->
+
+    <script>
+        function fakeServer(servernName) {
+            let willResolve = Math.floor(Math.random() * 2)
+            let time = Math.floor(Math.random() * (4000 - 100 + 1)) + 100
+            return new Promise((res, rej) => {
+                willResolve == 1 ? res(`received data from ${serverName} in ${time}ms`) : rej(new Error('some error'))
+            })
+        }
+        Promise.any([fakeServer('server 1'), fakeServer('server 2'), fakeServer('server 3')])
+            .then(data => console.log(data))
+            .catch(err => {
+                if (err instanceof AggregateError) {
+                    console.log('All promises failed:');
+                    for (let error of err.errors) {
+                        console.log('-', error.message);
+                    }
+                } else {
+                    console.log('Unexpected error:', err);
+                }
+            })
+    </script>
+</body>
+
+</html>

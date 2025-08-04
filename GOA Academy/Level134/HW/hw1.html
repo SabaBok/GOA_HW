@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Level 134: 
+    შექმენით სამი Promise:
+
+    ▪getProduct – აბრუნებს რაღაცა ინფოს(რაც თქვენ გინდათ) 1 წამში,
+    ▪getUser – აბრუნებს რაღაცა ინფოს(რაც თქვენ გინდათ) 2 წამში,
+    ▪getPayment – აბრუნებს რაღაცა ინფოს(რაც თქვენ გინდათ) 3 წამში.
+    გამოიყენეთ Promise.all, რათა მიიღოთ ყველა მონაცემი ერთად.
+    თუ რომელიმე ჩაიჭრება(გააკეთეთ ისე, რომ პრომისებმა რანდომულად ან დარეჯექდნენ ან დარეზოლვდნენ), 
+    მთლიანი ოპერაცია უნდა გადავიდეს catch‑ში და გამოიტანოს "შეკვეთის დამუშავება ჩაიშალა".-->
+
+    <script>
+        const getProduct = new Promise((res,rej)=>{
+            let num = Math.floor(Math.random()*2)
+            num == 0 ? setTimeout(res('apple'),1000) : rej('couldnt find it')
+        })
+        const getUser = new Promise((res,rej)=>{
+            let num = Math.floor(Math.random()*2)
+            num == 0 ? setTimeout(res('saba'),1000) : rej('couldnt find it')
+        })
+        const getPayment = new Promise((res,rej)=>{
+            let num = Math.floor(Math.random()*2)
+            num == 0 ? setTimeout(res('100 dollar'),1000) : rej('couldnt egt it')
+        })
+
+        Promise.all([getProduct,getUser,getPayment])
+            .then(data => console.log(data))
+            .catch(data => console.log(data))
+    </script>
+</body>
+</html>

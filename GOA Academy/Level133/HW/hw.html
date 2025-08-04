@@ -29,7 +29,35 @@
     catch reject ის შემთხვევაში დააკონსოლოგებს, რომ მონაცემები ვერ მოიძებნა-->
 
     <script>
-        
+        async function prom1() {
+            return new Promise(async (res,rej)=>{
+                let numb = Math.floor(Math.random() * 15) + 1
+                try {
+                    let url = await fetch(`https://jsonplaceholder.typicode.com/users/${numb}`)
+                    if(!url.ok) throw new Error('user not found')
+                    res(await url.json())
+                } catch (error) {
+                    rej('user not found2')
+                }
+            })
+        }
+
+        async function prom2(){
+            return new Promise(async (res,rej)=>{
+                let numb = Math.floor(Math.random() * 15) + 1
+                try {
+                    let url = await fetch(`https://jsonplaceholder.typicode.com/posts/${numb}`)
+                    if(!url.ok) throw new Error('user not found')
+                    res(await url.json())
+                } catch (error) {
+                    rej('post not found2')
+                }
+            })
+        }
+
+        Promise.all([prom1(),prom2()])
+            .then(data=>console.log(data,'idk'))
+            .catch(data=>console.log(data,'rej'))
     </script>
 </body>
 

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Level 135:  -->
+    <!--შექმენით რაღაცა პრომისი რომელიც რაიმე მნიშვნელობას დააბრუნებს გარკვეული დროის(1 წამიდან 10 წამამდე) შემდეგ. თუ ეს პრომისი პასუხს არ დააბრუნებს 5 წამის განმავლობაში, 
+    მაშინ დაარეჯექთეთ პრომისი და კონსოლზე გამოიტანეთ მესიჯი, რომ პრომისმა დროს გადააჭარბა.-->
+    <script>
+        const prom1 = new Promise((res,rej)=>{
+            let num = (Math.floor(Math.random()*10)+1)*1000
+            num>5?rej("took too long"):setTimeout(res('okay'),num)
+        })
+        
+        prom1.then(data => console.log(data))
+    </script>
+</body>
+</html>
