@@ -24,17 +24,17 @@ const cardWindow = document.querySelector('#add-card')
 const cardWindowForm = cardWindow.querySelector('form')
 let cardWindowOpen = false
 
-//card rendering
+//render all cards
 async function RenderAllCards() {
-    balanceCont.innerHTML = "";
+    balanceCont.innerHTML = ""
 
-    let user = allAccs.find(user => user.logged);
-    if (!user) return;
+    let user = allAccs.find(user => user.logged)
+    if (!user) return
 
-    let html = "";
+    let html = ""
 
     for (let card of user.cards) {
-        const cardInfo = await setCardBrand(card.accNumber);
+        const cardInfo = await setCardBrand(card.accNumber)
 
         html += `
             <div class="balance-card">
@@ -63,7 +63,7 @@ async function RenderAllCards() {
                     <button onClick='seeDetails(event)'>Details <i class="fa-solid fa-angle-right"></i></button>
                 </div>
             </div>
-        `;
+        `
     }
 
     html += `
@@ -71,11 +71,10 @@ async function RenderAllCards() {
             <button onClick='displayCardAdd()'>Add Account</button>
             <button>Edit Accounts</button>
         </div>
-    `;
+    `
 
-    balanceCont.innerHTML = html;
+    balanceCont.innerHTML = html
 }
-
 RenderAllCards()
 function removeCard(e) {
     const parent = e.target.closest('.balance-card')
@@ -90,35 +89,23 @@ function removeCard(e) {
             break
         }
     }
+
     parent.style.opacity = '0'
     setTimeout(() => {
         parent.remove()
         modalAppear('The card has been removed')
     }, 200)
-    
-    // Add notification
-    user.notifications.newNotif = true
-    user.notifications.notifs.push({
-        message: 'A Card Has Been Removed',
-        timeStamp: now.toISOString()
-    })
 
-    // Update badge if needed
-    if (!notisOpener.classList.contains('notis')) {
-        notisOpener.classList.add('notis')
-    }
-
-    localStorage.setItem('finebank-accs', JSON.stringify(allAccs))
-    renderNotis()
+    addNotification('A Card Has Been Removed')
 }
 function seeDetails(e) {
-    const cardEl = e.target.closest('.balance-card')  // Go to card container
+    const cardEl = e.target.closest('.balance-card')
     const cardNumb = cardEl.querySelector('.balance-card-mid div p').textContent
     let user = allAccs.find(el => el.logged)
     let card = user.cards.find(el => el.accNumber == cardNumb)
-    
+
     balance.style.display = 'none'
-    details.style.display = 'block' 
+    details.style.display = 'block'
     renderAllDetails(card)
     renderAllTransactions(card)
 }
@@ -139,10 +126,24 @@ function modalAppear(text) {
             modal.style.animation = 'none'
             line.style.animation = 'none'
             isModalRunning = false
-        }, 2600);
+        }, 2600)
     }
 }
 
+//add notification
+function addNotification(message) {
+    let user = allAccs.find(u => u.logged)
+    let now = new Date()
+
+    user.notifications.newNotif = true
+    user.notifications.notifs.push({
+        message: message,
+        timeStamp: now.toISOString()
+    })
+
+    localStorage.setItem('finebank-accs', JSON.stringify(allAccs))
+    renderNotis()
+}
 //notification opener
 notisOpener.addEventListener('click', e => {
     let acc = allAccs.find(el => el.logged)
@@ -153,21 +154,21 @@ notisOpener.addEventListener('click', e => {
         if (acc.notifications.newNotif) {
             acc.notifications.newNotif = false
             notisOpener.classList.remove('notis')
-            localStorage.setItem('finebank-accs',JSON.stringify(allAccs))
+            localStorage.setItem('finebank-accs', JSON.stringify(allAccs))
         }
     } else {
         notis.style.animation = 'NotisDissappear 0.4s ease-in-out'
         setTimeout(() => {
             notis.style.display = 'none'
             notisOpen = false
-        }, 380);
+        }, 380)
     }
 })
-//notification history
+//render all notifications
 function renderNotis() {
-    notis.innerHTML = "" // CLEAR OLD
-
+    notis.innerHTML = ""
     let acc = allAccs.find(el => el.logged).notifications
+
     for (let i of acc.notifs.slice().reverse()) {
         notis.innerHTML += `
             <section>
@@ -176,12 +177,16 @@ function renderNotis() {
             </section>
         `
     }
-    acc.newNotif ? notisOpener.classList.add('notis') : notisOpener.classList.remove('notis')
-}
 
+    if (acc.newNotif) {
+        notisOpener.classList.add('notis')
+    } else {
+        notisOpener.classList.remove('notis')
+    }
+}
 renderNotis()
 
-//side-bar opener
+//sidebar open
 burger.addEventListener('click', e => {
     if (!asideOpen) {
         aside.style.transform = 'translateX(0)'
@@ -190,7 +195,7 @@ burger.addEventListener('click', e => {
         blure.style.animation = 'BlurAppear 0.3s ease-in-out'
     }
 })
-//side-bar closer // adding-card closer 
+//sidebar / card form close
 blure.addEventListener('click', e => {
     if (asideOpen) {
         blure.style.animation = 'BlurDissappear 0.3s ease-in-out'
@@ -199,15 +204,16 @@ blure.addEventListener('click', e => {
             blure.style.display = 'none'
             asideOpen = false
             blure.style.animation = ''
-        }, 300);
-    } if (cardWindowOpen) {
+        }, 300)
+    }
+    if (cardWindowOpen) {
         blure.style.display = ''
         cardWindow.style.display = ''
         cardWindowForm.reset()
     }
 })
 
-//adding cards
+//add card constructor
 function CardTemp(fullName, accNumber, bank, cardType, branchName, money) {
     this.fullName = fullName
     this.accNumber = accNumber
@@ -215,7 +221,6 @@ function CardTemp(fullName, accNumber, bank, cardType, branchName, money) {
     this.cardType = cardType
     this.branchName = branchName
     this.money = money
-
     this.goals = {}
     this.bils = []
     this.transactions = []
@@ -234,26 +239,31 @@ cardWindowForm.addEventListener('submit', async e => {
     const accNumber = e.target.accNumber.value
     const branchName = e.target.branchName.value
     const money = e.target.balance.value
+
     if (accNumber.length != 19 || accNumber.includes(allLeters)) {
         modalAppear("enter a valid account number")
         e.target.accNumber.style.border = '1px solid red'
         return
     }
+
     for (let i of acc.cards) {
         if (i.accNumber == accNumber) {
-            modalAppear("this account is alredy added")
+            modalAppear("this account is already added")
             e.target.accNumber.style.border = '1px solid red'
             return
         }
     }
+
     let bankInfo = await setCardBrand(accNumber)
     const bank = bankInfo.brand
     const cardType = e.target.cardType.value
-    if(cardType.includes('1234567890')){
+
+    if (cardType.includes('1234567890')) {
         modalAppear('enter a valid card type')
         e.target.cardType.style.border = '1px solid red'
         return
     }
+
     const logo = bankInfo.logo
     allAccs.forEach(el => el.logged ? fullname = el.fullName : null)
 
@@ -288,6 +298,7 @@ cardWindowForm.addEventListener('submit', async e => {
 
     let createCardEl = document.querySelector('.balance-create-card')
     balanceCont.insertBefore(newCard, createCardEl)
+
     for (let i of allAccs) {
         if (i.logged) {
             i.cards.push(new CardTemp(fullname, accNumber, bank, cardType, branchName, money))
@@ -300,75 +311,60 @@ cardWindowForm.addEventListener('submit', async e => {
     blure.style.display = 'none'
     cardWindow.style.display = 'none'
     cardWindowOpen = false
-    if (!notisOpener.classList.contains('notis')) {
-        notisOpener.classList.add('notis')
-        let now = new Date()
-        let timeString = formatTime(now)
 
-        notis.innerHTML += `
-            <section>
-                <p><i class="fa-solid fa-exclamation"></i> New Card Added</p>
-                <small>${timeString}</small>
-            </section>
-        `
-        acc.notifications.newNotif = true
-        acc.notifications.notifs.push(
-            {
-                message: 'New Card Added',
-                timeStamp: now.toISOString()
-            })
-        localStorage.setItem('finebank-accs', JSON.stringify(allAccs))
-    }
+    addNotification('New Card Added')
 })
 
+//get card brand and logo
 async function setCardBrand(cardNumber) {
-    const bin = cardNumber.replace(/\s+/g, '').slice(0, 6);
+    const bin = cardNumber.replace(/\s+/g, '').slice(0, 6)
 
     try {
         const res = await fetch(`https://data.handyapi.com/bin/${bin}`, {
             headers: { 'x-api-key': 'PUB-0YOUklJ9BGHC55319gqT' }
-        });
-        if (!res.ok) throw new Error("BIN not found");
+        })
+        if (!res.ok) throw new Error("BIN not found")
 
-        const data = await res.json();
-        if (data.Status !== "SUCCESS") throw new Error("BIN lookup failed");
+        const data = await res.json()
+        if (data.Status !== "SUCCESS") throw new Error("BIN lookup failed")
 
-        const scheme = data.Scheme.toLowerCase() || "Unknown";
+        const scheme = data.Scheme.toLowerCase() || "Unknown"
         let logo
+
         switch (scheme.toLowerCase()) {
             case 'visa':
                 logo = '../images/visa.png'
-                break;
+                break
             case 'mastercard':
                 logo = '../images/mastercard.png'
-                break;
+                break
             case 'american express':
                 logo = '../images/amExp.png'
-                break;
+                break
             case 'unionpay':
                 logo = '../images/unionPay.png'
-                break;
+                break
             default:
-                logo = 'Unknown'
-                break;
+                logo = '../images/unknown.png'
+                break
         }
 
         return {
             brand: scheme,
             logo: logo
-        };
+        }
     } catch (error) {
-        console.error("BIN lookup failed:", error);
-        modalAppear("enter a valid account number");
-        cardWindowForm.accNumber.style.border = '1px solid red';
+        console.error("BIN lookup failed:", error)
+        modalAppear("enter a valid account number")
+        cardWindowForm.accNumber.style.border = '1px solid red'
         return {
             brand: "Unknown",
-            type: "Unknown",
-            bank: "Unknown Bank",
             logo: "../images/unknown.png"
-        };
+        }
     }
 }
+
+//time formatter
 function formatTime(date) {
     let now = new Date()
     let diffInMs = now - date
@@ -389,10 +385,3 @@ function formatTime(date) {
         return `${day}/${month}/${year} at ${timePart}`
     }
 }
-
-//let user = allAccs.find(user => user.logged)
-//user.notifications = {
-//    newNotif:false,
-//    notifs:[]
-//}
-//localStorage.setItem('finebank-accs',JSON.stringify(allAccs))
