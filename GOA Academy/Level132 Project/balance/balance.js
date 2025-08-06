@@ -113,22 +113,25 @@ function seeDetails(e) {
 //modal creation
 let isModalRunning = false
 function modalAppear(text) {
-    const line = modal.querySelector('div')
+    const line = modal.querySelector('div');
+    const modalText = modal.querySelector('p');
     if (!isModalRunning) {
-        isModalRunning = true
-        line.style.animation = 'modalTime 2.5s linear'
-        modal.style.animation = 'modalAppear 0.4s ease-in-out'
-        modal.style.opacity = '100%'
-        const modalText = modal.querySelector('p')
-        modalText.textContent = text
+        isModalRunning = true;
+        line.style.animation = 'modalTime 2.5s linear';
+        modal.style.animation = 'modalAppear 0.4s ease-in-out';
+        modal.style.opacity = '1';
+        modal.classList.add('show'); // enable pointer events
+        modalText.textContent = text;
         setTimeout(() => {
-            modal.style.opacity = '0'
-            modal.style.animation = 'none'
-            line.style.animation = 'none'
-            isModalRunning = false
-        }, 2600)
+            modal.style.opacity = '0';
+            modal.style.animation = 'none';
+            line.style.animation = 'none';
+            modal.classList.remove('show'); // disable pointer events again
+            isModalRunning = false;
+        }, 2600);
     }
 }
+
 
 //add notification
 function addNotification(message) {
