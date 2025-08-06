@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f4f5f7;
+}
+
+.burger {
+    display: none !important;
+    font-size: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+#blur {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background-color: #0000003c;
+}
+
+@keyframes BlurAppear {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes BlurDissappear {
+    0% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
+    }
+}
+
+.fa-bell {
+    position: relative !important;
+    z-index: 0 !important;
+}
+
+aside {
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #191919;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    padding: 30px 20px;
+    transition: 0.3s;
+}
+
+aside b {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+    width: 100%;
+    letter-spacing: 2px;
+}
+
+aside b p {
+    margin-bottom: 1px;
+    font-weight: normal;
+}
+
+.aside-top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.aside-top a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    width: 100%;
+}
+
+.ac {
+    background-color: #299D91;
+    color: #fff;
+}
+
+.ac:hover {
+    background-color: rgba(47, 184, 170, 0.605);
+}
+.aside-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    width: 100%;
+}
+
+.aside-nav div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    /*background-color: #299D91;*/
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.aside-nav div i {
+    font-size: 1.2rem;
+}
+
+.nonAc:hover {
+    background-color: #ffffff1d;
+    color: #fff;
+}
+
+.aside-nav div i,
+.aside-nav div p {
+    transition: 0.4s;
+}
+
+.aside-nav div:hover i,
+.aside-nav div:hover p {
+    transform: translateX(.5px);
+}
+
+.aside-bot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    height: 100%;
+    /*padding: 20px 0px;*/
+}
+
+.aside-bot button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 10px 20px;
+}
+
+.aside-bot button i {
+    font-size: 1.2rem;
+}
+
+.aside-bot section {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.profile {
+    width: 100%;
+    padding: 0px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.profile img {
+    width: 30px;
+    border-radius: 50%;
+}
+
+.profile div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: start;
+    color: #fff;
+    margin-right: 30px;
+}
+
+.profile div span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: .8rem;
+}
+
+.profile i {
+    font-size: 1.3rem;
+}
+
+header,
+main {
+    margin-left: 250px;
+    max-width: calc(100vw - 250px);
+}
+
+header {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.2);
+    padding: 0px 40px;
+}
+
+.header-date {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #9F9F9F;
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+.header-search {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    font-size: 1.3rem;
+    color: #666666;
+}
+
+.header-search input {
+    border: 0;
+    background-color: transparent;
+    outline: none;
+}
+
+.header-search input::placeholder {
+    font-size: 14px;
+}
+
+.header-search div {
+    background-color: #fff;
+    box-shadow: 0px 26px 26px rgba(0, 0, 0, 0.05);
+    padding: 10px 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-search form i {
+    color: #525256;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+}
+
+.header-notis {
+    position: relative;
+    width: 100%;
+    z-index: 0;
+}
+
+#notis {
+    position: absolute;
+    z-index: 0;
+    background-color: #fff;
+    width: 200px;
+    right: 50%;
+    top: 40px;
+    transform: translateX(50%);
+    padding: 20px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.244);
+    border-radius: 5px;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: .8rem;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.fa-bell {
+    position: relative;
+    transition: 0.2s;
+}
+
+.notis::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#notis::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes NotisAppear {
+    0% {
+        opacity: 0%;
+        height: 0;
+    }
+
+    100% {
+        opacity: 100%;
+        height: 200px;
+    }
+}
+
+@keyframes NotisDissappear {
+    0% {
+        opacity: 100%;
+        height: 200px;
+    }
+
+    100% {
+        opacity: 0%;
+        height: 0;
+    }
+}
+
+.fa-bell {
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    z-index: 0;
+}
+
+.fa-bell:hover {
+    color: #666666b5;
+}
+
+.modal {
+    opacity: 0;
+    position: fixed;
+    z-index: 1;
+    top: 15px;
+    right: 2%;
+    width: 300px;
+    height: 100px;
+    background-color: #ededed;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: 0.3s;
+    text-transform: capitalize;
+    pointer-events: none;
+}
+
+.modal.show {
+    pointer-events: auto;
+}
+
+.modal div {
+    width: 90%;
+    height: 1px;
+    background-color: blue;
+    border-radius: 20px;
+}
+
+@keyframes modalTime {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+
+@keyframes modalAppear {
+    0% {
+        opacity: 0%;
+        transform: translate(2%, -15px);
+    }
+
+    100% {
+        opacity: 100%;
+        transform: translate(2%, 0);
+    }
+}
+
+@keyframes modalAppearMobile {
+    0% {
+        opacity: 0%;
+        transform: translate(50%, -15px);
+    }
+
+    100% {
+        opacity: 100%;
+        transform: translate(50%, 0);
+    }
+}
+
+
+@media (max-width:505px) {
+    #notis{
+        transform: translateX(70%);
+        right: 50%;
+    }
+}
+@media (max-width:600px) {
+    .modal {
+        width: 95%;
+        right: 50%;
+        animation: modalAppearMobile 0.4s ease-in-out;
+        transform: translate(50%, 0);
+    }
+}
+@media (max-width:800px) {
+    .burger {
+        display: block !important;
+        position: relative;
+        z-index: 0;
+    }
+
+    .header-date {
+        display: none;
+    }
+
+    .fa-bell {
+        position: relative;
+        z-index: 30;
+    }
+
+    .header-search {
+        gap: 11px;
+    }
+
+    #notis {
+        z-index: 1;
+    }
+
+    header,
+    main {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    #blur {
+        z-index: 1;
+    }
+
+    aside {
+        transform: translateX(-100%);
+    }
+}
+@media (max-width:1034px) {
+    main {
+        align-items: center;
+    }
+}
