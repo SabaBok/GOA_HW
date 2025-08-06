@@ -209,7 +209,9 @@ aside b p {
     color: rgba(255, 255, 255, 0.7);
     font-size: .8rem;
 }
-
+.profile div p{
+    text-transform: capitalize;
+}
 .profile i {
     font-size: 1.3rem;
 }
@@ -299,7 +301,9 @@ header {
     height: 200px;
     overflow-y: auto;
 }
-
+#notis section{
+    width: 100%;
+}
 .fa-bell {
     position: relative;
     transition: 0.2s;
@@ -331,7 +335,6 @@ header {
         height: 200px;
     }
 }
-
 @keyframes NotisDissappear {
     0% {
         opacity: 100%;
@@ -350,7 +353,6 @@ header {
     position: relative;
     z-index: 0;
 }
-
 .fa-bell:hover {
     color: #666666b5;
 }

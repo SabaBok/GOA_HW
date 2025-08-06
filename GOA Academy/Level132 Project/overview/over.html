@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/ecd2bcc678.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../allStuff/all.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/ecd2bcc678.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div id="blur"></div>
 
@@ -91,8 +93,13 @@
         <i class="fa-solid fa-bars burger"></i>
 
         <div class="header-date">
-            <i class="fa-solid fa-angles-right"></i>
-            <p>july 7, 2025</p>
+            <div>
+                <h2>Hello <span></span></h2>
+            </div>
+            <div>
+                <i class="fa-solid fa-angles-right"></i>
+                <p>july 7, 2025</p>
+            </div>
         </div>
 
         <div class="header-search">
@@ -118,11 +125,113 @@
 
     <div id="overview">
         <main>
+            <section class="over-top">
+                <div class="over-top-card card-balance">
+                    <span>Total Balance</span>
+                    <div class="actual-over-top-card">
+                        <div class="balance-card-1">
+                            <b>$240,399</b>
+                            <p>All Accounts</p>
+                        </div>
+                        <div class="line"></div>
 
+                        <div class="balance-card-2">
+                            <div>
+                                <span>Account Type</span>
+                                <p>Credit card</p>
+                                <span>**** **** **** 2901</span>
+                            </div>
+
+                            <div class="bc2-2">
+                                <img src="../images/mastercard.png" alt="">
+                                <div>
+                                    <p>$2500</p>
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="balance-card-3">
+                            <div class="bc3-1">
+                                <i class="fa-solid fa-angle-left"></i>
+                                <p>Previous</p>
+                            </div>
+
+                            <div class="bc3-2">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+
+                            <div class="bc3-3">
+                                <p>Next</p>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="over-top-card card-goals">
+                    <span>Goals</span>
+                    <div class="actual-over-top-card">
+                        <div class="goal-card-1">
+                            <div>
+                                <b>$20,000</b>
+                                <i class="fa-solid fa-pen"></i>
+                            </div>
+                            <p>July, 2025</p>
+                        </div>
+                        <div class="line"></div>
+
+                        <div class="goal-card-2">
+                            <div class="goal-card-2s">
+                                <div>
+                                    <span><i class="fa-solid fa-medal"></i> Target Achieved</span>
+                                    <p>$12,500</p>
+                                </div>
+
+                                <div>
+                                    <span><i class="fa-solid fa-crosshairs"></i> This Month Target</span>
+                                    <p>$20,200</p>
+                                </div>
+                            </div>
+
+                            <div class="gauge">
+                                <div class="gauge-container">
+                                    <svg class="gauge-svg" viewBox="0 0 100 60">
+                                        <path class="gauge-bg" d="M 10 50 A 40 40 0 0 1 90 50" />
+                                        <path class="gauge-fill" d="M 10 50 A 40 40 0 0 1 90 50" />
+                                        <circle class="gauge-pin" cx="50" cy="50" r="4" />
+                                        <line class="gauge-needle" x1="50" y1="50" x2="20" y2="50" />
+                                        <text class="gauge-value" x="50" y="50" text-anchor="middle">12K</text>
+                                        <text class="gauge-min" x="10" y="55" text-anchor="middle">$0</text>
+                                        <text class="gauge-max" x="90" y="55" text-anchor="middle">$20k</text>
+                                    </svg>
+                                </div>
+
+                                <p>Target vs Achievement</p>
+                            </div>
+
+                        </div>
+
+                        <div></div>
+                    </div>
+                </div>
+
+                <div class="over-top-card card-bills">
+                    <span>Upcoming Bills</span>
+                    <div class="actual-over-top-card">
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="over-bot"></section>
         </main>
     </div>
 
     <script src="../allStuff/all.js"></script>
     <script src="over.js"></script>
 </body>
+
 </html>

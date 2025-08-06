@@ -21,9 +21,12 @@ const backLogin = document.querySelector('.for-acc')
 
 // setting up account on loading
 function logAcc() {
+    let allowed = false;
+
     for (let i of allAccs) {
         if (i.logged && i.keepSigned) {
-            window.location.href = './main/main.html'
+            allowed = true;
+            break;
         }
     }
 }
@@ -93,6 +96,7 @@ backLogin.addEventListener('click', e => {
 //submiting register form
 function AccConstructor(fullName, email, pass) {
     this.fullName = fullName
+    this.profileImgSrc = ''
     this.email = email
     this.pass = pass
     this.keepSigned = false
@@ -145,7 +149,7 @@ loginForm.addEventListener('submit', e => {
             i.logged = true
             modalAppear('you have logged in')
             setTimeout(() => {
-                window.location.href = '../overview.hml'
+                window.location.href = 'overview/over.html'
             }, 500);
         }
 
@@ -157,7 +161,7 @@ loginForm.addEventListener('submit', e => {
             i.keepSigned = true
             modalAppear('you have logged in')
             setTimeout(() => {
-                window.location.href = './main/main.html'
+                window.location.href = 'overview/over.html'
             }, 2000);
         }
     }

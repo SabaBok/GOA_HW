@@ -1,0 +1,286 @@
+.header-date {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.header-date h2 {
+    color: #000;
+}
+
+.header-date div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+main {
+    padding: 10px 20px;
+}
+
+.over-top {
+    width: 100%;
+    height: 300px;
+    border: 1px solid black;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    align-items: start;
+    justify-items: center;
+}
+
+.over-top-card {
+    width: 100%;
+    max-width: 350px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.over-top-card span {
+    color: #878787;
+    font-size: 1.3rem;
+    text-transform: capitalize;
+}
+
+.actual-over-top-card {
+    width: 100%;
+    min-height: 250px;
+    height: auto;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 15px;
+    position: relative;
+    justify-content: space-between;
+}
+.balance-card-1,
+.goal-card-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.balance-card-1 b,
+.goal-card-1 b {
+    font-size: 1.2rem;
+}
+
+.line {
+    width: 95%;
+    height: 1px;
+    background-color: #f3f3f3;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.balance-card-2 {
+    width: 100%;
+    height: 90px;
+    border-radius: 4px;
+    background-color: #299D91;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.balance-card-2 span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: .9rem;
+}
+
+.balance-card-2 img {
+    width: 50px;
+}
+
+.balance-card-2 div:first-child,
+.bc2-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bc2-2 {
+    align-items: end;
+}
+
+.bc2-2 div {
+    display: flex;
+    font-weight: 600;
+    gap: 10px;
+    align-items: center;
+}
+
+.bc2-2 i {
+    transform: rotateZ(45deg);
+    color: #299D91;
+    padding: 4px 6px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.balance-card-3 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bc3-1,
+.bc3-3 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.bc3-2 {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bc3-2 div {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #D1D1D1;
+}
+
+.goal-card-1 div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.goal-card-1 div i {
+    padding: 9px;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    color: #525256;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.goal-card-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.goal-card-2s {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 30px;
+    height: 100%;
+}
+
+.goal-card-2s div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.goal-card-2s div p {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.goal-card-2s div span {
+    font-size: .9rem;
+}
+
+.gauge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    width: 130px;
+    height: auto;
+    flex-shrink: 0;
+}
+.gauge p{
+    font-size: 12px;
+}
+.gauge-pin{
+    fill: #299D91;
+}
+.gauge-svg {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+
+.gauge-bg {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 8px;
+}
+
+.gauge-fill {
+    fill: none;
+    stroke: #20b2aa;
+    stroke-width: 8px;
+    stroke-linecap: round;
+    stroke-dasharray: 125.66;
+    stroke-dashoffset: 125.66;
+    transition: stroke-dashoffset 2s ease-in-out;
+}
+
+.gauge-needle {
+    stroke: #299D91;
+    stroke-width: 2px;
+    transform-origin: 50% 83%;
+    transition: transform 2s ease-in-out;
+}
+.gauge-value {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    fill: #333;
+    transform: translateY(20px);
+}
+
+.gauge-min,
+.gauge-max {
+    font-family: sans-serif;
+    font-size: 10px;
+    transform: translateY(10px);
+    fill: #888;
+}
+
+
+
+
+@media (max-width:800px) {
+    .header-date {
+        gap: 5px;
+    }
+}
+
+@media (max-width:700px) {
+    .header-date {
+        display: none;
+    }
+}
