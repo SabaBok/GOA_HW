@@ -29,6 +29,9 @@ function logAcc() {
             break;
         }
     }
+    if(allowed){
+        window.location.href = 'overview/over.html'
+    }
 }
 logAcc()
 
