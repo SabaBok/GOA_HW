@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+    <!--შემოიტანეთ React და React-dom თქვენს HTML ფაილში CDN ის საშუალებით(ორიცე 16.0 ვერსიის).-->
+    <div id="root"></div>
+
+    <script>
+        function App() {
+            return React.createElement("h1", null, "გამარჯობა React 16!");
+        }
+        ReactDOM.render(
+            React.createElement(App),
+            document.getElementById("root")
+        );
+    </script>
+</body>
+
+</html>

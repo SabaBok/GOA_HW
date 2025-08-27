@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <style>
+        .movie-item {
+            color: white;
+            background-color: darkslateblue;
+            padding: 8px;
+            margin: 4px 0;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- დაარენდერეთ 5 ნაბიჯზე შექმნილი React ელემენტების სია ახლად შექმნილ ul ტეგში. -->
+    <ul id="my-list"></ul>
+
+    <script>
+        const movies = ["Inception", "Interstellar", "The Dark Knight", "The Matrix", "Gladiator"];
+
+        const movieElements = [];
+        for (let movie of movies) {
+            movieElements.push(
+                React.createElement("li", { className: "movie-item" }, movie)
+            );
+        }
+
+        ReactDOM.render(
+            movieElements,
+            document.getElementById("my-list")
+        );
+    </script>
+</body>
+
+</html>
