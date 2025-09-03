@@ -1,0 +1,23 @@
+.card{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.dog{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+.dog button{
+	background-color: red;
+	color: white;
+	border: 0;
+	cursor: pointer;
+}
+.list{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+}
