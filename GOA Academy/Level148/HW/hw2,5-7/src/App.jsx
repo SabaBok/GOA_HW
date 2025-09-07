@@ -1,5 +1,6 @@
 import Hw2 from "./Hw2"
 import UserStatus1 from "./UserStatus1"
+import UserStatus2 from "./UserStatus1"
 import UserFriends from "./UserFriends"
 import UserCard from "./UserCard"
 function App() {
@@ -13,6 +14,7 @@ function App() {
 			{/* HW2 */}
 			<Hw2>
 				<button>the child</button>
+				{/*props.children React-ში არის სპეციალური prop, რომელიც საშუალებას გვაძლევს კომპონენტში გადავცეთ სხვადასხვა JSX ელემენტები.*/}
 			</Hw2>
 
 			{/* HW5 */}
@@ -26,9 +28,10 @@ function App() {
 			<UserFriends friends={friendList} ></UserFriends>
 
 			{/* HW7 */}
-			<UserCard firstName='saba' lastName='bokuchava' age={17} friends={friendList} isOnline={true}></UserCard>
-			<UserCard firstName='tornike' lastName='beruchashvili' age={17} friends={friendList} isOnline={false}></UserCard>
-			<UserCard firstName='john' lastName='doe' age={20} friends={friendList} isOnline={true}></UserCard>
+			<UserCard firstName='saba' lastName='bokuchava' age={17} friends={friendList} isOnline={true} gender='male'></UserCard>
+			<UserCard firstName='tornike' lastName='beruchashvili' age={17} friends={friendList} isOnline={false} gender='male'></UserCard>
+			<UserCard firstName='john' lastName='doe' age={20} friends={friendList} isOnline={true} gender='male'></UserCard>
+			<UserCard firstName='jane' lastName='doe' age={20} friends={friendList} isOnline={true} gender='female'></UserCard>
 		</>
 	)
 }
