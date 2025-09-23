@@ -22,7 +22,7 @@ function App() {
 				<div className='flex flex-col gap-7 bg-gray-600 w-full items-center rounded-sm py-3 px-1'>
 					{tasks.map((el,ind) => (
 						<div key={ind} className='w-full px-5 py-2 flex justify-between items-center bg-gray-500 rounded-[7px]'>
-							<p className=''>{el}</p> 
+							<p>{el}</p> 
 
 							<div className='flex gap-3'>
 								<button className='p-1 px-3 bg-purple-600 text-white rounded-sm cursor-pointer' onClick={()=>{
