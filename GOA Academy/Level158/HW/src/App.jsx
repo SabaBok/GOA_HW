@@ -79,7 +79,7 @@ function App() {
 						<input type="text" 
 						onChange={e=>setInp(e.target.value)} value={inp}
 						placeholder='Search Github username' name='user' 
-						className='dark:placeholder:text-[#6b7280] outline-none max-2xsm:hidden bg-none placeholder:text-white placeholder:opacity-80' />
+						className='dark:placeholder:text-[#6b7280] outline-none max-2xsm:hidden w-full bg-none placeholder:text-white placeholder:opacity-80' />
 						
 						<input type="text" 
 						onChange={e=>setInp(e.target.value)} value={inp}
