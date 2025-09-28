@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.light, .light *));
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/*background-color: #141c2f;*/
+	color: #fff;
+	height: 100vh;
+	width: 100%;
+}
+
+html,
+#root {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@theme {
+	--breakpoint-2xsm: 400px;
+	--breakpoint-midsm: 450px;
+	--breakpoint-xsm: 500px;
+}

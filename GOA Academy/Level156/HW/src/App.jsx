@@ -16,7 +16,7 @@ function App() {
 
 		const data = await getInfo(searchtext)
 		if (!data) {
-			setAccShowing(false) // hide previous account info if search fails
+			setAccShowing(false)
 			return
 		}
 
@@ -34,7 +34,6 @@ function App() {
 
 			return data
 		} catch (error) {
-			handleError(error.message)
 			return null
 		}
 	}
@@ -50,9 +49,9 @@ function App() {
 
 		const day = date.getDate()
 		const month = allMonths[date.getMonth()]
-		const year = date.getFullYear() % 100
+		const year = date.getFullYear() % 10
 
-		return `Joined ${day} ${month} ${year}`
+		return `Joined ${month} ${day}, ${year}`
 	}
 	return (
 		<section className='w-[98%] max-w-[700px] min-w-[300px] p-3 flex flex-col gap-5'>
