@@ -4,9 +4,9 @@ export default function Main({ setInfo }) {
 	return (
 		<section className='flex flex-col gap-6 p-5 items-start flex-1'>
 			{/* top text */}
-			<div>
-				<h2>FitBit 19 - The Smartest Watch</h2>
-				<span className='opacity-80 '>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</span>
+			<div className='flex flex-col gap-3'>
+				<h2 className='font-[700] text-[24px]'>FitBit 19 - The Smartest Watch</h2>
+				<span className='opacity-80 '>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</span>
 			</div>
 			{/* select colors */}
 			<div className='flex flex-col gap-2'>
@@ -28,9 +28,7 @@ export default function Main({ setInfo }) {
 				</div>
 			</div>
 
-			<button
-				className='text-black cursor-pointer rounded-[4px] bg-amber-500 uppercase px-4 py-1.5 font-[600]'
-				onClick={() => alert('bought')}>buy now</button>
+			<button className='text-black cursor-pointer rounded-[4px] bg-amber-500 uppercase px-4 py-1.5 font-[600]' onClick={() => alert('bought')}>buy now</button>
 		</section>
 	)
 }

@@ -3,12 +3,16 @@
 body {
 	height: 100vh;
 }
-.idk{
+
+.idk {
 	transform-origin: center;
 	animation: heartbeat ease-in-out infinite;
 }
+
 @keyframes heartbeat {
-	0%,100% {
+
+	0%,
+	100% {
 		transform: scale(1);
 	}
 
