@@ -4,9 +4,7 @@ export default function HW4() {
 	const [email,setEmail] = useState('')
 	const [pass,setPass] = useState('')
 	
-	useEffect(()=>{
-		email.includes('@')&&pass.length>6?console.log('valid credentials'):console.log('invalid email or password')
-	},[email,pass])
+	useEffect(()=>{email.includes('@')&&pass.length>6?console.log('valid credentials'):console.log('invalid email or password')},[email,pass])
 
 	return (
 		<form action="" onSubmit={e=> {e.preventDefault(); setEmail(e.target.email.value); setPass(e.target.pass.value)}}>

@@ -4,7 +4,11 @@ export default function HW6() {
 	const [temp,setTemp] = useState(0)
 	const [city,setCity] = useState('')
 	useEffect(()=>{
-		temp>35 && city.length>=3?console.log('heat alert in ',city):temp<5?console.log('cold alert in ',city):null
+		temp>35 && city.length>=3?
+		console.log('heat alert in ',city):
+		temp<5 ?
+		console.log('cold alert in ',city):
+		console.log("Weather normal")
 	},[temp,city])
 	return (
 		<form action="" onSubmit={e=>{

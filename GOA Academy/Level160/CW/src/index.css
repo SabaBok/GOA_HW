@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+body {
+	height: 100vh;
+}
+.idk{
+	transform-origin: center;
+	animation: heartbeat ease-in-out infinite;
+}
+@keyframes heartbeat {
+	0%,100% {
+		transform: scale(1);
+	}
+
+	25% {
+		transform: scale(1.2);
+	}
+
+	50% {
+		transform: scale(1);
+	}
+
+	75% {
+		transform: scale(1.2);
+	}
+}
