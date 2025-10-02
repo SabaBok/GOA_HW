@@ -6,9 +6,9 @@ export default function Watch({ color, showingTime }) {
 	const [time, setTime] = useState(new Date());
 	const [manualOverride, setManualOverride] = useState(false);
 
-	const hh = time.getHours() * 30 + time.getMinutes() / 2 // 360/12 = 30deg per hour
-	const mm = time.getMinutes() * 6 // 360/60 = 6deg per minute
-	const ss = time.getSeconds() * 6 // 360/60 = 6deg per second
+	const hh = time.getHours() * 30 + time.getMinutes() / 2
+	const mm = time.getMinutes() * 6
+	const ss = time.getSeconds() * 6
 	function forceHeartRate(value) {
 		setHeartRate(value)
 		setManualOverride(true)

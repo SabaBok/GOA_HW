@@ -22,14 +22,13 @@ export default function Heart({ heartRate, vis, setVis,forceHeartRate }) {
 		setPrevBeats(heartRate)
 	}, [heartRate])
 	useEffect(() => {
-		if (!warning) return // no warning = no timer
+		if (!warning) return
 
 		const timer = setTimeout(() => {
 			alert('rate slower injected')
 			forceHeartRate(145)
 		}, 6500)
 
-		// cleanup: cancel timer if warning changes or component unmounts
 		return () => clearTimeout(timer)
 	}, [warning])
 	return (
