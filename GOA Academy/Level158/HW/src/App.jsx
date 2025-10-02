@@ -74,7 +74,7 @@ function App() {
 
 				{/* search */}
 				<div className='flex gap-4 items-center px-2 2xsm:pl-7 py-2 bg-[#1f2a48] dark:bg-[#fff] dark:shadow-xs rounded-lg'>
-					<i className="fa-solid fa-magnifying-glass text-[#046ce3]"></i>
+					<i className="fa-solid fa-magnifying-glass text-[#046ce3] max-2xsm:hidden"></i>
 					<form className='flex justify-between gap-4 w-full' onSubmit={handleSearch}>
 						<input type="text" 
 						onChange={e=>setInp(e.target.value)} value={inp}
@@ -86,7 +86,7 @@ function App() {
 						placeholder='Search Github username' name='user1' 
 						className='dark:placeholder:text-[#6b7280] outline-none 2xsm:hidden max-w-[200px] bg-none placeholder:text-white placeholder:opacity-80' />
 						
-						<button type='submit' className='bg-[#0079fe] text-white rounded-lg px-4 py-[8px] duration-300 hover:bg-[#005bbd] cursor-pointer'>Search</button>
+						<button type='submit' className='bg-[#0079fe] text-white max-2xsm:hidden rounded-lg px-4 py-[8px] duration-300 hover:bg-[#005bbd] cursor-pointer'>Search</button>
 					</form>
 				</div>
 
@@ -99,11 +99,11 @@ function App() {
 						{/* body right */}
 						<div className='flex flex-col gap-5 w-full h-full 2xsm:px-5'>
 							{/* body top */}
-							<div className='flex max-sm:items-center gap-6'>
+							<div className='flex max-sm:items-center gap-6 max-2xsm:flex-col max-2xsm:items-center'>
 								<img src={currAcc.avatar_url} alt="profile" className='rounded-[50%] w-[100px] sm:hidden'/>
 
-								<div className='flex flex-col w-full gap-3 max-sm:gap-1'>
-									<div className='flex justify-between w-full gap-3 items-center max-midsm:flex-col max-midsm:items-start max-midsm:gap-0'>
+								<div className='flex flex-col w-full gap-3 max-sm:gap-1 max-2xsm:flex-col max-2xsm:items-center'>
+									<div className='max-2xsm:flex-col max-2xsm:items-center flex justify-between w-full gap-3 items-center max-midsm:flex-col max-midsm:items-start max-midsm:gap-0'>
 										<h2 className='font-[600] text-[1.4rem]'>{currAcc.login}</h2>
 										<p className='min-w-[122px]'>{handleTime(currAcc.created_at)}</p>
 									</div>
@@ -163,8 +163,8 @@ function App() {
 
 				{/* toast element */}
 				<div className={`${toast[0] ? 'opacity-100' : 'opacity-0'} flex items-center gap-5 absolute top-[3%] right-[1%] min-w-70 w-[98%] max-w-[450px] min-h-15 rounded-sm px-5 py-2 bg-red-600 duration-300`}>
-					<i className="fa-solid fa-circle-exclamation text-[20px] dark:text-white text-black"></i>
-					<p className='font-[700] capitalize dark:text-white text-black'>{toast[1]}</p>
+					<i className="fa-solid fa-circle-exclamation text-[20px] text-white"></i>
+					<p className='font-[700] capitalize text-white'>{toast[1]}</p>
 				</div>
 			</section>
 		</main>
