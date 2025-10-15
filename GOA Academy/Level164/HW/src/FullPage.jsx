@@ -1,7 +1,6 @@
-import React from 'react'
 import {Outlet} from 'react-router-dom'
 import Header from './Header/Header'
-
+import Footer from './Footer/Footer'
 export default function FullPage() {
 	return (
 		<section>
@@ -9,7 +8,7 @@ export default function FullPage() {
 			
 			<Outlet></Outlet>
 
-			<footer></footer>
+			<Footer></Footer>
 		</section>
 	)
 }
