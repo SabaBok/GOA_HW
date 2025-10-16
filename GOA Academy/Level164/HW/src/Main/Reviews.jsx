@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Reviews() {
 	return (
-		<section className='flex flex-col gap-10 w-full max-w-[1400px] justify-center'>
-			<div className='w-full flex justify-between'>
+		<section className='flex flex-col gap-10 w-[90%] max-w-[1500px] justify-center'>
+			<div className='w-full flex justify-between max-sm:flex-col max-sm:items-center max-sm:text-center'>
 				<h1 className='font-[800] text-[36px]'>OUR HAPPY CUSTOMERS</h1>
 
 				<div className='flex gap-6 items-center text-[20px]'>

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Subscribe() {
 	return (
-		<section className='flex justify-between gap-5 bg-black rounded-[15px] w-[90%] max-w-[1200px] min-h-[180px] px-[60px] py-[30px] text-white items-center'>
+		<section className='translate-y-[-50%] flex justify-between gap-5 bg-black rounded-[15px] w-[90%] max-w-[1500px] min-h-[180px] px-[60px] py-[30px] text-white items-center'>
 			<h1 className='font-[800] text-[30px] max-w-[45%]'>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h1>
 
 			<form className='flex flex-col items-center w-[350px] gap-5'>

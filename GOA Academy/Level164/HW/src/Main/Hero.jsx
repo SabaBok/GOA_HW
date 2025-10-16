@@ -2,7 +2,7 @@ import React from 'react'
 export default function Hero() {
 	return (
 		<section className='w-full flex bg-[#F2F0F1] justify-center'>
-			<div className='flex max-xl:flex-col items-center w-[90%] max-w-[1200px] xl:justify-between gap-10'>
+			<div className='flex max-xl:flex-col items-center w-[90%] max-w-[1500px] xl:justify-between gap-10'>
 				<div className='w-[90%] xl:w-1/2 flex flex-col gap-10 items-center xl:items-start'>
 					<div className='flex flex-col gap-5 items-start max-sm:items-center'>
 						<h2 className='font-oswald font-[800] text-[67px] scale-y-[0.8]  xl:max-w-[470px] tracking-tighter leading-tight'>FIND CLOTHES THAT MATCHES YOUR STYLE</h2>

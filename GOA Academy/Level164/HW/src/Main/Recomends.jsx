@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Recomends() {
 	return (
-		<section className='w-full flex flex-col items-center gap-30 max-w-[1200px]'>
+		<section className='w-full flex flex-col items-center gap-30 max-w-[1500px]'>
 			<div className='w-full flex flex-col gap-10 items-center'>
 				<h1 className='font-oswald uppercase font-[900] text-[42px]'>NEW ARRIVALS</h1>
 
