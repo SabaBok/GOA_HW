@@ -13,7 +13,7 @@ export default function Reviews() {
 			</div>
 
 			<div className='grid grid-cols-[repeat(auto-fit,minmax(400px,1fr))] justify-items-center gap-5'>
-				<div className='w-[400px] flex flex-col gap-3 py-[28px] px-[32px] rounded-[15px] border border-[#0000001A]'>
+				<div className='max-sm:w-[300px] w-[400px] flex flex-col gap-3 py-[28px] px-[32px] rounded-[15px] border border-[#0000001A]'>
 					<i>⭐⭐⭐⭐⭐</i>
 					<div className='flex gap-2 items-center'>
 						<h2>Sarah M.</h2>
@@ -22,7 +22,7 @@ export default function Reviews() {
 					<p>"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”</p>
 				</div>
 
-				<div className='w-[400px] flex flex-col gap-3 py-[28px] px-[32px] rounded-[15px] border border-[#0000001A]'>
+				<div className='max-sm:w-[300px] w-[400px] flex flex-col gap-3 py-[28px] px-[32px] rounded-[15px] border border-[#0000001A]'>
 					<i>⭐⭐⭐⭐⭐</i>
 					<div className='flex gap-2 items-center'>
 						<h2>Sarah M.</h2>
@@ -31,7 +31,7 @@ export default function Reviews() {
 					<p>"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”</p>
 				</div>
 
-				<div className='w-[400px] flex flex-col gap-3 py-[28px] px-[32px] rounded-[15px] border border-[#0000001A]'>
+				<div className='max-sm:w-[300px] w-[400px] flex flex-col gap-3 py-[28px] px-[32px] rounded-[15px] border border-[#0000001A]'>
 					<i>⭐⭐⭐⭐⭐</i>
 					<div className='flex gap-2 items-center'>
 						<h2>Sarah M.</h2>
