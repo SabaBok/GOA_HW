@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import "tailwindcss";
+
+/* Local font */
+@font-face {
+	font-family: "Satoshi";
+	src: url("/fonts/Satoshi/Satoshi-Regular.woff2") format("woff2"),
+		url("/fonts/Satoshi/Satoshi-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Define theme variables for Tailwind 4 */
+@theme {
+	--font-satoshi: "Satoshi", sans-serif;
+	--font-oswald: "Oswald", sans-serif;
+}
+
+/* Make Satoshi default for all text */
+@layer base {
+	body {
+		@apply font-satoshi;
+	}
+}
