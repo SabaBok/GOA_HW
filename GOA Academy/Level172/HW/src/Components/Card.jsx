@@ -11,10 +11,10 @@ export default function Card({prod}) {
 					<span>{prod.rating}/<span className='text-[#666666]'>5</span></span>
 				</p>
 				<div>
-					{prod.discountPrice?
+					{prod.discount?
 					<p className='text-[20px] flex gap-3 items-center font-[600]'>${prod.price} 
-						<span className='text-gray-400 line-through text-[20px]'>${prod.discountPrice}</span> 
-						<span className='flex items-center justify-center text-red-500 text-[11px] h-[20px] px-2 bg-red-100 rounded-full'>-{100 - Math.round(prod.price/prod.discountPrice*100)}%</span>
+						<span className='text-gray-400 line-through text-[20px]'>${prod.discount}</span> 
+						<span className='flex items-center justify-center text-red-500 text-[11px] h-[20px] px-2 bg-red-100 rounded-full'>-{100 - Math.round(prod.price/prod.discount*100)}%</span>
 					</p> 
 					
 					: <p className='text-[20px] font-[600]'>${prod.price}</p>}
