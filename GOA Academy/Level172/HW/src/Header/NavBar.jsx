@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 export default function NavBar() {
 	return (
-		<section className='border-b border-[#0000001A] flex max-w-[1200px] w-[90%] gap-10 xl:gap-20 justify-center items-center py-[20px] max-lg:justify-between max-lg:px-10'>
+		<section className='border-b border-[#0000001A] flex max-w-[1400px] w-[90%] gap-10 xl:gap-20 justify-center items-center py-[20px] max-lg:justify-between max-lg:px-10'>
 			<div className='flex gap-4 items-center'>
 				<i className="fa-solid fa-bars lg:!hidden cursor-pointer"></i>
 				<Link to='/'><p className='text-[34px] font-oswald font-[900]'>SHOP.CO</p></Link>
@@ -27,7 +27,7 @@ export default function NavBar() {
 
 			<div className='flex items-center gap-5'>
 				<i className="fa-solid fa-magnifying-glass lg:!hidden"></i>
-				<i className="fa-solid fa-cart-shopping cursor-pointer"></i>
+				<Link to={'/cart'}><i className="fa-solid fa-cart-shopping cursor-pointer"></i></Link>
 				<i className="fa-regular fa-circle-user cursor-pointer"></i>
 			</div>
 		</section>

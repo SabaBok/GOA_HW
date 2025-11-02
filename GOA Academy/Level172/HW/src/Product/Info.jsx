@@ -1,16 +1,19 @@
-import React from 'react'
 import { use, useEffect, useState } from 'react'
+import Modal from '../Components/Modal'
 
-export default function Info({product}) {
+export default function Info({ product }) {
 	const [activeImg, setActiveImg] = useState(0)
 	const [currSize, setCurrSize] = useState(null)
-	const [prodAmount, setProdAmount] = useState(0)
+	const [prodAmount, setProdAmount] = useState(1)
+	const [cartProds, setCartProd] = useState(() => JSON.parse(localStorage.getItem('shopco-cart')) || [])
+	const [modalShow, setModalShow] = useState(false)
 
 	useEffect(() => {
 		if (product && product.sizeList?.length > 0) {
 			setCurrSize(product.sizeList[0])
 		}
 	}, [product])
+
 	function getStars() {
 		const fullStars = Math.floor(product.rate)
 		const hasHalfStar = product.rate % 1 >= 0.5
@@ -33,6 +36,27 @@ export default function Info({product}) {
 		return <div className="flex items-center gap-1">{stars}</div>
 	}
 
+	function addToCart() {
+		let modProd = { ...product, size: currSize, amount: prodAmount }
+
+		setCartProd(prev => {
+			const existingIndex = prev.findIndex(el => el.id === modProd.id)
+
+			if (existingIndex >= 0) {
+				const updated = [...prev]
+				updated[existingIndex] = {
+					...updated[existingIndex],
+					amount: updated[existingIndex].amount + modProd.amount
+				}
+				return updated
+			}
+
+			return [...prev, modProd]
+		})
+		setModalShow(true)
+	}
+
+	useEffect(() => localStorage.setItem('shopco-cart', JSON.stringify(cartProds)), [cartProds])
 	return (
 		<section className='flex flex-col gap-10 max-sm:items-center'>
 			<div className='flex gap-[15px] items-center font-400'>
@@ -104,9 +128,14 @@ export default function Info({product}) {
 							<p>{prodAmount}</p>
 							<i className="fa-solid fa-plus cursor-pointer" onClick={() => setProdAmount(prodAmount + 1)}></i>
 						</div>
-						<button className='flex-4 rounded-full bg-black text-white py-3 cursor-pointer'>Add to Cart</button>
+						<button className='flex-4 rounded-full bg-black text-white py-3 cursor-pointer' onClick={addToCart}>Add to Cart</button>
 					</div>
 				</div>
 			</div>
+
+			{modalShow &&
+				<Modal message={"Item Added To Cart"} duration={2000} onClose={() => setModalShow(false)} />
+			}
 		</section>
-)}
+	)
+}

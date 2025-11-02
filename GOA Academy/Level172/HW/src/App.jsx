@@ -4,6 +4,7 @@ import FullPage from './FullPage'
 import Main from './Main/Main'
 import Product from './Product/Product'
 import ScrollToTop from './ScrollToTop'
+import Cart from './Cart/Cart'
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 					<Route index element={<Main></Main>}></Route>
 					<Route path='product/:id' element={<Product></Product>}></Route>
 					{/*<Route path='/filtering' element={<Product></Product>}></Route>*/}
+					<Route path='/cart' element={<Cart/>}></Route>
 				</Route>
 			</Routes>
 		</BrowserRouter>

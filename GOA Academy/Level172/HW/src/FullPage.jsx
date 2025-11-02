@@ -4,7 +4,7 @@ import Footer from './Footer/Footer'
 
 export default function FullPage() {
 	return (
-		<section className='flex flex-col justify-between min-h-screen h-full gap-10'>
+		<section className='flex flex-col min-h-screen h-full gap-10'>
 			<Header></Header>
 
 			<Outlet></Outlet>
