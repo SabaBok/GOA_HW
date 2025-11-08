@@ -8,7 +8,7 @@ export default function Cart() {
 	const updateAmount = (id, newAmount) => {
 		setCartProd(prev =>
 			prev
-				.map((item, index) => index === id ? { ...item, amount: newAmount } : item)
+				.map((item, index) => index == id ? { ...item, amount: newAmount } : item)
 				.filter(item => item.amount > 0)
 		)
 	}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import { InfoData } from './HW2'
+
 export default function Comp2() {
 	const [data,setData] = useContext(InfoData)
 	

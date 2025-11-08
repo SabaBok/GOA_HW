@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import HW2 from './HW2/HW2'
+import {HW2} from './HW2/HW2'
 import HW1 from './HW1'
 function App() {
 	const [count, setCount] = useState(0)
