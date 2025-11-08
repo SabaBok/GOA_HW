@@ -1,19 +1,13 @@
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Modal from '../Components/Modal'
 
 export default function Info({ product }) {
 	const [activeImg, setActiveImg] = useState(0)
 	const [currSize, setCurrSize] = useState(null)
 	const [prodAmount, setProdAmount] = useState(1)
-	const [cartProds, setCartProd] = useState(() => JSON.parse(localStorage.getItem('shopco-cart')) || [])
 	const [modalShow, setModalShow] = useState(false)
-	const [color,setColor] = useState()
-
-	useEffect(() => {
-		if (product && product.sizeList.length > 0) {
-			setCurrSize(product.sizeList[0])
-		}
-	}, [product])
+	const [currColor, setCurrColor] = useState(product.colorList[0])
+	const [cartProds, setCartProd] = useState(() => JSON.parse(localStorage.getItem('shopco-cart')) || [])
 
 	function getStars() {
 		const fullStars = Math.floor(product.rate)
@@ -38,7 +32,7 @@ export default function Info({ product }) {
 	}
 
 	function addToCart() {
-		let modProd = { ...product, size: currSize, amount: prodAmount }
+		let modProd = { ...product, size: currSize, amount: prodAmount, color:currColor, mainImgSrc:product.imgList[product.colorList.indexOf(currColor)] }
 
 		setCartProd(prev => {
 			const existingIndex = prev.findIndex(el => el.id === modProd.id)
@@ -57,10 +51,17 @@ export default function Info({ product }) {
 		setModalShow(true)
 	}
 
+	useEffect(() => { if (product && product.sizeList.length > 0) setCurrSize(product.sizeList[0]) }, [product])
+
+	useEffect(() => {
+		const index = product.colorList.indexOf(currColor)
+		if (index >= 0) setActiveImg(index)
+	}, [currColor])
+
 	useEffect(() => localStorage.setItem('shopco-cart', JSON.stringify(cartProds)), [cartProds])
-	
-	if(!product) return null
-	
+
+	if (!product) return null
+
 	return (
 		<section className='flex flex-col gap-10 max-sm:items-center'>
 			<div className='flex gap-[15px] items-center font-400'>
@@ -81,7 +82,7 @@ export default function Info({ product }) {
 									src={`/clothes/${el}`}
 									alt='product image'
 									className={`duration-100 w-[150px] h-[160px] cursor-pointer object-cover rounded-[20px] ${activeImg === id ? 'border-1 border-black' : 'border border-transparent'}`}
-									onClick={() => setActiveImg(id)}
+									onClick={() => {setActiveImg(id); setCurrColor(product.colorList[id])}}
 								/>
 							))
 						}
@@ -116,8 +117,10 @@ export default function Info({ product }) {
 						<p>Select Colors</p>
 						<div className='flex items-center gap-4'>
 							{
-								product.colorList.map((el,id)=>(
-									<div key={id} className={`p-4 bg-yellow-500 rounded-full`}></div>
+								product.colorList.map((el, id) => (
+									<div key={id} className='w-[34px] h-[34px] shadow-[0_2px_4px_rgba(0,0,0,0.25)] rounded-full cursor-pointer flex items-center justify-center' style={{ backgroundColor: el }} onClick={() => setCurrColor(el)}>
+										<i className={`fa-solid fa-check text-white ${currColor == el ? 'opacity-100' : 'opacity-0'} duration-100`}></i>
+									</div>
 								))
 							}
 						</div>

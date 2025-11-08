@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 export default function CartCard({ prod, id, updateAmount }) {
 	const changeAmount = (change) => {
@@ -14,7 +15,7 @@ export default function CartCard({ prod, id, updateAmount }) {
 
 	return (
 		<div className='w-full h-[150px] pb-[20px] flex gap-5 border-b-[1.5px] border-[#0000001A] last:border-b-0'>
-			<img src={`/clothes/${prod.imgList[0]}`} alt="product photo" className='rounded-lg w-[130px] h-[120px] object-cover' />
+			<Link to={`/product/${prod.id}`}><img src={`/clothes/${prod.mainImgSrc}`} alt="product photo" className='rounded-lg w-[130px] h-[120px] object-cover' /></Link>
 
 			<div className='w-full flex flex-col justify-between h-full'>
 				<div className='flex flex-col gap-1 w-full'>
@@ -23,7 +24,7 @@ export default function CartCard({ prod, id, updateAmount }) {
 						<i className="fa-solid fa-trash-can text-red-600 cursor-pointer" onClick={handleDelete}></i>
 					</div>
 					<p className='text-[13px]'>Size: <span className='text-[#666666]'>{prod.size}</span></p>
-					<p className='text-[13px]'>Color: <span className='text-[#666666]'>{prod.colorList[0]}</span></p>
+					<p className='text-[13px]'>Color: <span className='text-[#666666]'>{prod.color}</span></p>
 				</div>
 
 				<div className='flex w-full justify-between'>

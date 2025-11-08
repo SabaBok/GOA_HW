@@ -13,8 +13,8 @@
         "clothesType": "Jeans",
         "desc": "Featuring unique details and a relaxed fit, this jeans is the definition of gym fashion.",
         "colorList": [
-            "maroon",
-            "teal"
+            "blue",
+            "maroon"
         ],
         "sizeList": [
             "small",
@@ -102,7 +102,6 @@
         "clothesType": "T-shirts",
         "desc": "Featuring unique details and a relaxed fit, this t-shirts is the definition of party fashion.",
         "colorList": [
-            "green",
             "blue",
             "brown"
         ],
@@ -140,9 +139,8 @@
         "clothesType": "Jeans",
         "desc": "An essential jeans piece for any wardrobe. Its versatile design makes it suitable for both a party setting and everyday wear.",
         "colorList": [
-            "navy",
-            "beige",
-            "khaki"
+			"emerald",
+            "navy"
         ],
         "sizeList": [
             "medium",
@@ -172,10 +170,8 @@
         "clothesType": "Shirts",
         "desc": "An essential shirts piece for any wardrobe. Its versatile design makes it suitable for both a formal setting and everyday wear.",
         "colorList": [
-            "black",
-            "white",
-            "grey",
-            "red"
+			"red",
+            "black"
         ],
         "sizeList": [
             "small",
@@ -274,8 +270,8 @@
         "desc": "Designed for performance and style, this shorts is a must-have for your party activities.",
         "colorList": [
             "navy",
-            "beige",
-            "khaki"
+            "khaki",
+            "black"
         ],
         "sizeList": [
             "small",
@@ -313,9 +309,9 @@
         "clothesType": "Hoodie",
         "desc": "An essential hoodie piece for any wardrobe. Its versatile design makes it suitable for both a gym setting and everyday wear.",
         "colorList": [
-            "navy",
-            "beige",
-            "khaki"
+            "khaki",
+			"beige",
+            "navy"
         ],
         "sizeList": [
             "xs",
@@ -340,8 +336,8 @@
         "clothesType": "Hoodie",
         "desc": "Featuring unique details and a relaxed fit, this hoodie is the definition of party fashion.",
         "colorList": [
-            "dark-grey",
-            "light-blue"
+            "light-blue",
+            "dark-grey"
         ],
         "sizeList": [
             "small",
@@ -367,8 +363,8 @@
         "desc": "Elevate your look with this elegant shorts. It features a superb fit and durable material, ideal for gym occasions.",
         "colorList": [
             "pink",
-            "purple",
-            "yellow"
+            "yellow",
+            "purple"
         ],
         "sizeList": [
             "xs",
@@ -401,9 +397,9 @@
         "clothesType": "Jeans",
         "desc": "This jeans is perfect for a gym outfit. Made from a high-quality, breathable fabric, it ensures all-day comfort.",
         "colorList": [
-            "navy",
-            "beige",
-            "khaki"
+			"beige",
+            "khaki",
+            "navy"
         ],
         "sizeList": [
             "small",
@@ -445,8 +441,8 @@
         "colorList": [
             "black",
             "white",
-            "grey",
-            "red"
+            "red",
+            "grey"
         ],
         "sizeList": [
             "xs",
@@ -474,9 +470,9 @@
         "desc": "Elevate your look with this elegant t-shirts. It features a superb fit and durable material, ideal for casual occasions.",
         "colorList": [
             "black",
-            "white",
             "grey",
-            "red"
+            "red",
+            "white"
         ],
         "sizeList": [
             "small",
@@ -508,9 +504,9 @@
         "clothesType": "Shorts",
         "desc": "Designed for performance and style, this shorts is a must-have for your party activities.",
         "colorList": [
-            "navy",
-            "beige",
-            "khaki"
+			"beige",
+            "khaki",
+            "navy"
         ],
         "sizeList": [
             "xs",
@@ -592,8 +588,8 @@
         "clothesType": "Shorts",
         "desc": "Designed for performance and style, this shorts is a must-have for your formal activities.",
         "colorList": [
-            "dark-grey",
-            "light-blue"
+            "black",
+            "navy"
         ],
         "sizeList": [
             "small",
@@ -638,8 +634,8 @@
         "desc": "An essential hoodie piece for any wardrobe. Its versatile design makes it suitable for both a party setting and everyday wear.",
         "colorList": [
             "green",
-            "blue",
-            "brown"
+            "brown",
+            "blue"
         ],
         "sizeList": [
             "xs",
@@ -665,9 +661,9 @@
         "clothesType": "Shorts",
         "desc": "This shorts is perfect for a party outfit. Made from a high-quality, breathable fabric, it ensures all-day comfort.",
         "colorList": [
-            "pink",
+            "yellow",
             "purple",
-            "yellow"
+            "pink"
         ],
         "sizeList": [
             "xs",
