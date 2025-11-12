@@ -51,7 +51,7 @@ export default function Filter() {
 				<ul className='flex flex-col gap-[14px] font-[400]'>
 					{
 						['T-shirts', 'Shorts', 'Shirts', 'Hoodie', 'Jeans'].map((el, ind) => (
-							<li className={`cursor-pointer duration-200 hover:text-[#000000be] ${filters.clothesType == el ? 'text-black font-[600]' : 'text-[#00000099]'}`} key={ind} onClick={() => setFilters({ ...filters, clothesType: el })}>{el}</li>
+							<li className={`cursor-pointer duration-200 hover:text-[#000000be] ${filters.clothesType == el ? 'text-black font-[600]' : 'text-[#00000099]'}`} key={ind} onClick={() => el == filters.clothesType? setFilters({...filters,clothesType:''}) : setFilters({ ...filters, clothesType: el })}>{el}</li>
 						))
 					}
 				</ul>
@@ -99,7 +99,7 @@ export default function Filter() {
 				<div className='flex flex-wrap gap-2 items-start'>
 					{
 						getEverySize().map((el, ind) => (
-							<p onClick={() => setFilters({ ...filters, size: el })} className={`${filters.size == el ? 'bg-black text-white' : 'bg-[#F0F0F0] text-[#00000099]'} px-[15px] py-[5px] rounded-full cursor-pointer duration-300`} key={ind}>{el}</p>
+							<p onClick={() => el == filters.size? setFilters({...filters,size:''}) : setFilters({ ...filters, size: el })} className={`${filters.size == el ? 'bg-black text-white' : 'bg-[#F0F0F0] text-[#00000099]'} px-[15px] py-[5px] rounded-full cursor-pointer duration-300`} key={ind}>{el}</p>
 						))
 					}
 				</div>
@@ -111,7 +111,7 @@ export default function Filter() {
 				<div className='flex flex-col gap-2'>
 					{
 						['Casual', 'Formal', 'Party', 'Gym'].map((el, ind) => (
-							<p key={ind} onClick={() => setFilters({ ...filters, dressStyle: el })} className={`${filters.dressStyle == el ? 'text-black' : 'text-[#00000099]'}  font-[400] cursor-pointer`}>{el}</p>
+							<p key={ind} onClick={() => el == filters.dressStyle? setFilters({...filters,dressStyle:''}) : setFilters({ ...filters, dressStyle: el })} className={`${filters.dressStyle == el ? 'text-black' : 'text-[#00000099]'}  font-[400] cursor-pointer`}>{el}</p>
 						))
 					}
 				</div>
