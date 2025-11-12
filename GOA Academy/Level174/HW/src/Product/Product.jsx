@@ -7,7 +7,7 @@ import { DataInfo } from '../FullPage'
 
 export default function Product() {
 	const { id } = useParams()
-	const data = useContext(DataInfo)
+	const {data} = useContext(DataInfo)
 	const [product, setProduct] = useState(null)
 
 	useEffect(() => {

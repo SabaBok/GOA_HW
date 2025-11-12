@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import { DataInfo } from '../FullPage'
 
 export default function Reviews() {
-	const data = useContext(DataInfo)
+	const {data} = useContext(DataInfo)
 	const [reviews, setReviews] = useState([])
 	const [scrollX, setScrollX] = useState(0)
 

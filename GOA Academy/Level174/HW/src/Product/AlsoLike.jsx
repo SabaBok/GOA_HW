@@ -2,18 +2,17 @@ import React from 'react'
 import Card from '../Components/Card'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
+import { useContext } from 'react'
+import {DataInfo} from '../FullPage'
 
 export default function AlsoLike() {
-	const [data, setData] = useState([])
+	const data = useContext(DataInfo)
 	const [recomended, setRecomended] = useState([])
 
 
 	useEffect(() => {
-		async function getData() {
-			const response = await fetch('/clotheData.json')
-			const responseData = await response.json()
-			setData(responseData)
+		function getData() {
+			const responseData = [...data]
 
 			let randomItems = []
 			for (let i = 0; i < 4; i++) {
@@ -33,7 +32,7 @@ export default function AlsoLike() {
 			<div className='flex justify-between gap-25'>
 				{
 					recomended.map((el, id) => (
-						<Link key={id} to={`/product/${id}`}><Card prod={el} /></Link> 
+						<Link key={id} to={`/product/${el.id}`}><Card prod={el} /></Link> 
 					))
 				}
 			</div>

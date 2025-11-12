@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import { DataInfo } from '../FullPage'
 
 export default function Recomends() {
-	const data = useContext(DataInfo)
+	const {data} = useContext(DataInfo)
 	const [newArrivals, setNewArrivals] = useState([])
 	const [topSelling, setTopSelling] = useState([])
 

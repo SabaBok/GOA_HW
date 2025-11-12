@@ -314,11 +314,11 @@
             "navy"
         ],
         "sizeList": [
-            "xs",
-            "s",
-            "m",
-            "l",
-            "xl"
+            "x-small",
+            "small",
+            "medium",
+            "large",
+            "x-large"
         ],
         "reviews": [],
         "id": 10
@@ -367,11 +367,11 @@
             "purple"
         ],
         "sizeList": [
-            "xs",
-            "s",
-            "m",
-            "l",
-            "xl"
+            "x-small",
+            "small",
+            "medium",
+            "large",
+            "x-large"
         ],
         "reviews": [
             {
@@ -445,11 +445,11 @@
             "grey"
         ],
         "sizeList": [
-            "xs",
-            "s",
-            "m",
-            "l",
-            "xl"
+            "x-small",
+            "small",
+            "medium",
+            "large",
+            "x-large"
         ],
         "reviews": [],
         "id": 14
@@ -509,11 +509,11 @@
             "navy"
         ],
         "sizeList": [
-            "xs",
-            "s",
-            "m",
-            "l",
-            "xl"
+            "x-small",
+            "small",
+            "medium",
+            "large",
+            "x-large"
         ],
         "reviews": [
             {
@@ -638,11 +638,11 @@
             "blue"
         ],
         "sizeList": [
-            "xs",
-            "s",
-            "m",
-            "l",
-            "xl"
+            "x-small",
+            "small",
+            "medium",
+            "large",
+            "x-large"
         ],
         "reviews": [],
         "id": 19
@@ -666,11 +666,11 @@
             "pink"
         ],
         "sizeList": [
-            "xs",
-            "s",
-            "m",
-            "l",
-            "xl"
+            "x-small",
+            "small",
+            "medium",
+            "large",
+            "x-large"
         ],
         "reviews": [],
         "id": 20

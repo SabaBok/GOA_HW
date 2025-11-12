@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom"
-import Header from "../Header/Header"
-import Footer from "../Footer/Footer"
+import Filter from "./Filter"
+import CardTable from "./CardTable"
+import { useState } from "react"
 
 export default function Filtering() {
+	
 	return (
-		<section>
-			<Header />
-
-			<main>ssss</main>
-
-			<Footer />
-		</section>
+		<main className="flex items-start gap-15 w-full pb-[200px] px-[150px]">
+			<Filter/>
+			<CardTable/>
+		</main>
 	)
 }

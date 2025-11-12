@@ -5,6 +5,7 @@ import Main from './Main/Main'
 import Product from './Product/Product'
 import ScrollToTop from './ScrollToTop'
 import Cart from './Cart/Cart'
+import Filtering from './Filtering/Filtering'
 
 function App() {
 	return (
@@ -14,8 +15,8 @@ function App() {
 				<Route path='/' element={<FullPage></FullPage>}>
 					<Route index element={<Main></Main>}></Route>
 					<Route path='product/:id' element={<Product></Product>}></Route>
-					{/*<Route path='/filtering' element={<Product></Product>}></Route>*/}
-					<Route path='/cart' element={<Cart/>}></Route>
+					<Route path='filtering' element={<Filtering></Filtering>}></Route>
+					<Route path='cart' element={<Cart/>}></Route>
 				</Route>
 			</Routes>
 		</BrowserRouter>
