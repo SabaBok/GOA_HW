@@ -38,9 +38,6 @@ export default function Filter() {
 			}
 
 			if (filters.size && !item.sizeList.includes(filters.size)) return false
-
-			if (item.price < filters.price[0] || item.price > filters.price[1]) return false
-
 			return true
 		})
 
@@ -95,7 +92,7 @@ export default function Filter() {
 			</div>
 
 			<hr className='border-[#0000001A]' />
-			
+
 			<div>
 				<h2>Price</h2>
 				<div className='flex gap-2 flex-col'>
