@@ -49,7 +49,6 @@ export default function Filter() {
 
 	return (
 		<section className='w-[238px] min-h-[1000px] border border-[#0000001A] p-5 rounded-[20px] flex flex-col gap-6'>
-
 			<div className='flex flex-col gap-6'>
 				<h2 className='text-[20px] font-[700]'>Filter</h2>
 				<ul className='flex flex-col gap-[14px] font-[400]'>
@@ -73,30 +72,30 @@ export default function Filter() {
 					<i className={`fa-solid ${!colorShow ? 'fa-angle-down' : 'fa-angle-up'} cursor-pointer`} onClick={() => setColorShow(prev => !prev)}></i>
 				</div>
 				<div className={`flex gap-4 flex-wrap overflow-y-hidden ${!colorShow ? 'max-h-[80px]' : 'max-h-[500px]'} duration-300`}>
-					{getEveryColor().map((el, ind) => {
-						const normalized = el.toLowerCase()
-						const selected = filters.colorList.includes(normalized)
-						return (
-							<div
-								key={ind}
-								style={{ background: normalized }}
-								className='min-w-[30px] h-[30px] rounded-full shadow cursor-pointer border border-black flex items-center justify-center'
-								onClick={() => {
-									if (selected) {
-										setFilters({ ...filters, colorList: filters.colorList.filter(c => c !== normalized) })
-									} else {
-										setFilters({ ...filters, colorList: [...filters.colorList, normalized] })
-									}
-								}}
-							>
-								<i className={`fa-solid fa-check text-white ${selected ? 'opacity-100' : 'opacity-0'}`}></i>
-							</div>
-						)
-					})}
+					{
+						getEveryColor().map((el, ind) => {
+							const normalized = el.toLowerCase()
+							const selected = filters.colorList.includes(normalized)
+							return (
+								<div
+									key={ind}
+									style={{ background: normalized }}
+									className='min-w-[30px] h-[30px] rounded-full shadow cursor-pointer border border-black flex items-center justify-center'
+									onClick={() => {
+										if (selected) setFilters({ ...filters, colorList: filters.colorList.filter(c => c !== normalized) })
+										else setFilters({ ...filters, colorList: [...filters.colorList, normalized] })
+									}}
+								>
+									<i className={`fa-solid fa-check text-white ${selected ? 'opacity-100' : 'opacity-0'}`}></i>
+								</div>
+							)
+						})
+					}
 				</div>
 			</div>
 
 			<hr className='border-[#0000001A]' />
+			
 			<div>
 				<h2>Price</h2>
 				<div className='flex gap-2 flex-col'>

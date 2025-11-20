@@ -4,7 +4,6 @@ import { DataInfo } from '../FullPage'
 import { Link } from 'react-router-dom'
 
 export default function CardTable() {
-
 	const { filteredData } = useContext(DataInfo)
 
 	const [pages, setPages] = useState([])
@@ -41,9 +40,7 @@ export default function CardTable() {
 		<section className='w-full flex flex-col gap-x-4 gap-y-7 items-center'>
 			<div className='flex justify-between w-full'>
 				<h3 className='text-[25px] font-[700]'>Casual</h3>
-				<p className='text-[#00000099]'>
-					Showing {curPage * 9 + 1}-{Math.min((curPage + 1) * 9, filteredData.length)} of {filteredData.length} Products
-				</p>
+				<p className='text-[#00000099]'>Showing {filteredData.length} Products</p>
 			</div>
 
 			<div className='w-full grid grid-cols-3 gap-x-5 gap-y-7 max-lg:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-center justify-items-center'>
