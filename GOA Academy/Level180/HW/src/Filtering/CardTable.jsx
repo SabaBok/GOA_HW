@@ -56,7 +56,7 @@ export default function CardTable() {
 			<div className='flex justify-between items-center gap-5'>
 				<button
 					onClick={() => setCurPage(prev => prev > 0 ? prev - 1 : 0)}
-					className='duration-200 hover:bg-[#00000014] p-3 cursor-pointer rounded-lg'
+					className='duration-200 p-3 cursor-pointer rounded-lg bg-[#222] text-white'
 				>
 					Previous
 				</button>
@@ -66,7 +66,7 @@ export default function CardTable() {
 						pages.map((_, ind) => (
 							<p
 								key={ind}
-								className={`${ind === curPage ? 'bg-[#0000000F]' : ''} cursor-pointer px-3 py-1 flex justify-center items-center rounded-lg duration-200 hover:bg-[#00000014]`}
+								className={`${ind === curPage ? 'bg-[#333] text-white' : 'hover:bg-[#00000014]'} cursor-pointer px-3 py-1 flex justify-center items-center rounded-lg duration-200 `}
 								onClick={() => setCurPage(ind)}
 							>
 								{ind + 1}
@@ -77,7 +77,7 @@ export default function CardTable() {
 
 				<button
 					onClick={() => setCurPage(prev => prev + 1 < pages.length ? prev + 1 : prev)}
-					className='duration-200 hover:bg-[#00000014] p-3 cursor-pointer rounded-lg'
+					className='duration-200 bg-[#222] text-white p-3 cursor-pointer rounded-lg'
 				>
 					Next
 				</button>

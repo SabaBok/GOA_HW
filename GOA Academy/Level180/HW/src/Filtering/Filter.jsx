@@ -38,6 +38,9 @@ export default function Filter() {
 			}
 
 			if (filters.size && !item.sizeList.includes(filters.size)) return false
+
+			
+
 			return true
 		})
 
