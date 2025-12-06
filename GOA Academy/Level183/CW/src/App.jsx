@@ -7,8 +7,8 @@ function App() {
 		switch (action.type) {
 			case 'plus': return { count: state.count + 1 };
 			case 'minus': return { count: state.count - 1 };
-			case 'times': {return { count:state.count*mult }; setMult(2)}
-			case 'divide': {return { count:state.count/div }; setDiv(2)}
+			case 'times': {setMult(2); return { count:state.count*mult }}
+			case 'divide': {setDiv(2); return { count:state.count/div }}
 			default: return state
 		}
 	}, { count: 0 })

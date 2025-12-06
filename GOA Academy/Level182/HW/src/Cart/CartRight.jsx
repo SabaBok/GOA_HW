@@ -52,7 +52,7 @@ export default function CardRight({ cartProd }) {
 				onSubmit={e=> {
 					e.preventDefault(); 
 					if (promoUsed) return
-					e.target.promo.value == 'pasanauri' ? setFinalPrice(prev=>prev-100) : null;
+					e.target.promo.value == 'pasanauri' ? setFinalPrice(0) : null;
 					promoUsed = true
 				}}>
 				<div className='flex gap-4 bg-[#F0F0F0] rounded-full items-center px-4 py-2 flex-3'>
@@ -62,7 +62,7 @@ export default function CardRight({ cartProd }) {
 				<button className='flex-1 bg-black text-white py-2 rounded-full'>Apply</button>
 			</form>
 
-			<button className='w-full rounded-full py-4 flex items-center gap-5 justify-center bg-black text-white'>Go To Checkout <i className="fa-solid fa-arrow-right"></i></button>
+			<button onClick={()=> alert('bought')} className='w-full rounded-full py-4 flex items-center gap-5 justify-center bg-black text-white'>Go To Checkout <i className="fa-solid fa-arrow-right"></i></button>
 		</div>
 	)
 }
