@@ -69,6 +69,7 @@ export default function RegisterForm({changeForm}) {
 
 					<button type='submit' className="mt-2.5 px-8 py-3 bg-cyan-700 rounded-lg text-white cursor-pointer text-[22px] duration-400 hover:bg-cyan-600">Click me</button>
 				</form>
+				<p className="text-gray-500">Alredy Registered? <span className=" text-black cursor-pointer font-semibold underline" onClick={()=> changeForm(1)}>Log In</span></p>
 			</section>
 		</main>
 	)

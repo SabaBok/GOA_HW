@@ -3,7 +3,7 @@ import LoginForm from './LoginForm'
 import { useState } from 'react'
 
 export default function Accounts() {
-	const [active,setActive] = useState(0) //0 aris register, 1 aris login
+	const [active,setActive] = useState(1) //0 aris register, 1 aris login
 
 	return (
 		<section>
