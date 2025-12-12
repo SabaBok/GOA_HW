@@ -1,4 +1,4 @@
-import FullPage from "./FullPage"
+import {FullPage} from "./FullPage"
 import { BrowserRouter,Route,Routes } from "react-router-dom"
 import Accounts from "./Account/Accounts"
 import Home from "./Home/Home"

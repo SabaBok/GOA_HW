@@ -1,4 +1,13 @@
 @import 'tailwindcss';
-body{
-	background-color: white;
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&family=Sancreek&family=Sansita+Swashed:wght@300..900&display=swap');
+
+@theme {
+	--font-lexend-zetta: "Lexend Zetta", sans-serif;
+	--font-sansita-swashed: "Sansita Swashed", cursive;
+	--font-Sancreek: "Sancreek", serif;
+	--breakpoint-md: 890px;
+}
+
+html {
+	scroll-behavior: smooth;
 }
