@@ -1,7 +1,7 @@
 import Header from '../Components/Header'
 import Hero from './Hero'
 import Menu from './Menu'
-import CheckOut from './CheckOut.jsx'
+import Order from './Order.jsx'
 
 export default function Home() {
 	return (
@@ -11,7 +11,6 @@ export default function Home() {
 			<main className='flex flex-col gap-20 py-25'>
 				<Hero />
 				<Menu/>
-				<CheckOut/>
 			</main>
 
 			<footer></footer>

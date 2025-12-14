@@ -11,3 +11,19 @@
 html {
 	scroll-behavior: smooth;
 }
+
+@keyframes modalAppear {
+	0%{
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	80%{
+		transform: scale(1);
+	}
+	100%{
+		opacity: 100;
+	}
+}
+#modal{
+	animation: modalAppear 0.3s;
+}
