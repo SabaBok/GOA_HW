@@ -1,18 +1,17 @@
 import Header from '../Components/Header'
 import Hero from './Hero'
 import Menu from './Menu'
-import Order from './Order'
-import Receive from './Receive'
+import CheckOut from './CheckOut.jsx'
 
 export default function Home() {
 	return (
-		<section className='w-full min-h-screen bg-[#12372A] text-white'>
+		<section className='w-full min-h-screen bg-white text-black'>
 			<Header/>
 
-			<main className='px-10 flex flex-col gap-20 py-25'>
+			<main className='flex flex-col gap-20 py-25'>
 				<Hero />
-				<Order/>
-				<Receive/>
+				<Menu/>
+				<CheckOut/>
 			</main>
 
 			<footer></footer>

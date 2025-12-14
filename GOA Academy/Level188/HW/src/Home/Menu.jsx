@@ -1,63 +1,70 @@
-import { useState, useEffect, useContext, memo } from "react"
-import {FoodItems} from '../FullPage'
-
-const FoodItem = memo(({ el }) => (
-	<div className="group bg-[#ffffff21] p-5 rounded-2xl flex flex-col justify-between items-center gap-3 h-[360px] hover:h-[400px] duration-300 overflow-hidden">
-		<img src={`/images/Foods/${el.name}.jpg`} alt={el.name} className="w-[200px] h-[290px] rounded-lg flex-none"/>
-		<p className="text-center">{el.name}</p>
-		<p className="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 duration-300">{el.price}₾</p>
-	</div>
-))
+import { memo, useContext, useEffect, useState } from 'react'
+import { FoodItems } from '../FullPage'
 
 export default function Menu() {
-	const food = useContext(FoodItems)
+	const [accs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
+	const [logged] = useState(accs.some(el => el.logged))
+	const FoodItem = memo(({ el }) => (
+		<div className='flex flex-col max-w-[350px] w-full min-w-[300px] border border-[#89898963] rounded-[13px] pb-3'>
+			<img src={`/images/Foods/${el.name}.jpg`} alt="food image" className='w-full object-cover object-center h-[170px] rounded-t-[13px]' />
+			<div className='w-full flex flex-col gap-6 px-3'>
 
-	const [curPage, setCurPage] = useState(1)
-	const [finalList, setFinalList] = useState([])
+				<div className='flex items-center justify-between'>
+					<div className='flex flex-col items-start gap-1'>
+						<p>{el.name}</p>
+						<span className='text-[12px] p-1 py-px font-medium rounded-lg bg-[#eceef2] capitalize'>{el.category}</span>
+					</div>
+					<p className='text-[#f54900]'>{el.price}₾</p>
+				</div>
 
-	function paginate(list) {
-		if (!list) return []
+				<div className='flex flex-col gap-2'>
+					<p className='opacity-70 text-[14px]'>{el.description}</p>
+					<button className={`${logged ? 'bg-[#f54900]' : 'bg-[#faa47f]'} hover:bg-[#bc3800] duration-200 cursor-pointer text-white rounded-lg w-full py-1 flex items-center gap-5 justify-center`} onClick={() => addToCart(el)}><i className="fa-solid fa-cart-shopping"></i> <p>{logged ? 'Add to Cart' : 'Login to Order'}</p></button>
+				</div>
+			</div>
+		</div>
+	))
 
-		let result = []
-		let temp = []
+	const { food } = useContext(FoodItems)
+	const [filter, setFilter] = useState('')
+	const [filteredData, setFilteredData] = useState([])
 
-		for (let i = 0; i < list.length; i++) {
-			temp.push(list[i])
-			if (temp.length === 4) {
-				result.push(temp)
-				temp = []
-			}
-		}
-
-		if (temp.length > 0) result.push(temp)
-
-		return result
-	}
+	const [showMore, setShowMore] = useState(false)
 
 	useEffect(() => {
-		const p = paginate(food)
-		setFinalList(p)
-		setCurPage(0)
-	}, [])
+		if (filter == '') setFilteredData(food)
+		else setFilteredData([...food].filter(el => el.category == filter))
+	}, [filter])
 
-	if (!finalList[curPage]) return <p className="text-center">Loading...</p>
+
+	function addToCart(item) {
+
+	}
+
 
 	return (
-		<section className='w-full flex flex-col gap-10 items-center text-center'>
-			<h2 className="font-bold text-[40px]">Menu</h2>
+		<section id='menu' className='flex flex-col gap-10 w-full max-sm:p-3 p-15 rounded-lg min-h-[1700px]'>
+			<div className='flex flex-col items-center gap-4'>
+				<div>
+					<h2 className='font-bold text-[30px] text-center'>Our Menu</h2>
+					<p>Discover our carefully crafted dishes made with the finest ingredients</p>
+				</div>
 
-			<div id='menu' className="flex gap-20 h-[400px]">{finalList[curPage].map((el,ind) => <FoodItem key={ind} el={el} />)}</div>
-
-			<div className="flex gap-2 justify-between items-center w-full max-w-[200px]">
-				<i className="fa-solid fa-arrow-left cursor-pointer" onClick={() => setCurPage(prev => prev - 1 >= 0 ? prev - 1 : prev)}></i>
-				<div className="flex gap-4" >
+				<div className='flex gap-4 items-center flex-wrap justify-center'>
 					{
-						finalList.map((_, ind) => (
-							<div key={ind} className={`${ind == curPage ? 'bg-gray-100' : 'bg-gray-400'} rounded-full w-2.5 h-2.5`}></div>
+						['khachapuri', 'lobiani', 'dessert', 'pizza', 'soup', 'meat', 'drinks'].map((el, ind) => (
+							<div key={ind} className={`capitalize cursor-pointer p-1 rounded-lg border border-black duration-300 ${el == filter ? 'text-white bg-black hover:bg-[#212121]' : 'text-black bg-white hover:bg-[#e1e1e1]'}`} onClick={() => el == filter ? setFilter('') : setFilter(el)}>{el}</div>
 						))
 					}
 				</div>
-				<i className="fa-solid fa-arrow-right cursor-pointer" onClick={() => setCurPage(prev => prev + 1 < finalList.length ? prev + 1 : prev)}></i>
+			</div>
+			<div className='w-full h-full flex flex-col gap-1 items-center max-md:px-5 px-[200px]'>
+				<div className={`grid ${showMore? 'h-max overflow-auto' : 'overflow-hidden max-h-[1250px]'} w-full items-center justify-items-center grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 gap-y-20 `}>
+					{
+						filteredData.map((el, key) => <FoodItem key={key} el={el}></FoodItem>)
+					}
+				</div>
+				<button className='px-7 py-2 rounded-lg bg-[#c0c0c0] w-full text-white cursor-pointer duration-200 hover:bg-[#979797]' onClick={()=> setShowMore(prev=>!prev)}>Show {showMore?'Less':'More'}</button>
 			</div>
 		</section>
 	)

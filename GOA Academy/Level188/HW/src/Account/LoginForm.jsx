@@ -2,10 +2,11 @@ import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export default function RegisterForm({changeForm}) {
+export default function RegisterForm({ changeForm }) {
 	const navigate = useNavigate()
 	const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: { email: '', password: '', } })
 	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
+	const [showPass1,setShowPass1] = useState(false)
 
 	function checkAcc(email, pass) {
 		let userAcc = accs.find(el => el.email == email && el.pass == pass)
@@ -29,30 +30,30 @@ export default function RegisterForm({changeForm}) {
 	}
 
 	return (
-		<main className="flex w-full min-h-screen flex-col items-center justify-center gap-10 py-10">
-			<section className="flex flex-col items-center gap-10 max-w-[600px] w-[95%] min-w-[300px] p-10 bg-blue-100 rounded-[20px]">
-				<h1 className="font-bold text-[25px]">Log In</h1>
+		<div className="flex flex-col items-center gap-3">
+			<form onSubmit={handleSubmit(data => {
+				const { email, password } = data
+				checkAcc(email, password)
+			})}
+				className="flex flex-col gap-6 items-center w-full"
+			>
+				<div className="w-full">
+					<label htmlFor="">Email</label>
+					<input placeholder="email" className="w-full p-2 rounded-lg bg-[#ececf0] border-0 outline-0" type="text" {...register('email', { required: 'Put in email address', minLength: { value: 11, message: 'Is not valid email' }, validate: (value) => { value.includes('@') || 'Must contain @ symbol' } })} />
+					<label htmlFor="" className="text-red-500">{errors?.email?.message}</label>
+				</div>
 
-				<form onSubmit={handleSubmit(data => {
-					const {email,password } = data
-					checkAcc(email,password)
-				})}
-					className="flex flex-col gap-4 items-center w-full"
-				>
-					<div className="w-full">
-						<input placeholder="email" className="w-full p-1 rounded-lg border border-blue-600" type="text" {...register('email', { required: 'Put in email address', minLength: { value: 11, message: 'Is not valid email' }, validate: (value) => { value.includes('@') || 'Must contain @ symbol' } })} />
-						<label htmlFor="" className="text-red-500">{errors?.email?.message}</label>
+				<div className="w-full">
+					<label htmlFor="">Password</label>
+					<div className="flex justify-between items-center w-full rounded-lg bg-[#ececf0] pr-3">
+						<input placeholder="password" className="w-full border-0 outline-0 p-2" type={`${showPass1?'text':'password'}`} {...register('password', { required: 'Put in a password', minLength: { value: 8, message: "Put in a valid password" } })} />
+						<i className={`fa-solid ${showPass1? 'fa-eye-slash' :'fa-eye'} cursor-pointer`} onClick={()=> setShowPass1(prev=>!prev)}></i>
 					</div>
+					<label htmlFor="" className="text-red-500">{errors?.password?.message}</label>
+				</div>
 
-					<div className="w-full">
-						<input placeholder="password" className="w-full p-1 rounded-lg border border-blue-600" type="text" {...register('password', { required: 'Put in a password', minLength: { value: 8, message: "Put in a valid password" } })} />
-						<label htmlFor="" className="text-red-500">{errors?.password?.message}</label>
-					</div>
-
-					<button type='submit' className="mt-2.5 px-10 py-4 bg-cyan-700 rounded-lg text-white cursor-pointer">Click me</button>
-				</form>
-				<p className="text-gray-500">Dont have an Account? <span className=" text-black cursor-pointer font-semibold underline" onClick={()=> changeForm(0)}>Register</span></p>
-			</section>
-		</main>
+				<button type='submit' className="mt-2.5 px-8 py-1 w-full bg-black rounded-lg text-white cursor-pointer text-[20px] duration-200 hover:bg-[#363636]">Sign In</button>
+			</form>
+		</div>
 	)
 }
