@@ -16,7 +16,7 @@ export default function Accounts() {
 
 	return (
 		<main className="flex w-full min-h-screen flex-col items-center justify-center gap-10 py-10 bg-[#f5f5f7]">
-			<section className="flex gap-4 flex-col items-center min-h-[550px] max-w-[600px] w-[95%] min-w-[300px] p-10 bg-white rounded-[20px]">
+			<section className="flex gap-4 flex-col items-center h-[650px] max-w-[600px] w-[95%] min-w-[300px] p-10 bg-white rounded-[20px]">
 				<div className='flex items-center gap-4 mr-6'>
 					<img src="/images/food.png" alt="logo" className='w-10'/>
 					<h2 className='font-semibold text-[21px]'>GOA-TONA</h2>

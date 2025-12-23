@@ -3,8 +3,7 @@ import { FoodItems } from '../FullPage'
 import Order from './Order'
 
 export default function Menu() {
-	const [accs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
-	const [cart,setCart] = useState(JSON.parse(localStorage.getItem('proj-cart')) || [])
+	const [accs,setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
 	const [logged] = useState(accs.some(el => el.logged))
 	const FoodItem = memo(({ el }) => (
 		<div className='flex flex-col max-w-[350px] w-full min-w-[300px] border border-[#89898963] rounded-[13px] pb-3'>
@@ -41,17 +40,11 @@ export default function Menu() {
 
 	function addToCart(item) {
 		const updated = accs.map(el => {
-			if (el.logged) return { ...el, cart: [...el.orders, { ...item }] }
+			if (el.logged) return { ...el, cart: [...el.cart, { ...item }] }
 			return el
 		})
 		setAccs(updated)
 		localStorage.setItem('proj-acc', JSON.stringify(updated))
-
-		setOrders(prev => {
-			const newOrders = [...prev, { item, id }]
-			localStorage.setItem('proj-orders', JSON.stringify(newOrders))
-			return newOrders
-		})
 	}
 
 

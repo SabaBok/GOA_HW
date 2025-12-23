@@ -35,7 +35,7 @@ export default function RegisterForm({ changeForm }) {
 				const { email, password } = data
 				checkAcc(email, password)
 			})}
-				className="flex flex-col gap-6 items-center w-full"
+				className="flex flex-col gap-6 items-center w-full justify-between h-full"
 			>
 				<div className="w-full">
 					<label htmlFor="">Email</label>

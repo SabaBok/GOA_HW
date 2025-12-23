@@ -37,7 +37,7 @@ export default function Header() {
 			<div className='flex items-center gap-4'>
 				<img src="/images/food.png" alt="" className='w-10' />
 				<h1 className='font-bold text-[25px] font-lexend-zetta '>GOA-TONA</h1>
-				<p className='max-lg:hidden'>Money: <span className='text-green-500'>${user.money}</span>  <span className='duration-300' style={{ opacity: 0 }}></span></p>
+				<p className='max-lg:hidden'>Money: <span className='text-green-500'>${user?.money}</span>  <span className='duration-300' style={{ opacity: 0 }}></span></p>
 			</div>
 
 			<nav className='max-lg:hidden'>
@@ -91,7 +91,7 @@ export default function Header() {
 						<div className='flex flex-col items-center gap-4'>
 							<img src="/images/food.png" alt="" className='w-10' />
 							<h1 className='font-bold text-[25px] font-lexend-zetta '>GOA-TONA</h1>
-							<p>Money: <span className='text-green-500'>${user.money}</span>  <span className='duration-300' style={{ opacity: 0 }}></span></p>
+							<p>Money: <span className='text-green-500'>${user?.money}</span>  <span className='duration-300' style={{ opacity: 0 }}></span></p>
 						</div>
 
 						<nav>
