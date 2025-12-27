@@ -1,9 +1,8 @@
 import { useState, memo, useEffect } from 'react'
 
 
-export default function Order({accs,setAccs}) {
+export default function Order({ accs, setAccs }) {
 	const [showModal, setShowModal] = useState(false)
-
 	useEffect(() => {
 		if (showModal) {
 			const stored = JSON.parse(localStorage.getItem('proj-acc')) || []
@@ -11,17 +10,22 @@ export default function Order({accs,setAccs}) {
 		}
 	}, [showModal])
 
-	const loggedAcc = accs.find(el => el.logged)
-	const cart = loggedAcc?.cart || []
+	const loggedAcc = [...accs].find(el => el.logged && el.title == 'user')
+	const admin = [...accs].find(el => el.title = 'admin')
+	const cart = loggedAcc?.cart
+
+	//let admin1 = accs.find(el=>el.title=='admin')
+	//admin1.orders=[]
+	//admin1.money = 100
+
+	//let idk = accs.find(el => el.logged && el.title == 'user')
+	//idk.cart = []
+	//idk.money = 1000
+	//idk.orders = []
+	//localStorage.setItem('proj-acc',JSON.stringify(accs))
 
 	const OrderItem = memo(({ el }) => {
 		const [count, setCount] = useState(el.ammount)
-
-		useEffect(()=>{
-			if(count <= 0){
-				//do summ
-			}
-		},[count])
 
 		return (<div className='p-1 border border-gray-300 rounded-lg flex justify-between items-center'>
 			<div>
@@ -30,29 +34,74 @@ export default function Order({accs,setAccs}) {
 			</div>
 
 			<div className='flex gap-2'>
-				<button className='px-3 border border-gray-300 rounded-lg flex items-center justify-center cursor-pointer' onClick={() => setCount(prev => prev - 1 > 0 ? prev - 1 : prev - 1 == 0 ? removeItem(el) : prev)}><span>-</span></button>
+				<button className='px-3 border border-gray-300 rounded-lg flex items-center justify-center cursor-pointer' onClick={() => setCount(prev => prev - 1 > 0 ? prev - 1 : prev - 1 <= 0 ? removeItem(el) : prev)}><span>-</span></button>
 				<p>{count}</p>
 				<button className='px-3 border border-gray-300 rounded-lg flex items-center justify-center cursor-pointer' onClick={() => setCount(prev => prev + 1)}><span>+</span></button>
 			</div>
 		</div>)
 	})
 
-	function orderFood(item) {
-		let id = Date.now()
+	function generateTimeNow() {
+		const today = new Date()
+		const year = today.getFullYear()
+		const mm = String(today.getMonth() + 1).padStart(2, '0')
+		const dd = String(today.getDate()).padStart(2, '0')
 
-		const updated = [...accs].map(el => {
-			if (el.logged && el.title == 'user') return { ...el, money: el.money - item.price, orders: [...el.orders, { ...item, id }] }
+		return `${year}-${mm}-${dd}`
+	}
+	function orderFood(items) {
+		if (!items || !items.length) return
+
+		const loggedUserIndex = accs.findIndex(acc => acc.logged && acc.title === 'user')
+		if (loggedUserIndex === -1) {
+			console.error("No logged-in user found!")
+			return
+		}
+
+		const totalPrice = items.reduce((sum, i) => sum + i.price, 0)
+
+		const adminIndex = accs.findIndex(acc => acc.title === 'admin')
+		if (adminIndex === -1) {
+			console.error("No admin found!")
+			return
+		}
+
+		const updatedAccounts = accs.map((el, ind) => {
+			if (ind === loggedUserIndex) {
+				return {
+					...el,
+					money: el.money - totalPrice,
+					cart: [],
+					orders: [...el.orders, ...items]
+				}
+			}
+
+			if (ind === adminIndex) {
+				const adminIncomeItems = items.map(item => ({
+					...item,
+					customer: {
+						name: accs[loggedUserIndex].name,
+						email: accs[loggedUserIndex].email
+					},
+					date: generateTimeNow(),
+					type: 'income',
+					category: 'food sale'
+				}))
+
+				return {
+					...el,
+					money: el.money + totalPrice * 0.8,
+					orders: [...el.orders, ...adminIncomeItems]
+				}
+			}
+
 			return el
 		})
-		setAccs(updated)
-		localStorage.setItem('proj-acc', JSON.stringify(updated))
 
-		setOrders(prev => {
-			const newOrders = [...prev, { item, id }]
-			localStorage.setItem('proj-orders', JSON.stringify(newOrders))
-			return newOrders
-		})
+		setAccs(updatedAccounts)
+		localStorage.setItem('proj-acc', JSON.stringify(updatedAccounts))
 	}
+
 
 	function clearCart() {
 		const updated = [...accs].map(el => {
@@ -64,7 +113,13 @@ export default function Order({accs,setAccs}) {
 	}
 
 	function removeItem(item) {
+		const updatedAccounts = accs.map(acc => {
+			if (acc.logged && acc.title === 'user') return { ...acc, cart: acc.cart.filter(el => el !== item) }
+			return acc
+		})
 
+		setAccs(updatedAccounts)
+		localStorage.setItem('proj-acc', JSON.stringify(updatedAccounts))
 	}
 
 	return (
@@ -96,7 +151,7 @@ export default function Order({accs,setAccs}) {
 
 					<div className='flex gap-3'>
 						<button className='rounded-lg w-full border border-[#85858576] py-1' onClick={() => clearCart()}>Clear Cart</button>
-						<button className='bg-[#f54900] rounded-lg w-full py-1 text-white' onClick={()=> orderFood()}>Place Order</button>
+						<button className='bg-[#f54900] rounded-lg w-full py-1 text-white' onClick={() => orderFood(cart)}>Place Order</button>
 					</div>
 				</div>
 			</div>

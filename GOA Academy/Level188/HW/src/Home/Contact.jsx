@@ -5,14 +5,17 @@ export default function Contact() {
 	const [time,setTime] = useState('5')
 	const [timeOpen,setTimeOpen] = useState(false)
 	const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: { name:'',email: '', phone: '', date:'',time,guests:1,request:''} })
+	const users = JSON.parse(localStorage.getItem('proj-acc'))
+	let admin = users.find(el=>el.title=='admin')
 
 	function saveReservation(data){
-		const {name,email,phone,date,timee,guest,request} = data
-		console.log(data)
+		let updated = {...data,hour:time}
+		admin.reservation.push(updated)
+		localStorage.setItem('proj-acc',JSON.stringify(users))
 	}
 
 	return (
-		<footer id='contact' className='py-10 px-5 lg:px-25 bg-[#f5f5f7] flex flex-col items-center gap-14'>
+		<footer id='contact' className='py-10 px-5 lg:px-25 bg-[#f5f5f7] flex flex-col items-center gap-14 pb-50'>
 			<div className='flex flex-col text-center items-center gap-2'>
 				<h2 className='font-bold text-[25px]'>Contact & Reservation</h2>
 				<p className='opacity-60'>Ready to dine with us? Make a reservation or get in touch with any questions.</p>
@@ -52,9 +55,9 @@ export default function Contact() {
 				<div className='flex-1 flex flex-col gap-3 bg-white p-3 sm:p-10 rounded-lg shadow-md'>
 					<p className='text-[18px]'>Make a Reservation</p>
 
-					<form className='flex flex-col w-full gap-3' onSubmit={handleSubmit(data=> saveReservation(data))}>
+					<form className='flex flex-col w-full gap-1' onSubmit={handleSubmit(data=> saveReservation(data))}>
 						<div className='flex gap-5 items-center w-full'>
-							<div className='flex-1'>
+							<div className='flex-1 h-20'>
 								<label>Name</label>
 								<div className={`${errors?.name?.message?'border border-red-500':''} duration-200 w-full rounded-lg bg-[#f3f3f5] px-2 py-1`}><input type="text" className='w-full outline-0' {...register('name',{required:'Put in your name',validate:(value)=> {
 									for(let i of value){if(!isNaN(i) && i !== ' ')return 'The name must not contain numbers'}
@@ -62,14 +65,14 @@ export default function Contact() {
 								<p className='text-red-500 text-sm mt-1 text-[12px]'>{errors?.name?.message}</p>
 							</div>
 
-							<div className='flex-1'>
+							<div className='flex-1 h-20'>
 								<label>Email</label>
 								<div className={`${errors?.email?.message?'border border-red-500':''} duration-200 w-full rounded-lg bg-[#f3f3f5] px-2 py-1`}><input type="email" className='w-full outline-0' {...register('email', { required: 'Put in email address', minLength: { value: 11, message: 'Is not a valid email' }, validate: (value) => { value.includes('@') || 'Must contain @ symbol' } })}/></div>
 								<p className='text-red-500 text-sm mt-1 text-[12px]'>{errors?.email?.message}</p>
 							</div>
 						</div>
 
-						<div className='w-full flex-1'>
+						<div className='w-full flex-1 min-h-20'>
 							<label>Phone</label>
 							<div className={`${errors?.phone?.message?'border border-red-500':''} duration-200 w-full rounded-lg bg-[#f3f3f5] px-2 py-1`}><input type="text" className='w-full outline-0' {...register('phone',{required:'Put your phone number',minLength:{value:9,message:'Enter in a valid phone number'}, validate:value=>{
 								if(value.length !=9) return 'Enter in a valid phone number'
@@ -79,13 +82,13 @@ export default function Contact() {
 						</div>
 
 						<div className='flex gap-2 items-center w-full'>
-							<div className='flex-1'>
+							<div className='flex-1 h-20'>
 								<label>Date</label>
 								<div className={`${errors?.date?.message?'border border-red-500':''} duration-200 w-full rounded-lg bg-[#f3f3f5] px-2 py-1`}><input type="date" className='w-full cursor-pointer outline-0' {...register('date', { required: 'Please select a date' })}/></div>
 								<p className='text-red-500 text-sm mt-1 text-[12px]'>{errors?.date?.message}</p>
 							</div>
 
-							<div className='flex-1'>
+							<div className='flex-1 h-20'>
 								<label>Time</label>
 
 								<div className={`${errors?.time?.message?'border border-red-500':''} duration-200 w-full rounded-lg bg-[#f3f3f5] px-2 py-1 relative cursor-pointer`} onClick={()=>setTimeOpen(prev=>!prev)}>{time} PM
@@ -101,9 +104,9 @@ export default function Contact() {
 								<p className='text-red-500 text-sm mt-1 text-[12px]'>{errors?.time?.message}</p>
 							</div>
 
-							<div className='flex-1'>
+							<div className='flex-1 h-20'>
 								<label>Guests</label>
-								<div className={`${errors?.name?.message?'border border-red-500':''} duration-200 w-full rounded-lg bg-[#f3f3f5] px-2 py-1`}><input type="number" className='w-full outline-0' placeholder='# of guests' {...register('guests',{required:'Enter the guest ammount',min: { value: 1, message: 'Minimum 1 guest' },max: { value: 20, message: 'Maximum 20 guests' }})}/></div>
+								<div className={`${errors?.guests?.message?'border border-red-500':''} duration-200 w-full rounded-lg bg-[#f3f3f5] px-2 py-1`}><input type="number" className='w-full outline-0' placeholder='# of guests' {...register('guests',{required:'Enter the guest ammount',min: { value: 1, message: 'Minimum 1 guest' },max: { value: 10, message: 'Maximum 10 guests' }})}/></div>
 								<p className='text-red-500 text-sm mt-1 text-[12px]'>{errors?.guests?.message}</p>
 							</div>
 						</div>

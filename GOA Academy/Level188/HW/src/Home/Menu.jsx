@@ -4,12 +4,11 @@ import Order from './Order'
 
 export default function Menu() {
 	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
-	const [logged] = useState(accs.some(el => el.logged && el.title == 'user'))
+	const [logged, setLogged] = useState(accs.some(el => el.logged && el.title == 'user'))
 	const FoodItem = memo(({ el }) => (
 		<div className='flex flex-col max-w-[350px] w-full min-w-[300px] border border-[#89898963] rounded-[13px] pb-3'>
 			<img src={`/images/Foods/${el.name}.jpg`} alt="food image" className='w-full object-cover object-center h-[170px] rounded-t-[13px]' />
 			<div className='w-full flex flex-col gap-6 px-3'>
-
 				<div className='flex items-center justify-between'>
 					<div className='flex flex-col items-start gap-1'>
 						<p>{el.name}</p>
@@ -37,30 +36,33 @@ export default function Menu() {
 		else setFilteredData([...food].filter(el => el.category == filter))
 	}, [filter])
 
-
+	const generateID = () => Date.now()
 	function addToCart(item) {
-		const updated = [...accs].map(acc => {
-			if (!acc.logged) return acc
+		const loggedUserIndex = accs.findIndex(acc => acc.logged && acc.title === 'user')
+		if (loggedUserIndex === -1) return
+
+		const updatedAccounts = accs.map((acc, idx) => {
+			if (idx !== loggedUserIndex) return acc
 
 			const existingIndex = acc.cart.findIndex(el => el.name === item.name)
 
 			if (existingIndex !== -1) {
 				const newCart = [...acc.cart]
-				newCart[existingIndex] = {...newCart[existingIndex],ammount: newCart[existingIndex].ammount + 1}
-
+				newCart[existingIndex] = {...newCart[existingIndex], ammount: newCart[existingIndex].ammount + 1}
 				return { ...acc, cart: newCart }
 			}
 
-			return {...acc, cart: [...acc.cart, { ...item, ammount: 1 }]}
+			return {...acc,cart: [...acc.cart, { ...item, ammount: 1, id: generateID() }]}
 		})
 
-		setAccs(updated)
-		localStorage.setItem('proj-acc', JSON.stringify(updated))
+		setAccs(updatedAccounts)
+		localStorage.setItem('proj-acc', JSON.stringify(updatedAccounts))
 	}
 
 
+
 	return (
-		<section className='flex flex-col items-center gap-10 w-full max-sm:p-3 p-15 rounded-lg min-h-[1700px]'>
+		<section id='order' className='flex flex-col items-center gap-10 w-full max-sm:p-3 p-15 rounded-lg min-h-[1700px]'>
 			<div className='flex flex-col items-center gap-4'>
 				<div>
 					<h2 className='font-bold text-[30px] text-center'>Our Menu</h2>
@@ -76,7 +78,7 @@ export default function Menu() {
 				</div>
 			</div>
 			<div id='menu' className='w-full h-full flex flex-col gap-1 items-center max-md:px-5 px-[200px]'>
-				<Order accs={accs} setAccs={setAccs}/>
+				<Order accs={accs} setAccs={setAccs} />
 				<div className={`grid ${showMore ? 'h-max overflow-auto' : 'overflow-hidden max-h-[1250px]'} w-full items-center justify-items-center grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 gap-y-20 `}>
 					{
 						filteredData.map((el, key) => <FoodItem key={key} el={el}></FoodItem>)

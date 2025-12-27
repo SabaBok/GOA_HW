@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 
 export default function Header() {
 	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
-	const [user, setUser] = useState(accs.find(el => el.logged && el.title == 'user'))
-	const [logged, setLogged] = useState(accs.some(el => el.logged && el.title == 'user'))
+	const [user, setUser] = useState(accs.find(el => el.logged))
+	const [logged, setLogged] = useState(accs.some(el => el.logged))
 
 	const navigate = useNavigate()
 
 	const [sideBar, setSideBar] = useState(false)
-	const [newNotif, setNewNotif] = useState(false)
+	//const [newNotif, setNewNotif] = useState(false)
 
 	useEffect(() => user ? setLogged(true) : navigate('/'), [accs])
 
@@ -43,9 +43,9 @@ export default function Header() {
 			</nav>
 
 			<div className='flex items-center gap-7 max-lg:hidden'>
-				<Link to={'/notifs'}>
+				{/*<Link to={'/notifs'}>
 					<i className={`fa-solid fa-bell cursor-pointer duration-200 hover:text-[#8d8d8d] relative ${newNotif ? 'after:opacity-100' : 'after:opacity-0'} after:rounded-full after:absolute after:content-[''] after:w-[5px] after:h-[5px] after:bg-red-500 after:top-0 after:right-0 after:z-2`}></i>
-				</Link>
+				</Link>*/}
 
 				{
 					logged
@@ -99,9 +99,9 @@ export default function Header() {
 					</div>
 
 					<div className='flex items-center gap-7 '>
-						<Link to={'/notifs'}>
+						{/*<Link to={'/notifs'}>
 							<i className={`fa-solid fa-bell cursor-pointer duration-200 hover:text-[#8d8d8d] relative ${newNotif ? 'after:opacity-100' : 'after:opacity-0'} after:rounded-full after:absolute after:content-[''] after:w-[5px] after:h-[5px] after:bg-red-500 after:top-0 after:right-0 after:z-2`}></i>
-						</Link>
+						</Link>*/}
 
 						{
 							logged

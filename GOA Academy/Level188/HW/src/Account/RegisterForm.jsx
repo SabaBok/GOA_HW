@@ -17,7 +17,7 @@ export default function RegisterForm({ changeForm }) {
 	const [showPass2,setShowPass2] = useState(false)
 
 	function saveAccount(name, email, pass) {
-		let exists = accs.some(el => el.email == email && el.name == name)
+		let exists = accs.some(el => el.email == email)
 
 		if (exists) {
 			alert('an account with that email exists alredy')

@@ -7,5 +7,6 @@ let idk =
 	title:'admin',
 	reservations:[],
 	orders:[],
-	money:0
+	money:0,
+	finances:[]
 }
