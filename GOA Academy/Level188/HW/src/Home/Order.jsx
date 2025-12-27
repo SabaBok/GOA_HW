@@ -17,23 +17,11 @@ export default function Order({accs,setAccs}) {
 	const OrderItem = memo(({ el }) => {
 		const [count, setCount] = useState(el.ammount)
 
-		//useEffect(()=>{
-		//	if(count<=0){
-		//		//remove
-		//	}
-		//	else if(count>0){
-
-
-		//		const updatedAccs = [...accs].map(el=>{
-		//			if(el.logged){
-
-		//			}
-		//			return {...el}
-		//		})
-
-		//		localStorage.setItem('proj-acc',JSON.stringify())
-		//	}
-		//},[count])
+		useEffect(()=>{
+			if(count <= 0){
+				//do summ
+			}
+		},[count])
 
 		return (<div className='p-1 border border-gray-300 rounded-lg flex justify-between items-center'>
 			<div>
@@ -49,41 +37,26 @@ export default function Order({accs,setAccs}) {
 		</div>)
 	})
 
-	//function orderFood(item) {
-	//	let id = Date.now()
+	function orderFood(item) {
+		let id = Date.now()
 
-	//	const updated = accs.map(el => {
-	//		if (el.logged) return { ...el, money: el.money - item.price, orders: [...el.orders, { ...item, id }] }
-	//		return el
-	//	})
-	//	setAccs(updated)
-	//	localStorage.setItem('proj-acc', JSON.stringify(updated))
+		const updated = [...accs].map(el => {
+			if (el.logged && el.title == 'user') return { ...el, money: el.money - item.price, orders: [...el.orders, { ...item, id }] }
+			return el
+		})
+		setAccs(updated)
+		localStorage.setItem('proj-acc', JSON.stringify(updated))
 
-	//	setOrders(prev => {
-	//		const newOrders = [...prev, { item, id }]
-	//		localStorage.setItem('proj-orders', JSON.stringify(newOrders))
-	//		return newOrders
-	//	})
-	//}
-
-	//const [filteredCart, setFilteredCart] = useState([])
-	//function filterCart() {
-	//	cart.reduce((acc, item) => {
-	//		const existing = acc.find(el => el.name === item.name)
-
-	//		if (existing) {
-	//			existing.ammount = existing.ammount? existing.ammount++:existing.ammount=2
-	//		} else {
-	//			acc.push({ ...item, qty: 1 })
-	//		}
-
-	//		return acc
-	//	}, [])
-	//}
+		setOrders(prev => {
+			const newOrders = [...prev, { item, id }]
+			localStorage.setItem('proj-orders', JSON.stringify(newOrders))
+			return newOrders
+		})
+	}
 
 	function clearCart() {
-		const updated = accs.map(el => {
-			if (el.logged) return { ...el, cart: [] }
+		const updated = [...accs].map(el => {
+			if (el.logged && el.title == 'user') return { ...el, cart: [] }
 			return el
 		})
 		setAccs(updated)
@@ -123,7 +96,7 @@ export default function Order({accs,setAccs}) {
 
 					<div className='flex gap-3'>
 						<button className='rounded-lg w-full border border-[#85858576] py-1' onClick={() => clearCart()}>Clear Cart</button>
-						<button className='bg-[#f54900] rounded-lg w-full py-1 text-white'>Place Order</button>
+						<button className='bg-[#f54900] rounded-lg w-full py-1 text-white' onClick={()=> orderFood()}>Place Order</button>
 					</div>
 				</div>
 			</div>

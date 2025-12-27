@@ -1,7 +1,7 @@
 import Header from '../Components/Header'
 import Hero from './Hero'
 import Menu from './Menu'
-import Order from './Order.jsx'
+import Contact from './Contact'
 
 export default function Home() {
 	return (
@@ -13,7 +13,7 @@ export default function Home() {
 				<Menu/>
 			</main>
 
-			<footer></footer>
+			<Contact/>
 		</section>
 	)
 }

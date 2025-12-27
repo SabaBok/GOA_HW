@@ -4,7 +4,7 @@ import Order from './Order'
 
 export default function Menu() {
 	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
-	const [logged] = useState(accs.some(el => el.logged))
+	const [logged] = useState(accs.some(el => el.logged && el.title == 'user'))
 	const FoodItem = memo(({ el }) => (
 		<div className='flex flex-col max-w-[350px] w-full min-w-[300px] border border-[#89898963] rounded-[13px] pb-3'>
 			<img src={`/images/Foods/${el.name}.jpg`} alt="food image" className='w-full object-cover object-center h-[170px] rounded-t-[13px]' />
@@ -39,7 +39,7 @@ export default function Menu() {
 
 
 	function addToCart(item) {
-		const updated = accs.map(acc => {
+		const updated = [...accs].map(acc => {
 			if (!acc.logged) return acc
 
 			const existingIndex = acc.cart.findIndex(el => el.name === item.name)
@@ -60,7 +60,7 @@ export default function Menu() {
 
 
 	return (
-		<section id='menu' className='flex flex-col items-center gap-10 w-full max-sm:p-3 p-15 rounded-lg min-h-[1700px]'>
+		<section className='flex flex-col items-center gap-10 w-full max-sm:p-3 p-15 rounded-lg min-h-[1700px]'>
 			<div className='flex flex-col items-center gap-4'>
 				<div>
 					<h2 className='font-bold text-[30px] text-center'>Our Menu</h2>
@@ -75,7 +75,7 @@ export default function Menu() {
 					}
 				</div>
 			</div>
-			<div className='w-full h-full flex flex-col gap-1 items-center max-md:px-5 px-[200px]'>
+			<div id='menu' className='w-full h-full flex flex-col gap-1 items-center max-md:px-5 px-[200px]'>
 				<Order accs={accs} setAccs={setAccs}/>
 				<div className={`grid ${showMore ? 'h-max overflow-auto' : 'overflow-hidden max-h-[1250px]'} w-full items-center justify-items-center grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 gap-y-20 `}>
 					{

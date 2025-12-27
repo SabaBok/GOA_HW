@@ -4,23 +4,17 @@ import { Link } from 'react-router-dom'
 
 export default function Header() {
 	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
-	const [user, setUser] = useState(accs.find(el => el.logged))
-	const [logged, setLogged] = useState(accs.some(el => el.logged))
+	const [user, setUser] = useState(accs.find(el => el.logged && el.title == 'user'))
+	const [logged, setLogged] = useState(accs.some(el => el.logged && el.title == 'user'))
 
 	const navigate = useNavigate()
 
 	const [sideBar, setSideBar] = useState(false)
 	const [newNotif, setNewNotif] = useState(false)
 
-	useEffect(() => {
-		const account = accs.find(el => el.logged)
-		setUser(account)
-		account ? setLogged(true) : navigate('/')
-	}, [accs])
+	useEffect(() => user ? setLogged(true) : navigate('/'), [accs])
 
 	function logOut() {
-		let user = accs.find(el => el.logged)
-
 		let updated = accs.map(el => {
 			if (el.name == user.name) {
 				return { ...el, logged: false }
@@ -44,7 +38,7 @@ export default function Header() {
 				<ul className='flex max-md:gap-3 gap-15 text-[21px] items-center font-sansita-swashed'>
 					<a href='#hero' className='cursor-pointer relative before:content-[""] before:w-0 before:h-0.5 before:duration-300 before:absolute before:left-1/2 before:bottom-0 before:-translate-x-1/2 before:bg-black hover:before:w-full'>Home</a>
 					<a href='#order' className='cursor-pointer relative before:content-[""] before:w-0 before:h-0.5 before:duration-300 before:absolute before:left-1/2 before:bottom-0 before:-translate-x-1/2 before:bg-black hover:before:w-full'>Order</a>
-					<a href='#checkout' className='cursor-pointer relative before:content-[""] before:w-0 before:h-0.5 before:duration-300 before:absolute before:left-1/2 before:bottom-0 before:-translate-x-1/2 before:bg-black hover:before:w-full'>Check Out</a>
+					<a href='#contact' className='cursor-pointer relative before:content-[""] before:w-0 before:h-0.5 before:duration-300 before:absolute before:left-1/2 before:bottom-0 before:-translate-x-1/2 before:bg-black hover:before:w-full'>Contact</a>
 				</ul>
 			</nav>
 
@@ -58,6 +52,7 @@ export default function Header() {
 						?
 						<div className='flex items-center gap-3 duration-200 hover:shadow-md px-3 py-1 rounded-lg cursor-pointer'>
 							<i className="fa-regular fa-user"></i>
+							
 							<button className="group cursor-pointer relative border border-[#3333336e] rounded-lg px-[7px] py-[5px]">
 								{user.name}
 								<div className='bg-white text-left flex flex-col gap-1 border border-[#7878786b] w-full absolute top-full right-0 rounded-lg p-1 mt-1 shadow-md scale-y-0 opacity-0 group-focus:opacity-100 group-focus:scale-y-100 origin-top duration-300'>

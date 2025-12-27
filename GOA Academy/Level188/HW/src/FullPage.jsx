@@ -146,12 +146,6 @@ export function FullPage() {
 			description: 'Finely ground coffee beans brewed into a strong concentrated shot'
 		},
 		{
-			name: 'Cappuccino',
-			price: '5.80',
-			category: 'drinks',
-			description: 'Espresso, steamed milk, and milk foam topped with cocoa or cinnamon'
-		},
-		{
 			name: 'Soft Drinks',
 			price: '2.99',
 			category: 'drinks',
