@@ -7,6 +7,5 @@ candidate = {"python", "java", "git"}
 check_forb = True if forbidden & candidate else False
 check_req = True if required <= candidate else False
 
-print(check_forb)
-
+#print(check_forb)
 print(f"Has Forbidden languages -->{check_forb} \nHas required languages --> {check_req}")

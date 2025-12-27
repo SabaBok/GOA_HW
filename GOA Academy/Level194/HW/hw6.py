@@ -5,6 +5,7 @@ def is_unique(s):
 	for i in s:
 		if s.count(i) == 1:
 			final += i
+	
 	if final == s: return True 
 	else: return False
 

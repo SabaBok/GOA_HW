@@ -3,7 +3,6 @@ nums = [1, 2, 3, 4, 5, 6]
 new_list = []
 for one in nums:
 	for two in nums:
-		if(one+two == 7):
-			new_list.append((one,two))
+		if(one+two == 7):new_list.append((one,two))
 
 print(new_list)

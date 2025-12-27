@@ -56,7 +56,7 @@ export default function Header() {
 				{
 					logged
 						?
-						<div className='flex items-center gap-3 duration-200 hover:bg-[#e1e1e1] px-3 py-1 rounded-lg cursor-pointer'>
+						<div className='flex items-center gap-3 duration-200 hover:shadow-md px-3 py-1 rounded-lg cursor-pointer'>
 							<i className="fa-regular fa-user"></i>
 							<button className="group cursor-pointer relative border border-[#3333336e] rounded-lg px-[7px] py-[5px]">
 								{user.name}

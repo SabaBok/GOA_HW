@@ -1,32 +1,97 @@
-import { useState } from 'react'
+import { useState, memo, useEffect } from 'react'
 
 
-export default function Order() {
-	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
-	const loggedAcc = accs.find(el => el.logged)
-	const [cart, setCart] = useState(loggedAcc?.cart || [])
+export default function Order({accs,setAccs}) {
 	const [showModal, setShowModal] = useState(false)
-	function orderFood(item) {
-		let id = Date.now()
 
+	useEffect(() => {
+		if (showModal) {
+			const stored = JSON.parse(localStorage.getItem('proj-acc')) || []
+			setAccs(stored)
+		}
+	}, [showModal])
+
+	const loggedAcc = accs.find(el => el.logged)
+	const cart = loggedAcc?.cart || []
+
+	const OrderItem = memo(({ el }) => {
+		const [count, setCount] = useState(el.ammount)
+
+		//useEffect(()=>{
+		//	if(count<=0){
+		//		//remove
+		//	}
+		//	else if(count>0){
+
+
+		//		const updatedAccs = [...accs].map(el=>{
+		//			if(el.logged){
+
+		//			}
+		//			return {...el}
+		//		})
+
+		//		localStorage.setItem('proj-acc',JSON.stringify())
+		//	}
+		//},[count])
+
+		return (<div className='p-1 border border-gray-300 rounded-lg flex justify-between items-center'>
+			<div>
+				<p>{el.name}</p>
+				<p>{el.price}₾</p>
+			</div>
+
+			<div className='flex gap-2'>
+				<button className='px-3 border border-gray-300 rounded-lg flex items-center justify-center cursor-pointer' onClick={() => setCount(prev => prev - 1 > 0 ? prev - 1 : prev - 1 == 0 ? removeItem(el) : prev)}><span>-</span></button>
+				<p>{count}</p>
+				<button className='px-3 border border-gray-300 rounded-lg flex items-center justify-center cursor-pointer' onClick={() => setCount(prev => prev + 1)}><span>+</span></button>
+			</div>
+		</div>)
+	})
+
+	//function orderFood(item) {
+	//	let id = Date.now()
+
+	//	const updated = accs.map(el => {
+	//		if (el.logged) return { ...el, money: el.money - item.price, orders: [...el.orders, { ...item, id }] }
+	//		return el
+	//	})
+	//	setAccs(updated)
+	//	localStorage.setItem('proj-acc', JSON.stringify(updated))
+
+	//	setOrders(prev => {
+	//		const newOrders = [...prev, { item, id }]
+	//		localStorage.setItem('proj-orders', JSON.stringify(newOrders))
+	//		return newOrders
+	//	})
+	//}
+
+	//const [filteredCart, setFilteredCart] = useState([])
+	//function filterCart() {
+	//	cart.reduce((acc, item) => {
+	//		const existing = acc.find(el => el.name === item.name)
+
+	//		if (existing) {
+	//			existing.ammount = existing.ammount? existing.ammount++:existing.ammount=2
+	//		} else {
+	//			acc.push({ ...item, qty: 1 })
+	//		}
+
+	//		return acc
+	//	}, [])
+	//}
+
+	function clearCart() {
 		const updated = accs.map(el => {
-			if (el.logged) return { ...el, money: el.money - item.price, orders: [...el.orders, { ...item, id }] }
+			if (el.logged) return { ...el, cart: [] }
 			return el
 		})
 		setAccs(updated)
 		localStorage.setItem('proj-acc', JSON.stringify(updated))
-
-		setOrders(prev => {
-			const newOrders = [...prev, { item, id }]
-			localStorage.setItem('proj-orders', JSON.stringify(newOrders))
-			return newOrders
-		})
 	}
 
-	const [count, setCount] = useState(1)
+	function removeItem(item) {
 
-	function removeItem(item){
-		
 	}
 
 	return (
@@ -43,21 +108,10 @@ export default function Order() {
 					<i className="fa-solid fa-xmark cursor-pointer duration-200 hover:text-red-600" onClick={() => setShowModal(false)}></i>
 				</div>
 
-				<div>
+				<div className='flex flex-col gap-3 max-h-[400px] overflow-y-scroll'>
 					{
 						cart.map((el, ind) => (
-							<div className='p-1 border border-gray-300 rounded-lg flex justify-between items-center' key={ind}>
-								<div>
-									<p>{el.name}</p>
-									<p>{el.price}₾</p>
-								</div>
-
-								<div className='flex gap-2'>
-									<button className='px-3 border border-gray-300 rounded-lg flex items-center justify-center cursor-pointer' onClick={() => setCount(prev => prev - 1 > 0 ? prev - 1 : prev-1==0?removeItem(el):prev)}><span>-</span></button>
-									<p>{count}</p>
-									<button className='px-3 border border-gray-300 rounded-lg flex items-center justify-center cursor-pointer' onClick={() => setCount(prev => prev + 1)}><span>+</span></button>
-								</div>
-							</div>
+							<OrderItem el={el} key={ind}></OrderItem>
 						))
 					}
 				</div>
@@ -68,7 +122,7 @@ export default function Order() {
 					<p>Total: <span></span></p>
 
 					<div className='flex gap-3'>
-						<button className='rounded-lg w-full border border-[#85858576] py-1'>Clear Cart</button>
+						<button className='rounded-lg w-full border border-[#85858576] py-1' onClick={() => clearCart()}>Clear Cart</button>
 						<button className='bg-[#f54900] rounded-lg w-full py-1 text-white'>Place Order</button>
 					</div>
 				</div>

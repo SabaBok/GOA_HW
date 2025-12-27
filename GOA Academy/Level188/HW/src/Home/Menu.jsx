@@ -3,7 +3,7 @@ import { FoodItems } from '../FullPage'
 import Order from './Order'
 
 export default function Menu() {
-	const [accs,setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
+	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
 	const [logged] = useState(accs.some(el => el.logged))
 	const FoodItem = memo(({ el }) => (
 		<div className='flex flex-col max-w-[350px] w-full min-w-[300px] border border-[#89898963] rounded-[13px] pb-3'>
@@ -39,10 +39,21 @@ export default function Menu() {
 
 
 	function addToCart(item) {
-		const updated = accs.map(el => {
-			if (el.logged) return { ...el, cart: [...el.cart, { ...item }] }
-			return el
+		const updated = accs.map(acc => {
+			if (!acc.logged) return acc
+
+			const existingIndex = acc.cart.findIndex(el => el.name === item.name)
+
+			if (existingIndex !== -1) {
+				const newCart = [...acc.cart]
+				newCart[existingIndex] = {...newCart[existingIndex],ammount: newCart[existingIndex].ammount + 1}
+
+				return { ...acc, cart: newCart }
+			}
+
+			return {...acc, cart: [...acc.cart, { ...item, ammount: 1 }]}
 		})
+
 		setAccs(updated)
 		localStorage.setItem('proj-acc', JSON.stringify(updated))
 	}
@@ -65,13 +76,13 @@ export default function Menu() {
 				</div>
 			</div>
 			<div className='w-full h-full flex flex-col gap-1 items-center max-md:px-5 px-[200px]'>
-				<Order/>
-				<div className={`grid ${showMore? 'h-max overflow-auto' : 'overflow-hidden max-h-[1250px]'} w-full items-center justify-items-center grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 gap-y-20 `}>
+				<Order accs={accs} setAccs={setAccs}/>
+				<div className={`grid ${showMore ? 'h-max overflow-auto' : 'overflow-hidden max-h-[1250px]'} w-full items-center justify-items-center grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 gap-y-20 `}>
 					{
 						filteredData.map((el, key) => <FoodItem key={key} el={el}></FoodItem>)
 					}
 				</div>
-				<button className='px-7 py-2 rounded-lg bg-[#c0c0c0] w-full text-white cursor-pointer duration-200 hover:bg-[#979797]' onClick={()=> setShowMore(prev=>!prev)}>Show {showMore?'Less':'More'}</button>
+				<button className='px-7 py-2 rounded-lg bg-[#c0c0c0] w-full text-white cursor-pointer duration-200 hover:bg-[#979797]' onClick={() => setShowMore(prev => !prev)}>Show {showMore ? 'Less' : 'More'}</button>
 			</div>
 		</section>
 	)

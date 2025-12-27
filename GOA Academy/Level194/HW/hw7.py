@@ -3,6 +3,7 @@
 
 def pair_sum(nums, target):
 	final_pairs = set()
+	
 	for one in nums:
 		for two in nums:
 			if one + two == target:
