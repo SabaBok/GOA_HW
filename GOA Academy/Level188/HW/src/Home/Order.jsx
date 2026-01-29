@@ -1,28 +1,21 @@
 import { useState, memo, useEffect } from 'react'
-
+import AlertModal from '../Components/AlertModal'
 
 export default function Order({ accs, setAccs }) {
 	const [showModal, setShowModal] = useState(false)
-	//useEffect(() => {
-	//	if (showModal) {
-	//		const stored = JSON.parse(localStorage.getItem('proj-acc')) || []
-	//		setAccs(stored)
-	//	}
-	//}, [showModal])
+	const [alertText,setAlertText] = useState('')
 
-	const loggedAcc = [...accs].find(el => el.logged && el.title == 'user')
+	let loggedAcc = [...accs].find(el => el.logged && el.title == 'user')
 	const adminglogged = [...accs].find(el => el.title == 'admin' && el.logged == true)
-	//const admin = [...accs].find(el => el.title = 'admin')
-	const cart = loggedAcc?.cart
+	if (adminglogged) return <p>Admin Cant Order</p>
+	let cart = loggedAcc?.cart
 	const [total, setTotal] = useState(0)
 
 	//let admin1 = accs.find(el => el.title == 'admin')
-
 	//admin1.orders = []
 	//admin1.finances={
 	//	income:[],
 	//	expense:[],
-	//	profit:0,
 	//	money:0
 	//}
 	//admin1.money = 100
@@ -32,7 +25,6 @@ export default function Order({ accs, setAccs }) {
 	//idk.money = 1000
 	//idk.orders = []
 	//localStorage.setItem('proj-acc', JSON.stringify(accs))
-	if (adminglogged) return <p>Admin Cant Order</p>
 
 	const OrderItem = memo(({ el }) => {
 		const [count, setCount] = useState(el.ammount)
@@ -115,6 +107,8 @@ export default function Order({ accs, setAccs }) {
 
 		setAccs(updatedAccounts)
 		localStorage.setItem('proj-acc', JSON.stringify(updatedAccounts))
+		setShowModal(false)
+		setAlertText('You have ordered')
 	}
 
 
@@ -143,10 +137,12 @@ export default function Order({ accs, setAccs }) {
 		setTotal(tot.toFixed(2))
 	}
 	useEffect(() => calcTotal(), [cart])
-
+	useEffect(()=>{loggedAcc = [...accs].find(el => el.logged && el.title == 'user'); cart = loggedAcc?.cart},[])
 
 	return (
 		<div className='w-full flex justify-start'>
+			<AlertModal message={alertText} onClose={()=>setAlertText('')}/>
+			
 			<div className='flex items-center gap-4 border border-black rounded-lg px-3 py-1 mb-5 duration-200 hover:bg-[#cfcfcf] cursor-default' onClick={() => setShowModal(true)}>
 				<i className="fa-solid fa-cart-shopping text-[13px] mt-[5px]"></i>
 				<p>Cart</p>
@@ -173,8 +169,8 @@ export default function Order({ accs, setAccs }) {
 					<p className='flex items-center w-full justify-between px-1'>Total: <span>{total}₾</span></p>
 
 					<div className='flex gap-3'>
-						<button className='rounded-lg w-full border border-[#85858576] py-1' onClick={() => clearCart()}>Clear Cart</button>
-						<button className='bg-[#f54900] rounded-lg w-full py-1 text-white' onClick={() => orderFood(cart)}>Place Order</button>
+						<button className='rounded-lg w-full border border-[#85858576] py-1 cursor-pointer' onClick={() => clearCart()}>Clear Cart</button>
+						<button className='bg-[#f54900] rounded-lg w-full py-1 text-white cursor-pointer' onClick={() => orderFood(cart)}>Place Order</button>
 					</div>
 				</div>
 			</div>

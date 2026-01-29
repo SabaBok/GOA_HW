@@ -173,7 +173,6 @@ export function FullPage() {
 
 	return (
 		<FoodItems.Provider value={{ food,setFood, cart,setCart, admin,adminMode,toggleAdminMode }}>
-			<Header/>
 			<Outlet></Outlet>
 		</FoodItems.Provider>
 	)
