@@ -9,6 +9,7 @@ export default function Accounts() {
 	const [active, setActive] = useState(0) //0 aris register, 1 aris login
 	const [accs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
 
+
 	useEffect(() => {
 		let logged = accs.some(el => el.logged)
 		if (logged) navigate('/Home')
@@ -16,6 +17,7 @@ export default function Accounts() {
 
 	return (
 		<main className="flex w-full min-h-screen flex-col items-center justify-center gap-10 py-10 bg-[#f5f5f7]">
+			
 			<section className="flex gap-4 flex-col items-center h-[650px] max-w-[600px] w-[95%] min-w-[300px] p-10 bg-white rounded-[20px]">
 				<div className='flex items-center gap-4 mr-6'>
 					<img src="/images/food.png" alt="logo" className='w-10'/>

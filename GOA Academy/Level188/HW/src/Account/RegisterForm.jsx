@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
 import { useState } from "react"
+import AlertModal from "../Components/AlertModal"
 
 export default function RegisterForm({ changeForm }) {
 	const { register, handleSubmit, watch, formState: { errors } } = useForm({
@@ -12,28 +13,31 @@ export default function RegisterForm({ changeForm }) {
 	})
 	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
 
+	const [alertText, setAlertText] = useState('')
+
 	const password = watch("password")
-	const [showPass1,setShowPass1] = useState(false)
-	const [showPass2,setShowPass2] = useState(false)
+	const [showPass1, setShowPass1] = useState(false)
+	const [showPass2, setShowPass2] = useState(false)
 
 	function saveAccount(name, email, pass) {
-		let exists = accs.some(el => el.email == email)
+		setAccs(prevAccs => {
+			if (prevAccs.some(el => el.email === email)) {
+				alert('An account with that email already exists')
+				return prevAccs
+			}
 
-		if (exists) {
-			alert('an account with that email exists alredy')
-			return
-		}
-
-		const newAcc = { name, email, pass, logged: false, orders: [],cart:[], money: 100,title:'user' }
-		const updated = [...accs, newAcc]
-		setAccs(updated)
-		localStorage.setItem('proj-acc', JSON.stringify(updated))
-		alert("Account created successfully")
-		changeForm(1)
+			const newAcc = { name, email, pass, logged: false, orders: [], cart: [], money: 100, title: 'user' }
+			const updated = [...prevAccs, newAcc]
+			localStorage.setItem('proj-acc', JSON.stringify(updated))
+			changeForm(1)
+			setAlertText('Account has been created')
+			return updated
+		})
 	}
-
 	return (
 		<div className="flex flex-col items-center gap-3">
+			<AlertModal message={alertText} duration={4000} onClose={() => setAlertText('')} />
+
 			<form onSubmit={handleSubmit(data => {
 				const { fullName, email, password } = data
 				saveAccount(fullName, email, password)
@@ -56,8 +60,8 @@ export default function RegisterForm({ changeForm }) {
 				<div className="w-full">
 					<label htmlFor="">Password</label>
 					<div className="flex justify-between items-center w-full rounded-lg bg-[#ececf0] pr-3">
-						<input placeholder="password" className="w-full border-0 outline-0 p-2" type={`${showPass1?'text':'password'}`} {...register('password', { required: 'Put in a password', minLength: { value: 8, message: "Put in a valid password" } })} />
-						<i className={`fa-solid ${showPass1? 'fa-eye-slash' :'fa-eye'} cursor-pointer`} onClick={()=> setShowPass1(prev=>!prev)}></i>
+						<input placeholder="password" className="w-full border-0 outline-0 p-2" type={`${showPass1 ? 'text' : 'password'}`} {...register('password', { required: 'Put in a password', minLength: { value: 8, message: "Put in a valid password" } })} />
+						<i className={`fa-solid ${showPass1 ? 'fa-eye-slash' : 'fa-eye'} cursor-pointer`} onClick={() => setShowPass1(prev => !prev)}></i>
 					</div>
 					<label htmlFor="" className="text-red-500">{errors?.password?.message}</label>
 				</div>
@@ -65,8 +69,8 @@ export default function RegisterForm({ changeForm }) {
 				<div className="w-full">
 					<label htmlFor="Repeat password">Repeat Password</label>
 					<div className="flex justify-between items-center w-full rounded-lg bg-[#ececf0] pr-3">
-						<input placeholder="repeat password" className="w-full rounded-lg bg-[#ececf0] border-0 outline-0 p-2" type={`${showPass2?'text':'password'}`} {...register('rePassword', { required: 'Put in a password', validate: value => value !== password ? 'Put in correct password' : true, minLength: { value: 8, message: "Put in a valid password" } })} />
-						<i className={`fa-solid ${showPass2? 'fa-eye-slash' :'fa-eye'} cursor-pointer`} onClick={()=> setShowPass2(prev=>!prev)}></i>
+						<input placeholder="repeat password" className="w-full rounded-lg bg-[#ececf0] border-0 outline-0 p-2" type={`${showPass2 ? 'text' : 'password'}`} {...register('rePassword', { required: 'Put in a password', validate: value => value !== password ? 'Put in correct password' : true, minLength: { value: 8, message: "Put in a valid password" } })} />
+						<i className={`fa-solid ${showPass2 ? 'fa-eye-slash' : 'fa-eye'} cursor-pointer`} onClick={() => setShowPass2(prev => !prev)}></i>
 					</div>
 					<label htmlFor="" className="text-red-500">{errors?.rePassword?.message}</label>
 				</div>

@@ -6,25 +6,25 @@ export default function RegisterForm({ changeForm }) {
 	const navigate = useNavigate()
 	const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: { email: '', password: '', } })
 	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
-	const [showPass1,setShowPass1] = useState(false)
+	const [showPass1, setShowPass1] = useState(false)
 
 	function checkAcc(email, pass) {
-		let userAcc = accs.find(el => el.email == email && el.pass == pass)
+		setAccs(prevAccs => {
+			const userAcc = prevAccs.find(el => el.email === email && el.pass === pass)
+			if (!userAcc) {
+				alert('Wrong email or password')
+				return prevAccs
+			}
 
-		if (!userAcc) {
-			alert('Wrong email or password')
-			return
-		}
+			const updated = prevAccs.map(el => {
+				if (el.email === email && el.pass === pass) return { ...el, logged: true }
+				return el
+			})
 
-		let updated = accs.map(el => {
-			if (el.email == email && el.pass == pass) return { ...el, logged: true }
 
-			return el
+			localStorage.setItem('proj-acc', JSON.stringify(updated))
+			return updated
 		})
-
-		setAccs(updated)
-		localStorage.setItem('proj-acc', JSON.stringify(updated))
-
 		navigate('/home')
 		changeForm(0)
 	}
@@ -46,8 +46,8 @@ export default function RegisterForm({ changeForm }) {
 				<div className="w-full">
 					<label htmlFor="">Password</label>
 					<div className="flex justify-between items-center w-full rounded-lg bg-[#ececf0] pr-3">
-						<input placeholder="password" className="w-full border-0 outline-0 p-2" type={`${showPass1?'text':'password'}`} {...register('password', { required: 'Put in a password', minLength: { value: 8, message: "Put in a valid password" } })} />
-						<i className={`fa-solid ${showPass1? 'fa-eye-slash' :'fa-eye'} cursor-pointer`} onClick={()=> setShowPass1(prev=>!prev)}></i>
+						<input placeholder="password" className="w-full border-0 outline-0 p-2" type={`${showPass1 ? 'text' : 'password'}`} {...register('password', { required: 'Put in a password', minLength: { value: 8, message: "Put in a valid password" } })} />
+						<i className={`fa-solid ${showPass1 ? 'fa-eye-slash' : 'fa-eye'} cursor-pointer`} onClick={() => setShowPass1(prev => !prev)}></i>
 					</div>
 					<label htmlFor="" className="text-red-500">{errors?.password?.message}</label>
 				</div>

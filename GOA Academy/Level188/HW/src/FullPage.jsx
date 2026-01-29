@@ -1,13 +1,14 @@
 import { Outlet } from 'react-router-dom'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
+import Header from './Components/Header'
 
 export const FoodItems = createContext()
 export function FullPage() {
-	let food = [
+	let [food, setFood] = useState(JSON.parse(localStorage.getItem('proj-food')) || [
 		// ===== MEAT =====
 		{
 			name: 'Beef Burger',
-			price: '7.99',
+			price: '8.0',
 			category: 'meat',
 			description: 'Grilled beef patty, lettuce, tomato, pickles, cheddar cheese, and house sauce on a soft bun'
 		},
@@ -25,13 +26,13 @@ export function FullPage() {
 		},
 		{
 			name: 'Chicken Mwvadi',
-			price: '8.80',
+			price: '9.00',
 			category: 'meat',
 			description: 'Chicken pieces, onion, garlic, salt, pepper, and herbs grilled over charcoal'
 		},
 		{
 			name: 'Fried Fish',
-			price: '7.99',
+			price: '8.00',
 			category: 'meat',
 			description: 'Fresh fish fillet, flour, salt, pepper, and vegetable oil fried until golden'
 		},
@@ -81,7 +82,7 @@ export function FullPage() {
 		// ===== SOUP =====
 		{
 			name: 'Kharcho',
-			price: '6.90',
+			price: '6.00',
 			category: 'soup',
 			description: 'Beef, rice, walnuts, garlic, onions, tomatoes, and Georgian spices cooked into a rich soup'
 		},
@@ -151,11 +152,28 @@ export function FullPage() {
 			category: 'drinks',
 			description: 'Carbonated water, sugar, flavorings, and natural or artificial flavors served chilled'
 		}
-	]
-	const [cart,setCart] = useState([])
+	])
+	useEffect(()=>localStorage.setItem('proj-food',JSON.stringify(food)),[food])
+
+	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
+	const admin = accs.find(acc => acc.title === 'admin')
+	const adminMode = admin?.logged ? true : false
+	function toggleAdminMode() {
+		const updatedAccs = accs.map(acc => {
+			if (acc.title === 'admin') {
+				return { ...acc, mode: !acc.mode }
+			}
+			return acc
+		})
+
+		setAccs(updatedAccs)
+		localStorage.setItem('proj-acc', JSON.stringify(updatedAccs))
+	}
+	const [cart, setCart] = useState([])
 
 	return (
-		<FoodItems.Provider value={{food,cart,setCart}}>
+		<FoodItems.Provider value={{ food,setFood, cart,setCart, admin,adminMode,toggleAdminMode }}>
+			<Header/>
 			<Outlet></Outlet>
 		</FoodItems.Provider>
 	)

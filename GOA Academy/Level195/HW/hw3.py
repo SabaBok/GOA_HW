@@ -3,26 +3,22 @@
 
 numbers = '1234567890'
 
-while True:
-	try:
-		user_pass = input('enter in your password of choice: ')
-		
-		has_number = False
-		for i in user_pass:
-			if i in numbers:
-				has_number = True
-				break
-		
-		if ' ' in user_pass:raise ValueError("must not contain spaces")
-		elif(len(user_pass) < 8):raise ValueError('the password must be 8 characters or longer')
-		elif(not has_number):raise ValueError('the password must contain numbers')
+try:
+	user_pass = input('enter in your password of choice: ')
+	
+	has_number = False
+	for i in user_pass:
+		if i in numbers:
+			has_number = True
+			break
+	
+	if ' ' in user_pass:raise ValueError("must not contain spaces")
+	elif(len(user_pass) < 8):raise ValueError('the password must be 8 characters or longer')
+	elif(not has_number):raise ValueError('the password must contain numbers')
 
-	except ValueError as e:
-		print(e)
+except ValueError as e:print(e)
 
-	else:
-		print('the password is accepted')
+else:print('the password is accepted')
 
-	finally:
-		print('the check is over')
-		break
+finally:print('the check is over')
+

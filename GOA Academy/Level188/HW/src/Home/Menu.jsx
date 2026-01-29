@@ -1,40 +1,49 @@
 import { memo, useContext, useEffect, useState } from 'react'
 import { FoodItems } from '../FullPage'
 import Order from './Order'
+import NewFood from './NewFood'
+import AlertModal from '../Components/AlertModal'
 
 export default function Menu() {
 	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
 	const [logged, setLogged] = useState(accs.some(el => el.logged && el.title == 'user'))
-	const FoodItem = memo(({ el }) => (
-		<div className='flex flex-col max-w-[350px] w-full min-w-[300px] border border-[#89898963] rounded-[13px] pb-3'>
-			<img src={`/images/Foods/${el.name}.jpg`} alt="food image" className='w-full object-cover object-center h-[170px] rounded-t-[13px]' />
-			<div className='w-full flex flex-col gap-6 px-3'>
-				<div className='flex items-center justify-between'>
-					<div className='flex flex-col items-start gap-1'>
-						<p>{el.name}</p>
-						<span className='text-[12px] p-1 py-px font-medium rounded-lg bg-[#eceef2] capitalize'>{el.category}</span>
-					</div>
-					<p className='text-[#f54900]'>{el.price}₾</p>
-				</div>
+	const { food,setFood, admin,adminMode } = useContext(FoodItems)
+	const admingLogged = accs.find(el=> el.title == 'admin'&& el.logged == true) 
 
-				<div className='flex flex-col gap-2'>
-					<p className='opacity-70 text-[14px]'>{el.description}</p>
-					<button className={`${logged ? 'bg-[#f54900]' : 'bg-[#faa47f]'} hover:bg-[#bc3800] duration-200 cursor-pointer text-white rounded-lg w-full py-1 flex items-center gap-5 justify-center`} onClick={() => addToCart(el)}><i className="fa-solid fa-cart-shopping"></i> <p>{logged ? 'Add to Cart' : 'Login to Order'}</p></button>
+	const FoodItem = memo(({ el }) => {
+		const checkURL = ()=> el.imageURL?true:false
+
+		return (
+			<div className='flex flex-col max-w-[350px] w-full min-w-[300px] border border-[#89898963] rounded-[13px] pb-3'>
+				<img src={checkURL() ? el.imageURL : `/images/Foods/${el.name}.jpg`} alt="food image" className='w-full object-cover object-center h-[170px] rounded-t-[13px]' />
+				<div className='w-full flex flex-col gap-6 px-3'>
+					<div className='flex items-center justify-between'>
+						<div className='flex flex-col items-start gap-1'>
+							<p>{el.name}</p>
+							<span className='text-[12px] p-1 py-px font-medium rounded-lg bg-[#eceef2] capitalize'>{el.category}</span>
+						</div>
+						<p className='text-[#f54900]'>{el.price}₾</p>
+					</div>
+
+					<div className='flex flex-col gap-2'>
+						<p className='opacity-70 text-[14px]'>{el.description}</p>
+						{!admingLogged && <button className={`${logged ? 'bg-[#f54900]' : 'bg-[#faa47f]'} hover:bg-[#bc3800] duration-200 cursor-pointer text-white rounded-lg w-full py-1 flex items-center gap-5 justify-center`} onClick={() => addToCart(el)}><i className="fa-solid fa-cart-shopping"></i> <p>{logged ? 'Add to Cart' : 'Login to Order'}</p></button>}
+						{admingLogged && <button onClick={()=> AdminRemove(el)} className='bg-[#f54900] hover:bg-[#bc3800] duration-200 cursor-pointer text-white rounded-lg w-full py-1 flex items-center gap-5 justify-center'>Remove Dish</button>}
+					</div>
 				</div>
 			</div>
-		</div>
-	))
+		)
+	})
 
-	const { food } = useContext(FoodItems)
 	const [filter, setFilter] = useState('')
 	const [filteredData, setFilteredData] = useState([])
-
-	const [showMore, setShowMore] = useState(false)
 
 	useEffect(() => {
 		if (filter == '') setFilteredData(food)
 		else setFilteredData([...food].filter(el => el.category == filter))
-	}, [filter])
+	}, [filter,food])
+
+	const [alertText,setAlertText] = useState('')
 
 	const generateID = () => Date.now()
 	function addToCart(item) {
@@ -48,21 +57,26 @@ export default function Menu() {
 
 			if (existingIndex !== -1) {
 				const newCart = [...acc.cart]
-				newCart[existingIndex] = {...newCart[existingIndex], ammount: newCart[existingIndex].ammount + 1}
+				newCart[existingIndex] = { ...newCart[existingIndex], ammount: newCart[existingIndex].ammount + 1 }
 				return { ...acc, cart: newCart }
 			}
 
-			return {...acc,cart: [...acc.cart, { ...item, ammount: 1, id: generateID() }]}
+			return { ...acc, cart: [...acc.cart, { ...item, ammount: 1, id: generateID() }] }
 		})
 
 		setAccs(updatedAccounts)
 		localStorage.setItem('proj-acc', JSON.stringify(updatedAccounts))
 	}
 
-
-
+	function AdminRemove(item){
+		console.log(item)
+		let newFoodList = [...food].filter(el=> el.name != item.name ? el : null)
+		setFood(newFoodList)
+		setAlertText(`${item.name} has been removed from the menu`)
+	}
 	return (
 		<section id='order' className='flex flex-col items-center gap-10 w-full max-sm:p-3 p-15 rounded-lg min-h-[1700px]'>
+			<AlertModal message={alertText} duration={4000} onClose={()=>setAlertText('')}/>
 			<div className='flex flex-col items-center gap-4'>
 				<div>
 					<h2 className='font-bold text-[30px] text-center'>Our Menu</h2>
@@ -78,13 +92,13 @@ export default function Menu() {
 				</div>
 			</div>
 			<div id='menu' className='w-full h-full flex flex-col gap-1 items-center max-md:px-5 px-[200px]'>
-				<Order accs={accs} setAccs={setAccs} />
-				<div className={`grid ${showMore ? 'h-max overflow-auto' : 'overflow-hidden max-h-[1250px]'} w-full items-center justify-items-center grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 gap-y-20 `}>
+				{!admingLogged && <Order accs={accs} setAccs={setAccs} />}
+				{admingLogged && <NewFood />}
+				<div className={`grid max-h-[1250px] overflow-y-scroll shadow-md rounded-[13px] p-2 w-full items-center justify-items-center grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 gap-y-20 `}>
 					{
 						filteredData.map((el, key) => <FoodItem key={key} el={el}></FoodItem>)
 					}
 				</div>
-				<button className='px-7 py-2 rounded-lg bg-[#c0c0c0] w-full text-white cursor-pointer duration-200 hover:bg-[#979797]' onClick={() => setShowMore(prev => !prev)}>Show {showMore ? 'Less' : 'More'}</button>
 			</div>
 		</section>
 	)
