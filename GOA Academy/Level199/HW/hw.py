@@ -1,0 +1,1 @@
+#davaleba gvqonda w3school-ze file handling-istvis gadagvexeda
