@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom'
 import { createContext, useEffect, useState } from 'react'
-import Header from './Components/Header'
 
 export const FoodItems = createContext()
+
 export function FullPage() {
 	let [food, setFood] = useState(JSON.parse(localStorage.getItem('proj-food')) || [
 		// ===== MEAT =====
@@ -153,26 +153,38 @@ export function FullPage() {
 			description: 'Carbonated water, sugar, flavorings, and natural or artificial flavors served chilled'
 		}
 	])
-	useEffect(()=>localStorage.setItem('proj-food',JSON.stringify(food)),[food])
+
+	useEffect(() => localStorage.setItem('proj-food', JSON.stringify(food)), [food])
 
 	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
+
+	useEffect(() => localStorage.setItem('proj-acc', JSON.stringify(accs)), [accs])
+
 	const admin = accs.find(acc => acc.title === 'admin')
-	const adminMode = admin?.logged ? true : false
+	const adminLogged = admin?.logged || false
+	const adminMode = admin?.mode || false
+
+	const loggedUser = accs.find(acc => acc.logged && acc.title === 'user')
+
 	function toggleAdminMode() {
 		const updatedAccs = accs.map(acc => {
-			if (acc.title === 'admin') {
-				return { ...acc, mode: !acc.mode }
-			}
+			if (acc.title === 'admin') return { ...acc, mode: !acc.mode }
 			return acc
 		})
-
 		setAccs(updatedAccs)
-		localStorage.setItem('proj-acc', JSON.stringify(updatedAccs))
 	}
-	const [cart, setCart] = useState([])
 
 	return (
-		<FoodItems.Provider value={{ food,setFood, cart,setCart, admin,adminMode,toggleAdminMode }}>
+		<FoodItems.Provider value={{ 
+			food, 
+			setFood, 
+			accs, 
+			setAccs, 
+			loggedUser, 
+			adminLogged, 
+			adminMode, 
+			toggleAdminMode 
+		}}>
 			<Outlet></Outlet>
 		</FoodItems.Provider>
 	)
