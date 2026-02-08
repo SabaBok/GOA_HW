@@ -133,7 +133,7 @@ export default function Order({ accs, setAccs }) {
 
 	function calcTotal() {
 		let tot = 0
-		cart.forEach(el => tot += Number((Number(el.price) * el.ammount).toFixed(2)))
+		cart?.forEach(el => tot += Number((Number(el.price) * el.ammount).toFixed(2)))
 		setTotal(tot.toFixed(2))
 	}
 	useEffect(() => calcTotal(), [cart])
@@ -157,9 +157,9 @@ export default function Order({ accs, setAccs }) {
 
 				<div className='flex flex-col gap-3 max-h-[400px] overflow-y-scroll'>
 					{
-						cart.map((el, ind) => (
+						!adminglogged?  cart?.map((el, ind) => (
 							<OrderItem el={el} key={ind}></OrderItem>
-						))
+						)): <p>Admin Cant Order</p>
 					}
 				</div>
 
