@@ -6,7 +6,7 @@ export default function Finance() {
 	return (
 		<section>
 			<Header />
-			<main className='mt-30 flex flex-col items-center gap-10 max-sm:px-3 px-20'>
+			<main className='mt-30 flex flex-col items-center gap-10 max-sm:px-3 px-20 pb-5'>
 				<Transfers />
 				<Filtering />
 			</main>

@@ -10,7 +10,7 @@ export default function Transfers() {
 	const profit = income - expense
 
 	return (
-		<section className='w-full h-full flex flex-col items-center gap-10'>
+		<section className='w-full h-full flex flex-col items-center gap-10 font-sansita-swashed'>
 			<div className='flex flex-col items-center'>
 				<h2 className='font-bold text-[30px] text-center'>Financial Dashboard</h2>
 				<p className='opacity-70 text-center'>Track income, expenses, and restaurant performance</p>

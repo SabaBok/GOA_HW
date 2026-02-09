@@ -11,7 +11,6 @@ export default function Menu() {
 	const [filteredData, setFilteredData] = useState([])
 	const [alertText, setAlertText] = useState('')
 
-	// Filter logic
 	useEffect(() => {
 		if (filter === '') {
 			setFilteredData(food)
@@ -20,7 +19,6 @@ export default function Menu() {
 		}
 	}, [filter, food])
 
-	// Food Item Component
 	const FoodItem = memo(({ el }) => {
 		const checkURL = () => el.imageURL ? true : false
 
@@ -71,7 +69,6 @@ export default function Menu() {
 		)
 	})
 
-	// Add to Cart
 	const generateID = () => Date.now()
 
 	function addToCart(item) {
@@ -103,7 +100,6 @@ export default function Menu() {
 		setAccs(updatedAccounts)
 	}
 
-	// Admin Remove
 	function AdminRemove(item) {
 		setFood(prev => prev.filter(el => el.name !== item.name))
 		setAlertText(`${item.name} has been removed from the menu`)
@@ -119,7 +115,6 @@ export default function Menu() {
 					<p>Discover our carefully crafted dishes made with the finest ingredients</p>
 				</div>
 
-				{/* Filter Buttons - FULL CODE, NO OMISSIONS */}
 				<div className='flex gap-4 items-center flex-wrap justify-center'>
 					{
 						['khachapuri', 'lobiani', 'dessert', 'pizza', 'soup', 'meat', 'drinks'].map((el, ind) => (

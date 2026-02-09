@@ -7,7 +7,7 @@ export default function NewFood() {
 	const [showModal, setShowModal] = useState(false)
 	const [categOpen, setCategOpen] = useState(false)
 	const [newCat, setNewCat] = useState('meat')
-	const { food, setFood } = useContext(FoodItems)
+	const { setFood } = useContext(FoodItems)
 	const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: { name: '', price: 0, category: '', ingredients: '', imageURL: '' } })
 	
 	const [alertText, setAlertText] = useState('')

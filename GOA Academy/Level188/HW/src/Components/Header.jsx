@@ -58,7 +58,7 @@ export default function Header() {
 					{!adminLogged && <a href='#hero' className='cursor-pointer relative before:content-[""] before:w-0 before:h-0.5 before:duration-300 before:absolute before:left-1/2 before:bottom-0 before:-translate-x-1/2 before:bg-black hover:before:w-full'>Home</a>}
 					{!adminLogged && <a href='#order' className='cursor-pointer relative before:content-[""] before:w-0 before:h-0.5 before:duration-300 before:absolute before:left-1/2 before:bottom-0 before:-translate-x-1/2 before:bg-black hover:before:w-full'>Order</a>}
 					{!adminLogged && <a href='#contact' className='cursor-pointer relative before:content-[""] before:w-0 before:h-0.5 before:duration-300 before:absolute before:left-1/2 before:bottom-0 before:-translate-x-1/2 before:bg-black hover:before:w-full'>Contact</a>}
-					<Link to={'blogs'} className='cursor-pointer relative before:content-[""] before:w-0 before:h-0.5 before:duration-300 before:absolute before:left-1/2 before:bottom-0 before:-translate-x-1/2 before:bg-black hover:before:w-full'>Blogs</Link>
+					<Link to={'/blogs'} className='cursor-pointer relative before:content-[""] before:w-0 before:h-0.5 before:duration-300 before:absolute before:left-1/2 before:bottom-0 before:-translate-x-1/2 before:bg-black hover:before:w-full'>Blogs</Link>
 
 					{/* admin stuff */}
 					{adminLogged && (<Link to="/finance" className='cursor-pointer relative before:content-[""] before:w-0 before:h-0.5 before:duration-300 before:absolute before:left-1/2 before:bottom-0 before:-translate-x-1/2 before:bg-black hover:before:w-full'>Finance</Link>)}
