@@ -11,7 +11,7 @@ export default function Home() {
 	//localStorage.setItem('proj-acc', JSON.stringify(idk))
 
 	return (
-		<section className='w-full min-h-screen bg-white text-black'>
+		<section className='w-full min-h-screen bg-[#121212] text-white'>
 			<Header />
 
 			<main className='flex flex-col gap-20 py-25'>

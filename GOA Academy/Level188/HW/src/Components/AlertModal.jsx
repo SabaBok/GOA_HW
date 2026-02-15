@@ -37,9 +37,9 @@ export default function AlertModal({ message, duration = 2000, onClose }) {
 
 	return (
 		<div className={`fixed min-w-[300px] w-[95%] max-w-[350px] min-h-[100px] top-2.5 right-4 flex flex-col justify-center z-50 transition-opacity duration-300 ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-			<div className="bg-white px-6 py-4 rounded-2xl w-full shadow-xl border border-gray-200 relative overflow-hidden">
-				<p className="text-gray-800">{message}</p>
-				<div className="absolute bottom-0 left-0 h-1 bg-blue-500" style={{ width: `${progress}%` }} />
+			<div className="bg-[#1e1e1e] px-6 py-4 rounded-2xl w-full shadow-xl border border-[#4a4a4a] relative overflow-hidden">
+				<p className="text-[#d1d1d1]">{message}</p>
+				<div className="absolute bottom-0 left-0 h-1 bg-blue-700" style={{ width: `${progress}%` }} />
 			</div>
 		</div>
 	)

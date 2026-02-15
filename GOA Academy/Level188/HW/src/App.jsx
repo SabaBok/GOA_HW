@@ -5,6 +5,7 @@ import Home from "./Home/Home"
 import Finance from "./Finance/Finance"
 import Blogs from "./Blogs/Blogs"
 import Kitchen from "./Kitchen/Kitchen"
+import Orders from "./Orders/Orders"
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 				<Route path="/" element={<FullPage></FullPage>}>
 					<Route index element={<Accounts></Accounts>}></Route>
 					<Route path="Home" element={<Home></Home>}></Route>
+					<Route path="order" element={<Orders></Orders>}></Route>
 					<Route path="finance" element={<Finance></Finance>}></Route>
 					<Route path="blogs" element={<Blogs></Blogs>}></Route>
 					<Route path="kitchen" element={<Kitchen></Kitchen>}></Route>

@@ -10,7 +10,9 @@
 
 html {
 	scroll-behavior: smooth;
+	background-color: #121212;
 }
+
 
 @keyframes modalAppear {
 	0%{
