@@ -9,61 +9,77 @@ export default function KitchenLeft() {
 	const [alertText, setAlertText] = useState('')
 
 	const OrderBlock = memo(({ el }) => {
-		let foodObject = [...food].find(item => item.img && el.name == item.name) || `/images/Foods/${el.name}`
+		const foodObject = food.find(item => item.name === el.name)
 
 		return (
-			<div className='flex flex-col justify-between rounded-lg border border-gray-600 h-[370px] w-[200px]'>
-				<img src={foodObject.img || `/images/Foods/${el.name}.jpg`} alt="Order Image" className='rounded-t-lg h-1/2 min-w-[200px]' />
-				<div className='flex flex-col h-1/2 rounded-b-lg justify-between items-start p-1'>
-					<p>{el.name}</p>
-					<p>{el.price}</p>
-					<p>{el.category}</p>
-					<p>{el.type}</p>
+			<div className='flex flex-col justify-between rounded-lg border border-[#4a4a4a] h-[370px] w-[200px] bg-[#2a2a2a] text-white'>
+				<img src={foodObject?.imageURL || `/images/Foods/${el.name}.jpg`} alt="Order Image" className='rounded-t-lg h-1/2 min-w-[200px] object-cover' />
+				<div className='flex flex-col h-1/2 rounded-b-lg justify-between items-start p-3 gap-2'>
+					<p className='font-bold'>{el.name}</p>
+					<p>${el.price}</p>
+					<p className='capitalize'>{el.category}</p>
 					<p>{el.date}</p>
-					<button className='px-3 py-1 rounded-lg bg-orange-500 cursor-pointer duration-250 hover:bg-orange-700' onClick={() => StartOrder(el)}>Make Order</button>
+					<button className='px-3 py-1 rounded-lg bg-orange-500 cursor-pointer duration-200 hover:bg-orange-600 w-full' onClick={() => startOrder(el)}>Cook Order</button>
 				</div>
 			</div>
 		)
 	})
 
-	function StartOrder(item) {
-		let user = accs.find(el => el.email == item.customer.email)
-		
-		let userOrderObj = [...user.orders].find(el => el.name == item.name)
-		let updatedUser = {
-			...user,
-			finishedOrders: [...user.finishedOrders, item],
-			orders: user.orders.splice(user.orders.indexOf(userOrderObj))
-		}
-		let updatedAccs = [...accs].map(el => {
-			if (el.email != user.email) return el
-			else return updatedUser
-		})
-		setAccs(updatedAccs)
+	function startOrder(item) {
+		const user = accs.find(el => el.email === item.customer.email)
 
-		let adminOrderObj = [...admin.orders].find(el => el.name == item.name)
-		let updatedAdmin = {
+		if (!user) {
+			setAlertText('User not found')
+			return
+		}
+
+		const userOrders = [...user.orders]
+		const userIndex = userOrders.findIndex(order => order.name === item.name && order.date === item.date)
+		if (userIndex !== -1) {
+			userOrders.splice(userIndex, 1)
+		}
+
+		const updatedUser = {
+			...user,
+			orders: userOrders,
+			finishedOrders: [...user.finishedOrders, item]
+		}
+
+		const adminOrders = [...admin.orders]
+		const adminIndex = adminOrders.findIndex(order => order.name === item.name && order.date === item.date)
+		if (adminIndex !== -1) {
+			adminOrders.splice(adminIndex, 1)
+		}
+
+		const updatedAdmin = {
 			...admin,
+			orders: adminOrders,
 			finishedOrders: [...admin.finishedOrders, item],
-			orders: admin.orders.splice(admin.orders.indexOf(adminOrderObj)),
 			finances: {
-				expense: [...admin.finances.expense, item],
-				income: [...admin.finances.income],
-				money: Number((admin.finances.money - item.price).toFixed(2))
+				...admin.finances,
+				expense: [...admin.finances.expense, { ...item, type: 'expense', category: 'Cooking Cost' }],
+				money: Number((admin.finances.money - (item.price * 0.6)).toFixed(2))
 			}
 		}
+
+		const updatedAccs = accs.map(acc => {
+			if (acc.email === user.email) return updatedUser
+			if (acc.title === 'admin') return updatedAdmin
+			return acc
+		})
+
+		setAccs(updatedAccs)
 		setAdmin(updatedAdmin)
-		localStorage.setItem('proj-acc', JSON.stringify([accs,admin]))
-		setAlertText('Order Has Been Made')
+		setAlertText('Order has been cooked and moved to finished')
 	}
 
 	return (
-		<div className='flex-1 flex flex-col items-center gap-8'>
-			<h1 className='text-[35px] font-bold'>Orders</h1>
-			<AlertModal message={alertText} onClose={() => setAlertText('')} />
-			<div className='w-full grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-items-center items-center px-5 gap-3 max-h-[600px] overflow-y-scroll'>
+		<div className='flex-1 flex flex-col items-center gap-8 p-5'>
+			<h1 className='text-[35px] font-bold text-white'>Pending Orders</h1>
+			<AlertModal message={alertText} duration={4000} onClose={() => setAlertText('')} />
+			<div className='w-full grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-items-center items-center px-5 gap-5 max-h-[600px] overflow-y-scroll'>
 				{
-					[...adminOrders].map((el, ind) => (
+					adminOrders.map((el, ind) => (
 						<OrderBlock key={ind} el={el} />
 					))
 				}

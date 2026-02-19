@@ -153,34 +153,57 @@ export function FullPage() {
 			description: 'Carbonated water, sugar, flavorings, and natural or artificial flavors served chilled'
 		}
 	])
-	
+
 	useEffect(() => localStorage.setItem('proj-food', JSON.stringify(food)), [food])
-	
+
 	const [accs, setAccs] = useState(JSON.parse(localStorage.getItem('proj-acc')) || [])
-	
-	// accs.forEach(el=>el.finishedOrders = [])
-	
+
+	useEffect(() => {
+		const updatedAccs = accs.map(acc => ({
+			...acc,
+			finishedOrders: acc.finishedOrders || [],
+			orders: acc.orders || [],
+			cart: acc.cart || [],
+		}))
+		setAccs(updatedAccs)
+	}, [])
+
 	useEffect(() => localStorage.setItem('proj-acc', JSON.stringify(accs)), [accs])
-	
-	const [admin,setAdmin] = useState(accs.find(acc => acc.title === 'admin'))
-	const adminLogged = admin?.logged || false
-	
+
+	const [admin, setAdmin] = useState(accs.find(acc => acc.title === 'admin') || {
+		email: 'admin@gmail.com',
+		pass: 'admin123',
+		name: 'The admin',
+		title: 'admin',
+		logged: false,
+		reservations: [],
+		orders: [],
+		finishedOrders: [],
+		finances: { income: [], expense: [], money: 0 },
+	})
+	const adminLogged = admin.logged
+
 	const loggedUser = accs.find(acc => acc.logged && acc.title === 'user')
+
+	//
+	// let sabaa = accs.find(acc => acc.email == 'saba@gmail.com')
+	// sabaa.orders = []
+	// 
 	
 	return (
-		<FoodItems.Provider value={{ 
-			food, 
-			setFood, 
+		<FoodItems.Provider value={{
+			food,
+			setFood,
 			
-			accs, 
-			setAccs, 
-			loggedUser, 
+			accs,
+			setAccs,
+			loggedUser,
 			
 			admin,
 			setAdmin,
-			adminLogged, 
+			adminLogged,
 		}}>
-			<Outlet></Outlet>
+			<Outlet />
 		</FoodItems.Provider>
 	)
 }

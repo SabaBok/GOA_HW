@@ -34,6 +34,7 @@ export default function RegisterForm({ changeForm }) {
 			pass,
 			logged: false,
 			orders: [],
+			finishedOrders: [],
 			cart: [],
 			money: 100,
 			title: 'user'
@@ -58,19 +59,19 @@ export default function RegisterForm({ changeForm }) {
 			>
 
 				<div className="w-full">
-					<label className='text-[#d1d1d1]' htmlFor="">Full Name</label>
-					<input placeholder="fullname" className="w-full rounded-lg bg-[#3a3a3a] border-0 outline-0 p-2 text-[#e0e0e0]" type="text" {...register("fullName", { required: 'Needs to be filled' })} />
+					<label className='text-[#d1d1d1]' htmlFor="Full Name">Full Name</label>
+					<input placeholder="full name" className="w-full rounded-lg bg-[#3a3a3a] border-0 outline-0 p-2 text-[#e0e0e0]" type="text" {...register('fullName', { required: 'Put in full name' })} />
 					<label htmlFor="" className="text-red-500">{errors?.fullName?.message}</label>
 				</div>
 
 				<div className="w-full">
-					<label className='text-[#d1d1d1]' htmlFor="">Email</label>
-					<input placeholder="email" className="w-full rounded-lg bg-[#3a3a3a] border-0 outline-0 p-2 text-[#e0e0e0]" type="text" {...register('email', { required: 'Put in email address', minLength: { value: 11, message: 'Is not valid email' }, validate: (value) => { value.includes('@') || 'Must contain @ symbol' } })} />
+					<label className='text-[#d1d1d1]' htmlFor="Email">Email</label>
+					<input placeholder="email" className="w-full rounded-lg bg-[#3a3a3a] border-0 outline-0 p-2 text-[#e0e0e0]" type="text" {...register('email', { required: 'Put in email address', minLength: { value: 11, message: 'Is not valid email' }, validate: (value) => value.includes('@') || 'Must contain @ symbol' })} />
 					<label htmlFor="" className="text-red-500">{errors?.email?.message}</label>
 				</div>
 
 				<div className="w-full">
-					<label className='text-[#d1d1d1]' htmlFor="">Password</label>
+					<label className='text-[#d1d1d1]' htmlFor="Password">Password</label>
 					<div className="flex justify-between items-center w-full rounded-lg bg-[#3a3a3a] pr-3">
 						<input placeholder="password" className="w-full border-0 outline-0 p-2 text-[#e0e0e0]" type={`${showPass1 ? 'text' : 'password'}`} {...register('password', { required: 'Put in a password', minLength: { value: 8, message: "Put in a valid password" } })} />
 						<i className={`fa-solid ${showPass1 ? 'fa-eye-slash' : 'fa-eye'} cursor-pointer text-[#d1d1d1]`} onClick={() => setShowPass1(prev => !prev)}></i>

@@ -5,9 +5,9 @@ export default function Transfers() {
 	const { accs } = useContext(FoodItems)
 	const admin = accs.find(el => el.title === 'admin')
 
-	const income = admin.finances.income.reduce((acc, el) => acc + el.price, 0)
-	const expense = admin.finances.expense.reduce((acc, el) => acc + el.price, 0)
-	const profit = income - expense
+	const income = admin.finances.income.reduce((acc, el) => acc + Number(el.price),0)
+	const expense = admin.finances.expense.reduce((acc, el) => acc + Number(el.price),0)
+	const profit = Number((income - expense).toFixed(2))
 
 	return (
 		<section className='w-full h-full flex flex-col items-center gap-10 font-sansita-swashed text-white'>

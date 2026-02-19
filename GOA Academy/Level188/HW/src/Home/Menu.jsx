@@ -12,101 +12,65 @@ export default function Menu() {
 	const [alertText, setAlertText] = useState('')
 
 	useEffect(() => {
-		if (filter === '') {
-			setFilteredData(food)
-		} else {
-			setFilteredData([...food].filter(el => el.category === filter))
-		}
+		if (filter === '') setFilteredData(food)
+		else setFilteredData([...food].filter(el => el.category === filter))
+		
 	}, [filter, food])
 
 	const FoodItem = memo(({ el }) => {
 		const checkURL = () => el.imageURL ? true : false
 
+		function addToCart() {
+			if (!loggedUser) {
+				setAlertText('Login required to add to cart')
+				return
+			}
+			const updated = accs.map(acc => {
+				if (acc.email === loggedUser.email) {
+					return { ...acc, cart: [...acc.cart, { ...el, ammount: 1 }] }
+				}
+				return acc
+			})
+			setAccs(updated)
+			setAlertText('Added to cart')
+		}
+
+		function removeItem() {
+			const updatedFood = food.filter(f => f.name !== el.name)
+			setFood(updatedFood)
+			localStorage.setItem('proj-food', JSON.stringify(updatedFood))
+			setAlertText('Item removed')
+		}
+
 		return (
-			<div className='flex flex-col max-w-[350px] w-full min-w-[300px] border border-[#89898963] rounded-[13px] pb-3'>
+			<div className='flex flex-col max-w-[350px] w-full min-w-[300px] border border-[#89898963] rounded-[13px] pb-3 bg-[#2a2a2a]'>
 				<img
 					src={checkURL() ? el.imageURL : `/images/Foods/${el.name}.jpg`}
 					alt="food image"
 					className='w-full object-cover object-center h-[170px] rounded-t-[13px]'
 				/>
-				<div className='w-full flex flex-col gap-6 px-3'>
+				<div className='w-full flex flex-col gap-6 px-3 text-white'>
 					<div className='flex items-center justify-between'>
 						<div className='flex flex-col items-start gap-1'>
-							<p>{el.name}</p>
-							<span className='text-[12px] p-1 py-px font-medium rounded-lg bg-[#eceef2] capitalize text-black'>
+							<p className='font-bold'>{el.name}</p>
+							<span className='text-[12px] p-1 py-px font-medium rounded-lg bg-[#3a3a3a] capitalize'>
 								{el.category}
 							</span>
 						</div>
 						<p className='text-[#f54900]'>{el.price}₾</p>
 					</div>
 
-					<div className='flex flex-col gap-2'>
-						<p className='opacity-70 text-[14px]'>{el.description}</p>
-
-						{!adminLogged && (
-							<button
-								className={`${loggedUser ? 'bg-[#f54900]' : 'bg-[#faa47f]'} 
-									hover:bg-[#bc3800] duration-200 cursor-pointer text-white 
-									rounded-lg w-full py-1 flex items-center gap-5 justify-center`}
-								onClick={() => addToCart(el)}
-							>
-								<i className="fa-solid fa-cart-shopping"></i>
-								<p>{loggedUser ? 'Add to Cart' : 'Login to Order'}</p>
-							</button>
-						)}
-
-						{adminLogged && (
-							<button
-								onClick={() => AdminRemove(el)}
-								className='bg-[#f54900] hover:bg-[#bc3800] duration-200 cursor-pointer text-white rounded-lg w-full py-1 flex items-center gap-5 justify-center'
-							>
-								Remove Dish
-							</button>
-						)}
+					<div className='flex items-center gap-3'>
+						{adminLogged == false && <button onClick={()=>addToCart()} className="bg-[#e53e3e] rounded-lg px-4 py-1 text-white cursor-pointer hover:bg-[#c53030]">Add to Cart</button>}
+						{adminLogged == true && <button onClick={()=>removeItem()} className="bg-red-600 rounded-lg px-4 py-1 text-white cursor-pointer hover:bg-red-700 duration-200">Remove</button>}
 					</div>
 				</div>
 			</div>
 		)
 	})
 
-	const generateID = () => Date.now()
-
-	function addToCart(item) {
-		if (!loggedUser) return
-
-		const loggedUserIndex = accs.findIndex(acc => acc.logged && acc.title === 'user')
-		if (loggedUserIndex === -1) return
-
-		const updatedAccounts = accs.map((acc, idx) => {
-			if (idx !== loggedUserIndex) return acc
-
-			const existingIndex = acc.cart.findIndex(el => el.name === item.name)
-
-			if (existingIndex !== -1) {
-				const newCart = [...acc.cart]
-				newCart[existingIndex] = {
-					...newCart[existingIndex],
-					ammount: newCart[existingIndex].ammount + 1
-				}
-				return { ...acc, cart: newCart }
-			}
-
-			return {
-				...acc,
-				cart: [...acc.cart, { ...item, ammount: 1, id: generateID() }]
-			}
-		})
-
-		setAccs(updatedAccounts)
-	}
-
-	function AdminRemove(item) {
-		setFood(prev => prev.filter(el => el.name !== item.name))
-		setAlertText(`${item.name} has been removed from the menu`)
-	}
-
 	return (
-		<section id='order' className='flex flex-col items-center gap-10 w-full max-sm:p-3 p-15 rounded-lg min-h-[1700px] bg-[#1e1e1e]'>
+		<section className='flex flex-col items-center gap-10 w-full max-sm:p-3 p-15 rounded-lg min-h-[1700px] bg-[#1e1e1e]'>
 			<AlertModal message={alertText} duration={4000} onClose={() => setAlertText('')} />
 			<div className='flex flex-col items-center gap-4'>
 				<div>
@@ -123,11 +87,11 @@ export default function Menu() {
 				</div>
 			</div>
 			<div id='menu' className='w-full h-full flex flex-col gap-1 items-center max-md:px-5 px-[200px]'>
-				{!admin.logged && <Order accs={accs} setAccs={setAccs} />}
-				{admin.logged && <NewFood />}
+				{adminLogged == false && <Order accs={accs} setAccs={setAccs} />}
+				{adminLogged == true && <NewFood />}
 				<div className={`grid max-h-[1250px] overflow-y-scroll shadow-md rounded-[13px] p-2 w-full items-center justify-items-center grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 gap-y-20 bg-[#2a2a2a] border border-[#4a4a4a]`}>
 					{
-						filteredData.map((el, key) => <FoodItem key={key} el={el}></FoodItem>)
+						filteredData.map((el, key) => <FoodItem key={key} el={el} />)
 					}
 				</div>
 			</div>

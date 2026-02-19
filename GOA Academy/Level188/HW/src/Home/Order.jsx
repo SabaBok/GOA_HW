@@ -1,176 +1,158 @@
 import { useState, memo, useEffect } from 'react'
 import AlertModal from '../Components/AlertModal'
+import { useContext } from 'react'
+import { FoodItems } from '../FullPage'
 
-export default function Order({ accs, setAccs }) {
+export default function Order() {
+	const { accs, setAccs, loggedUser, admin, setAdmin } = useContext(FoodItems)
 	const [showModal, setShowModal] = useState(false)
 	const [alertText, setAlertText] = useState('')
 
-	let loggedAcc = [...accs].find(el => el.logged && el.title == 'user')
-	const adminglogged = [...accs].find(el => el.title == 'admin' && el.logged == true)
-	if (adminglogged) return <p>Admin Cant Order</p>
-	let cart = loggedAcc?.cart
+	let cart = loggedUser?.cart || []
 	const [total, setTotal] = useState(0)
 
-	//let admin1 = accs.find(el => el.title == 'admin')
-	//admin1.orders = []
-	//admin1.finances={
-	//	income:[],
-	//	expense:[],
-	//	money:0
-	//}
-	//admin1.money = 100
-
-	//let idk = accs.find(el => el.logged && el.title == 'user')
-	//idk.cart = []
-	//idk.money = 1000
-	//idk.orders = []
-	//localStorage.setItem('proj-acc', JSON.stringify(accs))
+	useEffect(() => {
+		const sum = cart.reduce((acc, el) => acc + (el.price * el.ammount), 0)
+		setTotal(sum)
+	}, [cart])
 
 	const OrderItem = memo(({ el }) => {
-		const [count, setCount] = useState(el.ammount)
+
+		function updateAmount(newAmount) {
+			const updated = accs.map(acc => {
+				if (acc.email === loggedUser.email) {
+					const updatedCart = acc.cart.map(item =>
+						item.name === el.name
+							? { ...item, ammount: newAmount }
+							: item
+					)
+					return { ...acc, cart: updatedCart }
+				}
+				return acc
+			})
+
+			setAccs(updated)
+		}
+
+		function removeItem() {
+			const updated = accs.map(acc => {
+				if (acc.email === loggedUser.email) {
+					return {
+						...acc,
+						cart: acc.cart.filter(item => item.name !== el.name)
+					}
+				}
+				return acc
+			})
+			setAccs(updated)
+		}
 
 		return (
-			<div onClick={() => removeItem(el)} className='mx-2 p-1 border border-gray-300 rounded-lg flex justify-between items-center duration-300 hover:border-[#ff0000] hover:scale-[1.01] cursor-pointer'>
+			<div className='flex justify-between'>
 				<div>
-					<p>{el.name}</p>
-					<p>{el.price}₾</p>
+					<p className='font-bold'>{el.name}</p>
+					<p>{el.price}₾ x {el.ammount}</p>
 				</div>
 
-				<div className='flex gap-2 pr-3'>
-					<p>Amount:{count}</p>
+				<div className='flex gap-3 pr-3 items-center'>
+					<p>{el.ammount}</p>
+					<button onClick={() => updateAmount(Math.max(1, el.ammount - 1))} className='duration-250 hover:bg-gray-500 rounded-lg px-1.5 py-1 cursor-pointer'>Remove</button>
+					<button onClick={removeItem} className='duration-250 hover:bg-[#ff333375] rounded-lg px-1.5 py-1 cursor-pointer'>Delete</button>
+					<button onClick={() => updateAmount(el.ammount + 1)} className='duration-250 hover:bg-gray-500 rounded-lg px-1.5 py-1 cursor-pointer'>Add</button>
 				</div>
 			</div>
 		)
 	})
+
 
 	function generateTimeNow() {
 		const today = new Date()
 		const year = today.getFullYear()
 		const mm = String(today.getMonth() + 1).padStart(2, '0')
 		const dd = String(today.getDate()).padStart(2, '0')
-
 		return `${year}-${mm}-${dd}`
 	}
-	function orderFood(items) {
-		if (!items || !items.length) return
-
-		const loggedUserIndex = accs.findIndex(acc => acc.logged && acc.title === 'user')
-		if (loggedUserIndex === -1) return
-
-		const adminIndex = accs.findIndex(acc => acc.title === 'admin')
-		if (adminIndex === -1) return
-
-		const expandedItems = []
-		items.forEach(item => {
-			const count = item.ammount || 1
-			for (let i = 0; i < count; i++) {
-				expandedItems.push({
-					name: item.name,
-					price: Number(item.price),
-					customer: {
-						name: accs[loggedUserIndex].name,
-						email: accs[loggedUserIndex].email
-					},
-					date: generateTimeNow(),
-					type: 'income',
-					category: 'food sale'
-				})
-			}
-		})
-
-		const totalPrice = expandedItems.reduce((sum, i) => sum + Number(i.price), 0)
-
-		const updatedAccounts = accs.map((acc, idx) => {
-			if (idx === loggedUserIndex) {
-				return {
-					...acc,
-					money: (acc.money ?? 0) - totalPrice,
-					cart: [],
-					orders: [...(acc.orders || []), ...expandedItems]
-				}
-			}
-
-			if (idx === adminIndex) {
-				return {
-					...acc,
-					orders: [...(acc.orders || []), ...expandedItems],
-					finances: {
-						...acc.finances,
-						money: (acc.finances?.money ?? 0) + totalPrice * 0.8,
-						income: [...(acc.finances?.income || []), ...expandedItems]
-					}
-				}
-			}
-
-			return acc
-		})
-
-		setAccs(updatedAccounts)
-		localStorage.setItem('proj-acc', JSON.stringify(updatedAccounts))
-		setShowModal(false)
-		setAlertText('You have ordered')
-	}
-
 
 	function clearCart() {
-		const updated = [...accs].map(el => {
-			if (el.logged && el.title == 'user') return { ...el, cart: [] }
-			return el
+		const updated = accs.map(acc => {
+			if (acc.email === loggedUser.email) {
+				return { ...acc, cart: [] }
+			}
+			return acc
 		})
 		setAccs(updated)
-		localStorage.setItem('proj-acc', JSON.stringify(updated))
+		setAlertText('Cart cleared')
 	}
 
-	function removeItem(item) {
-		const updatedAccounts = accs.map(acc => {
-			if (acc.logged && acc.title === 'user') return { ...acc, cart: acc.cart.filter(el => el !== item) }
+	function orderFood() {
+		if (total > loggedUser.money) {
+			setAlertText('Insufficient funds')
+			return
+		}
+
+		const date = generateTimeNow()
+		const orderedItems = cart.map(item => ({
+			...item,
+			date,
+			type: 'income',
+			category: 'Order',
+			customer: { email: loggedUser.email }
+		}))
+
+		const updatedUser = {
+			...loggedUser,
+			orders: [...loggedUser.orders, ...orderedItems],
+			cart: [],
+			money: Number((loggedUser.money - total).toFixed(2))
+		}
+
+		const updatedAdmin = {
+			...admin,
+			orders: [...admin.orders, ...orderedItems],
+			finances: {
+				...admin.finances,
+				income: [...admin.finances.income, ...orderedItems],
+				money: Number((admin.finances.money + total).toFixed(2))
+			}
+		}
+
+		const updatedAccs = accs.map(acc => {
+			if (acc.email === loggedUser.email) return updatedUser
+			if (acc.title === 'admin') return updatedAdmin
 			return acc
 		})
 
-		setAccs(updatedAccounts)
-		localStorage.setItem('proj-acc', JSON.stringify(updatedAccounts))
+		setAccs(updatedAccs)
+		setAdmin(updatedAdmin)
+		setShowModal(false)
+		setAlertText('Order placed!')
 	}
-
-	function calcTotal() {
-		let tot = 0
-		cart?.forEach(el => tot += Number((Number(el.price) * el.ammount).toFixed(2)))
-		setTotal(tot.toFixed(2))
-	}
-	useEffect(() => calcTotal(), [cart])
-	useEffect(() => { loggedAcc = [...accs].find(el => el.logged && el.title == 'user'); cart = loggedAcc?.cart }, [])
 
 	return (
-		<div className='fixed bottom-5 right-5 z-5'>
-			<AlertModal message={alertText} duration={4000} onClose={() => setAlertText('')} />
-
-			<div className='bg-[#e53e3e] hover:bg-[#c53030] duration-200 cursor-pointer text-white rounded-lg w-max px-3 py-1 flex items-center gap-2' onClick={() => setShowModal(true)}>
-				<i className="fa-solid fa-cart-shopping text-[13px] mt-[5px]"></i>
-				<p>Cart</p>
+		<div className='w-full flex justify-start m-3'>
+			<AlertModal message={alertText} onClose={() => setAlertText('')} />
+			<div className='cursor-pointer duration-200 flex items-center gap-2 px-2 py-1 rounded-lg bg-[#e53e3e] hover:bg-[#c53030] text-white' onClick={() => setShowModal(true)}>
+				<i className="fa-solid fa-shopping-cart"></i> Cart ({cart.length})
 			</div>
 
-			<div id="blur" className={`${showModal ? 'fixed' : 'hidden'} duration-200 top-0 left-0 z-4 w-screen h-screen backdrop-blur-[1px] bg-[#0000005a]`} onClick={() => setShowModal(false)}></div>
-			<div id="modal" className={`flex flex-col gap-2 ${showModal ? 'fixed scale-[1]' : 'hidden scale-[0.8]'} w-[90%] max-w-[400px] min-h-[200px] p-4 rounded-lg bg-[#1e1e1e] top-1/2 left-1/2 -translate-1/2 z-5 border border-[#4a4a4a]`}>
-				<div className='w-full flex justify-between text-white'>
-					<p>Shopping Cart</p>
-					<i className="fa-solid fa-xmark cursor-pointer duration-200 hover:text-red-600" onClick={() => setShowModal(false)}></i>
+			<div className={`${showModal ? 'fixed' : 'hidden'} top-0 left-0 w-screen h-screen backdrop-blur bg-[#0000005a] z-40`} onClick={() => setShowModal(false)}></div>
+			<div className={`${showModal ? 'fixed' : 'hidden'} flex flex-col justify-between w-[95%] max-w-[500px] min-h-[300px] p-4 rounded-lg bg-[#1e1e1e] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 border border-[#4a4a4a]`}>
+				<div className='flex justify-between text-white mb-4'>
+					<p className='font-bold text-lg'>Shopping Cart</p>
+					<i className="fa-solid fa-xmark cursor-pointer hover:text-red-500" onClick={() => setShowModal(false)}></i>
 				</div>
 
-				<div className='flex flex-col gap-3 max-h-[400px] overflow-y-scroll'>
-					{
-						!adminglogged ? cart?.map((el, ind) => (
-							<OrderItem el={el} key={ind}></OrderItem>
-						)) : <p className='text-white'>Admin Cant Order</p>
-					}
+				<div className='flex flex-col gap-3 max-h-[400px] overflow-y-auto'>
+					{cart.map((el, ind) => <OrderItem key={ind} el={el} />)}
 				</div>
 
-				<hr className='border-t-[#4a4a4a]' />
+				<hr className='my-4 border-[#4a4a4a]' />
 
 				<div className='flex flex-col gap-2 text-white'>
-					<p className='flex items-center w-full justify-between px-1'>Total: <span>{total}₾</span></p>
-
+					<p className='flex justify-between'>Total: <span>{total.toFixed(2)}₾</span></p>
 					<div className='flex gap-3'>
-						<button className='rounded-lg w-full border border-[#4a4a4a] py-1 cursor-pointer hover:bg-[#3a3a3a]' onClick={() => clearCart()}>Clear Cart</button>
-						<button className='bg-[#e53e3e] rounded-lg w-full py-1 text-white cursor-pointer hover:bg-[#c53030]' onClick={() => orderFood(cart)}>Place Order</button>
+						<button onClick={clearCart} className='flex-1 rounded-lg border border-[#4a4a4a] py-2 hover:bg-[#3a3a3a]'>Clear Cart</button>
+						<button onClick={orderFood} className='flex-1 bg-[#e53e3e] rounded-lg py-2 hover:bg-[#c53030]'>Place Order</button>
 					</div>
 				</div>
 			</div>
